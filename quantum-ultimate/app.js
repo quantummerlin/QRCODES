@@ -1360,8 +1360,9 @@ class QuantumRealityApp {
     if (numberMatch && (lowerMsg.includes('post') || lowerMsg.includes('share') || lowerMsg.includes('community'))) {
       // User is responding to community post count question
       const count = parseInt(numberMatch[0]);
+      const realitiesAffected = Math.pow(2, count + 1) - 1; // Mersenne equation: 2^(n+1) - 1
       responsePersonaId = 'quasar'; // Amplifier persona
-      responseText = `Woah, that is ${count} realities aligned with your intention! Each post amplifies the quantum field by ${count * 10}x. The collective energy is building exponentially.`;
+      responseText = `Woah, that is ${realitiesAffected} realities aligned with your intention! The Mersenne equation (2^${count+1} - 1) shows how each post exponentially amplifies the quantum field. The collective energy is building through sacred mathematics!`;
     } else if (lowerMsg.includes('doubt') || lowerMsg.includes('worried') || lowerMsg.includes('scared') || lowerMsg.includes('fear')) {
       responsePersonaId = 'doubt_transmuter';
       responseText = this.getRandomMessage(MESSAGE_TEMPLATES.doubt);
