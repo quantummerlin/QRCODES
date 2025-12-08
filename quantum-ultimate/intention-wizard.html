@@ -733,10 +733,9 @@
             A vague desire creates a scattered frequency. A precise vision creates a <span class="highlight">quantum lock</span>. 
             Let me guide you through the process."
           </div>
-        </div>
       </div>
       <div class="nav-buttons">
-        <button class="btn btn-next" onclick="nextStep()">
+        <button class="btn btn-next" type="button" onclick="console.log('Button clicked!'); nextStep(); return false;">
           Begin the Process ⚡
         </button>
       </div>
@@ -1207,8 +1206,9 @@ When did you feel most aligned, confident, or successful?"
     ];
     
     // Navigation
-    function nextStep() {
+    window.nextStep = function() {
       console.log('nextStep called, currentStep:', currentStep);
+      alert('nextStep function is running! Current step: ' + currentStep);
       if (currentStep < totalSteps) {
         currentStep++;
         console.log('Moving to step:', currentStep);
@@ -1218,7 +1218,7 @@ When did you feel most aligned, confident, or successful?"
       }
     }
     
-    function prevStep() {
+    window.prevStep = function() {
       if (currentStep > 0) {
         currentStep--;
         updateUI();
