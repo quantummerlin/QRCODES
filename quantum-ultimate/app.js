@@ -172,7 +172,9 @@ const MESSAGE_TEMPLATES = {
   celebration: [
     "The Council celebrates with you, {name}! Your energy just shifted to a higher frequency.",
     "Victory! Another block has been cleared. Your path is more open than ever.",
-    "The quantum field just recorded a win for you. This momentum builds upon itself."
+    "The quantum field just recorded a win for you. This momentum builds upon itself.",
+    "How many people have posted on your community code share post? I'd love to see the collective energy building around your intention.",
+    "Tell me, {name} - how many realities are now aligned with your code in the community? The numbers tell a powerful story."
   ]
 };
 
@@ -189,6 +191,7 @@ class QuantumRealityApp {
     this.quantumCode = null;
     this.messages = [];
     this.messageTimer = null;
+    this.currentThread = null; // Add current thread
     
     this.init();
   }
@@ -202,6 +205,9 @@ class QuantumRealityApp {
     
     // Load user data
     this.loadUserData();
+    
+    // Check URL parameters for activation
+    this.checkUrlParams();
     
     // Initialize particles
     this.initParticles();
@@ -242,7 +248,7 @@ class QuantumRealityApp {
       selectedPersonas: [],
       journeyStep: 1,
       journeyCompleted: [],
-      messages: [],
+      threads: {}, // Changed from messages: []
       synchronicities: [],
       achievements: [],
       settings: {
@@ -265,6 +271,45 @@ class QuantumRealityApp {
     this.saveUser();
   }
 
+  checkUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const activated = urlParams.get('activated');
+    const code = urlParams.get('code');
+    
+    if (activated === 'true' && code) {
+      this.activateFromWizard(code);
+      // Clean URL
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+
+  activateFromWizard(code) {
+    // Set the quantum code
+    this.user.quantumCode = code;
+    
+    // Get intention from localStorage
+    const storedIntention = localStorage.getItem('quantum_intention');
+    if (storedIntention) {
+      this.user.intention = storedIntention;
+    } else {
+      this.user.intention = 'Manifesting my highest potential';
+    }
+    
+    // Create a new thread for this code
+    if (!this.user.threads[code]) {
+      this.user.threads[code] = {
+        intention: this.user.intention,
+        messages: [],
+        createdAt: Date.now()
+      };
+    }
+    
+    this.saveUser();
+    
+    // Navigate to messages to show the new thread
+    this.navigate('messages');
+  }
+
   saveUser() {
     this.storage.set('quantumUser', this.user);
   }
@@ -272,6 +317,8 @@ class QuantumRealityApp {
   determineInitialSection() {
     if (!this.user.name) {
       this.navigate('welcome');
+    } else if (Object.keys(this.user.threads).length > 0) {
+      this.navigate('messages');
     } else if (!this.user.quantumCode) {
       this.navigate('generator');
     } else if (this.user.selectedPersonas.length === 0) {
@@ -1108,7 +1155,16 @@ class QuantumRealityApp {
       read: false
     };
 
-    this.user.messages.push(message);
+    // Add to the current quantum code's thread
+    const code = this.user.quantumCode;
+    if (code && this.user.threads[code]) {
+      this.user.threads[code].messages.push(message);
+    } else {
+      // Fallback to old messages array for compatibility
+      if (!this.user.messages) this.user.messages = [];
+      this.user.messages.push(message);
+    }
+
     this.user.stats.messagesReceived++;
     this.saveUser();
 
@@ -1118,45 +1174,152 @@ class QuantumRealityApp {
 
   renderMessages() {
     const container = document.getElementById('messagesContainer');
+    const inputContainer = document.querySelector('.message-input-container');
+    
     if (!container) return;
 
-    // Show last 50 messages
-    const recentMessages = this.user.messages.slice(-50);
-
-    container.innerHTML = recentMessages.map(msg => {
-      const persona = this.findPersona(msg.personaId);
-      const time = this.formatTime(msg.timestamp);
-
-      if (msg.isUser) {
-        return `
-          <div class="message-bubble user">
-            <div class="message-avatar">👤</div>
-            <div class="message-content">
-              <div class="message-header">
-                <span class="message-sender">${this.user.name || 'You'}</span>
-                <span class="message-time">${time}</span>
-              </div>
-              <div class="message-text">${msg.text}</div>
-            </div>
-          </div>
-        `;
-      } else {
-        return `
-          <div class="message-bubble">
-            <div class="message-avatar">${persona?.avatar || '⚛️'}</div>
-            <div class="message-content">
-              <div class="message-header">
-                <span class="message-sender">${persona?.name || 'Quantum Guide'}</span>
-                <span class="message-time">${time}</span>
-              </div>
-              <div class="message-text">${msg.text}</div>
-            </div>
-          </div>
-        `;
-      }
-    }).join('');
+    if (!this.currentThread) {
+      // Show thread list
+      this.renderThreadList(container);
+      if (inputContainer) inputContainer.style.display = 'none';
+    } else {
+      // Show chat for current thread
+      this.renderThreadChat(container);
+      if (inputContainer) inputContainer.style.display = 'flex';
+    }
 
     this.scrollMessagesToBottom();
+  }
+
+  renderThreadList(container) {
+    const threads = Object.keys(this.user.threads);
+    
+    if (threads.length === 0) {
+      container.innerHTML = `
+        <div class="no-threads">
+          <div class="no-threads-icon">💬</div>
+          <div class="no-threads-text">No active manifestation threads yet.</div>
+          <div class="no-threads-subtext">Create your first intention to start receiving Council guidance.</div>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = threads.map(code => {
+      const thread = this.user.threads[code];
+      const lastMessage = thread.messages[thread.messages.length - 1];
+      const time = lastMessage ? this.formatTime(lastMessage.timestamp) : 'New thread';
+      
+      return `
+        <div class="thread-item" onclick="app.selectThread('${code}')">
+          <div class="thread-avatar">⚡</div>
+          <div class="thread-content">
+            <div class="thread-title">${code}</div>
+            <div class="thread-preview">${thread.intention.substring(0, 50)}${thread.intention.length > 50 ? '...' : ''}</div>
+          </div>
+          <div class="thread-meta">
+            <div class="thread-time">${time}</div>
+            <div class="thread-count">${thread.messages.length}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderThreadChat(container) {
+    const thread = this.user.threads[this.currentThread];
+    if (!thread) return;
+
+    const recentMessages = thread.messages.slice(-50);
+
+    container.innerHTML = `
+      <div class="thread-header">
+        <button class="back-to-threads" onclick="app.backToThreads()">← Threads</button>
+        <div class="thread-code">${this.currentThread}</div>
+      </div>
+      <div class="thread-intention">
+        <div class="intention-label">Your Intention:</div>
+        <div class="intention-text">${thread.intention}</div>
+      </div>
+      <div class="chat-messages">
+        ${recentMessages.map(msg => {
+          const persona = this.findPersona(msg.personaId);
+          const time = this.formatTime(msg.timestamp);
+
+          if (msg.isUser) {
+            return `
+              <div class="message-bubble user">
+                <div class="message-avatar">👤</div>
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-sender">${this.user.name || 'You'}</span>
+                    <span class="message-time">${time}</span>
+                  </div>
+                  <div class="message-text">${msg.text}</div>
+                </div>
+              </div>
+            `;
+          } else {
+            return `
+              <div class="message-bubble">
+                <div class="message-avatar">${persona?.avatar || '⚛️'}</div>
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-sender">${persona?.name || 'Quantum Guide'}</span>
+                    <span class="message-time">${time}</span>
+                  </div>
+                  <div class="message-text">${msg.text}</div>
+                </div>
+              </div>
+            `;
+          }
+        }).join('')}
+      </div>
+    `;
+  }
+
+  selectThread(code) {
+    this.currentThread = code;
+    this.renderMessages();
+  }
+
+  backToThreads() {
+    this.currentThread = null;
+    this.renderMessages();
+  }
+
+  sendMessage() {
+    if (!this.currentThread) return;
+    
+    const input = document.getElementById('messageInput');
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    // Add user message to current thread
+    const message = {
+      id: Date.now(),
+      personaId: 'user',
+      text: text,
+      timestamp: Date.now(),
+      isUser: true,
+      read: false
+    };
+
+    this.user.threads[this.currentThread].messages.push(message);
+    this.saveUser();
+    
+    input.value = '';
+
+    // Generate response after a delay
+    this.showTypingIndicator();
+    
+    setTimeout(() => {
+      this.hideTypingIndicator();
+      this.generateCouncilResponse(text);
+    }, 1500 + Math.random() * 1500);
+
+    this.renderMessages();
   }
 
   scrollMessagesToBottom() {
@@ -1193,7 +1356,13 @@ class QuantumRealityApp {
     let responseText;
 
     // Analyze message intent
-    if (lowerMsg.includes('doubt') || lowerMsg.includes('worried') || lowerMsg.includes('scared') || lowerMsg.includes('fear')) {
+    const numberMatch = userMessage.match(/\d+/);
+    if (numberMatch && (lowerMsg.includes('post') || lowerMsg.includes('share') || lowerMsg.includes('community'))) {
+      // User is responding to community post count question
+      const count = parseInt(numberMatch[0]);
+      responsePersonaId = 'quasar'; // Amplifier persona
+      responseText = `Woah, that is ${count} realities aligned with your intention! Each post amplifies the quantum field by ${count * 10}x. The collective energy is building exponentially.`;
+    } else if (lowerMsg.includes('doubt') || lowerMsg.includes('worried') || lowerMsg.includes('scared') || lowerMsg.includes('fear')) {
       responsePersonaId = 'doubt_transmuter';
       responseText = this.getRandomMessage(MESSAGE_TEMPLATES.doubt);
     } else if (lowerMsg.includes('sign') || lowerMsg.includes('synchron')) {
