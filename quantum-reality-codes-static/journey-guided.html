@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Quantum Journey - Your 12-Step Manifestation Path</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Guided Journey Specific Styles */
+        .guided-journey-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .progress-overview {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+        
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 15px;
+        }
+        
+        .phase-container {
+            margin-bottom: 40px;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, #2d1b69, #0f3460);
+            border-left: 5px solid #00ffff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+        
+        .step-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-card.unlocked {
+            border-color: #00ffff;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+        }
+        
+        .step-card.completed {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #00ff00;
+        }
+        
+        .step-card.locked {
+            opacity: 0.6;
+            border-color: #666;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .guide-message {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #ff00ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .guide-merlin {
+            border-left-color: #00ffff;
+            background: rgba(0, 255, 255, 0.1);
+        }
+        
+        .guide-rose {
+            border-left-color: #ff00ff;
+            background: rgba(255, 0, 255, 0.1);
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+        }
+        
+        .action-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .style-selector {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .style-option {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .style-option.selected {
+            background: #00ffff;
+            color: #1a1a2e;
+        }
+        
+        .first-days-path {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #00ffff;
+        }
+        
+        .celebration {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border-radius: 15px;
+            color: white;
+            margin: 20px 0;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>🌟 Your Guided Quantum Journey</h1>
+        <p class="subtitle">A 12-step path to mastering manifestation with Merlin & Rose</p>
+    </header>
+
+    <nav>
+        <a href="index-enhanced.html">Home</a>
+        <a href="generator-enhanced.html">Create Code</a>
+        <a href="quantumcouncil-enhanced.html">Quantum Council</a>
+        <a href="journey-guided.html" class="active">Guided Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
+    <main class="guided-journey-container">
+        <!-- Progress Overview -->
+        <div class="progress-overview">
+            <h2 class="text-gold text-center">🎯 Your Journey Progress</h2>
+            <div class="progress-bar">
+                <div id="journeyProgress" class="progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="text-center">
+                <span id="progressText" class="text-cyan">0/12 steps completed</span>
+            </div>
+            <div class="text-center mt-20">
+                <button id="firstDaysBtn" class="first-days-path pulse">🚀 First 7 Days Quick Path</button>
+            </div>
+        </div>
+
+        <!-- Guidance Style Selector -->
+        <div class="style-selector">
+            <h3 class="text-cyan">🎨 Choose Your Guidance Style</h3>
+            <div class="style-option" data-style="gentle">💚 Gentle & Nurturing</div>
+            <div class="style-option" data-style="direct">⚡ Direct & Powerful</div>
+            <div class="style-option" data-style="practical">🛠️ Practical & Action-Oriented</div>
+        </div>
+
+        <!-- Phase 1: Foundation -->
+        <div class="phase-container">
+            <div class="phase-header">
+                <h2 class="text-cyan">🏛️ Phase 1: Foundation - Understanding the Quantum Field</h2>
+                <p class="text-magenta">Steps 1-3: Building your quantum awareness</p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="step-card" id="step1">
+                <div class="step-number">1</div>
+                <h3>Meet Your Quantum Guides</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "I am Merlin, keeper of sacred mathematics. The quantum field responds to your consciousness - you are both observer and creator."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "I am Rose, weaver of frequencies. Your emotional resonance is the key that unlocks reality's door."
+                </div>
+                <p><strong>Your Action (2 minutes):</strong> Close your eyes, take 3 deep breaths, and silently introduce yourself to Merlin and Rose. Notice how you feel.</p>
+                <button class="action-button" onclick="completeStep(1)">✨ I've Met My Guides</button>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card locked" id="step2">
+                <div class="step-number">2</div>
+                <h3>Feel Quantum Energy</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Energy flows where attention goes. Your focus creates reality bridges."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Place your hands together, feel the warmth. This is your life force - the quantum energy you'll shape reality with."
+                </div>
+                <p><strong>Your Action (3 minutes):</strong> Rub your palms together until warm, hold them 2 inches apart, and feel the energy ball between them.</p>
+                <button class="action-button" disabled>🔒 Complete Step 1 First</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card locked" id="step3">
+                <div class="step-number">3</div>
+                <h3>Set Your Quantum Foundation</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "A clear intention is like a mathematical equation - precise and powerful."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Your foundation is built on truth. What do you genuinely desire to create?"
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> Write down one thing you want to manifest. Keep it specific and positive.</p>
+                <button class="action-button" disabled>🔒 Complete Step 2 First</button>
+            </div>
+        </div>
+
+        <!-- Phase 2: Activation -->
+        <div class="phase-container">
+            <div class="phase-header">
+                <h2 class="text-cyan">⚡ Phase 2: Activation - Creating Your Quantum Code</h2>
+                <p class="text-magenta">Steps 4-6: Transforming intention into quantum reality</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card locked" id="step4">
+                <div class="step-number">4</div>
+                <h3>Create Your First Quantum Code</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Your intention now needs a quantum signature. We'll translate it into the language of reality."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "The code will carry your frequency. Each number, each symbol, resonates with your desire."
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> Go to the Generator and create your first Quantum Reality Code for your foundation intention.</p>
+                <button class="action-button" onclick="goToGenerator()" disabled>🔒 Complete Step 3 First</button>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step-card locked" id="step5">
+                <div class="step-number">5</div>
+                <h3>Anchor Your Code in Reality</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "A code unanchored is like a ship without a rudder. We must secure it in the quantum field."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Touch the code, feel its vibration, and give it permission to work in your reality."
+                </div>
+                <p><strong>Your Action (3 minutes):</strong> Write your code on paper, place it somewhere special, and touch it while saying "I activate this code."</p>
+                <button class="action-button" disabled>🔒 Complete Step 4 First</button>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-card locked" id="step6">
+                <div class="step-number">6</div>
+                <h3>Meet Your Council</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "I have consulted with the Council of 77. Seven members have been chosen to support your manifestation."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Each council member brings unique frequencies. Together, they amplify your manifestation power."
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> Visit your Quantum Council, meet your selected members, and read their first messages.</p>
+                <button class="action-button" onclick="goToCouncil()" disabled>🔒 Complete Step 5 First</button>
+            </div>
+        </div>
+
+        <!-- Phase 3: Amplification -->
+        <div class="phase-container">
+            <div class="phase-header">
+                <h2 class="text-cyan">🌊 Phase 3: Amplification - Community & Quantum Field</h2>
+                <p class="text-magenta">Steps 7-9: Harnessing collective energy</p>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-card locked" id="step7">
+                <div class="step-number">7</div>
+                <h3>Join the Quantum Community</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Individual quantum fields create ripples. Collective fields create tsunamis of manifestation."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Your frequency will find resonance with others. Together, you amplify what's possible."
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> Join the community hub, share your intention (if comfortable), and support 3 others' manifestations.</p>
+                <button class="action-button" onclick="goToCommunity()" disabled>🔒 Complete Step 6 First</button>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step-card locked" id="step8">
+                <div class="step-number">8</div>
+                <h3>Practice Daily Reception</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "The quantum field speaks in whispers. Daily practice attunes your ears to its wisdom."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Every day for 96 minutes, your council will message you. Make space to receive."
+                </div>
+                <p><strong>Your Action (2 minutes daily):</strong> Check your council messages daily and notice any synchronicities.</p>
+                <button class="action-button" disabled>🔒 Complete Step 7 First</button>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="step-card locked" id="step9">
+                <div class="step-number">9</div>
+                <h3>Document Synchronicities</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Synchronicities are the quantum field's confirmation that you're on the right path."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "When you notice meaningful coincidences, you're witnessing reality responding to your frequency."
+                </div>
+                <p><strong>Your Action (3 minutes):</strong> Record any synchronicities - repeating numbers, meaningful encounters, perfect timing.</p>
+                <button class="action-button" disabled>🔒 Complete Step 8 First</button>
+            </div>
+        </div>
+
+        <!-- Phase 4: Integration -->
+        <div class="phase-container">
+            <div class="phase-header">
+                <h2 class="text-cyan">🦋 Phase 4: Integration - Living Your New Reality</h2>
+                <p class="text-magenta">Steps 10-12: Embodying your manifestation</p>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step-card locked" id="step10">
+                <div class="step-number">10</div>
+                <h3>Act As If It's Done</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Reality follows behavior. Act from your desired future and the quantum field will reorganize to match."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "How would you feel, think, and move if your manifestation was already complete? Be that now."
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> Do one thing today that your future self would do - make a decision, take an action, feel the emotion.</p>
+                <button class="action-button" disabled>🔒 Complete Step 9 First</button>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step-card locked" id="step11">
+                <div class="step-number">11</div>
+                <h3>Emotional Safety & Recalibration</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "Doubt is the quantum field testing your resolution. Fear is just frequency asking to be transmuted."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "When you feel off-center, return to your heart. Your emotional compass always points to truth."
+                </div>
+                <p><strong>Your Action (5 minutes):</strong> When doubt arises, use the Heart Recalibration: Place hand on heart, breathe deeply, and recall why you started.</p>
+                <button class="action-button" disabled>🔒 Complete Step 10 First</button>
+            </div>
+
+            <!-- Step 12 -->
+            <div class="step-card locked" id="step12">
+                <div class="step-number">12</div>
+                <h3>Live Your Quantum Reality</h3>
+                <div class="guide-message guide-merlin">
+                    <strong>Quantum Merlin:</strong> "You are now a quantum creator. Every intention, every thought, every word shapes reality."
+                </div>
+                <div class="guide-message guide-rose">
+                    <strong>Quantum Rose:</strong> "Your frequency has become a gift to the world. Continue creating, continue loving, continue evolving."
+                </div>
+                <p><strong>Your Action (ongoing):</strong> Continue your practice, support others, and celebrate your journey as a quantum creator.</p>
+                <button class="action-button" disabled>🔒 Complete Step 11 First</button>
+            </div>
+        </div>
+
+        <!-- Celebration Modal -->
+        <div id="celebrationModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeCelebration()">&times;</span>
+                <div class="celebration" id="celebrationContent">
+                    <!-- Dynamic celebration content -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Journey Management System
+        class GuidedJourney {
+            constructor() {
+                this.loadProgress();
+                this.initializeGuidanceStyle();
+                this.updateUI();
+                this.bindEvents();
+            }
+
+            loadProgress() {
+                const saved = localStorage.getItem('quantumJourneyProgress');
+                this.progress = saved ? JSON.parse(saved) : {
+                    completedSteps: [],
+                    currentStep: 1,
+                    guidanceStyle: 'gentle',
+                    firstDaysActive: false,
+                    startDate: new Date().toISOString()
+                };
+            }
+
+            saveProgress() {
+                localStorage.setItem('quantumJourneyProgress', JSON.stringify(this.progress));
+            }
+
+            initializeGuidanceStyle() {
+                if (this.progress.guidanceStyle) {
+                    document.querySelector(`[data-style="${this.progress.guidanceStyle}"]`).classList.add('selected');
+                }
+            }
+
+            updateUI() {
+                // Update progress bar
+                const progressPercent = (this.progress.completedSteps.length / 12) * 100;
+                document.getElementById('journeyProgress').style.width = progressPercent + '%';
+                document.getElementById('progressText').textContent = 
+                    `${this.progress.completedSteps.length}/12 steps completed`;
+
+                // Update step cards
+                for (let i = 1; i <= 12; i++) {
+                    const stepCard = document.getElementById(`step${i}`);
+                    const button = stepCard.querySelector('.action-button');
+                    
+                    if (this.progress.completedSteps.includes(i)) {
+                        stepCard.classList.add('completed');
+                        stepCard.classList.remove('locked');
+                        button.textContent = '✅ Completed';
+                        button.disabled = true;
+                    } else if (i === this.progress.currentStep) {
+                        stepCard.classList.add('unlocked');
+                        stepCard.classList.remove('locked');
+                        button.disabled = false;
+                        button.textContent = '⚡ Complete This Step';
+                    } else if (i < this.progress.currentStep) {
+                        stepCard.classList.add('unlocked');
+                        stepCard.classList.remove('locked');
+                        button.disabled = false;
+                        button.textContent = '⚡ Complete This Step';
+                    } else {
+                        stepCard.classList.add('locked');
+                        stepCard.classList.remove('unlocked');
+                        button.disabled = true;
+                        button.textContent = '🔒 Complete Previous Step First';
+                    }
+                }
+
+                // Update guide messages based on guidance style
+                this.updateGuideMessages();
+            }
+
+            updateGuideMessages() {
+                // This would dynamically adjust message content based on selected style
+                // For now, we keep the base messages
+            }
+
+            completeStep(stepNumber) {
+                if (!this.progress.completedSteps.includes(stepNumber)) {
+                    this.progress.completedSteps.push(stepNumber);
+                    
+                    // Unlock next step
+                    if (stepNumber < 12) {
+                        this.progress.currentStep = stepNumber + 1;
+                    }
+
+                    this.saveProgress();
+                    this.updateUI();
+                    this.showCelebration(stepNumber);
+
+                    // Special transitions
+                    if (stepNumber === 3) {
+                        this.showCodeGeneratorInvitation();
+                    } else if (stepNumber === 6) {
+                        this.showCouncilInvitation();
+                    } else if (stepNumber === 12) {
+                        this.showJourneyCompletion();
+                    }
+                }
+            }
+
+            showCelebration(stepNumber) {
+                const celebrations = {
+                    1: "🌟 You've met your guides! The quantum field acknowledges your presence.",
+                    2: "⚡ Energy flows through you! You're building quantum awareness.",
+                    3: "🏛️ Foundation complete! Your intention is now quantum-ready.",
+                    4: "🔢 Your code is born! Reality has received your quantum signature.",
+                    5: "🎯 Anchored successfully! Your manifestation is now active.",
+                    6: "👥 Council assembled! Quantum support is now yours.",
+                    7: "🌊 Community joined! Your frequency now amplifies with others.",
+                    8: "📡 Daily practice established! You're receiving quantum wisdom.",
+                    9: "🔮 Synchronicity tracker active! You're seeing quantum patterns.",
+                    10: "🦋 Future self embodied! You're living from your manifestation.",
+                    11: "💚 Emotional mastery achieved! You can handle any quantum storm.",
+                    12: "👑 Quantum Creator! You have mastered the art of manifestation."
+                };
+
+                document.getElementById('celebrationContent').innerHTML = `
+                    <h2>🎉 Step ${stepNumber} Complete!</h2>
+                    <p>${celebrations[stepNumber]}</p>
+                    <button class="action-button" onclick="closeCelebration()">Continue Your Journey</button>
+                `;
+                
+                document.getElementById('celebrationModal').style.display = 'block';
+            }
+
+            showCodeGeneratorInvitation() {
+                setTimeout(() => {
+                    if (confirm('🚀 Ready to create your first Quantum Code? The generator awaits your intention!')) {
+                        window.location.href = 'generator-enhanced.html';
+                    }
+                }, 2000);
+            }
+
+            showCouncilInvitation() {
+                setTimeout(() => {
+                    if (confirm('👥 Your Quantum Council is ready to meet you! Shall we introduce you to your council members?')) {
+                        window.location.href = 'quantumcouncil-enhanced.html';
+                    }
+                }, 2000);
+            }
+
+            showJourneyCompletion() {
+                setTimeout(() => {
+                    document.getElementById('celebrationContent').innerHTML = `
+                        <h2>👑 Quantum Creator Achieved!</h2>
+                        <p>You have completed the 12-step journey and mastered the art of quantum manifestation!</p>
+                        <p>Your frequency has become a gift to the world.</p>
+                        <div class="text-center mt-20">
+                            <button class="action-button" onclick="shareAchievement()">🌊 Share Your Success</button>
+                            <button class="action-button" onclick="startNewJourney()">🔄 Begin New Journey</button>
+                        </div>
+                    `;
+                    document.getElementById('celebrationModal').style.display = 'block';
+                }, 2000);
+            }
+
+            activateFirstDaysPath() {
+                this.progress.firstDaysActive = true;
+                this.progress.currentStep = 1;
+                this.saveProgress();
+                
+                // Unlock first 3 steps immediately for accelerated path
+                for (let i = 1; i <= 3; i++) {
+                    document.getElementById(`step${i}`).classList.remove('locked');
+                    document.getElementById(`step${i}`).classList.add('unlocked');
+                }
+                
+                alert('🚀 First 7 Days Path activated! Complete steps 1-3 quickly to accelerate your journey.');
+            }
+
+            bindEvents() {
+                // Guidance style selector
+                document.querySelectorAll('.style-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        document.querySelectorAll('.style-option').forEach(opt => opt.classList.remove('selected'));
+                        e.target.classList.add('selected');
+                        this.progress.guidanceStyle = e.target.dataset.style;
+                        this.saveProgress();
+                        this.updateGuideMessages();
+                    });
+                });
+
+                // First days button
+                document.getElementById('firstDaysBtn').addEventListener('click', () => {
+                    this.activateFirstDaysPath();
+                });
+            }
+        }
+
+        // Global functions
+        let journey;
+
+        function completeStep(stepNumber) {
+            journey.completeStep(stepNumber);
+        }
+
+        function closeCelebration() {
+            document.getElementById('celebrationModal').style.display = 'none';
+        }
+
+        function goToGenerator() {
+            window.location.href = 'generator-enhanced.html';
+        }
+
+        function goCouncil() {
+            window.location.href = 'quantumcouncil-enhanced.html';
+        }
+
+        function goToCommunity() {
+            window.location.href = 'community.html';
+        }
+
+        function shareAchievement() {
+            // Implementation for sharing achievement
+            alert('🌊 Achievement share feature coming soon! You\'re now a Quantum Creator!');
+        }
+
+        function startNewJourney() {
+            if (confirm('🔄 Start a new manifestation journey? Your current progress will be saved as a completed journey.')) {
+                journey.progress = {
+                    completedSteps: [],
+                    currentStep: 1,
+                    guidanceStyle: journey.progress.guidanceStyle,
+                    firstDaysActive: false,
+                    startDate: new Date().toISOString()
+                };
+                journey.saveProgress();
+                journey.updateUI();
+                closeCelebration();
+            }
+        }
+
+        // Frequency Recommendations
+        function updateFrequencyRecommendations() {
+            const session = JSON.parse(localStorage.getItem('quantum_session') || '{}');
+            const category = session.category;
+            
+            const frequencyDiv = document.getElementById('categoryFrequency');
+            if (!frequencyDiv) return;
+            
+            const frequencies = {
+                abundance: {
+                    hz: '432Hz',
+                    purpose: 'Grounding and manifestation',
+                    suggestion: 'Listen to 432Hz wealth frequency music for 10 minutes daily while visualizing your financial goals.'
+                },
+                love: {
+                    hz: '528Hz',
+                    purpose: 'Heart chakra activation and DNA repair',
+                    suggestion: 'Play 528Hz love frequency while doing heart-opening exercises or meditation.'
+                },
+                health: {
+                    hz: '174Hz + 528Hz',
+                    purpose: 'Pain relief and cellular healing',
+                    suggestion: 'Alternate 174Hz (pain relief) and 528Hz (DNA repair) during healing meditation.'
+                },
+                career: {
+                    hz: '396Hz + 741Hz',
+                    purpose: 'Clearing fear and enhancing problem-solving',
+                    suggestion: 'Use 396Hz to release career fears, then 741Hz when working on career goals.'
+                },
+                spiritual: {
+                    hz: '963Hz + 432Hz',
+                    purpose: 'Higher consciousness and divine connection',
+                    suggestion: 'Start with 432Hz to ground, then 963Hz for spiritual expansion.'
+                }
+            };
+            
+            if (category && frequencies[category]) {
+                const freq = frequencies[category];
+                frequencyDiv.innerHTML = `
+                    <div style="background: rgba(0,255,255,0.1); padding: 10px; border-radius: 8px;">
+                        <strong>🎵 ${freq.hz}</strong> - ${freq.purpose}<br>
+                        <small>${freq.suggestion}</small>
+                    </div>
+                `;
+            } else {
+                frequencyDiv.innerHTML = `
+                    <div style="background: rgba(255,215,0,0.1); padding: 10px; border-radius: 8px;">
+                        <strong>🎵 432Hz</strong> - Universal healing frequency<br>
+                        <small>Great for all manifestations - grounds energy and enhances focus</small>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize journey when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            journey = new GuidedJourney();
+            updateFrequencyRecommendations();
+        });
+    </script>
+</body>
+</html>

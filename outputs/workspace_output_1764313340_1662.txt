@@ -1,0 +1,8 @@
+ls: cannot access '*AVATAR*': No such file or directory
+ls: cannot access '*INTEGRATION*': No such file or directory
+-rw-r--r-- 1 root root  5092 Nov 26 21:55 DEPLOYMENT_GUIDE.md
+-rw-r--r-- 1 root root 10030 Nov 27 09:44 ENHANCED_DEPLOYMENT_GUIDE.md
+-rw-r--r-- 1 root root  5821 Nov 27 10:57 IMPLEMENTATION_GUIDE.md
+-rw-r--r-- 1 root root  8133 Nov 27 11:20 QUANTUM_FINAL_GUIDE.md
+-rw-r--r-- 1 root root  7370 Nov 27 20:27 QUICK_START_GUIDE.md
+-rw-r--r-- 1 root root 18982 Nov  4 10:59 SUPERNINJA_DEPLOYMENT_GUIDE.md

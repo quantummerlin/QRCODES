@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Quantum Reality Code System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Quantum Background */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }
+
+        .quantum-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        .quantum-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid cyan;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantum-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: cyan;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: magenta;
+            text-shadow: 0 0 10px magenta;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 20px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            margin-bottom: 60px;
+        }
+
+        .step {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .step:hover {
+            border-color: cyan;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .step-number {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, cyan, magenta);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: cyan;
+            margin-bottom: 15px;
+            margin-left: 40px;
+        }
+
+        .step-description {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .step-details {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid magenta;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .step-details h4 {
+            color: magenta;
+            margin-bottom: 10px;
+        }
+
+        .step-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .step-details li {
+            color: #aaa;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .step-details li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: cyan;
+        }
+
+        /* System Architecture */
+        .architecture-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .architecture-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: magenta;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .arch-component {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .arch-component:hover {
+            border-color: magenta;
+            transform: scale(1.05);
+        }
+
+        .component-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .component-name {
+            color: cyan;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .component-desc {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-top: 60px;
+        }
+
+        .faq-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: cyan;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .faq-item {
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: magenta;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: bold;
+            color: cyan;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: #aaa;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-top: 60px;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: magenta;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            color: #aaa;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: 2px solid;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            border-radius: 10px;
+        }
+
+        .btn-primary {
+            color: #fff;
+            border-color: cyan;
+        }
+
+        .btn-primary:hover {
+            color: #000;
+            background: cyan;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .btn-secondary {
+            color: #fff;
+            border-color: magenta;
+        }
+
+        .btn-secondary:hover {
+            color: #000;
+            background: magenta;
+            box-shadow: 0 0 20px magenta;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 100px 15px 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .step {
+                padding: 25px;
+            }
+            
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .step-title {
+                font-size: 1.4rem;
+                margin-left: 30px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-content">
+            <div class="quantum-logo">⚛️ Quantum Reality Codes</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/generator">Generator</a></li>
+                <li><a href="/quantumcouncil">Quantum Council</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/community">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">How Quantum Reality Codes Work</h1>
+        <p class="page-subtitle">
+            Discover the science and magic behind our quantum manifestation system that combines 
+            sacred mathematics, personal quantum councils, and community amplification
+        </p>
+
+        <!-- Steps Section -->
+        <div class="steps-container">
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Create Your Quantum Intention</h3>
+                <p class="step-description">
+                    Write a clear, specific intention from a place of gratitude and positive expectation. 
+                    Your intention becomes the blueprint for your desired reality.
+                </p>
+                <div class="step-details">
+                    <h4>Best Practices:</h4>
+                    <ul>
+                        <li>Be specific about what you want</li>
+                        <li>Write as if you already have it</li>
+                        <li>Include gratitude for the manifestation</li>
+                        <li>Focus on positive outcomes</li>
+                        <li>Keep it concise but emotionally resonant</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Generate Your Quantum Code</h3>
+                <p class="step-description">
+                    Our advanced gematria algorithm transforms your intention into a unique quantum code 
+                    using sacred mathematics and quantum resonance principles.
+                </p>
+                <div class="step-details">
+                    <h4>Code Properties:</h4>
+                    <ul>
+                        <li><strong>Resonance Level:</strong> Determines manifestation frequency</li>
+                        <li><strong>Dimensional Access:</strong> 1-11 dimensional alignment</li>
+                        <li><strong>Power Level:</strong> 1-10 manifestation intensity</li>
+                        <li><strong>Council Alignment:</strong> Matches optimal quantum guides</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3 class="step-title">Activate Your Quantum Council</h3>
+                <p class="step-description">
+                    Based on your code's unique properties, 3-5 quantum council members are selected 
+                    to provide personalized guidance and amplify your manifestation power.
+                </p>
+                <div class="step-details">
+                    <h4>Council Functions:</h4>
+                    <ul>
+                        <li>Personalized messages referencing your specific code</li>
+                        <li>96-minute continuous guidance cycle</li>
+                        <li>Mersenne Matrix reality alignment visualization</li>
+                        <li>Quantum frequency calibration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3 class="step-title">Share with the Community</h3>
+                <p class="step-description">
+                    Amplify your manifestation power by sharing your code with our quantum community. 
+                    When others support your intention, you activate reciprocal manifestation energy.
+                </p>
+                <div class="step-details">
+                    <h4>Community Amplification:</h4>
+                    <ul>
+                        <li>Share on Facebook and Telegram with dedicated communities</li>
+                        <li>Support others' manifestations to amplify your own</li>
+                        <li>Code strength increases with community engagement</li>
+                        <li>Viral manifestation coefficient optimization</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-number">5</div>
+                <h3 class="step-title">Receive Your Manifestation</h3>
+                <p class="step-description">
+                    With your quantum code activated, council guidance flowing, and community support 
+                    amplifying your intention, your desired reality begins to manifest.
+                </p>
+                <div class="step-details">
+                    <h4>Manifestation Timeline:</h4>
+                    <ul>
+                        <li><strong>24-72 hours:</strong> Initial synchronicities appear</li>
+                        <li><strong>1-2 weeks:</strong> Major shifts in reality</li>
+                        <li><strong>30 days:</strong> Full manifestation integration</li>
+                        <li>Continue council connection for ongoing guidance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Architecture -->
+        <section class="architecture-section">
+            <h2 class="architecture-title">The Quantum Ecosystem</h2>
+            <div class="architecture-grid">
+                <div class="arch-component">
+                    <div class="component-icon">🔢</div>
+                    <div class="component-name">Quantum Mathematics</div>
+                    <div class="component-desc">Sacred gematria and Mersenne prime calculations create unique manifestation signatures</div>
+                </div>
+
+                <div class="arch-component">
+                    <div class="component-icon">👥</div>
+                    <div class="component-name">Quantum Council</div>
+                    <div class="component-desc">100-persona database providing personalized guidance based on your code</div>
+                </div>
+
+                <div class="arch-component">
+                    <div class="component-icon">🌐</div>
+                    <div class="component-name">Community Network</div>
+                    <div class="component-desc">Facebook and Telegram communities for reciprocal amplification</div>
+                </div>
+
+                <div class="arch-component">
+                    <div class="component-icon">🎵</div>
+                    <div class="component-name">Frequency Library</div>
+                    <div class="component-desc">Quantum-aligned frequencies to enhance code manifestation power</div>
+                </div>
+
+                <div class="arch-component">
+                    <div class="component-icon">📊</div>
+                    <div class="component-name">Mersenne Matrix</div>
+                    <div class="component-desc">Visual representation of quantum reality alignment and progress</div>
+                </div>
+
+                <div class="arch-component">
+                    <div class="component-icon">⚡</div>
+                    <div class="component-name">Instant Activation</div>
+                    <div class="component-desc">Immediate code activation without waiting periods or delays</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="faq-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What makes Quantum Reality Codes different from other manifestation systems?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Quantum Reality Codes combines sacred mathematics, personalized quantum councils, and community amplification into one integrated system. Your unique code serves as a quantum signature that connects you to specific guides and frequencies, while community support creates a viral manifestation effect.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to see results?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Initial synchronicities typically appear within 24-72 hours. Major reality shifts often occur within 1-2 weeks, with full manifestation integrating around the 30-day mark. Results vary based on intention clarity, council connection consistency, and community engagement.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is my intention kept private?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, your intentions are never stored on our servers. Only your generated code and council selections are saved for your session. When you share codes with the community, you choose exactly what to reveal.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    How does community amplification work?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    When you share your code in our communities and others support your manifestation, it creates reciprocal energy. Supporting others' intentions amplifies your own codes through quantum entanglement principles - what you give out returns amplified.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I generate multiple codes?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, you can generate codes for different intentions. Each intention creates its unique quantum signature and council alignment. However, we recommend focusing on one major intention at a time for maximum manifestation power.
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to Manifest Your Quantum Reality?</h2>
+            <p class="cta-description">
+                Join thousands who are already using Quantum Reality Codes to transform their dreams into reality. 
+                Start your journey today and activate your personal quantum council.
+            </p>
+            <div class="cta-buttons">
+                <a href="/generator" class="cta-btn btn-primary">
+                    ⚡ Generate Your Code Now
+                </a>
+                <a href="/community" class="cta-btn btn-secondary">
+                    🌐 Join the Community
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const faqItem = this.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Add hover effects to steps
+        document.querySelectorAll('.step').forEach((step, index) => {
+            step.style.animationDelay = `${index * 0.2}s`;
+            step.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 15px 40px rgba(0, 255, 255, 0.4)';
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '0 10px 30px rgba(0, 255, 255, 0.3)';
+            });
+        });
+
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const grid = document.querySelector('.quantum-grid');
+            grid.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>

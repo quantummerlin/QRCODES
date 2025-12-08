@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e27">
+  <meta name="description" content="Your personal council of manifestation guides - Transform your reality through daily engagement">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quantum Council">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzEzN18xNDgpIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTEiIHI9IjQiIGZpbGw9IiNGRkQ3MDAiLz4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxNyIgcj0iMyIgZmlsbD0iIzRBOTBFMiIvPgo8Y2lyY2xlIGN4PSIyMSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjOUI1OUI2Ii8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjIuNSIgZmlsbD0iI0U3NEMzQyIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDBfbGluZWFyXzEzN18xNDgiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzBBMEUyNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQTFGM0EiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+  
+  <title>Quantum Council - Your Manifestation Guide</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4A90E2;
+      --secondary: #9B59B6;
+      --accent: #FFD700;
+      --background: #0a0e27;
+      --surface: #1a1f3a;
+      --surface-light: rgba(255, 255, 255, 0.05);
+      --text-primary: #ffffff;
+      --text-secondary: #aaa;
+      --border: rgba(255, 255, 255, 0.1);
+      --success: #4CAF50;
+      --warning: #FF6B6B;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Enhanced quantum background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(74,144,226,0.15), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(155,89,182,0.18), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-container {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .logo-circle {
+      width: 100%;
+      height: 100%;

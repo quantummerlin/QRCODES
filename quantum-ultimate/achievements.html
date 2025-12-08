@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0e27">
+  <title>Quantum Achievements - Your Manifestation Milestones</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --neon-cyan: #00f5ff;
+      --neon-magenta: #ff00ff;
+      --neon-gold: #ffd700;
+      --neon-green: #00ff88;
+      --bg-dark: #0a0a0f;
+      --bg-surface: rgba(20, 20, 35, 0.95);
+      --bg-card: rgba(30, 30, 50, 0.85);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --gradient-primary: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-magenta) 100%);
+      --gradient-gold: linear-gradient(135deg, var(--neon-gold) 0%, #ff8c00 100%);
+      --glow-gold: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      background: var(--gradient-gold);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: var(--text-secondary);
+    }
+    
+    .level-display {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 140, 0, 0.1));
+      border: 2px solid var(--neon-gold);
+      border-radius: 24px;
+      padding: 30px;
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .level-display::before {
+      content: '';
+      position: absolute;
+      inset: -50%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+      animation: rotate 10s linear infinite;
+    }
+    
+    @keyframes rotate {
+      100% { transform: rotate(360deg); }
+    }
+    
+    .level-badge {
+      position: relative;
+      z-index: 1;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--glow-gold);
+    }
+    
+    .level-number {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--bg-dark);
+      line-height: 1;
+    }
+    
+    .level-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--bg-dark);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .level-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      color: var(--neon-gold);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 8px;
+    }
+    
+    .xp-container {
+      position: relative;
+      z-index: 1;
+      margin-top: 20px;
+    }
+    
+    .xp-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    
+    .xp-bar {
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .xp-fill {
+      height: 100%;
+      background: var(--gradient-gold);
+      border-radius: 6px;
+      transition: width 0.6s ease;
+      position: relative;
+    }
+    
+    .xp-fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-mini {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 12px;
+      padding: 15px 10px;
+      text-align: center;
+    }
+    
+    .stat-mini .value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      color: var(--neon-cyan);
+    }
+    
+    .stat-mini .label {
+      font-size: 10px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+    
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: var(--neon-cyan);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    
+    .achievement-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .achievement-card.unlocked {
+      border-color: var(--neon-gold);
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.05));
+    }
+    
+    .achievement-card.locked {
+      opacity: 0.5;
+    }
+    
+    .achievement-card:hover:not(.locked) {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .achievement-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+    
+    .achievement-card.unlocked .achievement-icon {
+      background: var(--gradient-gold);
+      border-color: var(--neon-gold);
+      box-shadow: var(--glow-gold);
+    }
+    
+    .achievement-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+    
+    .achievement-card.unlocked .achievement-name {
+      color: var(--neon-gold);
+    }
+    
+    .achievement-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    
+    .achievement-xp {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 12px;
+      font-size: 11px;
+      color: var(--neon-gold);
+      font-weight: 600;
+    }
+    
+    .achievement-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+    
+    .achievement-progress {
+      margin-top: 12px;
+    }
+    
+    .progress-text {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    
+    .progress-bar-mini {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .progress-fill-mini {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 3px;
+    }
+    
+    .badge-collection {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    
+    .badge {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      transition: all 0.3s ease;
+    }
+    
+    .badge.earned {
+      background: var(--gradient-gold);
+      border-color: var(--neon-gold);
+      box-shadow: var(--glow-gold);
+    }
+    
+    .badge.locked {
+      opacity: 0.3;
+      filter: grayscale(1);
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 25px;
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .back-btn:hover {
+      background: rgba(0, 245, 255, 0.1);
+    }
+    
+    @media (max-width: 600px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🏆 Quantum Achievements</h1>
+      <p>Your manifestation milestones and rewards</p>
+    </header>
+    
+    <div class="level-display">
+      <div class="level-badge">
+        <div class="level-number" id="userLevel">1</div>
+        <div class="level-label">Level</div>
+      </div>
+      <div class="level-title" id="levelTitle">Quantum Initiate</div>
+      <div class="xp-container">
+        <div class="xp-label">
+          <span><span id="currentXP">0</span> XP</span>
+          <span><span id="nextLevelXP">100</span> XP to Level <span id="nextLevel">2</span></span>
+        </div>
+        <div class="xp-bar">
+          <div class="xp-fill" id="xpFill" style="width: 0%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="stats-row">
+      <div class="stat-mini">
+        <div class="value" id="totalXP">0</div>
+        <div class="label">Total XP</div>
+      </div>
+      <div class="stat-mini">
+        <div class="value" id="unlocked">0</div>
+        <div class="label">Unlocked</div>
+      </div>
+      <div class="stat-mini">
+        <div class="value" id="streak">0</div>
+        <div class="label">Day Streak</div>
+      </div>
+      <div class="stat-mini">
+        <div class="value" id="codesCreated">0</div>
+        <div class="label">Codes</div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">🎖️ Badge Collection</h3>
+    <div class="badge-collection" id="badgeCollection">
+      <!-- Badges populated dynamically -->
+    </div>
+    
+    <h3 class="section-title">✨ Achievements</h3>
+    <div class="achievements-grid" id="achievementsGrid">
+      <!-- Achievements populated dynamically -->
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="index.html" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+  </div>
+  
+  <script>
+    // Achievement definitions
+    const ACHIEVEMENTS = [
+      { id: 'first_code', name: 'First Contact', desc: 'Generate your first Quantum Code', icon: '⚛️', xp: 50, type: 'milestone' },
+      { id: 'council_activated', name: 'Council Awakened', desc: 'Activate your Quantum Council', icon: '👥', xp: 100, type: 'milestone' },
+      { id: 'first_message', name: 'Connected', desc: 'Send your first message to the Council', icon: '💬', xp: 25, type: 'milestone' },
+      { id: 'week_streak', name: 'Week Warrior', desc: 'Maintain a 7-day streak', icon: '🔥', xp: 200, type: 'streak', progress: true, max: 7 },
+      { id: 'month_streak', name: 'Monthly Master', desc: 'Maintain a 30-day streak', icon: '🌟', xp: 500, type: 'streak', progress: true, max: 30 },
+      { id: 'five_codes', name: 'Code Collector', desc: 'Generate 5 different Quantum Codes', icon: '💎', xp: 150, type: 'collection', progress: true, max: 5 },
+      { id: 'ten_codes', name: 'Code Master', desc: 'Generate 10 different Quantum Codes', icon: '👑', xp: 300, type: 'collection', progress: true, max: 10 },
+      { id: 'first_sync', name: 'Synchronicity Noticed', desc: 'Log your first synchronicity', icon: '🔮', xp: 75, type: 'milestone' },
+      { id: 'ten_syncs', name: 'Pattern Seer', desc: 'Log 10 synchronicities', icon: '👁️', xp: 250, type: 'collection', progress: true, max: 10 },
+      { id: 'journey_half', name: 'Halfway There', desc: 'Complete 6 journey steps', icon: '🗺️', xp: 200, type: 'journey', progress: true, max: 6 },
+      { id: 'journey_complete', name: 'Journey Master', desc: 'Complete all 12 journey steps', icon: '🏆', xp: 1000, type: 'journey', progress: true, max: 12 },
+      { id: 'share_code', name: 'Amplifier', desc: 'Share your code with the community', icon: '📤', xp: 100, type: 'social' },
+      { id: 'amplify_others', name: 'Energy Giver', desc: 'Amplify 10 community members', icon: '⚡', xp: 200, type: 'social', progress: true, max: 10 },
+      { id: 'manifestation', name: 'Reality Creator', desc: 'Mark an intention as manifested', icon: '✨', xp: 500, type: 'milestone' },
+      { id: 'full_council', name: 'Full Assembly', desc: 'Activate all 11 council slots', icon: '🌀', xp: 150, type: 'milestone' },
+      { id: 'night_owl', name: 'Night Owl', desc: 'Use the app after midnight', icon: '🦉', xp: 50, type: 'secret' },
+    ];
+    
+    const BADGES = [
+      { id: 'initiate', icon: '🌱', name: 'Initiate' },
+      { id: 'seeker', icon: '🔍', name: 'Seeker' },
+      { id: 'manifestor', icon: '✨', name: 'Manifestor' },
+      { id: 'master', icon: '🧙‍♂️', name: 'Master' },
+      { id: 'legend', icon: '👑', name: 'Legend' },
+      { id: 'quantum', icon: '⚛️', name: 'Quantum' }
+    ];
+    
+    const LEVELS = [
+      { level: 1, title: 'Quantum Initiate', xpRequired: 0 },
+      { level: 2, title: 'Reality Seeker', xpRequired: 100 },
+      { level: 3, title: 'Frequency Tuner', xpRequired: 250 },
+      { level: 4, title: 'Field Navigator', xpRequired: 500 },
+      { level: 5, title: 'Timeline Shifter', xpRequired: 1000 },
+      { level: 6, title: 'Council Adept', xpRequired: 2000 },
+      { level: 7, title: 'Manifestation Master', xpRequired: 3500 },
+      { level: 8, title: 'Reality Architect', xpRequired: 5000 },
+      { level: 9, title: 'Quantum Sage', xpRequired: 7500 },
+      { level: 10, title: 'Cosmic Creator', xpRequired: 10000 }
+    ];
+    
+    // Load user data
+    let userData = {};
+    try {
+      userData = JSON.parse(localStorage.getItem('quantumUser')) || {};
+    } catch(e) {}
+    
+    // Calculate total XP and current level
+    const earnedAchievements = userData.achievements || [];
+    let totalXP = earnedAchievements.reduce((sum, id) => {
+      const ach = ACHIEVEMENTS.find(a => a.id === id);
+      return sum + (ach ? ach.xp : 0);
+    }, 0);
+    
+    // Add base XP for activities
+    totalXP += (userData.stats?.codesGenerated || 0) * 10;
+    totalXP += (userData.stats?.messagesReceived || 0) * 2;
+    totalXP += (userData.journeyCompleted?.length || 0) * 20;
+    
+    // Determine level
+    let currentLevel = 1;
+    let currentLevelData = LEVELS[0];
+    let nextLevelData = LEVELS[1];
+    
+    for (let i = LEVELS.length - 1; i >= 0; i--) {
+      if (totalXP >= LEVELS[i].xpRequired) {
+        currentLevel = LEVELS[i].level;
+        currentLevelData = LEVELS[i];
+        nextLevelData = LEVELS[i + 1] || LEVELS[i];
+        break;
+      }
+    }
+    
+    // Update level display
+    document.getElementById('userLevel').textContent = currentLevel;
+    document.getElementById('levelTitle').textContent = currentLevelData.title;
+    document.getElementById('currentXP').textContent = totalXP;
+    document.getElementById('nextLevelXP').textContent = nextLevelData.xpRequired - totalXP;
+    document.getElementById('nextLevel').textContent = nextLevelData.level;
+    document.getElementById('totalXP').textContent = totalXP;
+    document.getElementById('unlocked').textContent = earnedAchievements.length;
+    document.getElementById('streak').textContent = userData.stats?.streak || 0;
+    document.getElementById('codesCreated').textContent = userData.stats?.codesGenerated || 0;
+    
+    // XP progress bar
+    const progressInLevel = totalXP - currentLevelData.xpRequired;
+    const levelRange = nextLevelData.xpRequired - currentLevelData.xpRequired;
+    const xpPercent = Math.min(100, (progressInLevel / levelRange) * 100);
+    document.getElementById('xpFill').style.width = xpPercent + '%';
+    
+    // Render badges
+    const badgeContainer = document.getElementById('badgeCollection');
+    const earnedBadgeCount = Math.floor(currentLevel / 2);
+    badgeContainer.innerHTML = BADGES.map((badge, i) => `
+      <div class="badge ${i < earnedBadgeCount ? 'earned' : 'locked'}" title="${badge.name}">
+        ${badge.icon}
+      </div>
+    `).join('');
+    
+    // Render achievements
+    const achievementsGrid = document.getElementById('achievementsGrid');
+    achievementsGrid.innerHTML = ACHIEVEMENTS.map(ach => {
+      const isUnlocked = earnedAchievements.includes(ach.id);
+      const currentProgress = getProgress(ach);
+      
+      return `
+        <div class="achievement-card ${isUnlocked ? 'unlocked' : 'locked'}">
+          <div class="achievement-icon">${ach.icon}</div>
+          <div class="achievement-name">${ach.name}</div>
+          <div class="achievement-desc">${ach.desc}</div>
+          <span class="achievement-xp">+${ach.xp} XP</span>
+          ${ach.progress && !isUnlocked ? `
+            <div class="achievement-progress">
+              <div class="progress-text">${currentProgress} / ${ach.max}</div>
+              <div class="progress-bar-mini">
+                <div class="progress-fill-mini" style="width: ${(currentProgress / ach.max) * 100}%"></div>
+              </div>
+            </div>
+          ` : ''}
+          ${isUnlocked ? '<div class="achievement-date">Earned!</div>' : ''}
+        </div>
+      `;
+    }).join('');
+    
+    function getProgress(achievement) {
+      const stats = userData.stats || {};
+      const journey = userData.journeyCompleted || [];
+      
+      switch(achievement.id) {
+        case 'week_streak':
+        case 'month_streak':
+          return Math.min(stats.streak || 0, achievement.max);
+        case 'five_codes':
+        case 'ten_codes':
+          return Math.min(stats.codesGenerated || 0, achievement.max);
+        case 'ten_syncs':
+          return Math.min((userData.synchronicities || []).length, achievement.max);
+        case 'journey_half':
+        case 'journey_complete':
+          return Math.min(journey.length, achievement.max);
+        case 'amplify_others':
+          return 0; // Would track community actions
+        default:
+          return 0;
+      }
+    }
+  </script>
+</body>
+</html>

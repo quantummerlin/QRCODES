@@ -1,0 +1,15 @@
+@app.route('/quantumcouncil')
+def quantum_council():
+    """Quantum council interface with code integration"""
+    if 'quantum_code' not in session:
+        flash('Please generate your quantum code first to activate your council!')
+        return redirect(url_for('quantum_generator'))
+    
+    code = session.get('quantum_code')
+    intention = session.get('intention')
+    properties = session.get('properties')
+    council_members = session.get('council_members', [])
+    
+    return render_template('quantum-council-portal.html',
+                         code=code,
+                         intention=intention,

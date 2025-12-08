@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Quantum Frequency Immersion Library</h2>
+    <p>Explore the most impactful frequencies for manifestation, healing, protection, and consciousness expansion. Click a track to listen, or see "Coming Soon" if not yet available.</p>
+    <div class="frequency-list">
+        {% for freq in freq_data %}
+        <div class="frequency-card">
+            <h3>{{ freq.name }}</h3>
+            <p><strong>Frequency:</strong> {{ freq.hz }}</p>
+            <p>{{ freq.desc }}</p>
+            <p><strong>Category:</strong> {{ freq.category }}</p>
+            {% if freq.link %}
+                <a href="{{ freq.link }}" class="button" target="_blank">Listen</a>
+            {% else %}
+                <span class="button" style="background:#444;cursor:not-allowed;">Coming Soon</span>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

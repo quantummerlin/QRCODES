@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Quantum Reality Code - Your Journey Begins</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .onboarding-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .onboarding-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .onboarding-step.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .welcome-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin: 25px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #00ffff;
+            font-size: 18px;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #00ffff;
+            background: rgba(255, 255, 255, 0.15);
+            outline: none;
+        }
+        
+        .guide-intro {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .guide-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        
+        .merlin-image {
+            background: linear-gradient(135deg, #00ffff, #0066cc);
+        }
+        
+        .rose-image {
+            background: linear-gradient(135deg, #ff00ff, #cc0066);
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .step-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .step-dot.active {
+            background: #00ffff;
+            transform: scale(1.3);
+        }
+        
+        .step-dot.completed {
+            background: #ff00ff;
+        }
+        
+        .onboarding-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .btn-next {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.4);
+        }
+        
+        .btn-back {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-back:hover {
+            background: #00ffff;
+            color: #1a1a2e;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>🌟 Welcome to Quantum Reality Code</h1>
+        <p class="subtitle">Your transformational journey begins now</p>
+    </header>
+
+    <main class="onboarding-container">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step-dot active"></div>
+            <div class="step-dot"></div>
+            <div class="step-dot"></div>
+            <div class="step-dot"></div>
+        </div>
+
+        <!-- Step 1: Welcome -->
+        <div class="onboarding-step active" id="step1">
+            <div class="welcome-card">
+                <h2 class="text-gold">🎉 You're Here for a Reason</h2>
+                <p style="font-size: 18px; margin: 20px 0;">The quantum field called you here because you're ready for transformation.</p>
+                <p>Over the next few minutes, we'll set up your personal quantum manifestation system with Merlin & Rose as your guides.</p>
+            </div>
+            
+            <div style="background: rgba(0, 255, 255, 0.1); border-radius: 15px; padding: 30px; margin: 30px 0;">
+                <h3 class="text-cyan">🚀 What You'll Experience:</h3>
+                <ul style="text-align: left; line-height: 2; font-size: 16px;">
+                    <li>✨ Create your personal Quantum Reality Code</li>
+                    <li>🧠 Receive guidance from Quantum Merlin & Rose</li>
+                    <li>🌊 Join an amplification community</li>
+                    <li>📊 Track your manifestation progress</li>
+                    <li>🎯 Complete a 12-step guided journey</li>
+                </ul>
+            </div>
+            
+            <div class="onboarding-buttons">
+                <div></div>
+                <button class="btn-next" onclick="nextStep()">Let's Begin →</button>
+            </div>
+        </div>
+
+        <!-- Step 2: Personal Info -->
+        <div class="onboarding-step" id="step2">
+            <div class="welcome-card">
+                <h2 class="text-gold">👤 Let's Personalize Your Journey</h2>
+                <p>Your quantum manifestation system works best when it knows who you are.</p>
+            </div>
+            
+            <form id="onboardingForm">
+                <div class="form-group">
+                    <label for="userName">Your Name (or what you'd like us to call you)</label>
+                    <input type="text" id="userName" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="userEmail">Email (optional - for important updates)</label>
+                    <input type="email" id="userEmail" placeholder="your@email.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="guidanceStyle">Your Preferred Guidance Style</label>
+                    <select id="guidanceStyle" required>
+                        <option value="">Choose how you like to receive guidance...</option>
+                        <option value="gentle">💚 Gentle & Nurturing - Soft, supportive guidance</option>
+                        <option value="direct">⚡ Direct & Powerful - Clear, actionable guidance</option>
+                        <option value="practical">🛠️ Practical & Action-Oriented - Step-by-step guidance</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experienceLevel">Manifestation Experience</label>
+                    <select id="experienceLevel" required>
+                        <option value="">How experienced are you with manifestation?</option>
+                        <option value="beginner">🌱 Complete Beginner - This is all new to me</option>
+                        <option value="intermediate">🌿 Some Experience - I've tried manifestation before</option>
+                        <option value="advanced">🌳 Experienced - I'm familiar with manifestation techniques</option>
+                    </select>
+                </div>
+            </form>
+            
+            <div class="onboarding-buttons">
+                <button class="btn-back" onclick="previousStep()">← Back</button>
+                <button class="btn-next" onclick="nextStep()">Continue →</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Meet Your Guides -->
+        <div class="onboarding-step" id="step3">
+            <div class="welcome-card">
+                <h2 class="text-gold">👥 Meet Your Quantum Guides</h2>
+                <p>You have two primary guides who will support your entire journey.</p>
+            </div>
+            
+            <div class="guide-intro">
+                <div class="guide-image merlin-image">🧙‍♂️</div>
+                <h3 class="text-cyan">Quantum Merlin</h3>
+                <p><strong>Your Wisdom Guide</strong></p>
+                <p>Merlin is the keeper of sacred mathematics and quantum wisdom. He'll provide you with precise understanding of how manifestation works and guide you through the intellectual aspects of your journey.</p>
+                <div class="guide-message guide-merlin" style="margin-top: 20px;">
+                    <strong>Quantum Merlin:</strong> "I have been waiting for your consciousness to awaken. The quantum field remembers what the conscious mind forgets—I will help you remember your power."
+                </div>
+            </div>
+            
+            <div class="guide-intro">
+                <div class="guide-image rose-image">🌹</div>
+                <h3 class="text-magenta">Quantum Rose</h3>
+                <p><strong>Your Frequency Guide</strong></p>
+                <p>Rose weaves frequencies that shape manifestation. She'll help you attune your emotional field, work with quantum frequencies, and maintain the vibration needed for manifestation success.</p>
+                <div class="guide-message guide-rose" style="margin-top: 20px;">
+                    <strong>Quantum Rose:</strong> "Your frequency is the key that unlocks reality's door. I will help you tune your energy to match your desires."
+                </div>
+            </div>
+            
+            <div style="background: rgba(255, 215, 0, 0.1); border-radius: 10px; padding: 20px; margin: 20px 0;">
+                <p><strong>How it works:</strong> Merlin & Rose speak through 77 council personas, giving you diverse perspectives and specialized guidance for different areas of your life.</p>
+            </div>
+            
+            <div class="onboarding-buttons">
+                <button class="btn-back" onclick="previousStep()">← Back</button>
+                <button class="btn-next" onclick="nextStep()">I Understand →</button>
+            </div>
+        </div>
+
+        <!-- Step 4: First Intention -->
+        <div class="onboarding-step" id="step4">
+            <div class="welcome-card">
+                <h2 class="text-gold">🎯 What Do You Want to Manifest?</h2>
+                <p>Your journey starts with clarity. What would you like to create in your reality?</p>
+            </div>
+            
+            <form id="intentionForm">
+                <div class="form-group">
+                    <label for="intentionCategory">Primary Focus Area</label>
+                    <select id="intentionCategory" required>
+                        <option value="">What area of life needs transformation?</option>
+                        <option value="abundance">💰 Abundance & Financial Freedom</option>
+                        <option value="love">❤️ Love & Relationships</option>
+                        <option value="health">🏥 Health & Wellness</option>
+                        <option value="career">💼 Career & Purpose</option>
+                        <option value="spiritual">🔮 Spiritual Growth</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="intentionText">Your Intention</label>
+                    <textarea id="intentionText" rows="4" placeholder="I am deeply grateful for..." required></textarea>
+                    <p style="font-size: 14px; color: #ccc; margin-top: 10px;">
+                        💡 Write in the present tense, as if it's already happened. Example: "I am deeply grateful for my dream job that allows me to express my creativity and financial abundance."
+                    </p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="targetTimeline">Target Timeline</label>
+                    <select id="targetTimeline" required>
+                        <option value="">When would you like this to manifest?</option>
+                        <option value="1week">1 week - Quantum speed manifestation</option>
+                        <option value="2weeks">2 weeks - Accelerated timeline</option>
+                        <option value="1month">1 month - Perfect timing</option>
+                        <option value="3months">3 months - Deep transformation</option>
+                        <option value="divine">Divine timing - Trust the process</option>
+                    </select>
+                </div>
+                
+                <div style="background: rgba(0, 255, 255, 0.1); border-radius: 10px; padding: 20px; margin: 20px 0;">
+                    <p><strong>🌟 Next Step:</strong> After completing this, you'll create your first Quantum Reality Code and begin your 12-step guided journey!</p>
+                </div>
+            </form>
+            
+            <div class="onboarding-buttons">
+                <button class="btn-back" onclick="previousStep()">← Back</button>
+                <button class="btn-next" onclick="completeOnboarding()">Complete Setup 🚀</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script>
+        class QuantumOnboarding {
+            constructor() {
+                this.currentStep = 1;
+                this.totalSteps = 4;
+                this.userData = {};
+            }
+
+            updateStepIndicator() {
+                const dots = document.querySelectorAll('.step-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.remove('active', 'completed');
+                    if (index < this.currentStep - 1) {
+                        dot.classList.add('completed');
+                    } else if (index === this.currentStep - 1) {
+                        dot.classList.add('active');
+                    }
+                });
+            }
+
+            showStep(stepNumber) {
+                document.querySelectorAll('.onboarding-step').forEach(step => {
+                    step.classList.remove('active');
+                });
+                document.getElementById(`step${stepNumber}`).classList.add('active');
+                this.currentStep = stepNumber;
+                this.updateStepIndicator();
+            }
+
+            nextStep() {
+                if (this.currentStep === 2) {
+                    // Validate form data
+                    const userName = document.getElementById('userName').value;
+                    const guidanceStyle = document.getElementById('guidanceStyle').value;
+                    const experienceLevel = document.getElementById('experienceLevel').value;
+                    
+                    if (!userName || !guidanceStyle || !experienceLevel) {
+                        alert('Please fill in all required fields to continue.');
+                        return;
+                    }
+                    
+                    // Save user data
+                    this.userData = {
+                        name: userName,
+                        email: document.getElementById('userEmail').value,
+                        guidanceStyle: guidanceStyle,
+                        experienceLevel: experienceLevel,
+                        onboardingDate: new Date().toISOString()
+                    };
+                }
+                
+                if (this.currentStep < this.totalSteps) {
+                    this.showStep(this.currentStep + 1);
+                }
+            }
+
+            previousStep() {
+                if (this.currentStep > 1) {
+                    this.showStep(this.currentStep - 1);
+                }
+            }
+
+            completeOnboarding() {
+                // Validate intention form
+                const category = document.getElementById('intentionCategory').value;
+                const intention = document.getElementById('intentionText').value;
+                const timeline = document.getElementById('targetTimeline').value;
+                
+                if (!category || !intention || !timeline) {
+                    alert('Please complete your manifestation intention to continue.');
+                    return;
+                }
+                
+                // Save intention data
+                this.userData.firstIntention = {
+                    category: category,
+                    text: intention,
+                    timeline: timeline,
+                    created: new Date().toISOString()
+                };
+                
+                // Save to localStorage
+                localStorage.setItem('quantumUserProfile', JSON.stringify({
+                    name: this.userData.name,
+                    email: this.userData.email,
+                    guidanceStyle: this.userData.guidanceStyle,
+                    experienceLevel: this.userData.experienceLevel,
+                    onboardingCompleted: true,
+                    onboardingDate: this.userData.onboardingDate
+                }));
+                
+                // Save intention to session
+                localStorage.setItem('quantum_session', JSON.stringify({
+                    sessionId: Date.now().toString(),
+                    startTime: new Date().toISOString(),
+                    intention: intention,
+                    category: category,
+                    targetTimeline: timeline,
+                    journeyStep: 1,
+                    messagesReceived: 0
+                }));
+                
+                // Show completion message
+                alert(`🎉 Welcome ${this.userData.name}! Your quantum manifestation system is ready. We're now taking you to create your first Quantum Reality Code!`);
+                
+                // Redirect to generator
+                window.location.href = 'generator-enhanced.html';
+            }
+        }
+
+        // Initialize onboarding
+        let onboarding;
+        document.addEventListener('DOMContentLoaded', () => {
+            onboarding = new QuantumOnboarding();
+        });
+
+        // Global functions for buttons
+        function nextStep() {
+            onboarding.nextStep();
+        }
+
+        function previousStep() {
+            onboarding.previousStep();
+        }
+
+        function completeOnboarding() {
+            onboarding.completeOnboarding();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+    properties = session.get('properties')
+    council_members = session.get('council_members', [])
+    
+    return render_template('quantum-council-portal.html',
+                         code=code,
+                         intention=intention,
+                         properties=properties,
+                         council_members=council_members)
+
+@app.route('/how-it-works')
+def how_it_works():

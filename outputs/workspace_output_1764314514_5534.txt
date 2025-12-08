@@ -1,0 +1,39 @@
+🌟 Quantum Reality Code System Test
+==================================================
+
+🧪 Running Homepage tests...
+🏠 Testing homepage...
+✅ Homepage status: 200
+
+🧪 Running Generator tests...
+⚡ Testing quantum code generator...
+✅ Generator page status: 200
+✅ Code generation status: 200
+✅ Quantum code generation working
+
+🧪 Running Council tests...
+👥 Testing quantum council...
+✅ Council page status: 500
+❌ Council access failed with status 500
+
+🧪 Running Other Pages tests...
+📄 Testing other pages...
+✅ How it works status: 200
+✅ Community hub status: 200
+✅ Quantum frequencies status: 200
+
+🧪 Running API Endpoints tests...
+🔌 Testing API endpoints...
+✅ Share code API status: 200
+✅ API endpoints working
+
+📊 Test Results Summary:
+==============================
+Homepage: ✅ PASS
+Generator: ✅ PASS
+Council: ❌ FAIL
+Other Pages: ✅ PASS
+API Endpoints: ✅ PASS
+
+🎯 Overall: 4/5 tests passed
+⚠️  Some tests failed. Check the system.

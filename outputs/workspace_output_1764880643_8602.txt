@@ -1,0 +1,16 @@
+total 204
+drwxr-xr-x 3 root root  4096 Nov 29 02:16 .
+drwxr-xr-x 7 user user  4096 Dec  4 19:37 ..
+-rw-r--r-- 1 root root  6622 Nov 28 11:24 README.md
+drwxr-xr-x 5 root root  4096 Nov 28 11:22 assets
+-rw-r--r-- 1 root root 14639 Nov 28 11:24 community.html
+-rw-r--r-- 1 root root 18278 Nov 29 02:14 generator-enhanced.html
+-rw-r--r-- 1 root root 11961 Nov 28 11:22 generator.html
+-rw-r--r-- 1 root root 16011 Nov 29 02:12 index-enhanced.html
+-rw-r--r-- 1 root root  6755 Nov 28 11:22 index.html
+-rw-r--r-- 1 root root 24613 Nov 28 11:24 journey.html
+-rw-r--r-- 1 root root   546 Nov 28 11:22 manifest.json
+-rw-r--r-- 1 root root 30080 Nov 28 11:24 quantum-reality-codes-static.zip
+-rw-r--r-- 1 root root 26680 Nov 29 02:16 quantumcouncil-enhanced.html
+-rw-r--r-- 1 root root 13435 Nov 28 11:23 quantumcouncil.html
+-rw-r--r-- 1 root root   776 Nov 28 11:22 sw.js

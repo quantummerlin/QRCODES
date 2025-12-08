@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0e27">
+  <title>Quantum Community - Amplify Together</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --neon-cyan: #00f5ff;
+      --neon-magenta: #ff00ff;
+      --neon-gold: #ffd700;
+      --bg-dark: #0a0a0f;
+      --bg-surface: rgba(20, 20, 35, 0.95);
+      --bg-card: rgba(30, 30, 50, 0.85);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --gradient-primary: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-magenta) 100%);
+      --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5);
+    }
+    
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      color: var(--text-secondary);
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 32px;
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .section {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 20px;
+    }
+    
+    .section h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .share-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .share-btn {
+      padding: 15px 20px;
+      border-radius: 12px;
+      border: none;
+      font-family: 'Exo 2', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .share-btn.facebook {
+      background: #1877f2;
+      color: white;
+    }
+    
+    .share-btn.telegram {
+      background: #0088cc;
+      color: white;
+    }
+    
+    .share-btn.twitter {
+      background: #1da1f2;
+      color: white;
+    }
+    
+    .share-btn.whatsapp {
+      background: #25d366;
+      color: white;
+    }
+    
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .share-template {
+      background: var(--bg-dark);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .share-template .hashtags {
+      color: var(--neon-cyan);
+      margin-top: 10px;
+    }
+    
+    .copy-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 8px;
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background: rgba(0, 245, 255, 0.1);
+    }
+    
+    .amplify-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .amplify-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: var(--bg-dark);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .amplify-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    
+    .amplify-content {
+      flex: 1;
+    }
+    
+    .amplify-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .amplify-intention {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .amplify-btn {
+      padding: 10px 20px;
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 20px;
+      color: var(--bg-dark);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 12px;
+    }
+    
+    .amplify-btn:hover {
+      transform: scale(1.05);
+      box-shadow: var(--glow-cyan);
+    }
+    
+    .amplify-btn.amplified {
+      background: var(--neon-gold);
+      color: var(--bg-dark);
+    }
+    
+    .success-stories {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .story-card {
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.05));
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 16px;
+    }
+    
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    
+    .story-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--neon-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+    
+    .story-meta {
+      flex: 1;
+    }
+    
+    .story-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    
+    .story-time {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    
+    .story-badge {
+      background: var(--neon-gold);
+      color: var(--bg-dark);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    
+    .story-text {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    
+    .story-code {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: rgba(255, 215, 0, 0.2);
+      border: 1px solid var(--neon-gold);
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 12px;
+      color: var(--neon-gold);
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 25px;
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(0, 245, 255, 0.1);
+    }
+    
+    @media (max-width: 600px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .share-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🌊 Quantum Community</h1>
+      <p>Amplify your manifestation through collective energy</p>
+    </header>
+    
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value" id="totalMembers">7,777</div>
+        <div class="stat-label">Community Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="activeToday">432</div>
+        <div class="stat-label">Active Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value" id="manifestations">2,847</div>
+        <div class="stat-label">Manifestations</div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>📤 Share Your Quantum Code</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+        Sharing amplifies your manifestation power by 10x through reciprocal energy
+      </p>
+      
+      <div class="share-buttons">
+        <button class="share-btn facebook" onclick="shareToFacebook()">
+          📘 Facebook
+        </button>
+        <button class="share-btn telegram" onclick="shareToTelegram()">
+          ✈️ Telegram
+        </button>
+        <button class="share-btn twitter" onclick="shareToTwitter()">
+          🐦 Twitter/X
+        </button>
+        <button class="share-btn whatsapp" onclick="shareToWhatsApp()">
+          💬 WhatsApp
+        </button>
+      </div>
+      
+      <div class="share-template" id="shareTemplate">
+        ⚛️ I just activated my Quantum Reality Code: <strong id="displayCode">---</strong>
+        
+        <br><br>
+        
+        My intention is now broadcasting at <span id="displayFrequency">---</span>Hz across the quantum field. 
+        The Council of 77 archetypal guides is working on my behalf 24/7.
+        
+        <br><br>
+        
+        Reply "AMPLIFY" to add your energy to my manifestation! 🚀
+        
+        <div class="hashtags">
+          #QuantumRealityCode #Manifestation #QuantumCouncil #LawOfAttraction
+        </div>
+      </div>
+      
+      <button class="copy-btn" onclick="copyTemplate()">📋 COPY SHARE TEXT</button>
+    </div>
+    
+    <div class="section">
+      <h2>🔄 Echo System - Amplify Others</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+        Send energy to fellow manifestors. What you give returns multiplied.
+      </p>
+      
+      <div class="amplify-list" id="amplifyList">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>🏆 Success Stories</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+        Real manifestations from our quantum community
+      </p>
+      
+      <div class="success-stories" id="successStories">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="index.html" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+  </div>
+  
+  <script>
+    // Load user data
+    let userData = {};
+    try {
+      userData = JSON.parse(localStorage.getItem('quantumUser')) || {};
+    } catch(e) {}
+    
+    // Display user's code
+    document.getElementById('displayCode').textContent = userData.quantumCode || '12345';
+    document.getElementById('displayFrequency').textContent = userData.codeProperties?.frequency || '528';
+    
+    // Generate mock amplify list
+    const names = ['Sarah M.', 'James K.', 'Maria L.', 'David R.', 'Emma T.'];
+    const intentions = [
+      'Financial abundance and freedom',
+      'Perfect health and vitality',
+      'Soulmate connection',
+      'Dream career opportunity',
+      'Spiritual awakening'
+    ];
+    const emojis = ['🌟', '💫', '✨', '🔥', '💎'];
+    
+    const amplifyList = document.getElementById('amplifyList');
+    amplifyList.innerHTML = names.map((name, i) => `
+      <div class="amplify-item">
+        <div class="amplify-avatar">${emojis[i]}</div>
+        <div class="amplify-content">
+          <div class="amplify-name">${name}</div>
+          <div class="amplify-intention">${intentions[i]}</div>
+        </div>
+        <button class="amplify-btn" onclick="amplify(this)">⚡ AMPLIFY</button>
+      </div>
+    `).join('');
+    
+    // Success stories
+    const stories = [
+      {
+        name: 'Michael T.',
+        time: '3 days ago',
+        code: 7734,
+        text: 'After 2 weeks with my Quantum Code, I received an unexpected job offer with 40% higher salary. The Council kept telling me "it\'s already done" and they were right!'
+      },
+      {
+        name: 'Jennifer L.',
+        time: '1 week ago',
+        code: 4281,
+        text: 'My soulmate literally appeared 3 days after activating my code. We met at a coffee shop - exactly like Aurora predicted in my messages. The synchronicities are REAL.'
+      },
+      {
+        name: 'Robert K.',
+        time: '2 weeks ago',
+        code: 9156,
+        text: 'Health transformation. Doctor said my numbers improved dramatically. I believe in the frequency work now. Quantum Rose\'s messages about cellular healing were spot on.'
+      }
+    ];
+    
+    const storiesContainer = document.getElementById('successStories');
+    storiesContainer.innerHTML = stories.map(story => `
+      <div class="story-card">
+        <div class="story-header">
+          <div class="story-avatar">🏆</div>
+          <div class="story-meta">
+            <div class="story-name">${story.name}</div>
+            <div class="story-time">${story.time}</div>
+          </div>
+          <span class="story-badge">MANIFESTED</span>
+        </div>
+        <div class="story-text">${story.text}</div>
+        <span class="story-code">Code: ${story.code}</span>
+      </div>
+    `).join('');
+    
+    function amplify(btn) {
+      btn.textContent = '✓ AMPLIFIED';
+      btn.classList.add('amplified');
+      btn.disabled = true;
+      
+      // Show toast
+      showToast('Energy sent! ⚡ Your amplification returns 10x');
+    }
+    
+    function getShareText() {
+      const code = userData.quantumCode || '12345';
+      const freq = userData.codeProperties?.frequency || '528';
+      return `⚛️ I just activated my Quantum Reality Code: ${code}
+
+My intention is now broadcasting at ${freq}Hz across the quantum field. The Council of 77 archetypal guides is working on my behalf 24/7.
+
+Reply "AMPLIFY" to add your energy to my manifestation! 🚀
+
+#QuantumRealityCode #Manifestation #QuantumCouncil`;
+    }
+    
+    function shareToFacebook() {
+      const text = encodeURIComponent(getShareText());
+      window.open(`https://www.facebook.com/sharer/sharer.php?quote=${text}`, '_blank');
+    }
+    
+    function shareToTelegram() {
+      const text = encodeURIComponent(getShareText());
+      window.open(`https://t.me/share/url?text=${text}`, '_blank');
+    }
+    
+    function shareToTwitter() {
+      const text = encodeURIComponent(getShareText());
+      window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank');
+    }
+    
+    function shareToWhatsApp() {
+      const text = encodeURIComponent(getShareText());
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+    
+    function copyTemplate() {
+      navigator.clipboard.writeText(getShareText()).then(() => {
+        showToast('Share text copied! 📋');
+      });
+    }
+    
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 14px 24px;
+        background: rgba(0, 200, 100, 0.9);
+        border-radius: 30px;
+        color: white;
+        font-size: 14px;
+        z-index: 10000;
+        animation: fadeIn 0.3s ease;
+      `;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+  </script>
+</body>
+</html>

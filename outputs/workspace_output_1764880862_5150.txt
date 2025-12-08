@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Reality Journey - Master the Art of Manifestation</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>📚 The Quantum Reality Journey</h1>
+        <p class="subtitle">Master the art of intention, codes, and collective amplification</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="generator.html">Create Code</a>
+        <a href="quantumcouncil.html">Quantum Council</a>
+        <a href="journey.html" class="active">Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
+    <main>
+        <!-- Progress Overview -->
+        <div class="card card-gold">
+            <h2 class="text-gold text-center">🌟 Your Journey Progress</h2>
+            <div class="progress-bar">
+                <div id="journeyProgress" class="progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="text-center">
+                <span id="progressText" class="text-cyan">0/12 chapters completed</span>
+            </div>
+            <p class="voice-merlin text-center mt-20">"Each chapter completed strengthens your quantum field and unlocks new council members."</p>
+        </div>
+
+        <!-- Part I: The Foundation -->
+        <div class="card">
+            <h2 class="text-cyan">📖 Part I: The Foundation - The Science & Theory of Influence</h2>
+            
+            <!-- Chapter 1 -->
+            <div class="journey-section" id="chapter1">
+                <h3>Chapter 1: The Quantum Metaphor for Consciousness</h3>
+                <p class="voice-merlin">"Reality responds to observation. You are both the observer and the creator."</p>
+                
+                <p>Quantum physics provides powerful metaphors for understanding consciousness:</p>
+                <ul>

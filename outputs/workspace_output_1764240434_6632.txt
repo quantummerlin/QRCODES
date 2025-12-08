@@ -1,0 +1,10 @@
+39:      --background: #0a0e27;
+51:      background: var(--background);
+63:      background:
+77:      background: var(--background);
+102:      background: linear-gradient(135deg, var(--primary), var(--secondary));
+137:      background: var(--surface);
+159:      background: linear-gradient(135deg, var(--primary), var(--secondary));
+187:      background: var(--surface-light);
+198:      background: var(--primary);
+203:      background: var(--primary);

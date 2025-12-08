@@ -1,0 +1,60 @@
+{
+  "name": "Quantum Reality Code",
+  "short_name": "QuantumCode",
+  "description": "Transform your intentions into reality through quantum manifestation technology. Connect with 77 archetypal guides, generate sacred quantum codes, and manifest your desires.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0e27",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["lifestyle", "productivity", "education"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230a0a0f' width='512' height='512' rx='64'/><circle cx='256' cy='256' r='120' fill='none' stroke='%2300f5ff' stroke-width='8'/><circle cx='256' cy='256' r='80' fill='none' stroke='%23ff00ff' stroke-width='6'/><circle cx='256' cy='256' r='40' fill='%23ffd700'/><text x='256' y='270' font-size='50' fill='%23fff' text-anchor='middle'>⚛</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%230a0a0f' width='192' height='192' rx='24'/><circle cx='96' cy='96' r='45' fill='none' stroke='%2300f5ff' stroke-width='3'/><circle cx='96' cy='96' r='30' fill='none' stroke='%23ff00ff' stroke-width='2'/><circle cx='96' cy='96' r='15' fill='%23ffd700'/></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Generate Code",
+      "short_name": "Generate",
+      "description": "Create a new Quantum Reality Code",
+      "url": "/?action=generate",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%230a0a0f' width='96' height='96' rx='12'/><text x='48' y='60' font-size='40' text-anchor='middle'>⚡</text></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "Council Messages",
+      "short_name": "Messages",
+      "description": "View messages from your Council",
+      "url": "/?action=messages",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%230a0a0f' width='96' height='96' rx='12'/><text x='48' y='60' font-size='40' text-anchor='middle'>💬</text></svg>", "sizes": "96x96" }]
+    },
+    {
+      "name": "Journey Progress",
+      "short_name": "Journey",
+      "description": "Track your manifestation journey",
+      "url": "/?action=journey",
+      "icons": [{ "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'><rect fill='%230a0a0f' width='96' height='96' rx='12'/><text x='48' y='60' font-size='40' text-anchor='middle'>🗺️</text></svg>", "sizes": "96x96" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 540 1200'><rect fill='%230a0a0f' width='540' height='1200'/><text x='270' y='600' font-size='60' fill='%2300f5ff' text-anchor='middle'>Quantum Reality</text></svg>",
+      "sizes": "540x1200",
+      "type": "image/svg+xml",
+      "form_factor": "narrow"
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

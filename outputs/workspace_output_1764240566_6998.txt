@@ -1,0 +1,7 @@
+-rw-r--r-- 1 root root 1881522 Nov 26 19:46 Vocal Grounding.png
+-rw-r--r-- 1 root root 1969777 Nov 26 19:46 b6530778-7109-4328-bda5-e624904e9ec5_0.png
+-rw-r--r-- 1 root root 1945657 Nov 26 19:45 be2c4ff1-fa84-42b2-8097-b3d374f41c4d_0.png
+-rw-r--r-- 1 root root 1982627 Nov 26 19:45 c6b7fc3c-2475-4c54-86a2-005f2c83d934_0.png
+-rw-r--r-- 1 root root 1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0 (1).png
+-rw-r--r-- 1 root root 1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0.png
+-rw-r--r-- 1 root root 2148245 Nov 26 19:45 f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png

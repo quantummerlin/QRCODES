@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Reality Codes - Manifest Your Dreams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Quantum Background */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }
+
+        .quantum-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        .quantum-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid cyan;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantum-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: cyan;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: magenta;
+            text-shadow: 0 0 10px magenta;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, cyan, magenta);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, cyan, magenta, cyan);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: #aaa;
+            text-align: center;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+
+        /* Quantum Code Display */
+        .code-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: cyan;
+            text-shadow: 0 0 20px cyan;
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid cyan;
+            border-radius: 10px;
+            background: rgba(0, 255, 255, 0.1);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8); }
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .quantum-btn {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 2px solid;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quantum-btn-primary {
+            color: #fff;
+            border-color: cyan;
+            background: linear-gradient(45deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+        }
+
+        .quantum-btn-primary:hover {
+            color: #000;
+            background: cyan;
+            box-shadow: 0 0 30px cyan;
+            transform: translateY(-2px);
+        }
+
+        .quantum-btn-secondary {
+            color: cyan;
+            border-color: magenta;
+        }
+
+        .quantum-btn-secondary:hover {
+            color: #fff;
+            background: magenta;
+            box-shadow: 0 0 30px magenta;
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: cyan;
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: cyan;
+            margin-bottom: 10px;
+        }
+
+        .feature-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        /* Floating Particles */
+        .quantum-particle {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .particle-cyan {
+            width: 4px;
+            height: 4px;
+            background: cyan;
+            border-radius: 50%;
+            box-shadow: 0 0 10px cyan;
+        }
+
+        .particle-magenta {
+            width: 3px;
+            height: 3px;
+            background: magenta;
+            border-radius: 50%;
+            box-shadow: 0 0 8px magenta;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .code-display {
+                font-size: 2rem;
+            }
+            
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .quantum-btn {
+                width: 250px;
+                text-align: center;
+            }
+        }
+
+        /* Loading Animation */
+        .quantum-loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top: 3px solid cyan;
+            border-right: 3px solid magenta;
+            border-radius: 50%;
+            animation: quantum-spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes quantum-spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-content">
+            <div class="quantum-logo">⚛️ Quantum Reality Codes</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/generator">Generator</a></li>
+                <li><a href="/quantumcouncil">Quantum Council</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/community">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Manifest Your Quantum Reality</h1>
+        <p class="hero-subtitle">
+            Transform your intentions into powerful quantum codes and activate your personal council 
+            to manifest your dreams with community amplification
+        </p>
+
+        <div class="code-display">
+            QUANTUM CODE: <span id="demo-code">7-3-6-9</span>
+        </div>
+
+        <div class="cta-container">
+            <a href="/generator" class="quantum-btn quantum-btn-primary">
+                ⚡ Generate Your Code
+            </a>
+            <a href="/how-it-works" class="quantum-btn quantum-btn-secondary">
+                🔮 Learn More
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; color: cyan;">
+            The Quantum Ecosystem
+        </h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔮</div>
+                <div class="feature-title">Quantum Code Generation</div>
+                <div class="feature-description">
+                    Transform your intentions into unique quantum codes using advanced gematria 
+                    and sacred mathematics. Each code resonates with specific manifestation frequencies.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Personal Quantum Council</div>
+                <div class="feature-description">
+                    Activate your personal council of 100 quantum personas who provide personalized 
+                    guidance and amplify your manifestation power using your unique quantum codes.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <div class="feature-title">Community Amplification</div>
+                <div class="feature-description">
+                    Share your codes with our community on Facebook and Telegram. When you support 
+                    others' manifestations, you amplify your own codes through reciprocal energy.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎵</div>
+                <div class="feature-title">Frequency Immersion</div>
+                <div class="feature-description">
+                    Access our library of quantum-aligned frequencies that enhance your codes' 
+                    manifestation power and deepen your connection to the quantum field.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Mersenne Matrix</div>
+                <div class="feature-description">
+                    Visualize your reality alignment using sacred Mersenne prime mathematics 
+                    and track your manifestation progress in real-time.
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Instant Activation</div>
+                <div class="feature-description">
+                    Your quantum codes activate immediately upon generation. No waiting periods 
+                    - begin manifesting your desired reality right now.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quantum Loader -->
+    <div class="quantum-loader"></div>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = `quantum-particle ${Math.random() > 0.5 ? 'particle-cyan' : 'particle-magenta'}`;
+                
+                // Random starting position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // Random animation
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 5;
+                
+                particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(30px, -30px) rotate(90deg); }
+                50% { transform: translate(-20px, 20px) rotate(180deg); }
+                75% { transform: translate(-30px, -20px) rotate(270deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Demo code animation
+        function animateDemoCode() {
+            const codes = ['7-3-6-9', '1-1-1-1', '8-8-8-8', '4-4-4-4', '9-9-9-9'];
+            const codeElement = document.getElementById('demo-code');
+            let index = 0;
+
+            setInterval(() => {
+                index = (index + 1) % codes.length;
+                codeElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    codeElement.textContent = codes[index];
+                    codeElement.style.opacity = '1';
+                }, 300);
+            }, 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            animateDemoCode();
+        });
+
+        // Quantum button effects
+        document.querySelectorAll('.quantum-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px) scale(1.05)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

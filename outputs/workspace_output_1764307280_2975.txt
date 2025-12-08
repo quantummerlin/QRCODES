@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Reality Code Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="header center">
+    <img src="{{ url_for('static', filename='images/quantum-merlin.jpeg') }}" alt="Quantum Merlin Logo" class="logo">
+    <h1>Quantum Reality Code Generator</h1>
+    <nav class="nav nav-row">
+      <a href="/" class="{% if request.path == '/' %}active{% endif %}">Generator</a>
+      <a href="{{ url_for('frequencies') }}" class="{% if request.path == '/frequencies' %}active{% endif %}">Frequencies</a>
+      <a href="{{ url_for('example') }}" class="{% if request.path == '/example' %}active{% endif %}">Example</a>
+    </nav>
+  </div>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert center">
+          {% for message in messages %}{{ message }}<br>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    <div class="main-content center">
+      {% block content %}{% endblock %}
+    </div>
+    <footer>
+      <div class="social-icons social-row">
+        <a href="#" title="X (Coming Soon)"><img src="{{ url_for('static', filename='icons/x.png') }}" alt="X"></a>
+        <a href="#" title="Facebook (Coming Soon)"><img src="{{ url_for('static', filename='icons/facebook.png') }}" alt="Facebook"></a>
+        <a href="#" title="Instagram (Coming Soon)"><img src="{{ url_for('static', filename='icons/instagram.png') }}" alt="Instagram"></a>
+        <a href="#" title="Telegram (Coming Soon)"><img src="{{ url_for('static', filename='icons/telegram.png') }}" alt="Telegram"></a>
+        <a href="#" title="TikTok (Coming Soon)"><img src="{{ url_for('static', filename='icons/tiktok.png') }}" alt="TikTok"></a>
+      </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Manifestation Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0A0A1F;
+            color: #00FFFF;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 800px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(45deg, #00FFFF, #FF00FF, #00FFFF);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 30px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #FF00FF;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .status {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .status h2 {
+            color: #00FFFF;
+            margin-bottom: 15px;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
+            color: #0A0A1F;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>🌟 Manifestation Dashboard 🌟</h1>
+        
+        <div class="status">
+            <h2>✨ Your Quantum Council is Active ✨</h2>
+            <p>13 Core Personas are now working on your manifestation.</p>
+            <p>Next message in: <strong id="nextMessage">96 minutes</strong></p>
+        </div>
+
+        <p>
+            This is a placeholder dashboard. The full dashboard with synchronicity logging, 
+            persona messages, and gamification features will be built in the next phase!
+        </p>
+
+        <a href="index-intention.html" class="back-button">← Back to Intention</a>
+    </div>
+
+    <script>
+        // Simple countdown timer
+        const state = JSON.parse(localStorage.getItem('quantumCouncilState') || '{}');
+        if (state.nextMessageTime) {
+            const updateTimer = () => {
+                const now = Date.now();
+                const diff = state.nextMessageTime - now;
+                
+                if (diff > 0) {
+                    const minutes = Math.floor(diff / 60000);
+                    document.getElementById('nextMessage').textContent = `${minutes} minutes`;
+                } else {
+                    document.getElementById('nextMessage').textContent = 'Ready now!';
+                }
+            };
+            
+            updateTimer();
+            setInterval(updateTimer, 60000);
+        }
+    </script>
+</body>
+</html>

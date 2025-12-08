@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Code Generator - Create Your Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Quantum Background */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }
+
+        .quantum-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        .quantum-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid cyan;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantum-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: cyan;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: magenta;
+            text-shadow: 0 0 10px magenta;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        /* Generator Form */
+        .generator-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generator-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 15px;
+            color: cyan;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .intention-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            resize: vertical;
+            transition: all 0.3s;
+        }
+
+        .intention-input:focus {
+            outline: none;
+            border-color: cyan;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .intention-input::placeholder {
+            color: #666;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(45deg, cyan, magenta);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Code Results */
+        .code-result {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .code-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .code-label {
+            color: cyan;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .code-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: magenta;
+            text-shadow: 0 0 20px magenta;
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid magenta;
+            border-radius: 10px;
+            background: rgba(255, 0, 255, 0.1);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
+        }
+
+        /* Code Properties */
+        .code-properties {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .property-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .property-card:hover {
+            border-color: cyan;
+            transform: translateY(-2px);
+        }
+
+        .property-name {
+            color: cyan;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .property-value {
+            color: magenta;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Council Members */
+        .council-section {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .council-title {
+            color: cyan;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .council-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .council-member {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .council-member:hover {
+            border-color: magenta;
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255, 0, 255, 0.3);
+        }
+
+        .member-name {
+            color: magenta;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: cyan;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .member-quote {
+            color: #aaa;
+            font-style: italic;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .action-btn {
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: 2px solid;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .btn-council {
+            color: #fff;
+            border-color: cyan;
+        }
+
+        .btn-council:hover {
+            color: #000;
+            background: cyan;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .btn-share {
+            color: #fff;
+            border-color: magenta;
+        }
+
+        .btn-share:hover {
+            color: #000;
+            background: magenta;
+            box-shadow: 0 0 20px magenta;
+        }
+
+        .btn-copy {
+            color: cyan;
+            border-color: cyan;
+        }
+
+        .btn-copy:hover {
+            color: #000;
+            background: cyan;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 255, 0.9);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1001;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 100px 15px 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .generator-card {
+                padding: 20px;
+            }
+            
+            .code-value {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Loading Animation */
+        .generating {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quantum-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid transparent;
+            border-top: 3px solid cyan;
+            border-right: 3px solid magenta;
+            border-radius: 50%;
+            animation: quantum-spin 1s linear infinite;
+        }
+
+        @keyframes quantum-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-content">
+            <div class="quantum-logo">⚛️ Quantum Reality Codes</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/generator">Generator</a></li>
+                <li><a href="/quantumcouncil">Quantum Council</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/community">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Quantum Code Generator</h1>
+        <p class="page-subtitle">
+            Transform your intention into a powerful quantum code that resonates with your desired reality
+        </p>
+
+        <!-- Generator Form -->
+        <div class="generator-card">
+            <form method="post" id="generatorForm">
+                <div class="form-group">
+                    <label class="form-label" for="intention">
+                        ✨ Write Your Intention (Be specific, grateful, and positive):
+                    </label>
+                    <textarea 
+                        id="intention" 
+                        name="intention" 
+                        class="intention-input" 
+                        placeholder="I am deeply grateful for..."
+                        required>{{ intention or '' }}</textarea>
+                </div>
+                
+                <div class="generating" id="generating">
+                    <div class="quantum-spinner"></div>
+                    <p style="margin-top: 10px; color: cyan;">Generating Quantum Code...</p>
+                </div>
+                
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    ⚡ Generate Quantum Code
+                </button>
+            </form>
+        </div>
+
+        {% if code %}
+        <!-- Code Results -->
+        <div class="code-result" id="codeResult" style="display: block;">
+            <div class="code-display">
+                <div class="code-label">🔮 Your Quantum Reality Code:</div>
+                <div class="code-value" id="quantumCode">{{ code }}</div>
+            </div>
+
+            <!-- Code Properties -->
+            <div class="code-properties">
+                <div class="property-card">
+                    <div class="property-name">Resonance Level</div>
+                    <div class="property-value">{{ properties.resonance }}</div>
+                </div>
+                <div class="property-card">
+                    <div class="property-name">Frequency (Hz)</div>
+                    <div class="property-value">{{ properties.frequency }}</div>
+                </div>
+                <div class="property-card">
+                    <div class="property-name">Dimension</div>
+                    <div class="property-value">{{ properties.dimension }}D</div>
+                </div>
+                <div class="property-card">
+                    <div class="property-name">Power Level</div>
+                    <div class="property-value">{{ properties.power_level }}/10</div>
+                </div>
+            </div>
+
+            <!-- Council Members -->
+            {% if council_members %}
+            <div class="council-section">
+                <h3 class="council-title">👥 Your Quantum Council Members</h3>
+                <div class="council-members">
+                    {% for member in council_members %}
+                    <div class="council-member">
+                        <div class="member-name">{{ member.name }}</div>
+                        <div class="member-role">{{ member.role }}</div>
+                        <div class="member-quote">{{ member.quote }}</div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <a href="/quantumcouncil" class="action-btn btn-council">
+                    👥 Activate Council
+                </a>
+                <button onclick="copyCode()" class="action-btn btn-copy">
+                    📋 Copy Code
+                </button>
+                <button onclick="shareCode()" class="action-btn btn-share">
+                    🌐 Share Code
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Form submission with loading animation
+        document.getElementById('generatorForm').addEventListener('submit', function(e) {
+            const btn = document.getElementById('generateBtn');
+            const generating = document.getElementById('generating');
+            
+            btn.style.display = 'none';
+            generating.style.display = 'block';
+            
+            // Show loading state for demonstration
+            setTimeout(() => {
+                // Form will submit normally
+            }, 1500);
+        });
+
+        // Copy code to clipboard
+        function copyCode() {
+            const code = document.getElementById('quantumCode').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                showToast('Quantum Code copied to clipboard!');
+            });
+        }
+
+        // Share code
+        function shareCode() {
+            const code = document.getElementById('quantumCode').textContent;
+            const intention = document.getElementById('intention').value;
+            const shareText = `My Quantum Reality Code: ${code}\n\n${intention}\n\nGenerated with Quantum Reality Codes\n#QuantumRealityCode #Manifestation`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Quantum Reality Code',
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    showToast('Share text copied! Paste to social media.');
+                });
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Add quantum effects to input focus
+        document.getElementById('intention').addEventListener('focus', function() {
+            this.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.5)';
+        });
+
+        document.getElementById('intention').addEventListener('blur', function() {
+            this.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
+        });
+
+        // Animate code value on load
+        window.addEventListener('load', function() {
+            const codeElement = document.getElementById('quantumCode');
+            if (codeElement) {
+                codeElement.style.animation = 'pulse-glow 2s ease-in-out infinite';
+            }
+        });
+
+        // Flash messages
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    showToast('{{ message }}');
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </script>
+</body>
+</html>

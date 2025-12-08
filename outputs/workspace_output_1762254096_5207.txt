@@ -1,0 +1,30 @@
+total 2.6M
+drwxr-xr-x 3 root root 4.0K Nov  4 11:01 .
+drwxr-xr-x 1 root root  162 Nov  4 10:26 ..
+-rw-r--r-- 1 root root  27K Nov  4 10:31 GPT_Manifestation_Group_Analysis.md
+-rw-r--r-- 1 root root 1.3M Nov  4 10:26 Greatness Names.pdf
+-rw-r--r-- 1 root root 123K Nov  4 10:27 Greatness_Names.txt
+-rw-r--r-- 1 root root 108K Nov  4 10:26 POWER OF 10.pdf
+-rw-r--r-- 1 root root 6.0K Nov  4 10:27 POWER_OF_10.txt
+-rw-r--r-- 1 root root 111K Nov  4 10:26 QM BP.pdf
+-rw-r--r-- 1 root root  65K Nov  4 10:26 QM Framework.pdf
+-rw-r--r-- 1 root root  69K Nov  4 10:26 QM Mersenne Matrix.pdf
+-rw-r--r-- 1 root root 353K Nov  4 10:26 QM Personas.pdf
+-rw-r--r-- 1 root root 4.3K Nov  4 10:27 QM_BP.txt
+-rw-r--r-- 1 root root 2.7K Nov  4 10:27 QM_Framework.txt
+-rw-r--r-- 1 root root 2.9K Nov  4 10:27 QM_Mersenne_Matrix.txt
+-rw-r--r-- 1 root root  25K Nov  4 10:27 QM_Personas.txt
+-rw-r--r-- 1 root root 183K Nov  4 10:27 Quantum Mastery Flow.pdf
+-rw-r--r-- 1 root root  14K Nov  4 10:27 Quantum_Mastery_Flow.txt
+-rw-r--r-- 1 root root  14K Nov  4 11:01 README.md
+-rw-r--r-- 1 root root  19K Nov  4 10:59 SUPERNINJA_DEPLOYMENT_GUIDE.md
+-rw-r--r-- 1 root root  15K Nov  4 10:56 mersenne_matrix_tracker.html
+-rw-r--r-- 1 root root  16K Nov  4 10:57 notification_templates.json
+-rw-r--r-- 1 root root  24K Nov  4 10:50 orchestrator_flow.py
+drwxr-xr-x 2 root root 4.0K Nov  4 11:01 outputs
+-rw-r--r-- 1 root root  31K Nov  4 10:48 personas_database.json
+-rw-r--r-- 1 root root  13K Nov  4 10:51 prompt_templates.json
+-rw-r--r-- 1 root root  12K Nov  4 10:55 session_state_schema.json
+-rw-r--r-- 1 root root 1.1K Nov  4 11:01 todo.md
+-rw-r--r-- 1 root root  13K Nov  4 10:52 trigger_logic.json
+-rw-r--r-- 1 root root  14K Nov  4 10:54 user_blueprint_schema.json

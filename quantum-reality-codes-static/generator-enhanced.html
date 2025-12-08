@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Quantum Reality Code</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+    <div id="quantum-particles"></div>
+
+    <header>
+        <h1>⚡ Quantum Code Generator</h1>
+        <p class="subtitle">Guided by Quantum Merlin & Rose • Powered by Sacred Mathematics</p>
+    </header>
+
+    <nav>
+        <a href="index-enhanced.html">Home</a>
+        <a href="generator-enhanced.html" class="active">Create Code</a>
+        <a href="quantumcouncil.html">Quantum Council</a>
+        <a href="journey.html">Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
+    <main>
+        <!-- Guide Introduction -->
+        <div class="card card-gold">
+            <h2 class="text-gold text-center">🌟 Your Quantum Guides Are Ready</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                <div class="text-center guide-intro-card">
+                    <div style="font-size: 2.5rem;">🧙‍♂️</div>
+                    <h4 class="text-cyan">Quantum Merlin</h4>
+                    <p class="guide-desc">"I will calculate the sacred mathematics of your intention and select the optimal council members for your manifestation journey."</p>
+                </div>
+                <div class="text-center guide-intro-card">
+                    <div style="font-size: 2.5rem;">🌹</div>
+                    <h4 class="text-magenta">Quantum Rose</h4>
+                    <p class="guide-desc">"I will attune the emotional frequency of your code to match your heart's true vibration and amplify manifestation power."</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Generator Form -->
+        <div class="card">
+            <h2 class="text-cyan">✨ Write Your Quantum Intention</h2>
+            <p class="voice-rose mb-20">Clear, positive, present-tense intentions create the strongest quantum resonance.</p>
+            
+            <form id="generatorForm">
+                <div class="form-group">
+                    <label for="intention" class="text-magenta" style="display: block; margin-bottom: 10px;">
+                        🌟 Your Intention (be specific, grateful, and positive):
+                    </label>
+                    <textarea 
+                        id="intention" 
+                        name="intention" 
+                        rows="6" 
+                        placeholder="I am deeply grateful for..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div id="generating" class="text-center hidden" style="padding: 20px;">
+                    <div class="quantum-spinner"></div>
+                    <p class="text-cyan mt-20">Quantum Merlin is calculating the sacred mathematics...</p>
+                    <p class="text-magenta mt-10">Quantum Rose is attuning the frequency...</p>
+                </div>
+
+                <button type="submit" class="btn btn-cyan" style="width: 100%; font-size: 1.2rem; padding: 20px;">
+                    ⚛️ Generate Quantum Reality Code
+                </button>
+            </form>
+        </div>
+
+        <!-- Code Results (Hidden initially) -->
+        <div id="codeResult" class="card hidden">
+            <h2 class="text-gold text-center">🎯 Your Quantum Reality Code</h2>
+            
+            <div class="code-display">
+                <div class="code-value" id="quantumCode">000000</div>
+                <p class="text-cyan" style="margin-top: 10px;">This code is your unique signature for this intention</p>
+            </div>
+
+            <!-- Guide Messages -->
+            <div class="card card-gold" style="margin-top: 30px;">
+                <h3 class="text-gold text-center">🌟 Guidance From Your Quantum Guides</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <!-- Quantum Merlin's Wisdom -->
+                    <div class="guide-message merlin-message">
+                        <h4 class="text-cyan">🧙‍♂️ Quantum Merlin's Analysis</h4>
+                        <div id="merlinWisdom" class="message-content">
+                            <p>"I have calculated the sacred mathematics of your intention. The code <strong id="merlinCodeRef">000000</strong> resonates at a quantum frequency that aligns with your soul's blueprint."</p>
+                            <p>"Your intention activates <strong id="merlinPersonas">7</strong> specific council members who will guide your manifestation journey through the coming cycles."</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Quantum Rose's Attunement -->
+                    <div class="guide-message rose-message">
+                        <h4 class="text-magenta">🌹 Quantum Rose's Frequency</h4>
+                        <div id="roseAttunement" class="message-content">
+                            <p>"I feel the emotional resonance of your desire at <strong id="roseFrequency">432Hz</strong>. Your heart field is now calibrated to receive this manifestation."</p>
+                            <p>"The emotional signature of your intention creates a magnetic pull. Stay in this feeling state to amplify the quantum attraction."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 20px;">
+                    <p class="voice-merlin">"Together with the Council, we will guide you every 96 minutes. Your manifestation journey has now begun."</p>
+                    <button onclick="startGuideMessaging()" class="btn btn-gold" style="margin-top: 15px;">
+                        🚀 Start My 96-Minute Guidance Cycles
+                    </button>
+                </div>
+            </div>
+
+            <!-- Code Properties -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0;">
+                <div class="text-center" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border: 1px solid var(--quantum-cyan);">
+                    <div class="text-cyan">Resonance Level</div>
+                    <div class="text-magenta" style="font-size: 1.5rem; font-weight: bold;" id="resonanceLevel">0</div>
+                </div>
+                <div class="text-center" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border: 1px solid var(--quantum-cyan);">
+                    <div class="text-cyan">Frequency (Hz)</div>
+                    <div class="text-magenta" style="font-size: 1.5rem; font-weight: bold;" id="frequencyHz">0</div>
+                </div>
+                <div class="text-center" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border: 1px solid var(--quantum-cyan);">
+                    <div class="text-cyan">Dimension</div>
+                    <div class="text-magenta" style="font-size: 1.5rem; font-weight: bold;" id="dimensionLevel">0D</div>
+                </div>
+                <div class="text-center" style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border: 1px solid var(--quantum-cyan);">
+                    <div class="text-cyan">Power Level</div>
+                    <div class="text-magenta" style="font-size: 1.5rem; font-weight: bold;" id="powerLevel">0/10</div>
+                </div>
+            </div>
+
+            <!-- Original Intention -->
+            <div class="text-center" style="margin: 30px 0; padding: 20px; background: rgba(0,255,255,0.1); border-radius: 10px;">
+                <div class="text-cyan">Your Original Intention:</div>
+                <div id="originalIntention" style="margin-top: 10px; font-style: italic;"></div>
+            </div>
+
+            <!-- Action Steps -->
+            <div class="card card-gold">
+                <h3 class="text-gold text-center">🌟 Your Next Three Steps</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <!-- Step 1: Anchor -->
+                    <div>
+                        <h4 class="text-cyan">1️⃣ Anchor This Code</h4>
+                        <p class="voice-rose">Daily practice strengthens your quantum field:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Repeat the code during meditation</li>
+                            <li>Visualize it as glowing energy</li>
+                            <li>Write it in your manifestation journal</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 2: Share -->
+                    <div>
+                        <h4 class="text-magenta">2️⃣ Share to Community</h4>
+                        <p class="voice-rose">When others comment your code back, amplification occurs:</p>
+                        <div style="margin-top: 15px;">
+                            <button onclick="copyShareText()" class="btn btn-magenta" style="width: 100%;">
+                                📋 Copy Share Text
+                            </button>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                                <a href="https://www.facebook.com/groups/YOUR_GROUP" target="_blank" class="btn btn-cyan" style="font-size: 0.9rem; padding: 10px;">
+                                    📰 Facebook
+                                </a>
+                                <a href="https://t.me/YOUR_CHANNEL" target="_blank" class="btn btn-cyan" style="font-size: 0.9rem; padding: 10px;">
+                                    📱 Telegram
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Activate Council -->
+                    <div>
+                        <h4 class="text-gold">3️⃣ Activate Your Council</h4>
+                        <p class="voice-rose">Your Quantum Council will use this code in daily guidance:</p>
+                        <a href="quantumcouncil.html" class="btn btn-gold" style="width: 100%; margin-top: 15px;">
+                            👥 Meet My Council
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Text Area -->
+            <div class="card">
+                <h3 class="text-cyan">📝 Ready-to-Share Post</h3>
+                <p class="voice-rose">Copy this text and paste it in our communities:</p>
+                <textarea id="shareText" rows="8" readonly style="margin-top: 15px;"></textarea>
+                <button onclick="copyShareText()" class="btn btn-cyan" style="width: 100%; margin-top: 10px;">
+                    📋 Copy Share Text
+                </button>
+            </div>
+        </div>
+
+        <!-- Guidance Section -->
+        <div class="card">
+            <h3 class="text-cyan">📖 How to Write Powerful Intentions</h3>
+            <div class="journey-section">
+                <h4 class="voice-rose">Follow These Guidelines:</h4>
+                <ul>
+                    <li><strong>Positive Language:</strong> Focus on what you want, not what you don't want</li>
+                    <li><strong>Present Tense:</strong> Write as if it's already happening ("I am..." not "I will be...")</li>
+                    <li><strong>Emotionally Charged:</strong> Include feelings and sensory details</li>
+                    <li><strong>Specific & Clear:</strong> Be precise about what you desire</li>
+                    <li><strong>Gratitude-Focused:</strong> Start with "I am grateful for..." or "I am deeply grateful for..."</li>
+                </ul>
+                
+                <div class="text-center mt-20">
+                    <p class="voice-merlin">"The universe responds to the energy behind your words, not just the words themselves."</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="guide-messaging-system.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        // Generator-specific functionality with guide integration
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('generatorForm');
+            const generatingDiv = document.getElementById('generating');
+            const codeResult = document.getElementById('codeResult');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const intention = document.getElementById('intention').value.trim();
+                if (!intention) return;
+                
+                // Show generating state
+                form.style.display = 'none';
+                generatingDiv.classList.remove('hidden');
+                
+                // Simulate quantum calculation with guide processing
+                await new Promise(resolve => setTimeout(resolve, 3000));
+                
+                // Generate quantum code
+                const code = QuantumApp.quantumGematria(intention);
+                const properties = QuantumApp.getCodeProperties(code);
+                
+                // Save to storage
+                QuantumApp.Storage.set('last_code', code);
+                QuantumApp.Storage.set('last_intention', intention);
+                QuantumApp.Storage.set('last_properties', properties);
+                
+                // Update display
+                document.getElementById('quantumCode').textContent = code;
+                document.getElementById('resonanceLevel').textContent = properties.resonance;
+                document.getElementById('frequencyHz').textContent = properties.frequency;
+                document.getElementById('dimensionLevel').textContent = properties.dimension + 'D';
+                document.getElementById('powerLevel').textContent = properties.powerLevel + '/10';
+                document.getElementById('originalIntention').textContent = intention;
+                
+                // Update guide messages
+                document.getElementById('merlinCodeRef').textContent = code;
+                document.getElementById('merlinPersonas').textContent = '7';
+                document.getElementById('roseFrequency').textContent = properties.frequency + 'Hz';
+                
+                // Generate share text with guide mention
+                const shareText = `🌟 QUANTUM REALITY CODE ACTIVATION 🌟
+
+My guides Quantum Merlin & Rose have encoded my intention into reality!
+
+Code: ${code}
+Intention: "${intention}"
+Frequency: ${properties.frequency}Hz
+Power Level: ${properties.powerLevel}/10
+
+When you see this code, please echo it back to amplify the quantum manifestation!
+Thank you for being part of my manifestation journey! 🙏✨
+
+#QuantumRealityCodes #Manifestation #QuantumGuides #MerlinAndRose`;
+
+                document.getElementById('shareText').value = shareText;
+                
+                // Update stats
+                QuantumApp.Council.incrementStat('codesGenerated');
+                
+                // Show results
+                generatingDiv.classList.add('hidden');
+                codeResult.classList.remove('hidden');
+                
+                QuantumApp.showToast('✨ Your Quantum Reality Code has been generated with guide assistance!');
+            });
+        });
+
+        function copyShareText() {
+            const shareText = document.getElementById('shareText').value;
+            if (shareText) {
+                QuantumApp.copyToClipboard(shareText);
+                QuantumApp.Council.incrementStat('codesShared');
+            }
+        }
+
+        function startGuideMessaging() {
+            const code = QuantumApp.Storage.get('last_code');
+            const intention = QuantumApp.Storage.get('last_intention');
+            
+            if (code && intention && window.quantumMessaging) {
+                window.quantumMessaging.startMessagingCycle(code, intention);
+                QuantumApp.showToast('🚀 Your 96-minute guidance cycles have begun! Quantum Merlin & Rose will now message you regularly.');
+                
+                // Redirect to council page to see messages
+                setTimeout(() => {
+                    window.location.href = 'quantumcouncil.html';
+                }, 2000);
+            } else {
+                QuantumApp.showToast('⚠️ Please generate a code first to start guidance cycles.');
+            }
+        }
+    </script>
+
+    <style>
+        .guide-intro-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .guide-message {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .merlin-message {
+            border-left: 4px solid var(--quantum-cyan);
+        }
+        
+        .rose-message {
+            border-left: 4px solid var(--quantum-magenta);
+        }
+        
+        .message-content {
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        
+        .guide-desc {
+            font-size: 0.9rem;
+            color: var(--quantum-gold);
+            margin-top: 10px;
+        }
+    </style>
+</body>
+</html>

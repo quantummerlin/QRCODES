@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quantum Council - Personal Guidance</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>👥 Your Quantum Council</h1>
+        <p class="subtitle">Personal guidance using your quantum reality codes</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="generator.html">Create Code</a>
+        <a href="quantumcouncil.html" class="active">Quantum Council</a>
+        <a href="journey.html">Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
+    <main>
+        <!-- Current Code Display -->
+        <div id="currentCodeSection" class="card card-gold">
+            <h2 class="text-gold text-center">🎯 Your Active Quantum Reality Code</h2>
+            <div class="text-center">
+                <div id="currentCode" class="code-value" style="font-size: 2.5rem;">000000</div>
+                <div id="currentIntention" style="margin-top: 15px; font-style: italic; color: var(--text-secondary);"></div>
+                <p class="text-cyan mt-20 voice-merlin">"Your council will always reference this code in their guidance, creating a sacred bridge between intention and manifestation."</p>
+            </div>
+        </div>
+
+        <!-- No Code Warning -->
+        <div id="noCodeWarning" class="card card-magenta hidden">
+            <h2 class="text-magenta text-center">🌟 Create Your First Quantum Code</h2>
+            <p class="text-center mb-20">Your Quantum Council awaits your intention. Generate a code to activate your personal guidance system.</p>
+            <div class="text-center">
+                <a href="generator.html" class="btn btn-gold" style="font-size: 1.2rem; padding: 20px 40px;">
+                    ⚛️ Generate My Code Now
+                </a>
+            </div>
+        </div>
+
+        <!-- What Your Council Does -->
+        <div class="card">
+            <h3 class="text-cyan text-center">✨ What Your Quantum Council Does</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🔮</div>
+                    <h4 class="text-magenta">Daily Guidance</h4>
+                    <p class="voice-rose">Personal-feeling messages that use your specific quantum code to amplify manifestation power.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🌐</div>
+                    <h4 class="text-cyan">Community Amplification</h4>
+                    <p class="voice-rose">Every time you support others' codes, your own field strengthens. Support = receive.</p>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">⚡</div>
+                    <h4 class="text-gold">Synchronized Events</h4>
+                    <p class="voice-rose">Join live group intention sessions where your code becomes part of collective reality shaping.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example Messages -->
+        <div class="card">
+            <h3 class="text-cyan text-center">📬 Example Council Messages</h3>
+            <p class="voice-merlin text-center mb-20">"Your council speaks to you personally, always referencing your quantum code."</p>
+            
+            <div id="exampleMessages" style="display: grid; gap: 15px;">
+                <!-- Messages will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Progress Dashboard -->
+        <div class="card">
+            <h3 class="text-cyan text-center">📊 Your Quantum Journey Progress</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="text-center">
+                    <div class="text-cyan">Days Active</div>
+                    <div class="text-magenta" style="font-size: 2rem; font-weight: bold;" id="statDaysActive">1</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-cyan">Codes Generated</div>
+                    <div class="text-magenta" style="font-size: 2rem; font-weight: bold;" id="statCodesGenerated">0</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-cyan">Codes Shared</div>
+                    <div class="text-magenta" style="font-size: 2rem; font-weight: bold;" id="statCodesShared">0</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-cyan">Others Supported</div>
+                    <div class="text-magenta" style="font-size: 2rem; font-weight: bold;" id="statOthersSupported">0</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-20">
+                <button onclick="QuantumApp.Council.incrementStat('othersSupported')" class="btn btn-cyan">
+                    🤝 I Supported Someone's Code Today
+                </button>
+            </div>
+        </div>
+
+        <!-- Persona Grid -->
+        <div class="card">
+            <h3 class="text-cyan text-center">🌟 Your Quantum Council Members</h3>
+            <p class="voice-rose text-center mb-20">Meet your guides. More personas unlock as you progress on your journey.</p>
+            
+            <div id="personaGrid" class="persona-grid">
+                <!-- Persona cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Journey Continuation -->
+        <div class="card card-magenta text-center">
+            <h3 class="text-gold">📚 Deepen Your Understanding</h3>
+            <p class="mb-20">Continue your Quantum Reality Journey with our complete guide to manifestation and collective amplification.</p>
+            <a href="journey.html" class="btn btn-gold" style="font-size: 1.1rem; padding: 15px 30px;">
+                Continue My Journey 📖
+            </a>
+            <p class="voice-merlin mt-20">"Knowledge without practice is theory. Practice without knowledge is guesswork. Combine both for quantum mastery."</p>
+        </div>
+    </main>
+
+    <!-- Persona Modal -->
+    <div id="personaModal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+        <div class="card" style="max-width: 500px; margin: 20px;">
+            <div id="modalContent">
+                <!-- Modal content will be inserted here -->
+            </div>
+            <div class="text-center mt-20">
+                <button onclick="closePersonaModal()" class="btn btn-cyan">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCurrentCode();
+            loadPersonaGrid();
+            loadExampleMessages();
+            updatePersonaUnlocks();
+        });
+
+        function loadCurrentCode() {
+            const lastCode = QuantumApp.Storage.get('last_code');
+            const lastIntention = QuantumApp.Storage.get('last_intention');
+            
+            if (lastCode) {
+                document.getElementById('currentCodeSection').classList.remove('hidden');
+                document.getElementById('noCodeWarning').classList.add('hidden');
+                document.getElementById('currentCode').textContent = lastCode;
+                document.getElementById('currentIntention').textContent = '"' + lastIntention + '"';
+            } else {
+                document.getElementById('currentCodeSection').classList.add('hidden');
+                document.getElementById('noCodeWarning').classList.remove('hidden');
+            }
+        }
+
+        function loadPersonaGrid() {
+            const grid = document.getElementById('personaGrid');
+            grid.innerHTML = '';
+            
+            QuantumApp.Personas.forEach(persona => {
+                const card = document.createElement('div');
+                card.className = `persona-card ${persona.unlocked ? '' : 'locked'}`;
+                card.onclick = () => showPersonaDetails(persona);
+                
+                card.innerHTML = `
+                    <div class="persona-avatar">${persona.unlocked ? persona.avatar : '🔒'}</div>
+                    <div class="persona-name">${persona.name}</div>
+                    <div class="persona-role">${persona.role}</div>
+                    <div class="persona-quote">"${persona.quote}"</div>
+                    ${!persona.unlocked ? `<div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 10px;">Unlock: ${persona.unlockRequirement}</div>` : ''}
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function loadExampleMessages() {
+            const container = document.getElementById('exampleMessages');
+            const lastCode = QuantumApp.Storage.get('last_code') || '123456';
+            const lastIntention = QuantumApp.Storage.get('last_intention') || 'your intention';
+            
+            const unlockedPersonas = QuantumApp.Personas.filter(p => p.unlocked).slice(0, 3);
+            const messages = unlockedPersonas.map(persona => 
+                QuantumApp.generateCouncilMessage(persona, lastCode, lastIntention)
+            );
+            
+            container.innerHTML = messages.map(msg => `
+                <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; border-left: 4px solid var(--quantum-cyan);">
+                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(0,255,255,0.2); display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 1.2rem;">
+                            ${unlockedPersonas.find(p => p.name === msg.persona)?.avatar || '🔮'}
+                        </div>
+                        <div>
+                            <div class="text-cyan" style="font-weight: bold;">${msg.persona}</div>
+                            <div class="voice-merlin" style="font-size: 0.8rem;">${msg.voice}</div>
+                        </div>
+                    </div>
+                    <div style="font-style: italic; line-height: 1.5;">${msg.message}</div>
+                </div>
+            `).join('');
+        }
+
+        function showPersonaDetails(persona) {
+            if (!persona.unlocked) {
+                QuantumApp.showToast(`🔒 ${persona.name} unlocks when: ${persona.unlockRequirement}`);
+                return;
+            }
+            
+            const modal = document.getElementById('personaModal');
+            const content = document.getElementById('modalContent');
+            const lastCode = QuantumApp.Storage.get('last_code') || '123456';
+            const lastIntention = QuantumApp.Storage.get('last_intention') || 'your intention';
+            const message = QuantumApp.generateCouncilMessage(persona, lastCode, lastIntention);
+            
+            content.innerHTML = `
+                <div class="text-center">
+                    <div class="persona-avatar" style="width: 100px; height: 100px; font-size: 3rem; margin: 0 auto 20px;">
+                        ${persona.avatar}
+                    </div>
+                    <h3 class="text-cyan">${persona.name}</h3>
+                    <div class="text-magenta">${persona.role}</div>
+                    <div class="mt-20" style="font-style: italic; color: var(--text-secondary);">"${persona.quote}"</div>
+                </div>
+                <div class="mt-20">
+                    <h4 class="text-cyan">Today's Message for You:</h4>
+                    <div class="mt-10 p-3" style="background: rgba(0,255,255,0.1); border-radius: 10px; font-style: italic; line-height: 1.5;">
+                        ${message.message}
+                    </div>
+                    <div class="voice-merlin text-right mt-10">— ${message.voice}</div>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closePersonaModal() {
+            document.getElementById('personaModal').classList.add('hidden');
+        }
+
+        function updatePersonaUnlocks() {
+            // This is already handled in app.js, but we ensure it runs
+            QuantumApp.updateProgress();
+            loadPersonaGrid();
+            loadExampleMessages();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('personaModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePersonaModal();
+            }
+        });
+    </script>
+</body>
+</html>

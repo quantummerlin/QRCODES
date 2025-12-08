@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <h2>Example Intention & Amplification Tips</h2>
+    <h3>Perfect Intention Example</h3>
+    <blockquote style="font-size:1.1rem; color:#a0c2e0; border-left:4px solid #4a7bda; padding-left:1rem;">
+        {{ example_intention }}
+    </blockquote>
+    <h3>Amplify Your Quantum Reality Code</h3>
+    <ul class="amplify-list">
+        {% for tip in amplification_tips %}
+        <li>{{ tip }}</li>
+        {% endfor %}
+    </ul>
+    <p>Amplify your code by integrating it into your daily life and supporting others in the community. The more you help others, the more your own path clears.</p>
+</div>
+{% endblock %}

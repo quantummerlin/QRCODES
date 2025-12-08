@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quantum Council - Personal Guidance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Quantum Background */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }
+
+        .quantum-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        .quantum-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid cyan;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantum-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: cyan;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: magenta;
+            text-shadow: 0 0 10px magenta;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Code Banner */
+        .code-banner {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 0, 255, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .your-code {
+            color: cyan;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .code-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: magenta;
+            text-shadow: 0 0 20px magenta;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 0, 255, 0.8); }
+        }
+
+        .intention-display {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border-left: 4px solid cyan;
+            font-style: italic;
+            color: #aaa;
+        }
+
+        /* Council Section */
+        .council-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .council-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .council-member {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .council-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .council-member:hover::before {
+            opacity: 1;
+        }
+
+        .council-member:hover {
+            transform: translateY(-5px);
+            border-color: magenta;
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+        }
+
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, cyan, magenta);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: magenta;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            color: cyan;
+            font-size: 0.9rem;
+        }
+
+        .member-quote {
+            color: #aaa;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .member-message {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid cyan;
+            padding: 15px;
+            border-radius: 5px;
+            color: #fff;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        .code-reference {
+            color: magenta;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Messaging System */
+        .messaging-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .message-controls {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .message-btn {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 10px;
+        }
+
+        .btn-activate {
+            color: #fff;
+            border-color: cyan;
+        }
+
+        .btn-activate:hover {
+            color: #000;
+            background: cyan;
+            box-shadow: 0 0 20px cyan;
+        }
+
+        .btn-message {
+            color: #fff;
+            border-color: magenta;
+        }
+
+        .btn-message:hover {
+            color: #000;
+            background: magenta;
+            box-shadow: 0 0 20px magenta;
+        }
+
+        .message-display {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .message-content {
+            color: #fff;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .message-author {
+            color: magenta;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: right;
+            font-style: italic;
+        }
+
+        .message-timestamp {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        /* Activation Status */
+        .activation-status {
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid cyan;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .status-active {
+            border-color: magenta;
+            background: rgba(255, 0, 255, 0.1);
+        }
+
+        .status-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: cyan;
+        }
+
+        .status-active .status-text {
+            color: magenta;
+        }
+
+        /* Mersenne Matrix */
+        .matrix-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .matrix-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .matrix-cell {
+            aspect-ratio: 1;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: cyan;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .matrix-cell:hover {
+            background: rgba(0, 255, 255, 0.1);
+            transform: scale(1.1);
+        }
+
+        .matrix-cell.active {
+            background: rgba(255, 0, 255, 0.3);
+            border-color: magenta;
+            color: magenta;
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 255, 0.9);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1001;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 100px 15px 30px;
+            }
+            
+            .council-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .message-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .message-btn {
+                width: 200px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .quantum-spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid transparent;
+            border-top: 3px solid cyan;
+            border-right: 3px solid magenta;
+            border-radius: 50%;
+            animation: quantum-spin 1s linear infinite;
+        }
+
+        @keyframes quantum-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-content">
+            <div class="quantum-logo">⚛️ Quantum Reality Codes</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/generator">Generator</a></li>
+                <li><a href="/quantumcouncil">Quantum Council</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/community">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Code Banner -->
+        <div class="code-banner">
+            <div class="your-code">Your Active Quantum Code:</div>
+            <div class="code-value" id="userCode">{{ code }}</div>
+            <div class="intention-display">
+                "{{ intention }}"
+            </div>
+        </div>
+
+        <!-- Activation Status -->
+        <div class="activation-status" id="activationStatus">
+            <div class="status-text">🔮 Quantum Council Ready for Activation</div>
+        </div>
+
+        <!-- Council Members -->
+        <section class="council-section">
+            <h2 class="section-title">Your Personal Quantum Council</h2>
+            <div class="council-grid" id="councilGrid">
+                {% for member in council_members %}
+                <div class="council-member" data-member="{{ member.name }}">
+                    <div class="member-header">
+                        <div class="member-avatar">👤</div>
+                        <div class="member-info">
+                            <div class="member-name">{{ member.name }}</div>
+                            <div class="member-role">{{ member.role }}</div>
+                        </div>
+                    </div>
+                    <div class="member-quote">"{{ member.quote }}"</div>
+                    <div class="member-message">
+                        <span class="code-reference">Code {{ code }}</span> is aligning with quantum frequencies for your manifestation. I am here to guide your journey and amplify your intention power.
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <!-- Messaging System -->
+        <section class="messaging-section">
+            <h2 class="section-title">Council Communication</h2>
+            <div class="message-controls">
+                <button class="message-btn btn-activate" onclick="activateCouncil()">
+                    ⚡ Activate Council
+                </button>
+                <button class="message-btn btn-message" onclick="requestMessage()">
+                    💬 Request Message
+                </button>
+            </div>
+            
+            <div class="loading" id="messageLoading">
+                <div class="quantum-spinner"></div>
+                <p style="margin-top: 10px; color: cyan;">Connecting to Quantum Council...</p>
+            </div>
+            
+            <div class="message-display" id="messageDisplay">
+                <div class="message-content" id="messageContent">
+                    Click "Activate Council" to begin receiving personalized guidance from your quantum council members. They will provide insights specifically tailored to your quantum code {{ code }} and intention.
+                </div>
+                <div class="message-author" id="messageAuthor" style="display: none;"></div>
+                <div class="message-timestamp" id="messageTimestamp" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Mersenne Matrix -->
+        <section class="matrix-section">
+            <h2 class="section-title">Mersenne Reality Matrix</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 20px;">
+                Visualize your quantum alignment using sacred Mersenne prime mathematics
+            </p>
+            <div class="matrix-display" id="matrixDisplay">
+                <!-- Matrix cells will be generated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Council messages database
+        const councilMessages = {
+            {% for member in council_members %}
+            '{{ member.name }}': [
+                "Your quantum code {{ code }} is resonating at optimal frequency. The universe acknowledges your intention.",
+                "I sense powerful manifestation energy surrounding code {{ code }}. Your reality is beginning to shift.",
+                "The quantum field responds strongly to your intention with code {{ code }}. Expect synchronicities.",
+                "Your vibration is elevating with code {{ code }}. manifestation is imminent.",
+                "Code {{ code }} connects you to unlimited abundance. Stay focused on your desired outcome."
+            ],
+            {% endfor %}
+        };
+
+        let councilActivated = false;
+        let currentMemberIndex = 0;
+        const members = [{% for member in council_members %}'{{ member.name }}'{% if not loop.last %},{% endif %}{% endfor %}];
+
+        // Generate Mersenne Matrix
+        function generateMatrix() {
+            const matrixDisplay = document.getElementById('matrixDisplay');
+            const mersennePrimes = [3, 7, 31, 127, 8191, 131071, 524287];
+            const cells = 49; // 7x7 grid
+            
+            for (let i = 0; i < cells; i++) {
+                const cell = document.createElement('div');
+                cell.className = 'matrix-cell';
+                
+                // Use user code to determine active cells
+                const codeNum = parseInt('{{ code }}');
+                const isActive = (i + codeNum) % 7 === 0 || (i * codeNum) % 13 === 0;
+                
+                if (isActive) {
+                    cell.classList.add('active');
+                    cell.textContent = mersennePrimes[i % mersennePrimes.length] % 100;
+                } else {
+                    cell.textContent = (i + 1) % 10;
+                }
+                
+                cell.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    checkMatrixAlignment();
+                });
+                
+                matrixDisplay.appendChild(cell);
+            }
+        }
+
+        // Activate Council
+        function activateCouncil() {
+            if (councilActivated) {
+                showToast('Council already activated!');
+                return;
+            }
+
+            const loading = document.getElementById('messageLoading');
+            const status = document.getElementById('activationStatus');
+            
+            loading.style.display = 'block';
+            
+            setTimeout(() => {
+                loading.style.display = 'none';
+                councilActivated = true;
+                
+                status.classList.add('status-active');
+                status.innerHTML = '<div class="status-text">✅ Quantum Council Activated</div>';
+                
+                showToast('Quantum Council is now active and ready to communicate!');
+                requestMessage();
+            }, 2000);
+        }
+
+        // Request Message
+        function requestMessage() {
+            if (!councilActivated) {
+                showToast('Please activate the council first!');
+                return;
+            }
+
+            const loading = document.getElementById('messageLoading');
+            const messageContent = document.getElementById('messageContent');
+            const messageAuthor = document.getElementById('messageAuthor');
+            const messageTimestamp = document.getElementById('messageTimestamp');
+            
+            loading.style.display = 'block';
+            
+            setTimeout(() => {
+                loading.style.display = 'none';
+                
+                const memberName = members[currentMemberIndex];
+                const messages = councilMessages[memberName];
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                
+                messageContent.textContent = randomMessage;
+                messageAuthor.textContent = `— ${memberName}`;
+                messageTimestamp.textContent = new Date().toLocaleString();
+                
+                messageAuthor.style.display = 'block';
+                messageTimestamp.style.display = 'block';
+                
+                // Move to next member
+                currentMemberIndex = (currentMemberIndex + 1) % members.length;
+                
+                // Highlight current member
+                document.querySelectorAll('.council-member').forEach(member => {
+                    member.style.borderColor = 'rgba(0, 255, 255, 0.3)';
+                });
+                
+                const currentMemberElement = document.querySelector(`[data-member="${memberName}"]`);
+                if (currentMemberElement) {
+                    currentMemberElement.style.borderColor = 'magenta';
+                }
+            }, 1500);
+        }
+
+        // Check Matrix Alignment
+        function checkMatrixAlignment() {
+            const activeCells = document.querySelectorAll('.matrix-cell.active').length;
+            const totalCells = document.querySelectorAll('.matrix-cell').length;
+            const alignment = Math.round((activeCells / totalCells) * 100);
+            
+            if (alignment >= 50) {
+                showToast(`Matrix Alignment: ${alignment}% - Optimal manifestation frequency achieved!`);
+            }
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Add hover effects to council members
+        document.querySelectorAll('.council-member').forEach(member => {
+            member.addEventListener('click', function() {
+                const memberName = this.dataset.member;
+                showToast(`${memberName} acknowledges your presence with code {{ code }}`);
+            });
+        });
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            generateMatrix();
+            
+            // Flash messages
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        showToast('{{ message }}');
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        });
+
+        // Auto-generate messages every 30 seconds when activated
+        setInterval(() => {
+            if (councilActivated) {
+                requestMessage();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

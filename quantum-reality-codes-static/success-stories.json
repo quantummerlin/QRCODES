@@ -1,0 +1,103 @@
+{
+  "featured": [
+    {
+      "id": "story1",
+      "author": "Sarah M.",
+      "category": "career",
+      "title": "Dream Job Manifested in 11 Days",
+      "code": "7-3-9-11-13",
+      "timeline": "11 days",
+      "story": "I was stuck in a job I hated, feeling hopeless. After creating my quantum code, I did the journey steps religiously. On day 11, I got an email from a company I'd applied to months ago - they wanted to interview me. The interview went perfectly and they offered me the position with a 40% salary increase! The best part? I manifested exactly the role Merlin said was coming.",
+      "advice": "Trust the process even when it seems nothing is happening. Quantum codes work behind the scenes.",
+      "date": "2024-11-15",
+      "echoes": 47,
+      "verified": true
+    },
+    {
+      "id": "story2", 
+      "author": "Marcus T.",
+      "category": "love",
+      "title": "My Soulmate Found Me After 3 Years Alone",
+      "code": "11-13-17-19-23",
+      "timeline": "6 weeks",
+      "story": "After 3 years of being single and feeling like I'd never find love, I created a quantum code for my soulmate. I followed Rose's frequency guidance daily. Exactly 6 weeks later, I literally bumped into someone at the coffee shop I'd been going to for years. We've been inseparable since, and he has all the qualities I put in my intention!",
+      "advice": "Work on your own frequency first. Become the person you want to attract.",
+      "date": "2024-11-10", 
+      "echoes": 89,
+      "verified": true
+    },
+    {
+      "id": "story3",
+      "author": "Jennifer K.",
+      "category": "abundance", 
+      "title": "$15,000 Unexpected Manifestation",
+      "code": "3-7-11-13-17",
+      "timeline": "8 days",
+      "story": "I was drowning in debt and terrified. Created my abundance quantum code and did the community amplification. Eight days later, I got a call from an old client asking me to do a project I wasn't even thinking about anymore. They paid me $15,000 upfront! It cleared all my debt and left me with extra. Quantum manifestation is REAL.",
+      "advice": "Don't limit how the universe can bring you abundance. Be open to unexpected sources.",
+      "date": "2024-11-05",
+      "echoes": 156,
+      "verified": true
+    },
+    {
+      "id": "story4",
+      "author": "David R.",
+      "category": "health",
+      "title": "Chronic Pain Disappeared After 23 Years",
+      "code": "5-9-13-17-19", 
+      "timeline": "4 weeks",
+      "story": "I'd had chronic back pain for 23 years after an injury. Doctors said it was permanent. Created a health quantum code and used the frequency recommendations Rose suggested. After 4 weeks of consistent practice, I woke up one morning and the pain was gone. Completely gone. My doctors were shocked. It's been 3 months and still no pain.",
+      "advice": "Combine quantum codes with actual medical care. They work together beautifully.",
+      "date": "2024-10-28",
+      "echoes": 234,
+      "verified": true
+    },
+    {
+      "id": "story5",
+      "author": "Lisa H.",
+      "category": "spiritual",
+      "title": "Psychic Abilities Opened Up",
+      "code": "7-11-13-17-23",
+      "timeline": "12 days",
+      "story": "I wanted to deepen my spiritual connection. Created my spiritual quantum code and followed Merlin's wisdom guidance. Within 12 days, I started having clear visions during meditation and could accurately sense people's energy. My spiritual gifts have expanded beyond what I thought possible. This system opened up my authentic abilities.",
+      "advice": "Be patient with spiritual growth. It comes in divine timing, not human timing.",
+      "date": "2024-10-20",
+      "echoes": 67,
+      "verified": true
+    }
+  ],
+  "categories": {
+    "abundance": {
+      "count": 156,
+      "avgTimeline": "2.3 weeks",
+      "successRate": "87%"
+    },
+    "love": {
+      "count": 89,
+      "avgTimeline": "6.1 weeks", 
+      "successRate": "92%"
+    },
+    "health": {
+      "count": 234,
+      "avgTimeline": "4.8 weeks",
+      "successRate": "78%"
+    },
+    "career": {
+      "count": 47,
+      "avgTimeline": "3.2 weeks",
+      "successRate": "94%"
+    },
+    "spiritual": {
+      "count": 67,
+      "avgTimeline": "1.8 weeks",
+      "successRate": "96%"
+    }
+  },
+  "stats": {
+    "totalStories": 593,
+    "totalEchoes": 12547,
+    "avgTimeline": "3.6 weeks",
+    "overallSuccessRate": "89%",
+    "countries": 47
+  }
+}

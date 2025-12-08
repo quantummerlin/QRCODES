@@ -1,0 +1,137 @@
+ * Serving Flask app 'app-quantum-reality'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 417-866-812
+127.0.0.1 - - [28/Nov/2025 07:01:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:02:07] "GET /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:02:15] "[32mGET /quantumcouncil HTTP/1.1[0m" 302 -
+ * Detected change in '/workspace/integrate_avatars.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 417-866-812
+ * Detected change in '/workspace/integrate_avatars.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 417-866-812
+ * Detected change in '/workspace/app-quantum-reality.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 417-866-812
+127.0.0.1 - - [28/Nov/2025 07:19:47] "POST /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:55] "GET /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:55] "POST /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:56] "POST /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:56] "[35m[1mGET /quantumcouncil HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/app-quantum-reality.py", line 148, in quantum_council
+    return render_template('quantum-council-enhanced.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspace/templates/quantum-council-enhanced.html", line 9, in template
+    margin: 0;
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got ':'
+127.0.0.1 - - [28/Nov/2025 07:21:57] "GET /how-it-works HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:57] "GET /community HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:57] "GET /frequencies HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:21:58] "POST /api/share-code HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:22:15] "POST /generator HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:22:23] "[35m[1mGET /quantumcouncil HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/app-quantum-reality.py", line 148, in quantum_council
+    return render_template('quantum-council-enhanced.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/loaders.py", line 138, in load
+    code = environment.compile(source, name, filename)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 771, in compile
+    self.handle_exception(source=source_hint)
+  File "/usr/local/lib/python3.11/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/workspace/templates/quantum-council-enhanced.html", line 9, in template
+    margin: 0;
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got ':'
+ * Detected change in '/workspace/app-quantum-reality.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 417-866-812
+127.0.0.1 - - [28/Nov/2025 07:23:14] "GET /quantumcouncil HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:34:20] "GET /?_gl=1*hyjbsy*_gcl_aw*R0NMLjE3NjI3NzE4NjMuQ2p3S0NBaUF0OGJJQmhCcEVpd0F6SDF3NlhiMWR0MEhMcmppYTBkMlh2NmgycVVQTTBOSXlkWktOaUkwbGRoejBPd2h2U1FzNExTU2FCb0N6WFVRQXZEX0J3RQ..*_gcl_au*MTAyNjM2NjAwNC4xNzYzNDA5ODI4*_ga*OTIzMjY2ODM5LjE3NDc4MTU2OTc.*_ga_8NW18Q4WF2*czE3NjQzMDYyNTAkbzIyMSRnMSR0MTc2NDMxMjE0MCRqNjAkbDAkaDE0MDI5OTExMzY.&password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:34:33] "GET /how-it-works?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:35:30] "[32mGET /quantumcouncil?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1[0m" 302 -
+127.0.0.1 - - [28/Nov/2025 07:35:30] "GET /generator?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:37:27] "POST /generator?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:38:06] "GET /quantumcouncil?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:39:28] "GET /generator?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:39:32] "GET /?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [28/Nov/2025 07:40:08] "GET /how-it-works?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -

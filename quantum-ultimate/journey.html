@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0e27">
+  <title>Quantum Journey - 12 Steps to Manifestation Mastery</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --neon-cyan: #00f5ff;
+      --neon-magenta: #ff00ff;
+      --neon-gold: #ffd700;
+      --bg-dark: #0a0a0f;
+      --bg-surface: rgba(20, 20, 35, 0.95);
+      --bg-card: rgba(30, 30, 50, 0.85);
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255, 255, 255, 0.7);
+      --gradient-primary: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-magenta) 100%);
+      --gradient-gold: linear-gradient(135deg, var(--neon-gold) 0%, #ff8c00 100%);
+      --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5);
+      --glow-gold: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    
+    body {
+      font-family: 'Exo 2', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+    
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      bottom: 0;
+      left: -50%;
+      width: 200%;
+      height: 60%;
+      background: linear-gradient(90deg, rgba(0, 245, 255, 0.05) 1px, transparent 1px),
+                  linear-gradient(rgba(0, 245, 255, 0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      transform: perspective(500px) rotateX(65deg);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .header {
+      text-align: center;
+      padding: 30px 0;
+    }
+    
+    .header h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 24px;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+    
+    .header p {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    .progress-overview {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 20px;
+      padding: 25px;
+      margin-bottom: 30px;
+    }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .progress-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      color: var(--neon-cyan);
+    }
+    
+    .progress-percent {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 28px;
+      color: var(--neon-gold);
+      text-shadow: var(--glow-gold);
+    }
+    
+    .progress-bar {
+      height: 16px;
+      background: rgba(0, 245, 255, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 15px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 8px;
+      transition: width 0.8s ease;
+      position: relative;
+    }
+    
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .phase-indicators {
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .phase-indicator {
+      text-align: center;
+      flex: 1;
+    }
+    
+    .phase-name {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .phase-indicator.active .phase-name {
+      color: var(--neon-cyan);
+    }
+    
+    .phase-indicator.complete .phase-name {
+      color: var(--neon-gold);
+    }
+    
+    .journey-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    .phase-section {
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 24px;
+      padding: 30px;
+      position: relative;
+    }
+    
+    .phase-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+      border-radius: 24px 24px 0 0;
+    }
+    
+    .phase-section.foundation::before { background: linear-gradient(90deg, #00f5ff, #00a8ff); }
+    .phase-section.activation::before { background: linear-gradient(90deg, #ff00ff, #9d00ff); }
+    .phase-section.amplification::before { background: linear-gradient(90deg, #00ff88, #00f5ff); }
+    .phase-section.integration::before { background: linear-gradient(90deg, #ffd700, #ff8c00); }
+    
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .phase-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: var(--glow-cyan);
+    }
+    
+    .phase-section.foundation .phase-icon { background: linear-gradient(135deg, #00f5ff, #00a8ff); }
+    .phase-section.activation .phase-icon { background: linear-gradient(135deg, #ff00ff, #9d00ff); }
+    .phase-section.amplification .phase-icon { background: linear-gradient(135deg, #00ff88, #00f5ff); }
+    .phase-section.integration .phase-icon { background: linear-gradient(135deg, #ffd700, #ff8c00); }
+    
+    .phase-info h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    
+    .phase-info p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+    
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .step-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px;
+      background: var(--bg-dark);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .step-card:hover:not(.locked) {
+      border-color: var(--neon-cyan);
+      transform: translateX(8px);
+    }
+    
+    .step-card.current {
+      border-color: var(--neon-cyan);
+      background: rgba(0, 245, 255, 0.05);
+      box-shadow: var(--glow-cyan);
+    }
+    
+    .step-card.completed {
+      border-color: var(--neon-gold);
+      background: rgba(255, 215, 0, 0.05);
+    }
+    
+    .step-card.locked {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    
+    .step-number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--bg-surface);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    
+    .step-card.completed .step-number {
+      background: var(--neon-gold);
+      border-color: var(--neon-gold);
+      color: var(--bg-dark);
+    }
+    
+    .step-card.current .step-number {
+      background: var(--gradient-primary);
+      border-color: var(--neon-cyan);
+      color: var(--bg-dark);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(0, 245, 255, 0); }
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .step-card.completed .step-title {
+      color: var(--neon-gold);
+    }
+    
+    .step-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+    
+    .step-icon {
+      font-size: 24px;
+    }
+    
+    .step-action {
+      padding: 8px 16px;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 20px;
+      color: var(--neon-cyan);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    
+    .step-card.completed .step-action {
+      background: var(--neon-gold);
+      border-color: var(--neon-gold);
+      color: var(--bg-dark);
+    }
+    
+    /* Step Detail Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 20px;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-content {
+      background: var(--bg-surface);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      border-radius: 24px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .modal-step-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .modal-step-number {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 20px;
+      color: var(--bg-dark);
+    }
+    
+    .modal-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 16px;
+      color: var(--neon-cyan);
+      margin-bottom: 4px;
+    }
+    
+    .modal-phase {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 18px;
+      color: var(--text-secondary);
+    }
+    
+    .modal-body {
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    
+    .modal-body h3 {
+      color: var(--text-primary);
+      font-size: 14px;
+      margin: 20px 0 10px;
+    }
+    
+    .modal-body ul {
+      padding-left: 20px;
+    }
+    
+    .modal-body li {
+      margin-bottom: 8px;
+    }
+    
+    .modal-action-btn {
+      width: 100%;
+      padding: 16px;
+      margin-top: 25px;
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 30px;
+      color: var(--bg-dark);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--glow-cyan);
+    }
+    
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      border-radius: 25px;
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 40px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .back-btn:hover {
+      background: rgba(0, 245, 255, 0.1);
+    }
+    
+    @media (max-width: 600px) {
+      .phase-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .step-card {
+        flex-wrap: wrap;
+      }
+      .step-action {
+        width: 100%;
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🗺️ Your Quantum Journey</h1>
+      <p>12 steps from intention to manifestation mastery</p>
+    </header>
+    
+    <div class="progress-overview">
+      <div class="progress-header">
+        <span class="progress-title">Journey Progress</span>
+        <span class="progress-percent" id="totalProgress">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+      <div class="phase-indicators">
+        <div class="phase-indicator" id="phase1">
+          <div class="phase-name">Foundation</div>
+        </div>
+        <div class="phase-indicator" id="phase2">
+          <div class="phase-name">Activation</div>
+        </div>
+        <div class="phase-indicator" id="phase3">
+          <div class="phase-name">Amplification</div>
+        </div>
+        <div class="phase-indicator" id="phase4">
+          <div class="phase-name">Integration</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="journey-phases" id="journeyPhases">
+      <!-- Populated by JavaScript -->
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="index.html" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+  </div>
+  
+  <!-- Step Detail Modal -->
+  <div class="modal-overlay" id="stepModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-step-info">
+          <div class="modal-step-number" id="modalStepNum">1</div>
+          <div>
+            <div class="modal-title" id="modalTitle">Step Title</div>
+            <div class="modal-phase" id="modalPhase">Phase 1: Foundation</div>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Step content -->
+      </div>
+      <button class="modal-action-btn" id="modalActionBtn" onclick="completeStep()">
+        ✓ Mark Complete
+      </button>
+    </div>
+  </div>
+  
+  <script>
+    const JOURNEY_STEPS = [
+      { 
+        step: 1, 
+        title: 'Welcome to the Quantum Field', 
+        description: 'Understand the power of quantum manifestation',
+        phase: 'Foundation',
+        phaseClass: 'foundation',
+        icon: '🌟',
+        content: `
+          <p>Welcome, Quantum Traveler. You are about to embark on a transformative journey that will forever change how you interact with reality.</p>
+          <h3>What You'll Learn:</h3>
+          <ul>
+            <li>Reality is vibrational - you're tuning a signal, not hoping for an outcome</li>
+            <li>All timelines already exist - manifestation is frequency matching</li>
+            <li>The quantum field responds instantly when resistance is removed</li>
+          </ul>
+          <h3>Your First Task:</h3>
+          <p>Simply accept that you are already a powerful creator. Everything that has manifested in your life, you have created - consciously or unconsciously. Now you will learn to create consciously.</p>
+        `
+      },
+      { 
+        step: 2, 
+        title: 'Meet Your Guides', 
+        description: 'Connect with Quantum Merlin & Rose',
+        phase: 'Foundation',
+        phaseClass: 'foundation',
+        icon: '🧙‍♂️',
+        content: `
+          <p>Two primary guides will walk with you on this journey:</p>
+          <h3>🧙‍♂️ Quantum Merlin</h3>
+          <p>The keeper of sacred mathematics and quantum wisdom. Merlin understands the underlying code of reality and will help you craft intentions that resonate with universal law.</p>
+          <h3>🌹 Quantum Rose</h3>
+          <p>The weaver of frequencies and emotional resonance. Rose translates cosmic vibrations into feelings you can embody, helping you align your energy with your desires.</p>
+          <h3>How They Work:</h3>
+          <p>Merlin and Rose speak THROUGH the Council of 77 personas. Each message you receive carries their synthesized wisdom, delivered through the voice of whichever archetype best serves your current need.</p>
+        `
+      },
+      { 
+        step: 3, 
+        title: 'Set Your Intention Foundation', 
+        description: 'Clarify what you truly desire',
+        phase: 'Foundation',
+        phaseClass: 'foundation',
+        icon: '🎯',
+        content: `
+          <p>Before generating your Quantum Code, you must be crystal clear about your intention.</p>
+          <h3>Intention Guidelines:</h3>
+          <ul>
+            <li><strong>Be Specific:</strong> "Financial abundance" becomes "I earn $10,000/month doing work I love"</li>
+            <li><strong>Use Present Tense:</strong> "I am" not "I will be"</li>
+            <li><strong>Feel It Real:</strong> Your intention should evoke emotion when you read it</li>
+            <li><strong>One Focus:</strong> Choose your primary manifestation - you can add more later</li>
+          </ul>
+          <h3>Categories to Consider:</h3>
+          <ul>
+            <li>💰 Abundance & Wealth</li>
+            <li>💕 Love & Relationships</li>
+            <li>💚 Health & Vitality</li>
+            <li>🚀 Career & Purpose</li>
+            <li>🔮 Spiritual Growth</li>
+          </ul>
+        `
+      },
+      { 
+        step: 4, 
+        title: 'Generate Your Quantum Code', 
+        description: 'Create your sacred numerical key',
+        phase: 'Activation',
+        phaseClass: 'activation',
+        icon: '⚡',
+        content: `
+          <p>Your Quantum Code is a unique numerical signature calculated from your intention using sacred gematria mathematics.</p>
+          <h3>What Your Code Contains:</h3>
+          <ul>
+            <li><strong>Frequency:</strong> The Hz your intention broadcasts at (432-531Hz range)</li>
+            <li><strong>Resonance:</strong> Your connection to the 13 master numbers</li>
+            <li><strong>Power Level:</strong> The manifestation strength (1-10)</li>
+            <li><strong>Dimension:</strong> Which reality layers are activated (1-11)</li>
+          </ul>
+          <h3>The Algorithm:</h3>
+          <p>Each letter is converted to its numerical value, multiplied by sacred ratios (7, 11, 13, 77), and synthesized into your unique code. This code becomes your key to the quantum field.</p>
+        `
+      },
+      { 
+        step: 5, 
+        title: 'Anchor in Reality', 
+        description: 'Ground your intention in the physical',
+        phase: 'Activation',
+        phaseClass: 'activation',
+        icon: '⚓',
+        content: `
+          <p>Your code exists in the quantum field. Now we anchor it into physical reality.</p>
+          <h3>Anchoring Practices:</h3>
+          <ul>
+            <li><strong>Write It:</strong> Physically write your code and intention daily</li>
+            <li><strong>Speak It:</strong> Say your code number aloud 3 times each morning</li>
+            <li><strong>Feel It:</strong> Spend 5 minutes feeling the reality of your manifestation</li>
+            <li><strong>See It:</strong> Visualize your code number in golden light</li>
+          </ul>
+          <h3>The 3-3-3 Method:</h3>
+          <p>3 times a day, for 3 minutes, focus on your code and feel your intention as already real. Morning, afternoon, and evening. This creates a quantum anchor point.</p>
+        `
+      },
+      { 
+        step: 6, 
+        title: 'Activate Your Council', 
+        description: 'Select your 7 guiding personas',
+        phase: 'Activation',
+        phaseClass: 'activation',
+        icon: '👥',
+        content: `
+          <p>From the 77 available personas, you will select 5-11 to form your personal Quantum Council.</p>
+          <h3>The Three Categories:</h3>
+          <ul>
+            <li><strong>Light Personas (33):</strong> Build energy and momentum toward your goal</li>
+            <li><strong>Shadow Personas (33):</strong> Clear blocks and transmute resistance</li>
+            <li><strong>Meta-Mystic (11):</strong> Provide spiritual alignment and quantum mechanics</li>
+          </ul>
+          <h3>Selection Guidance:</h3>
+          <p>Choose personas that resonate with your intention and your current challenges. The system will suggest optimal selections based on your Quantum Code properties.</p>
+        `
+      },
+      { 
+        step: 7, 
+        title: 'Join the Community', 
+        description: 'Amplify through collective energy',
+        phase: 'Amplification',
+        phaseClass: 'amplification',
+        icon: '🌊',
+        content: `
+          <p>Manifestation is amplified exponentially through collective intention.</p>
+          <h3>Community Features:</h3>
+          <ul>
+            <li><strong>Echo System:</strong> Amplify others' manifestations and receive amplification in return</li>
+            <li><strong>Share Your Code:</strong> Broadcasting your code increases its power by 10x</li>
+            <li><strong>Success Stories:</strong> Read and contribute to the manifestation evidence</li>
+            <li><strong>Support Circle:</strong> Request focused energy from the community</li>
+          </ul>
+          <h3>The Viral Coefficient:</h3>
+          <p>Every person who amplifies your code adds their quantum signature to yours. The more amplification, the stronger your manifestation signal.</p>
+        `
+      },
+      { 
+        step: 8, 
+        title: 'Establish Daily Practice', 
+        description: 'Create your quantum rituals',
+        phase: 'Amplification',
+        phaseClass: 'amplification',
+        icon: '📿',
+        content: `
+          <p>Consistency is key to manifestation. Establish daily practices that reinforce your quantum intention.</p>
+          <h3>Recommended Daily Routine:</h3>
+          <ul>
+            <li><strong>Morning (5 min):</strong> Read intention, state code, feel gratitude</li>
+            <li><strong>Check Messages:</strong> Read and respond to Council guidance</li>
+            <li><strong>Midday (3 min):</strong> Quick code visualization, present-moment awareness</li>
+            <li><strong>Evening (5 min):</strong> Log synchronicities, express gratitude, release</li>
+            <li><strong>Before Sleep:</strong> Final code affirmation, surrender to the quantum field</li>
+          </ul>
+        `
+      },
+      { 
+        step: 9, 
+        title: 'Track Synchronicities', 
+        description: 'Notice the signs and signals',
+        phase: 'Amplification',
+        phaseClass: 'amplification',
+        icon: '🔮',
+        content: `
+          <p>Synchronicities are the universe's way of confirming you're on the right path.</p>
+          <h3>What to Look For:</h3>
+          <ul>
+            <li><strong>Number Patterns:</strong> Seeing your code, 11:11, 222, 777, etc.</li>
+            <li><strong>Unexpected Connections:</strong> Meeting the right person at the right time</li>
+            <li><strong>Theme Repetition:</strong> Same message appearing from multiple sources</li>
+            <li><strong>Dreams:</strong> Symbolic or direct messages about your manifestation</li>
+            <li><strong>Physical Sensations:</strong> Chills, tingles, heart expansion</li>
+          </ul>
+          <h3>Log Everything:</h3>
+          <p>Each synchronicity you record strengthens your quantum connection and provides evidence that reality is responding.</p>
+        `
+      },
+      { 
+        step: 10, 
+        title: 'Live Your New Reality', 
+        description: 'Embody the version who has it',
+        phase: 'Integration',
+        phaseClass: 'integration',
+        icon: '🦋',
+        content: `
+          <p>The most powerful manifestation technique is simple: BECOME the version of you who already has what you desire.</p>
+          <h3>Embodiment Practices:</h3>
+          <ul>
+            <li><strong>Act As If:</strong> Make decisions as your future self would</li>
+            <li><strong>Dress the Part:</strong> Align your appearance with your intention</li>
+            <li><strong>Speak Differently:</strong> Use language that confirms your new reality</li>
+            <li><strong>Feel It Now:</strong> Generate the emotions of having your desire</li>
+          </ul>
+          <h3>Neville Goddard's Teaching:</h3>
+          <p>"Assume the feeling of the wish fulfilled." This is not pretending - it is recognizing that in the quantum field, your desired reality already exists. You are simply aligning with it.</p>
+        `
+      },
+      { 
+        step: 11, 
+        title: 'Emotional Safety & Recalibration', 
+        description: 'Handle doubt and resistance',
+        phase: 'Integration',
+        phaseClass: 'integration',
+        icon: '🛡️',
+        content: `
+          <p>Doubt, fear, and resistance are NORMAL. They are not signs of failure - they are opportunities for deeper clearing.</p>
+          <h3>When Doubt Arises:</h3>
+          <ul>
+            <li><strong>Acknowledge:</strong> "I notice I'm feeling doubt. This is my old programming."</li>
+            <li><strong>Breathe:</strong> 3 deep breaths, return to your body</li>
+            <li><strong>Remember:</strong> Review your synchronicities and evidence</li>
+            <li><strong>Reach Out:</strong> Message the Council, request support</li>
+          </ul>
+          <h3>The Shadow Personas:</h3>
+          <p>The 33 Shadow personas are specifically designed to help transmute fear, doubt, and limiting beliefs. Call on them when resistance is strong.</p>
+        `
+      },
+      { 
+        step: 12, 
+        title: 'Quantum Mastery', 
+        description: 'Become a conscious creator',
+        phase: 'Integration',
+        phaseClass: 'integration',
+        icon: '👑',
+        content: `
+          <p>Congratulations. You have completed the journey from intention to mastery.</p>
+          <h3>You Are Now:</h3>
+          <ul>
+            <li>A conscious creator of your reality</li>
+            <li>Connected to the quantum field at will</li>
+            <li>Supported by 77 archetypal guides</li>
+            <li>Part of a global manifestation community</li>
+            <li>Equipped with tools for any future creation</li>
+          </ul>
+          <h3>What's Next:</h3>
+          <ul>
+            <li>Generate new codes for new intentions</li>
+            <li>Help others on their journey</li>
+            <li>Continue daily practice</li>
+            <li>Celebrate each manifestation as it arrives</li>
+            <li>Remember: You are the universe experiencing itself</li>
+          </ul>
+          <p><strong>The field is now yours to command. Create wisely. Create lovingly. Create boldly.</strong></p>
+        `
+      }
+    ];
+    
+    // Load user data
+    let userData = {};
+    try {
+      userData = JSON.parse(localStorage.getItem('quantumUser')) || {};
+    } catch(e) {}
+    
+    const completedSteps = userData.journeyCompleted || [];
+    const currentStep = userData.journeyStep || 1;
+    let selectedStep = null;
+    
+    // Calculate progress
+    const progressPercent = Math.round((completedSteps.length / JOURNEY_STEPS.length) * 100);
+    document.getElementById('totalProgress').textContent = progressPercent + '%';
+    document.getElementById('progressFill').style.width = progressPercent + '%';
+    
+    // Update phase indicators
+    if (completedSteps.length >= 3) document.getElementById('phase1').classList.add('complete');
+    else if (currentStep <= 3) document.getElementById('phase1').classList.add('active');
+    
+    if (completedSteps.length >= 6) document.getElementById('phase2').classList.add('complete');
+    else if (currentStep <= 6 && currentStep > 3) document.getElementById('phase2').classList.add('active');
+    
+    if (completedSteps.length >= 9) document.getElementById('phase3').classList.add('complete');
+    else if (currentStep <= 9 && currentStep > 6) document.getElementById('phase3').classList.add('active');
+    
+    if (completedSteps.length >= 12) document.getElementById('phase4').classList.add('complete');
+    else if (currentStep > 9) document.getElementById('phase4').classList.add('active');
+    
+    // Group steps by phase
+    const phases = {
+      'Foundation': JOURNEY_STEPS.filter(s => s.phase === 'Foundation'),
+      'Activation': JOURNEY_STEPS.filter(s => s.phase === 'Activation'),
+      'Amplification': JOURNEY_STEPS.filter(s => s.phase === 'Amplification'),
+      'Integration': JOURNEY_STEPS.filter(s => s.phase === 'Integration')
+    };
+    
+    const phaseIcons = {
+      'Foundation': '🌱',
+      'Activation': '⚡',
+      'Amplification': '🌊',
+      'Integration': '🏆'
+    };
+    
+    const phaseClasses = {
+      'Foundation': 'foundation',
+      'Activation': 'activation',
+      'Amplification': 'amplification',
+      'Integration': 'integration'
+    };
+    
+    // Render phases
+    const phasesContainer = document.getElementById('journeyPhases');
+    phasesContainer.innerHTML = Object.entries(phases).map(([phaseName, steps]) => `
+      <div class="phase-section ${phaseClasses[phaseName]}">
+        <div class="phase-header">
+          <div class="phase-icon">${phaseIcons[phaseName]}</div>
+          <div class="phase-info">
+            <h2>${phaseName}</h2>
+            <p>Steps ${steps[0].step} - ${steps[steps.length - 1].step}</p>
+          </div>
+        </div>
+        <div class="steps-list">
+          ${steps.map(step => {
+            const isCompleted = completedSteps.includes(step.step);
+            const isCurrent = step.step === currentStep;
+            const isLocked = step.step > currentStep && !isCompleted;
+            
+            return `
+              <div class="step-card ${isCompleted ? 'completed' : ''} ${isCurrent ? 'current' : ''} ${isLocked ? 'locked' : ''}"
+                   onclick="${isLocked ? '' : `openStep(${step.step})`}">
+                <div class="step-number">${isCompleted ? '✓' : step.step}</div>
+                <div class="step-content">
+                  <div class="step-title">${step.title}</div>
+                  <div class="step-desc">${step.description}</div>
+                </div>
+                <span class="step-icon">${step.icon}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `).join('');
+    
+    function openStep(stepNum) {
+      selectedStep = JOURNEY_STEPS.find(s => s.step === stepNum);
+      if (!selectedStep) return;
+      
+      document.getElementById('modalStepNum').textContent = selectedStep.step;
+      document.getElementById('modalTitle').textContent = selectedStep.title;
+      document.getElementById('modalPhase').textContent = `Phase: ${selectedStep.phase}`;
+      document.getElementById('modalBody').innerHTML = selectedStep.content;
+      
+      const isCompleted = completedSteps.includes(stepNum);
+      const actionBtn = document.getElementById('modalActionBtn');
+      if (isCompleted) {
+        actionBtn.textContent = '✓ Completed';
+        actionBtn.style.background = 'var(--neon-gold)';
+        actionBtn.disabled = true;
+      } else {
+        actionBtn.textContent = '✓ Mark Complete';
+        actionBtn.style.background = 'var(--gradient-primary)';
+        actionBtn.disabled = false;
+      }
+      
+      document.getElementById('stepModal').classList.add('active');
+    }
+    
+    function closeModal() {
+      document.getElementById('stepModal').classList.remove('active');
+    }
+    
+    function completeStep() {
+      if (!selectedStep) return;
+      
+      if (!completedSteps.includes(selectedStep.step)) {
+        completedSteps.push(selectedStep.step);
+        userData.journeyCompleted = completedSteps;
+        userData.journeyStep = Math.max(userData.journeyStep || 1, selectedStep.step + 1);
+        localStorage.setItem('quantumUser', JSON.stringify(userData));
+      }
+      
+      closeModal();
+      location.reload(); // Simple refresh to update UI
+    }
+    
+    // Close modal on overlay click
+    document.getElementById('stepModal').addEventListener('click', (e) => {
+      if (e.target.id === 'stepModal') closeModal();
+    });
+  </script>
+</body>
+</html>

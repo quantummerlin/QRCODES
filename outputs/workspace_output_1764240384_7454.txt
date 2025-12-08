@@ -1,0 +1,13 @@
+-rw-r--r-- 1 root root 2024077 Nov 26 19:45 085cb80b-3c46-4539-b09a-3904fd540120_0.png
+-rw-r--r-- 1 root root 2096369 Nov 26 19:46 25798d6e-7279-4fb1-b05c-96b554400f42_0 (1).png
+-rw-r--r-- 1 root root 1631665 Nov 26 19:45 4e80bfe6-3996-4634-8b04-b4fbb777fe7c_0.png
+-rw-r--r-- 1 root root 1732681 Nov 26 19:45 672e35e1-fe93-4f67-b800-731779abadae_0.png
+-rw-r--r-- 1 root root 2202133 Nov 26 19:45 93824932-023a-44a5-927e-2c4541a4e6c3_0.png
+-rw-r--r-- 1 root root 1668914 Nov 26 19:46 Inner Child Healing.png
+-rw-r--r-- 1 root root 1881522 Nov 26 19:46 Vocal Grounding.png
+-rw-r--r-- 1 root root 1969777 Nov 26 19:46 b6530778-7109-4328-bda5-e624904e9ec5_0.png
+-rw-r--r-- 1 root root 1945657 Nov 26 19:45 be2c4ff1-fa84-42b2-8097-b3d374f41c4d_0.png
+-rw-r--r-- 1 root root 1982627 Nov 26 19:45 c6b7fc3c-2475-4c54-86a2-005f2c83d934_0.png
+-rw-r--r-- 1 root root 1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0 (1).png
+-rw-r--r-- 1 root root 1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0.png
+-rw-r--r-- 1 root root 2148245 Nov 26 19:45 f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png

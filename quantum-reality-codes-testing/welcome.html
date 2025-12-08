@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Quantum Reality Codes - Your Journey Begins</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .welcome-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .welcome-step {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .welcome-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(255,0,255,0.1));
+            border: 2px solid #00ffff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .welcome-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .big-emoji {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .welcome-title {
+            font-size: 36px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
+
+        .welcome-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #ccc;
+            margin: 20px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(0,255,255,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffff;
+            box-shadow: 0 10px 30px rgba(0,255,255,0.3);
+        }
+
+        .feature-emoji {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            color: #00ffff;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .feature-desc {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .guide-intro {
+            display: flex;
+            gap: 30px;
+            margin: 30px 0;
+            align-items: center;
+        }
+
+        .guide-intro-card {
+            flex: 1;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .guide-avatar-large {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .merlin-avatar {
+            background: linear-gradient(135deg, #00ffff, #0066cc);
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 30px rgba(0,255,255,0.5);
+        }
+
+        .rose-avatar {
+            background: linear-gradient(135deg, #ff00ff, #cc0066);
+            border: 3px solid #ff00ff;
+            box-shadow: 0 0 30px rgba(255,0,255,0.5);
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px currentColor; }
+            50% { box-shadow: 0 0 40px currentColor; }
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #00ffff;
+            transform: scale(1.5);
+            box-shadow: 0 0 15px #00ffff;
+        }
+
+        .progress-dot.completed {
+            background: #ff00ff;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,255,255,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #00ffff;
+            color: #00ffff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #00ffff;
+            color: #0a0a0a;
+        }
+
+        .input-group {
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            color: #00ffff;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(0,255,255,0.3);
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: #00ffff;
+            outline: none;
+            box-shadow: 0 0 15px rgba(0,255,255,0.3);
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            border-left: 4px solid #ff00ff;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            color: #00ffff;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .guide-intro {
+                flex-direction: column;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="welcome-container">
+        <!-- Step 1: Initial Welcome -->
+        <div class="welcome-step active" id="step1">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <div class="big-emoji">🌊</div>
+                    <h1 class="welcome-title">Welcome to Quantum Reality Codes</h1>
+                    <p class="welcome-text">
+                        You've discovered the bridge between ancient sacred mathematics and cutting-edge quantum science. 
+                        This is where manifestation becomes predictable through mathematical precision and divine guidance.
+                    </p>
+                    <p class="welcome-text" style="color: #ff00ff; font-weight: bold;">
+                        100% FREE • No Payment Required • Transformation Guaranteed
+                    </p>
+                </div>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-emoji">🔢</div>
+                    <div class="feature-title">Sacred Mathematics</div>
+                    <div class="feature-desc">Your personal quantum code based on ancient wisdom</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">🔮</div>
+                    <div class="feature-title">Quantum Guides</div>
+                    <div class="feature-desc">Merlin & Rose guide your manifestation journey</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">🌟</div>
+                    <div class="feature-title">Real Results</div>
+                    <div class="feature-desc">Documented manifestations from thousands of users</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">👥</div>
+                    <div class="feature-title">Community Power</div>
+                    <div class="feature-desc">Amplify your manifestation through collective energy</div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                "I went from skeptic to believer when I manifested $7,773 exactly 11 days after using my code. The mathematical precision was undeniable."
+                <div class="testimonial-author">- Sarah K., Quantum Explorer</div>
+            </div>
+            
+            <div class="btn-primary" onclick="nextStep()">Begin Your Quantum Journey</div>
+        </div>
+
+        <!-- Step 2: Meet Your Guides -->
+        <div class="welcome-step" id="step2">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h2 class="welcome-title">Meet Your Quantum Guides</h2>
+                    <p class="welcome-text">
+                        You're not alone on this journey. You have two primary guides who speak through 
+                        a council of 77 specialized personas.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="guide-intro">
+                <div class="guide-intro-card">
+                    <div class="guide-avatar-large merlin-avatar">🔮</div>
+                    <h3 style="color: #00ffff; font-size: 24px;">Quantum Merlin</h3>
+                    <p class="welcome-text">
+                        Guardian of Sacred Mathematics<br>
+                        432Hz Frequency Keeper<br>
+                        Strategic Wisdom Provider
+                    </p>
+                    <p style="color: #00ffff; font-style: italic;">
+                        "The universe speaks in patterns, not coincidence. Your quantum code is mathematics made manifest."
+                    </p>
+                </div>
+                
+                <div class="guide-intro-card">
+                    <div class="guide-avatar-large rose-avatar">🌹</div>
+                    <h3 style="color: #ff00ff; font-size: 24px;">Quantum Rose</h3>
+                    <p class="welcome-text">
+                        Guardian of Frequency & Love<br>
+                        528Hz Frequency Keeper<br>
+                        Emotional Wisdom Provider
+                    </p>
+                    <p style="color: #ff00ff; font-style: italic;">
+                        "Your heart frequency is your most powerful creation tool. When combined with love frequency, you become unstoppable."
+                    </p>
+                </div>
+            </div>
+            
+            <p class="welcome-text" style="text-align: center; margin: 30px 0;">
+                Together, they provide the perfect balance:<br>
+                <span style="color: #00ffff;">Merlin gives you the structure</span> + 
+                <span style="color: #ff00ff;">Rose provides the flow</span> = 
+                <span style="color: #ffd700;">Complete Manifestation</span>
+            </p>
+            
+            <div class="btn-secondary" onclick="previousStep()">Back</div>
+            <div class="btn-primary" onclick="nextStep()">I'm Ready to Meet My Council</div>
+        </div>
+
+        <!-- Step 3: Generate Your Code -->
+        <div class="welcome-step" id="step3">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <div class="big-emoji">⚛️</div>
+                    <h2 class="welcome-title">Generate Your Quantum Code</h2>
+                    <p class="welcome-text">
+                        Enter your deepest intention. The quantum field will calculate your personal 
+                        sacred mathematics and connect you with your optimal council members.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label>What would you like to manifest? (Be specific and heartfelt)</label>
+                <textarea id="userIntention" rows="4" placeholder="e.g., Financial abundance through my dream career that allows me to help others"></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label>Your Name (Optional)</label>
+                <input type="text" id="userName" placeholder="e.g., Sarah">
+            </div>
+            
+            <div class="input-group">
+                <label>Your Email (Optional - for guide messages)</label>
+                <input type="email" id="userEmail" placeholder="e.g., sarah@email.com">
+            </div>
+            
+            <div class="testimonial">
+                "My intention was 'heal my relationship with my mother.' The code 5-2-8 healed our 20-year estrangement in just 2 weeks. It's still miraculous to me."
+                <div class="testimonial-author">- Michael R., Healed Son</div>
+            </div>
+            
+            <div class="btn-secondary" onclick="previousStep()">Back</div>
+            <div class="btn-primary" onclick="generateQuantumCode()">Generate My Sacred Code</div>
+        </div>
+
+        <!-- Step 4: Code Revealed -->
+        <div class="welcome-step" id="step4">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <div class="big-emoji">✨</div>
+                    <h2 class="welcome-title">Your Quantum Code Has Been Revealed!</h2>
+                    <div id="codeDisplay" style="font-size: 48px; color: #ff00ff; margin: 20px 0; font-weight: bold;"></div>
+                    <p class="welcome-text" id="codeMeaning"></p>
+                </div>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h3 style="color: #00ffff;">Your Personal Council Has Been Selected</h3>
+                    <p class="welcome-text">
+                        Based on your code's mathematical properties, 7 council members have been chosen 
+                        to guide your manifestation journey.
+                    </p>
+                    <div id="councilDisplay" style="margin: 20px 0;"></div>
+                </div>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h3 style="color: #ff00ff;">Your First Guide Message</h3>
+                    <div id="firstMessage" style="margin: 20px 0;"></div>
+                </div>
+            </div>
+            
+            <div class="btn-secondary" onclick="previousStep()">Back</div>
+            <div class="btn-primary" onclick="nextStep()">Start My Journey</div>
+        </div>
+
+        <!-- Step 5: Journey Introduction -->
+        <div class="welcome-step" id="step5">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <div class="big-emoji">🎯</div>
+                    <h2 class="welcome-title">Your 12-Step Quantum Journey Begins</h2>
+                    <p class="welcome-text">
+                        You're about to embark on a carefully crafted journey that has transformed 
+                        thousands of lives. Each step takes just 2-5 minutes.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-emoji">🌅</div>
+                    <div class="feature-title">Foundation</div>
+                    <div class="feature-desc">Steps 1-3: Understanding the quantum field</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">⚡</div>
+                    <div class="feature-title">Activation</div>
+                    <div class="feature-desc">Steps 4-6: Creating and anchoring your code</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">🌊</div>
+                    <div class="feature-title">Amplification</div>
+                    <div class="feature-desc">Steps 7-9: Community protocol</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-emoji">🌟</div>
+                    <div class="feature-title">Integration</div>
+                    <div class="feature-desc">Steps 10-12: Living your new reality</div>
+                </div>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h3 style="color: #ffd700;">What to Expect</h3>
+                    <ul style="text-align: left; color: #ccc;">
+                        <li>Clear guidance from your council at each step</li>
+                        <li>Synchronicities starting within days</li>
+                        <li>Progress tracking and achievements</li>
+                        <li>Community amplification opportunities</li>
+                        <li>Measurable results in 30 days or less</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="btn-secondary" onclick="previousStep()">Back</div>
+            <div class="btn-primary" onclick="startJourney()">Begin Step 1</div>
+        </div>
+
+        <!-- Step 6: Complete! -->
+        <div class="welcome-step" id="step6">
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <div class="big-emoji">🎉</div>
+                    <h2 class="welcome-title">Welcome to the Quantum Revolution!</h2>
+                    <p class="welcome-text">
+                        You've successfully activated your quantum manifestation system. 
+                        The universe has heard you, and your guides are ready to assist.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h3 style="color: #00ffff;">Your Journey Continues On...</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-emoji">🏠</div>
+                            <div class="feature-title">Dashboard</div>
+                            <div class="feature-desc">Track your progress and achievements</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-emoji">📚</div>
+                            <div class="feature-title">Journey</div>
+                            <div class="feature-desc">Continue your 12-step guided path</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-emoji">👥</div>
+                            <div class="feature-title">Council</div>
+                            <div class="feature-desc">Connect with your guide team</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-emoji">🎨</div>
+                            <div class="feature-title">Generator</div>
+                            <div class="feature-desc">Create additional codes as needed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="welcome-card">
+                <div class="welcome-card-content">
+                    <h3 style="color: #ff00ff;">Remember This Truth</h3>
+                    <p class="welcome-text" style="font-size: 20px; font-weight: bold;">
+                        "Your quantum code is the universe's direct phone number to your highest reality. 
+                        Merlin provides the mathematics, Rose provides the frequency, and you provide the intention. 
+                        Together, manifestation becomes inevitable."
+                    </p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <div class="btn-primary" onclick="goToDashboard()">Go to Dashboard</div>
+                <div class="btn-primary" onclick="startJourney()">Start Journey</div>
+                <div class="btn-secondary" onclick="location.reload()">Start Over</div>
+            </div>
+        </div>
+
+        <!-- Progress Dots -->
+        <div class="progress-dots">
+            <div class="progress-dot active"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+            <div class="progress-dot"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/persona-emojis.js"></script>
+    <script src="assets/js/persona-code-reader.js"></script>
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6;
+        let userCode = '';
+        let userIntention = '';
+        const codeReader = new PersonaCodeReader();
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function updateProgress() {
+            const dots = document.querySelectorAll('.progress-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active', 'completed');
+                if (index < currentStep - 1) {
+                    dot.classList.add('completed');
+                } else if (index === currentStep - 1) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        function generateQuantumCode() {
+            const intention = document.getElementById('userIntention').value;
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+
+            if (!intention) {
+                alert('Please enter your intention!');
+                return;
+            }
+
+            // Generate a meaningful quantum code based on intention
+            userCode = generateSacredCode(intention, name);
+            userIntention = intention;
+
+            // Store in localStorage for other pages
+            localStorage.setItem('quantumCode', userCode);
+            localStorage.setItem('userIntention', userIntention);
+            localStorage.setItem('userName', name || 'Quantum Explorer');
+
+            // Display the code
+            const formattedCode = userCode.split('').join('-');
+            document.getElementById('codeDisplay').textContent = formattedCode;
+
+            // Generate code meaning
+            const analysis = codeReader.analyzeCode(parseInt(userCode));
+            const meaning = generateCodeMeaning(analysis, userIntention);
+            document.getElementById('codeMeaning').innerHTML = meaning;
+
+            // Display council members
+            displayCouncilMembers(userCode);
+
+            // Display first message
+            displayFirstMessage(userCode, userIntention);
+
+            nextStep();
+        }
+
+        function generateSacredCode(intention, name) {
+            // Use sacred mathematics to generate meaningful code
+            const words = intention.toLowerCase().split(/\s+/);
+            let sum = 0;
+            
+            words.forEach(word => {
+                for (let char of word) {
+                    sum += char.charCodeAt(0);
+                }
+            });
+
+            // Add name energy if provided
+            if (name) {
+                for (let char of name) {
+                    sum += char.charCodeAt(0);
+                }
+            }
+
+            // Convert to sacred number pattern
+            const digits = [];
+            let working = sum;
+            
+            // Generate 3-4 digit code with sacred meaning
+            for (let i = 0; i < 3; i++) {
+                const digit = (working % 9) + 1; // Always 1-9 for sacred meaning
+                digits.push(digit);
+                working = Math.floor(working / 10);
+            }
+
+            // Ensure meaningful combination
+            if (digits[0] === digits[1] && digits[1] === digits[2]) {
+                digits[1] = ((digits[1] + 3) % 9) + 1; // Avoid repetition
+            }
+
+            return digits.join('');
+        }
+
+        function generateCodeMeaning(analysis, intention) {
+            const { digits, sum, reducedSum } = analysis;
+            const meanings = {
+                1: "new beginnings and leadership",
+                2: "partnership and balance", 
+                3: "creativity and manifestation",
+                4: "foundation and stability",
+                5: "transformation and freedom",
+                6: "harmony and love",
+                7: "spiritual completion and wisdom",
+                8: "abundance and power",
+                9: "humanitarian service and completion"
+            };
+
+            let meaning = `Your code carries the sacred frequency of ${meanings[reducedSum]}. `;
+            meaning += `The sequence reveals a pathway: `;
+            meaning += `${meanings[digits[0]]} leading to ${meanings[digits[1]]}, `;
+            meaning += `culminating in ${meanings[digits[2]]}. `;
+            meaning += `For "${intention}", this mathematical pattern aligns perfectly with cosmic timing.`;
+
+            return meaning;
+        }
+
+        function displayCouncilMembers(code) {
+            const analysis = codeReader.analyzeCode(parseInt(code));
+            const { digits } = analysis;
+
+            const councilTemplates = [
+                ["Azrael the Architect", "Structure & Foundation"],
+                ["Lyra the Weaver", "Connection & Synchronicity"],
+                ["Solara the Joybearer", "Happiness & Alignment"],
+                ["Aurelia the Alchemist", "Transformation & Magic"],
+                ["Raphael the Healer", "Healing & Restoration"],
+                ["Mikhael the Warrior", "Courage & Strength"],
+                ["Sophia the Teacher", "Wisdom & Understanding"]
+            ];
+
+            const councilDisplay = document.getElementById('councilDisplay');
+            let html = '<div class="feature-grid">';
+
+            for (let i = 0; i < 7; i++) {
+                const member = councilTemplates[i];
+                const persona = getPersonaDisplay(member[0]);
+                html += `
+                    <div class="feature-card">
+                        <div style="font-size: 32px; margin-bottom: 10px;">${persona.emoji}</div>
+                        <div style="color: ${persona.color}; font-weight: bold;">${member[0]}</div>
+                        <div style="color: #888; font-size: 12px;">${member[1]}</div>
+                    </div>
+                `;
+            }
+
+            html += '</div>';
+            councilDisplay.innerHTML = html;
+        }
+
+        function displayFirstMessage(code, intention) {
+            const message = codeReader.generatePersonaMessage("Quantum Merlin", parseInt(code), intention);
+            const firstMessageDiv = document.getElementById('firstMessage');
+            
+            firstMessageDiv.innerHTML = createPersonaMessage("Quantum Merlin", message);
+        }
+
+        function createPersonaMessage(personaName, message) {
+            const persona = getPersonaDisplay(personaName);
+            return `
+                <div style="background: rgba(0,255,255,0.1); border-left: 4px solid #00ffff; border-radius: 10px; padding: 20px; margin: 15px 0;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                        <div style="font-size: 48px;">${persona.emoji}</div>
+                        <div>
+                            <div style="font-size: 18px; font-weight: bold; color: #00ffff;">${personaName}</div>
+                            <div style="font-size: 12px; color: #888;">Quantum Guide</div>
+                        </div>
+                    </div>
+                    <div style="color: #fff; line-height: 1.6; font-size: 16px;">${message}</div>
+                </div>
+            `;
+        }
+
+        function startJourney() {
+            window.location.href = 'journey.html';
+        }
+
+        function goToDashboard() {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+        });
+    </script>
+</body>
+</html>

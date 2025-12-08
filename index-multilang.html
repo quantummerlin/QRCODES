@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e27">
+  <meta name="description" content="Your personal council of manifestation guides - Transform your reality through daily engagement">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quantum Council">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzEzN18xNDgpIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTEiIHI9IjQiIGZpbGw9IiNGRkQ3MDAiLz4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxNyIgcj0iMyIgZmlsbD0iIzRBOTBFMiIvPgo8Y2lyY2xlIGN4PSIyMSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjOUI1OUI2Ii8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjIuNSIgZmlsbD0iI0U3NEMzQyIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDBfbGluZWFyXzEzN18xNDgiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzBBMEUyNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQTFGM0EiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+  
+  <title data-i18n="appTitle">Manifestation Techniques</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4A90E2;
+      --secondary: #9B59B6;
+      --accent: #FFD700;
+      --background: #0a0e27;
+      --surface: #1a1f3a;
+      --surface-light: rgba(255, 255, 255, 0.05);
+      --text-primary: #ffffff;
+      --text-secondary: #aaa;
+      --border: rgba(255, 255, 255, 0.1);
+      --success: #4CAF50;
+      --warning: #FF6B6B;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Enhanced quantum background with user images */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(74,144,226,0.15), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(155,89,182,0.18), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-container {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 40px rgba(74, 144, 226, 0.5);
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .loading-text {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      margin-top: 10px;
+    }
+
+    /* Header */
+    .header {
+      background: var(--surface);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-icon {
+      font-size: 2rem;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    }
+
+    .header-text h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .header-text p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    /* Language Selector */
+    .language-selector {
+      position: relative;
+    }
+
+    .language-btn {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .language-btn:hover {
+      background: var(--surface);
+      border-color: var(--primary);
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.5rem;
+      min-width: 150px;
+      display: none;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    .language-dropdown.show {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .language-option {
+      padding: 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .language-option:hover {
+      background: var(--surface-light);
+    }
+
+    .language-option.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .icon-btn {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--surface);
+      border-color: var(--primary);
+      transform: scale(1.05);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 3rem 1rem;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(155, 89, 182, 0.1));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(20px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-button {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .hero-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(74, 144, 226, 0.5);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      scrollbar-width: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab {
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-color: transparent;
+      color: white;
+    }
+
+    .nav-tab:hover {
+      border-color: var(--primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-page {
+      display: none;
+    }
+
+    .content-page.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Techniques Grid */
+    .techniques-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .techniques-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .techniques-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    .techniques-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Technique Card */
+    .technique-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .technique-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(74, 144, 226, 0.2);
+      border-color: var(--primary);
+    }
+
+    .technique-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(155, 89, 182, 0.2));
+    }
+
+    .technique-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .technique-card:hover .technique-image img {
+      transform: scale(1.1);
+    }
+
+    .technique-content {
+      padding: 1.5rem;
+    }
+
+    .technique-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .technique-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .technique-button {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .technique-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 0.5rem;
+      border-radius: 8px;
+      flex: 1;
+      max-width: 80px;
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    .nav-icon {
+      font-size: 1.5rem;
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .techniques-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding-bottom: 80px;
+      }
+    }
+
+    /* Animations */
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .pulse {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="logo-container">
+      <img src="f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png" alt="Logo">
+    </div>
+    <div class="loading-text pulse" data-i18n="appTitle">Manifestation Techniques</div>
+  </div>
+
+  <div class="app" id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <div class="header-icon">🌙</div>
+        <div class="header-text">
+          <h1 data-i18n="appTitle">Manifestation Techniques</h1>
+          <p data-i18n="heroSubtitle">Discover powerful manifestation techniques</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="language-selector">
+          <button class="language-btn" id="languageBtn" onclick="toggleLanguageDropdown()">
+            🌐 <span id="currentLang">EN</span>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <div class="language-option" data-lang="en" onclick="changeLanguage('en')">
+              🇬🇧 English
+            </div>
+            <div class="language-option" data-lang="es" onclick="changeLanguage('es')">
+              🇪🇸 Español
+            </div>
+            <div class="language-option" data-lang="pt" onclick="changeLanguage('pt')">
+              🇧🇷 Português
+            </div>
+            <div class="language-option" data-lang="fr" onclick="changeLanguage('fr')">
+              🇫🇷 Français
+            </div>
+            <div class="language-option" data-lang="de" onclick="changeLanguage('de')">
+              🇩🇪 Deutsch
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn" onclick="showNotifications()">
+          🔔
+        </button>
+        <button class="icon-btn" onclick="showProfile()">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background">
+        <img src="f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png" alt="Hero Background">
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title" data-i18n="heroTitle">Transform Your Reality</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Discover powerful manifestation techniques to create the life you desire</p>
+        <button class="hero-button" data-i18n="heroButton" onclick="scrollToTechniques()">Explore Techniques</button>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <div class="nav-tab active" data-page="techniques" onclick="switchPage('techniques')">
+        <span data-i18n="techniquesTitle">Techniques</span>
+      </div>
+      <div class="nav-tab" data-page="timer" onclick="switchPage('timer')">
+        <span data-i18n="timerTitle">Timer</span>
+      </div>
+      <div class="nav-tab" data-page="journal" onclick="switchPage('journal')">
+        <span data-i18n="journalTitle">Journal</span>
+      </div>
+      <div class="nav-tab" data-page="progress" onclick="switchPage('progress')">
+        📊 Progress
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Techniques Page -->
+      <div class="content-page active" id="techniques-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="techniquesTitle">Manifestation Techniques</h2>
+          <p class="techniques-subtitle" data-i18n="techniquesSubtitle">Choose a technique that resonates with you</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="streakDays">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="totalSessions">0</div>
+            <div class="stat-label">Total Sessions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="alignmentScore">0</div>
+            <div class="stat-label">Alignment</div>
+          </div>
+        </div>
+
+        <!-- Techniques Grid -->
+        <div class="techniques-grid">
+          <!-- 369 Method -->
+          <div class="technique-card" onclick="startTechnique('369')">
+            <div class="technique-image">
+              <img src="085cb80b-3c46-4539-b09a-3904fd540120_0.png" alt="369 Method">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique1Title">369 Method</h3>
+              <p class="technique-description" data-i18n="technique1Desc">Write your desire 3 times in the morning, 6 times in the afternoon, and 9 times at night</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Visualization -->
+          <div class="technique-card" onclick="startTechnique('visualization')">
+            <div class="technique-image">
+              <img src="25798d6e-7279-4fb1-b05c-96b554400f42_0 (1).png" alt="Visualization">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique2Title">Visualization</h3>
+              <p class="technique-description" data-i18n="technique2Desc">Create a vivid mental image of your desired outcome and feel the emotions</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Affirmations -->
+          <div class="technique-card" onclick="startTechnique('affirmations')">
+            <div class="technique-image">
+              <img src="4e80bfe6-3996-4634-8b04-b4fbb777fe7c_0.png" alt="Affirmations">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique3Title">Affirmations</h3>
+              <p class="technique-description" data-i18n="technique3Desc">Repeat positive statements to reprogram your subconscious mind</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Scripting -->
+          <div class="technique-card" onclick="startTechnique('scripting')">
+            <div class="technique-image">
+              <img src="672e35e1-fe93-4f67-b800-731779abadae_0.png" alt="Scripting">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique4Title">Scripting</h3>
+              <p class="technique-description" data-i18n="technique4Desc">Write in detail about your life as if your desires have already manifested</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Gratitude -->
+          <div class="technique-card" onclick="startTechnique('gratitude')">
+            <div class="technique-image">
+              <img src="93824932-023a-44a5-927e-2c4541a4e6c3_0.png" alt="Gratitude">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique5Title">Gratitude</h3>
+              <p class="technique-description" data-i18n="technique5Desc">Focus on appreciation for what you have and what's coming</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Vision Board -->
+          <div class="technique-card" onclick="startTechnique('vision')">
+            <div class="technique-image">
+              <img src="b6530778-7109-4328-bda5-e624904e9ec5_0.png" alt="Vision Board">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique6Title">Vision Board</h3>
+              <p class="technique-description" data-i18n="technique6Desc">Create a visual representation of your goals and dreams</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Inner Child Healing -->
+          <div class="technique-card" onclick="startTechnique('innerchild')">
+            <div class="technique-image">
+              <img src="Inner Child Healing.png" alt="Inner Child Healing">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique7Title">Inner Child Healing</h3>
+              <p class="technique-description" data-i18n="technique7Desc">Connect with and heal your inner child to remove manifestation blocks</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+
+          <!-- Vocal Grounding -->
+          <div class="technique-card" onclick="startTechnique('vocal')">
+            <div class="technique-image">
+              <img src="Vocal Grounding.png" alt="Vocal Grounding">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique8Title">Vocal Grounding</h3>
+              <p class="technique-description" data-i18n="technique8Desc">Use your voice and sound to anchor your intentions into reality</p>
+              <button class="technique-button" data-i18n="startButton">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timer Page -->
+      <div class="content-page" id="timer-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="timerTitle">Manifestation Timer</h2>
+          <p class="techniques-subtitle" data-i18n="timerSubtitle">Set your intention and begin your practice</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--text-secondary);">Timer functionality coming soon...</p>
+        </div>
+      </div>
+
+      <!-- Journal Page -->
+      <div class="content-page" id="journal-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="journalTitle">Manifestation Journal</h2>
+          <p class="techniques-subtitle" data-i18n="journalSubtitle">Document your journey and track your progress</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--text-secondary);">Journal functionality coming soon...</p>
+        </div>
+      </div>
+
+      <!-- Progress Page -->
+      <div class="content-page" id="progress-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title">Your Progress</h2>
+          <p class="techniques-subtitle">Track your manifestation journey</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--text-secondary);">Progress tracking coming soon...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-item active" onclick="switchPage('techniques')">
+        <div class="nav-icon">✨</div>
+        <div class="nav-label" data-i18n="techniquesTitle">Techniques</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('timer')">
+        <div class="nav-icon">⏱️</div>
+        <div class="nav-label" data-i18n="timerTitle">Timer</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('journal')">
+        <div class="nav-icon">📝</div>
+        <div class="nav-label" data-i18n="journalTitle">Journal</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('progress')">
+        <div class="nav-icon">📊</div>
+        <div class="nav-label">Progress</div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Scripts -->
+  <script src="translations.js"></script>
+  <script src="app-multilang.js"></script>
+</body>
+</html>

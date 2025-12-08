@@ -1,0 +1,128 @@
+total 53524
+drwxr-xr-x  7 user user     4096 Dec  4 19:37 .
+drwxr-xr-x 20 root root     4096 Nov 25 05:51 ..
+-rw-r--r--  1 root root  2024077 Nov 26 19:45 085cb80b-3c46-4539-b09a-3904fd540120_0.png
+-rw-r--r--  1 root root  2096369 Nov 26 19:46 25798d6e-7279-4fb1-b05c-96b554400f42_0 (1).png
+-rw-r--r--  1 root root  1631665 Nov 26 19:45 4e80bfe6-3996-4634-8b04-b4fbb777fe7c_0.png
+-rw-r--r--  1 root root  1732681 Nov 26 19:45 672e35e1-fe93-4f67-b800-731779abadae_0.png
+-rw-r--r--  1 root root  2202133 Nov 26 19:45 93824932-023a-44a5-927e-2c4541a4e6c3_0.png
+-rw-r--r--  1 root root    15900 Nov 26 20:20 ACHIEVEMENT_SYSTEM_README.md
+-rw-r--r--  1 root root    12749 Nov 26 20:23 ACHIEVEMENT_SYSTEM_SUMMARY.md
+-rw-r--r--  1 root root    33734 Nov 27 21:04 ALL_PERSONA_IMAGE_PROMPTS.md
+-rw-r--r--  1 root root    36112 Nov 27 21:07 ALL_PERSONA_MESSAGES.md
+-rw-r--r--  1 root root    12636 Nov 26 22:55 BUILD_SUMMARY.md
+-rw-r--r--  1 root root    14017 Nov 27 20:45 COMPLETE_BUILD_SUMMARY.md
+-rw-r--r--  1 root root     5092 Nov 26 21:55 DEPLOYMENT_GUIDE.md
+-rw-r--r--  1 root root    10030 Nov 27 09:44 ENHANCED_DEPLOYMENT_GUIDE.md
+-rw-r--r--  1 root root     9202 Nov 27 09:46 FILE_LIST.md
+-rw-r--r--  1 root root     9894 Nov 28 07:28 FINAL_IMPLEMENTATION_SUMMARY.md
+-rw-r--r--  1 root root    27528 Nov  4 10:31 GPT_Manifestation_Group_Analysis.md
+-rw-r--r--  1 root root     5441 Nov 29 02:21 GUIDE_SYSTEM_IMPLEMENTATION_COMPLETE.md
+-rw-r--r--  1 root root  1320244 Nov  4 10:26 Greatness Names.pdf
+-rw-r--r--  1 root root   125072 Nov  4 10:27 Greatness_Names.txt
+-rw-r--r--  1 root root     5821 Nov 27 10:57 IMPLEMENTATION_GUIDE.md
+-rw-r--r--  1 root root    16505 Nov 26 19:59 IMPLEMENTATION_PLAN.md
+-rw-r--r--  1 root root  1668914 Nov 26 19:46 Inner Child Healing.png
+-rw-r--r--  1 root root     4269 Nov 27 10:47 LANGUAGE_AND_VISUAL_ENHANCEMENT_PLAN.md
+-rw-r--r--  1 root root     9197 Nov 27 20:26 MVP_COMPLETE_SUMMARY.md
+-rw-r--r--  1 root root    13893 Nov  4 11:03 PACKAGE_SUMMARY.md
+-rw-r--r--  1 root root   110239 Nov  4 10:26 POWER OF 10.pdf
+-rw-r--r--  1 root root     6130 Nov  4 10:27 POWER_OF_10.txt
+-rw-r--r--  1 root root    12491 Nov 27 09:48 PROJECT_COMPLETE.md
+-rw-r--r--  1 root root    15647 Nov 26 19:57 PROJECT_TODO.md
+-rw-r--r--  1 root root   113411 Nov  4 10:26 QM BP.pdf
+-rw-r--r--  1 root root    66044 Nov  4 10:26 QM Framework.pdf
+-rw-r--r--  1 root root    69843 Nov  4 10:26 QM Mersenne Matrix.pdf
+-rw-r--r--  1 root root   361249 Nov  4 10:26 QM Personas.pdf
+-rw-r--r--  1 root root     4304 Nov  4 10:27 QM_BP.txt
+-rw-r--r--  1 root root     2686 Nov  4 10:27 QM_Framework.txt
+-rw-r--r--  1 root root     2961 Nov  4 10:27 QM_Mersenne_Matrix.txt
+-rw-r--r--  1 root root    24849 Nov  4 10:27 QM_Personas.txt
+-rw-r--r--  1 root root    12094 Nov 27 20:22 QUANTUM_COUNCIL_PERSONAS.md
+-rw-r--r--  1 root root     4743 Nov 28 05:21 QUANTUM_ECOSYSTEM_PLAN.md
+-rw-r--r--  1 root root     8133 Nov 27 11:20 QUANTUM_FINAL_GUIDE.md
+-rw-r--r--  1 root root     4066 Nov 27 09:46 QUICK_START.md
+-rw-r--r--  1 root root     7370 Nov 27 20:27 QUICK_START_GUIDE.md
+-rw-r--r--  1 root root   186412 Nov  4 10:27 Quantum Mastery Flow.pdf
+-rw-r--r--  1 root root    14117 Nov  4 10:27 Quantum_Mastery_Flow.txt
+-rw-r--r--  1 root root    13631 Nov  4 11:01 README.md
+-rw-r--r--  1 root root    10475 Nov 27 20:43 README_PHASE2.md
+-rw-r--r--  1 root root    23624 Nov 27 21:03 SECONDARY_PERSONAS.md
+-rw-r--r--  1 root root    11113 Nov 27 19:50 SIMPLIFIED_SYSTEM_PLAN.md
+-rw-r--r--  1 root root    18982 Nov  4 10:59 SUPERNINJA_DEPLOYMENT_GUIDE.md
+-rw-r--r--  1 root root     7564 Nov 26 22:47 TESTING_CHECKLIST.md
+-rw-r--r--  1 root root    18545 Nov 27 21:16 ULTIMATE_EXPANSION_COMPLETE.md
+-rw-r--r--  1 root root  1881522 Nov 26 19:46 Vocal Grounding.png
+-rw-r--r--  1 root root     6706 Nov 28 10:43 _workspace_standalone_quantum-reality-code-generator-BRANDED (1).zip
+-rw-r--r--  1 root root    24206 Nov 26 20:08 achievement_tracker.js
+-rw-r--r--  1 root root    24227 Nov 26 20:13 achievement_ui.html
+-rw-r--r--  1 root root    27592 Nov 26 20:04 achievements_system.json
+-rw-r--r--  1 root root    18677 Nov 27 20:42 app-council.js
+-rw-r--r--  1 root root    29655 Nov 27 09:43 app-enhanced.js
+-rw-r--r--  1 root root     8696 Nov 27 20:23 app-intention.js
+-rw-r--r--  1 root root     7339 Nov 27 10:55 app-multilang.js
+-rw-r--r--  1 root root     8692 Nov 28 07:23 app-quantum-reality.py
+-rw-r--r--  1 root root    18265 Nov 27 11:20 app-quantum.js
+-rw-r--r--  1 root root    20573 Nov 26 21:43 app.js
+-rw-r--r--  1 root root     4151 Nov 28 05:12 app.py
+-rw-r--r--  1 root root  1969777 Nov 26 19:46 b6530778-7109-4328-bda5-e624904e9ec5_0.png
+-rw-r--r--  1 root root     1977 Nov 28 05:12 base.html
+-rw-r--r--  1 root root  1945657 Nov 26 19:45 be2c4ff1-fa84-42b2-8097-b3d374f41c4d_0.png
+-rw-r--r--  1 root root  1982627 Nov 26 19:45 c6b7fc3c-2475-4c54-86a2-005f2c83d934_0.png
+-rw-r--r--  1 root root  1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0 (1).png
+-rw-r--r--  1 root root  1676526 Nov 26 19:46 c6cb24f0-9b6d-4c21-a4a1-2beff1273ff4_0.png
+-rw-r--r--  1 root root      742 Nov 28 07:22 cookies.txt
+-rw-r--r--  1 root root    14918 Nov 27 20:23 council-activation.html
+-rw-r--r--  1 root root    11757 Nov 27 20:42 dashboard-app.js
+-rw-r--r--  1 root root    16378 Nov 27 20:42 dashboard-enhanced.html
+-rw-r--r--  1 root root    31230 Nov 27 21:14 dashboard-ultimate-app.js
+-rw-r--r--  1 root root    20444 Nov 27 21:11 dashboard-ultimate.html
+-rw-r--r--  1 root root     3786 Nov 27 20:25 dashboard.html
+-rw-r--r--  1 root root      697 Nov 28 05:12 example.html
+-rw-r--r--  1 root root  2148245 Nov 26 19:45 f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png
+-rw-r--r--  1 root root  1730645 Nov 28 05:13 f4a5b5a9-95e8-4656-bbc8-4ad985d4cdea_0.png
+-rw-r--r--  1 root root      921 Nov 28 05:13 facebook.png
+-rw-r--r--  1 root root      959 Nov 28 05:13 frequencies.html
+-rw-r--r--  1 root root    10010 Nov 27 20:40 generate-persona-images.md
+drwxr-xr-x  2 root root     4096 Nov 28 06:30 generated_images
+-rw-r--r--  1 root root     7407 Nov 28 05:13 generator.html
+-rw-r--r--  1 root root    11747 Nov 29 02:10 guide-messaging-system.js
+-rw-r--r--  1 root root    29687 Nov 27 09:41 index-enhanced.html
+-rw-r--r--  1 root root    11008 Nov 27 20:22 index-intention.html
+-rw-r--r--  1 root root    25460 Nov 27 10:55 index-multilang.html
+-rw-r--r--  1 root root    40117 Nov 27 11:19 index-quantum.html
+-rw-r--r--  1 root root      686 Nov 28 05:13 index.html
+-rw-r--r--  1 root root     3182 Nov 28 05:13 instagram.png
+-rw-r--r--  1 root root    20496 Nov 28 07:17 integrate_avatars.py
+-rw-r--r--  1 root root     3115 Nov 26 20:55 manifest.json
+-rw-r--r--  1 root root    14579 Nov  4 10:56 mersenne_matrix_tracker.html
+-rw-r--r--  1 root root    30961 Nov 27 21:09 messaging-system-expanded.js
+-rw-r--r--  1 root root    11416 Nov 27 20:41 messaging-system.js
+-rw-r--r--  1 root root    15858 Nov  4 10:57 notification_templates.json
+-rw-r--r--  1 root root    24455 Nov  4 10:50 orchestrator_flow.py
+drwxr-xr-x  2 root root    12288 Dec  4 20:36 outputs
+-rw-r--r--  1 root root    30977 Nov  4 10:48 personas_database.json
+-rw-r--r--  1 root root    12760 Nov  4 10:51 prompt_templates.json
+-rw-r--r--  1 root root     2464 Nov 29 02:08 quantum-guides.json
+-rw-r--r--  1 root root 24348997 Nov 27 11:20 quantum-manifestation-pwa.zip
+-rw-r--r--  1 root root   173254 Nov 28 05:13 quantum-merlin.jpg
+-rw-r--r--  1 root root    67525 Nov 29 02:21 quantum-reality-codes-guide-system.tar.gz
+drwxr-xr-x  3 root root     4096 Nov 29 02:16 quantum-reality-codes-static
+-rw-r--r--  1 root root    26771 Nov 26 20:18 reality_check_ui.html
+-rw-r--r--  1 root root    19087 Nov 26 20:17 reality_outcome_tracker.js
+-rw-r--r--  1 root root       14 Nov 28 05:13 requirements.txt
+-rw-r--r--  1 root root    12158 Nov  4 10:55 session_state_schema.json
+-rw-r--r--  1 root root     6003 Nov 28 05:13 style.css
+drwxr-xr-x  2 root root     4096 Dec  4 20:29 summarized_conversations
+-rw-r--r--  1 root root     5542 Nov 26 20:58 sw.js
+-rw-r--r--  1 root root     1260 Nov 28 05:13 telegram.png
+drwxr-xr-x  2 root root     4096 Nov 28 07:17 templates
+-rw-r--r--  1 root root     5005 Nov 28 07:21 test_quantum_system.py
+-rw-r--r--  1 root root     1050 Nov 28 05:13 tiktok.png
+-rw-r--r--  1 root root     4294 Nov 27 21:17 todo-build.md
+-rw-r--r--  1 root root     2358 Nov 27 19:51 todo-simplified.md
+-rw-r--r--  1 root root     2154 Dec  4 20:35 todo.md
+-rw-r--r--  1 root root    14429 Nov 27 10:53 translations.js
+-rw-r--r--  1 root root    12394 Nov  4 10:52 trigger_logic.json
+-rw-r--r--  1 root root    14117 Nov  4 10:54 user_blueprint_schema.json
+-rw-r--r--  1 root root      944 Nov 28 05:13 x.png

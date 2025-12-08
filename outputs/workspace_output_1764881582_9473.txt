@@ -1,0 +1,50 @@
+// Quantum Reality Code - Guide Messaging System
+// Implements Quantum Merlin & Rose with 77 persona council
+
+class QuantumGuideMessaging {
+    constructor() {
+        this.guides = null;
+        this.personas = null;
+        this.messageHistory = [];
+        this.currentCycle = 0;
+        this.messgaeInterval = null;
+        this.userSession = this.initializeSession();
+        this.loadGuideData();
+    }
+
+    async loadGuideData() {
+        try {
+            // Load guides
+            const guidesResponse = await fetch('quantum-guides.json');
+            this.guides = await guidesResponse.json();
+            
+            // Load personas
+            const personasResponse = await fetch('personas_database.json');
+            this.personas = await personasResponse.json();
+            
+            console.log('Guide system initialized');
+        } catch (error) {
+            console.error('Failed to load guide data:', error);
+            this.fallbackInitialization();
+        }
+    }
+
+    fallbackInitialization() {
+        this.guides = {
+            quantum_merlin: {
+                name: "Quantum Merlin",
+                signature_phrase: "The quantum field remembers what the conscious mind forgets."
+            },
+            quantum_rose: {
+                name: "Quantum Rose", 
+                signature_phrase: "Your frequency is the key that unlocks reality's door."
+            }
+        };
+    }
+
+    initializeSession() {
+        const session = localStorage.getItem('quantum_session');
+        if (session) {
+            return JSON.parse(session);
+        }
+        

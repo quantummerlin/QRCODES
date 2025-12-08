@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e27">
+  <meta name="description" content="Your personal council of manifestation guides - Transform your reality through daily engagement">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quantum Council">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="assets/js/manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzEzN18xNDgpIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTEiIHI9IjQiIGZpbGw9IiNGRkQ3MDAiLz4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxNyIgcj0iMyIgZmlsbD0iIzRBOTBFMiIvPgo8Y2lyY2xlIGN4PSIyMSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjOUI1OUI2Ii8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjIuNSIgZmlsbD0iI0U3NEMzQyIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDBfbGluZWFyXzEzN18xNDgiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzBBMEUyNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQTFGM0EiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+  
+  <title>Quantum Council - Your Manifestation Guide</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4A90E2;
+      --secondary: #9B59B6;
+      --accent: #FFD700;
+      --background: #0a0e27;
+      --surface: #1a1f3a;
+      --surface-light: rgba(255, 255, 255, 0.05);
+      --text-primary: #ffffff;
+      --text-secondary: #aaa;
+      --border: rgba(255, 255, 255, 0.1);
+      --success: #4CAF50;
+      --warning: #FF6B6B;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Enhanced quantum background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(74,144,226,0.15), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(155,89,182,0.18), transparent 55%);
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loading-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-container {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .logo-circle {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .loading-text {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+    }
+
+    .loading-dots {
+      color: var(--primary);
+    }
+
+    /* App Container */
+    .app {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .app.show {
+      opacity: 1;
+    }
+
+    /* Header with enhanced glow */
+    .header {
+      background: var(--surface);
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 0 12px rgba(74,144,226,0.6);
+    }
+
+    .header-text h1 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .header-text p {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    .icon-btn:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .icon-btn.active {
+      background: var(--primary);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab {
+      flex: 1;
+      min-width: 80px;
+      padding: 14px 16px;
+      text-align: center;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .nav-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      background: var(--surface-light);
+    }
+
+    .nav-tab:hover {
+      color: var(--text-primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 20px;
+      min-height: calc(100vh - 140px);
+      padding-bottom: 80px;
+    }
+
+    .content-page {
+      display: none;
+    }
+
+    .content-page.active {
+      display: block;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Progress Indicators */
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .stat-card {
+      background: var(--surface-light);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      border-radius: 12px;
+      padding: 14px 24px;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+      box-shadow: none;
+    }
+
+    /* Messages */
+    .message-list {
+      margin-top: 16px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .message {
+      background: var(--surface-light);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-left: 3px solid var(--primary);
+    }
+
+    .message-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .persona-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .persona-name {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .message-time {
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-left: auto;
+    }
+
+    .message-content {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-primary);
+    }
+
+    /* Typing Indicator */
+    #typingIndicator {
+      margin-top: 8px;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    /* Quick Actions */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .action-card {
+      background: var(--surface-light);
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .action-card:hover {
+      background: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .action-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .action-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .action-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .nav-item.active {
+      color: var(--primary);
+    }
+
+    .nav-icon {
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    /* Onboarding */
+    .onboarding {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    .onboarding.hide {
+      display: none;
+    }
+
+    .onboarding-step {
+      display: none;
+      text-align: center;
+    }
+
+    .onboarding-step.active {
+      display: block;
+    }
+
+    .step-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .step-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .step-description {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+
+    .step-progress {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .progress-dot.active {
+      background: var(--primary);
+      transform: scale(1.2);
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    select.form-input {
+      cursor: pointer;
+    }
+
+    /* Indicator Items */
+    .indicator-item {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .indicator-checkbox {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .indicator-text {
+      flex: 1;
+    }
+
+    .indicator-text.achieved {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .indicator-evidence-count {
+      background: rgba(74, 144, 226, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+
+    /* Achievements */
+    .achievement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .achievement-card {
+      background: var(--surface-light);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+      opacity: 0.5;
+      transition: all 0.3s ease;
+    }
+
+    .achievement-card.unlocked {
+      opacity: 1;
+      border-color: var(--accent);
+    }
+
+    .achievement-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .achievement-name {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .achievement-points {
+      font-size: 10px;
+      color: var(--accent);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .header-title h1 {
+        font-size: 16px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding: 16px;
+      }
+    }
+
+    /* Utility */
+    .text-center {
+      text-align: center;
+    }
+
+    .mt-16 {
+      margin-top: 16px;
+    }
+
+    .mb-16 {
+      margin-bottom: 16px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(400px); }
+      to { transform: translateX(0); }
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="logo-container">
+      <div class="logo-circle">🌙</div>
+    </div>
+    <div class="loading-text">Initializing Quantum Council<span class="loading-dots">...</span></div>
+  </div>
+
+  <!-- Onboarding -->
+  <div class="onboarding" id="onboarding">
+    <!-- Step 1: Welcome -->
+    <div class="onboarding-step active" data-step="1">
+      <div class="step-icon">🌟</div>
+      <h2 class="step-title">Welcome to Quantum Council</h2>
+      <p class="step-description">
+        Your personal council of manifestation guides is ready to help you transform your reality. 
+        Let's set up your journey in just a few steps.
+      </p>
+      <button class="btn" onclick="onboardingNext()">
+        Begin Setup →
+      </button>
+    </div>
+
+    <!-- Step 2: Set Intention (Enhanced) -->
+    <div class="onboarding-step" data-step="2">
+      <div class="step-icon">🎯</div>
+      <h2 class="step-title">What Do You Want to Manifest?</h2>
+      <p class="step-description">
+        Be specific about your desired reality. The clearer your intention, 
+        the more powerful your manifestation.
+      </p>
+      
+      <div class="form-group">
+        <label class="form-label">Which area of life are you focusing on?</label>
+        <select class="form-input" id="onboardingArea">
+          <option value="">Choose an area...</option>
+          <option value="Money">Money & Abundance</option>
+          <option value="Love">Love & Relationships</option>
+          <option value="Health">Health & Vitality</option>
+          <option value="Purpose">Career & Purpose</option>
+          <option value="Spiritual">Spiritual Growth</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">What specifically do you want to manifest?</label>
+        <input type="text" class="form-input" id="onboardingIntention"
+               placeholder="e.g., earning $10K/month from work I love">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Why is this important to you? (How will it feel?)</label>
+        <textarea class="form-input form-textarea" id="onboardingWhy"
+                  placeholder="e.g., freedom, security, joy, contribution..."></textarea>
+      </div>
+      
+      <button class="btn" onclick="onboardingNext()">
+        Set Intention →
+      </button>
+    </div>
+
+    <!-- Step 3: Reality Check -->
+    <div class="onboarding-step" data-step="3">
+      <div class="step-icon">🧘</div>
+      <h2 class="step-title">Daily Reality Checks</h2>
+      <p class="step-description">
+        Stay present with your manifestation through daily reality checks. 
+        This is the key to conscious creation.
+      </p>
+      <button class="btn" onclick="onboardingNext()">
+        I Understand →
+      </button>
+    </div>
+
+    <!-- Step 4: Complete -->
+    <div class="onboarding-step" data-step="4">
+      <div class="step-icon">🎉</div>
+      <h2 class="step-title">You're Ready!</h2>
+      <p class="step-description">
+        Your Quantum Council is assembled and waiting. Start your first session 
+        and begin your manifestation journey.
+      </p>
+      <button class="btn" onclick="onboardingComplete()">
+        Start Your Journey →
+      </button>
+    </div>
+
+    <!-- Progress Dots -->
+    <div class="step-progress">
+      <div class="progress-dot active"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+      <div class="progress-dot"></div>
+    </div>
+  </div>
+
+  <!-- Main App -->
+  <div class="app" id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <div class="header-icon">🌙</div>
+        <div class="header-text">
+          <h1>Quantum Council</h1>
+          <p id="headerSubtitle">Your manifestation guide</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="showNotifications()" id="notificationBtn">
+          🔔
+        </button>
+        <button class="icon-btn" onclick="showProfile()">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <div class="nav-tab active" data-page="council">👥 Council</div>
+      <div class="nav-tab" data-page="reality">🎯 Reality</div>
+      <div class="nav-tab" data-page="progress">📊 Progress</div>
+      <div class="nav-tab" data-page="achievements">🏆 Achievements</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Council Page -->
+      <div class="content-page active" id="council-page">
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="streakDays">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="alignmentScore">0</div>
+            <div class="stat-label">Alignment</div>
+          </div>
+        </div>
+
+        <!-- Daily Challenge Card -->
+        <div class="card" id="dailyChallengeCard">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <span>🎯</span>
+                Today's Quantum Challenge
+              </div>
+              <div class="card-subtitle" id="dailyChallengeText">
+                Loading challenge...
+              </div>
+            </div>
+            <button class="icon-btn" id="dailyChallengeDoneBtn" onclick="completeDailyChallenge()">
+              ✅
+            </button>
+          </div>
+        </div>
+
+        <!-- Current Session Card -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <span>🌟</span>
+                Current Session
+              </div>
+              <div class="card-subtitle">Your council is ready</div>
+            </div>
+            <button class="icon-btn" onclick="startSession()">
+              ▶️
+            </button>
+          </div>
+          
+          <div class="message-list" id="messageList">
+            <div class="message">
+              <div class="message-author">
+                <div class="persona-avatar">🧠</div>
+                <div class="persona-name">Divine Witness</div>
+                <div class="message-time">Just now</div>
+              </div>
+              <div class="message-content">
+                Welcome to your Quantum Council. I am here to witness your journey without judgment and hold the space for your transformation.
+              </div>
+            </div>
+          </div>
+
+          <!-- Typing Indicator -->
+          <div id="typingIndicator" style="display:none;">
+            <span id="typingPersona">Guide</span> is typing...
+          </div>
+
+          <button class="btn mt-16" onclick="continueSession()">
+            Continue Session
+          </button>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <div class="action-card" onclick="showLogWin()">
+            <div class="action-icon">🏆</div>
+            <div class="action-title">Log Win</div>
+            <div class="action-desc">Record evidence</div>
+          </div>
+          <div class="action-card" onclick="showGratitude()">
+            <div class="action-icon">🙏</div>
+            <div class="action-title">Gratitude</div>
+            <div class="action-desc">Practice appreciation</div>
+          </div>
+          <div class="action-card" onclick="showAffirmations()">
+            <div class="action-icon">✨</div>
+            <div class="action-title">Affirmations</div>
+            <div class="action-desc">Powerful statements</div>
+          </div>
+          <div class="action-card" onclick="showJournal()">
+            <div class="action-icon">📝</div>
+            <div class="action-title">Journal</div>
+            <div class="action-desc">Reflect deeply</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reality Check Page -->
+      <div class="content-page" id="reality-page">
+        <div class="card">
+          <div class="card-title">
+            <span>🎯</span>
+            Daily Reality Check
+          </div>
+          <div class="card-subtitle">Stay present with your manifestation</div>
+          
+          <div class="form-group">
+            <label class="form-label">How aligned do you feel today?</label>
+            <input type="range" class="form-input" id="alignmentSlider" 
+                   min="1" max="10" value="5" oninput="updateAlignmentValue(this.value)">
+            <div style="text-align: center; margin-top: 8px; color: var(--primary); font-weight: 600;">
+              <span id="alignmentValue">5</span>/10
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Evidence of manifestation today:</label>
+            <textarea class="form-input form-textarea" id="evidenceText" 
+                      placeholder="What evidence did you notice today? Any synchronicities, unexpected opportunities, or shifts in reality?"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">What are you grateful for?</label>
+            <textarea class="form-input form-textarea" id="gratitudeText" 
+                      placeholder="List 3 things you're grateful for today..."></textarea>
+          </div>
+
+          <button class="btn" onclick="submitRealityCheck()">
+            Complete Reality Check
+          </button>
+        </div>
+
+        <!-- Recent Evidence -->
+        <div class="card">
+          <div class="card-title">
+            <span>✨</span>
+            Recent Evidence
+          </div>
+          <div id="recentEvidenceList">
+            <p style="text-align: center; color: var(--text-secondary); padding: 20px;">
+              No evidence logged yet. Start your first reality check!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Page -->
+      <div class="content-page" id="progress-page">
+        <!-- Intention Progress -->
+        <div class="card">
+          <div class="card-title">
+            <span>🎯</span>
+            <span id="intentionTitle">Your Intention</span>
+          </div>
+          <div class="card-subtitle">Manifestation journey progress</div>
+          
+          <div class="progress-bar">
+            <div class="progress-fill" id="intentionProgress" style="width: 0%"></div>
+          </div>
+          <div class="progress-text" id="progressText">0% Complete</div>
+
+          <!-- Indicators -->
+          <div id="indicatorsList" style="margin-top: 20px;">
+            <!-- Will be populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="totalSessions">0</div>
+            <div class="stat-label">Total Sessions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="totalWins">0</div>
+            <div class="stat-label">Wins Logged</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="totalEvidence">0</div>
+            <div class="stat-label">Evidence Count</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="momentumScore">0%</div>
+            <div class="stat-label">Momentum</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements Page -->
+      <div class="content-page" id="achievements-page">
+        <!-- Level Progress -->
+        <div class="card">
+          <div class="card-title">
+            <span>⭐</span>
+            Level Progress
+          </div>
+          <div class="card-subtitle" id="levelInfo">Level 1: Seeker</div>
+          
+          <div class="progress-bar">
+            <div class="progress-fill" id="levelProgress" style="width: 0%"></div>
+          </div>
+          <div class="progress-text" id="levelProgressText">0 / 100 points</div>
+        </div>
+
+        <!-- Achievements Grid -->
+        <div class="card">
+          <div class="card-title">
+            <span>🏆</span>
+            Achievements
+          </div>
+          <div class="achievement-grid" id="achievementsGrid">
+            <!-- Will be populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-item active" data-page="council">
+        <div class="nav-icon">👥</div>
+        <div class="nav-label">Council</div>
+      </div>
+      <div class="nav-item" data-page="reality">
+        <div class="nav-icon">🎯</div>
+        <div class="nav-label">Reality</div>
+      </div>
+      <div class="nav-item" data-page="progress">
+        <div class="nav-icon">📊</div>
+        <div class="nav-label">Progress</div>
+      </div>
+      <div class="nav-item" data-page="achievements">
+        <div class="nav-icon">🏆</div>
+        <div class="nav-label">Awards</div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/app-enhanced.js"></script>
+</body>
+</html>

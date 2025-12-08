@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0a0e27">
+  <meta name="description" content="Your personal quantum manifestation council - Bend reality through cosmic engagement">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Quantum Council">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0idXJsKCNncmFkaWVudDBfbGluZWFyXzEzN18xNDgpIi8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMTEiIHI9IjQiIGZpbGw9IiNGRkQ3MDAiLz4KPGNpcmNsZSBjeD0iMTEiIGN5PSIxNyIgcj0iMyIgZmlsbD0iIzRBOTBFMiIvPgo8Y2lyY2xlIGN4PSIyMSIgY3k9IjE3IiByPSIzIiBmaWxsPSIjOUI1OUI2Ii8+CjxjaXJjbGUgY3g9IjE2IiBjeT0iMjQiIHI9IjIuNSIgZmlsbD0iI0U3NEMzQyIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDBfbGluZWFyXzEzN18xNDgiIHgxPSIwIiB5MT0iMCIgeDI9IjMyIiB5Mj0iMzIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzBBMEUyNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQTFGM0EiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=">
+  
+  <title data-i18n="appTitle">Quantum Manifestation Techniques</title>
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #4A90E2;
+      --secondary: #9B59B6;
+      --accent: #FFD700;
+      --quantum-cyan: #00ffff;
+      --quantum-purple: #ff00ff;
+      --electric-blue: #0080ff;
+      --plasma-pink: #ff69b4;
+      --background: #0a0e27;
+      --surface: #1a1f3a;
+      --surface-light: rgba(255, 255, 255, 0.05);
+      --text-primary: #ffffff;
+      --text-secondary: #aaa;
+      --border: rgba(255, 255, 255, 0.1);
+      --success: #4CAF50;
+      --warning: #FF6B6B;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--background);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Quantum Reality-Bending Background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.3), transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.25), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(0, 128, 255, 0.2), transparent 60%),
+        radial-gradient(circle at 10% 90%, rgba(255, 215, 0, 0.15), transparent 40%);
+      opacity: 0.8;
+      z-index: -2;
+      animation: quantumShift 20s ease-in-out infinite;
+    }
+
+    @keyframes quantumShift {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        filter: hue-rotate(0deg);
+      }
+      25% { 
+        transform: scale(1.1) rotate(90deg);
+        filter: hue-rotate(60deg);
+      }
+      50% { 
+        transform: scale(1.2) rotate(180deg);
+        filter: hue-rotate(120deg);
+      }
+      75% { 
+        transform: scale(1.1) rotate(270deg);
+        filter: hue-rotate(180deg);
+      }
+    }
+
+    /* Blueprint Grid Effect */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: -1;
+      animation: blueprintPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes blueprintPulse {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Floating Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: var(--quantum-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--quantum-cyan);
+      animation: float 20s infinite linear;
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    .loading-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .logo-container {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 20px;
+      position: relative;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 
+        0 0 60px rgba(0, 255, 255, 0.8),
+        0 0 120px rgba(255, 0, 255, 0.6),
+        inset 0 0 40px rgba(0, 128, 255, 0.4);
+      animation: quantumLogo 3s ease-in-out infinite;
+    }
+
+    @keyframes quantumLogo {
+      0%, 100% { 
+        transform: scale(1) rotate(0deg);
+        box-shadow: 
+          0 0 60px rgba(0, 255, 255, 0.8),
+          0 0 120px rgba(255, 0, 255, 0.6),
+          inset 0 0 40px rgba(0, 128, 255, 0.4);
+      }
+      50% { 
+        transform: scale(1.1) rotate(180deg);
+        box-shadow: 
+          0 0 80px rgba(255, 0, 255, 0.9),
+          0 0 140px rgba(0, 255, 255, 0.7),
+          inset 0 0 60px rgba(255, 215, 0, 0.5);
+      }
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: imagePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes imagePulse {
+      0%, 100% { 
+        filter: brightness(1) saturate(1);
+        transform: scale(1);
+      }
+      50% { 
+        filter: brightness(1.2) saturate(1.5);
+        transform: scale(1.05);
+      }
+    }
+
+    .loading-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--quantum-cyan);
+      margin-top: 20px;
+      text-shadow: 
+        0 0 20px var(--quantum-cyan),
+        0 0 40px var(--electric-blue);
+      animation: textGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes textGlow {
+      0%, 100% { 
+        text-shadow: 
+          0 0 20px var(--quantum-cyan),
+          0 0 40px var(--electric-blue);
+      }
+      50% { 
+        text-shadow: 
+          0 0 30px var(--quantum-cyan),
+          0 0 60px var(--quantum-purple),
+          0 0 80px var(--electric-blue);
+      }
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(26, 31, 58, 0.7));
+      backdrop-filter: blur(20px);
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid;
+      border-image: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan)) 1;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 10px 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .header-icon {
+      font-size: 2.5rem;
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+      animation: iconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-5px) scale(1.1); }
+    }
+
+    .header-text h1 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: textGradient 3s ease-in-out infinite;
+    }
+
+    @keyframes textGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .header-text p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      opacity: 0.8;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    /* Language Selector */
+    .language-selector {
+      position: relative;
+    }
+
+    .language-btn {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+      border: 2px solid var(--quantum-cyan);
+      color: var(--text-primary);
+      padding: 0.5rem 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .language-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .language-btn:hover::before {
+      left: 100%;
+    }
+
+    .language-btn:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(255, 0, 255, 0.4));
+      border-color: var(--quantum-purple);
+      box-shadow: 0 6px 30px rgba(255, 0, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.95), rgba(26, 31, 58, 0.85));
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--quantum-cyan);
+      border-radius: 16px;
+      padding: 0.5rem;
+      min-width: 180px;
+      display: none;
+      box-shadow: 0 20px 60px rgba(0, 255, 255, 0.4);
+      z-index: 1000;
+    }
+
+    .language-dropdown.show {
+      display: block;
+      animation: quantumDropdown 0.5s ease;
+    }
+
+    @keyframes quantumDropdown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+        filter: blur(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    .language-option {
+      padding: 0.75rem;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .language-option::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .language-option:hover::before {
+      opacity: 1;
+    }
+
+    .language-option:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+      transform: translateX(5px);
+      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    }
+
+    .language-option.active {
+      background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple));
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(255, 0, 255, 0.5);
+    }
+
+    /* Quantum Buttons */
+    .icon-btn {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+      border: 2px solid var(--quantum-cyan);
+      color: var(--text-primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .icon-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, var(--quantum-cyan), transparent);
+      transition: all 0.4s ease;
+      transform: translate(-50%, -50%);
+    }
+
+    .icon-btn:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .icon-btn:hover {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.4), rgba(255, 0, 255, 0.4));
+      border-color: var(--quantum-purple);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 30px rgba(255, 0, 255, 0.6);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      padding: 3rem 1rem;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--plasma-pink), var(--quantum-cyan)) 1;
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      opacity: 0.4;
+      z-index: 0;
+      filter: blur(15px);
+    }
+
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: heroImage 10s ease-in-out infinite;
+    }
+
+    @keyframes heroImage {
+      0%, 100% { 
+        filter: blur(15px) brightness(1) hue-rotate(0deg);
+        transform: scale(1.1);
+      }
+      50% { 
+        filter: blur(20px) brightness(1.2) hue-rotate(90deg);
+        transform: scale(1.2);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple), var(--plasma-pink), var(--quantum-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: heroGradient 4s ease-in-out infinite;
+      text-shadow: 0 0 80px rgba(0, 255, 255, 0.5);
+    }
+
+    @keyframes heroGradient {
+      0%, 100% { 
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+      }
+      50% { 
+        background-position: 100% 50%;
+        filter: hue-rotate(180deg);
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      opacity: 0.9;
+      text-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+
+    /* Holographic Button */
+    .hero-button {
+      background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple), var(--plasma-pink), var(--electric-blue));
+      background-size: 400% 400%;
+      color: white;
+      border: 2px solid var(--quantum-cyan);
+      padding: 1rem 2rem;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 4px 20px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      animation: holographic 3s ease-in-out infinite;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @keyframes holographic {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .hero-button:hover::before {
+      left: 100%;
+    }
+
+    .hero-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 40px rgba(0, 255, 255, 0.6),
+        0 0 60px rgba(255, 0, 255, 0.5),
+        0 0 80px rgba(255, 215, 0, 0.3);
+      border-color: var(--quantum-purple);
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(26, 31, 58, 0.7));
+      backdrop-filter: blur(20px);
+      border-bottom: 2px solid;
+      border-image: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan)) 1;
+      scrollbar-width: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-tab {
+      padding: 0.75rem 1.5rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+      border: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.4s ease;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-tab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-tab:hover::before {
+      left: 100%;
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple));
+      border-color: var(--quantum-cyan);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .nav-tab:hover {
+      border-color: var(--quantum-purple);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(255, 0, 255, 0.3);
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .content-page {
+      display: none;
+    }
+
+    .content-page.active {
+      display: block;
+      animation: quantumFadeIn 0.5s ease;
+    }
+
+    @keyframes quantumFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        filter: blur(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    /* Techniques Grid */
+    .techniques-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .techniques-title {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--plasma-pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: titlePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes titlePulse {
+      0%, 100% { 
+        filter: hue-rotate(0deg);
+        transform: scale(1);
+      }
+      50% { 
+        filter: hue-rotate(45deg);
+        transform: scale(1.02);
+      }
+    }
+
+    .techniques-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+
+    .techniques-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Quantum Technique Card */
+    .technique-card {
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(26, 31, 58, 0.7));
+      backdrop-filter: blur(20px);
+      border: 2px solid;
+      border-image: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan)) 1;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .technique-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .technique-card:hover::before {
+      opacity: 1;
+    }
+
+    .technique-card:hover {
+      transform: translateY(-10px) scale(1.02) rotate(1deg);
+      box-shadow: 
+        0 20px 60px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(255, 0, 255, 0.3),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+      border-image: linear-gradient(135deg, var(--quantum-purple), var(--plasma-pink), var(--quantum-purple)) 1;
+    }
+
+    .technique-image {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+    }
+
+    .technique-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+      filter: brightness(1) saturate(1);
+    }
+
+    .technique-card:hover .technique-image img {
+      transform: scale(1.1) rotate(2deg);
+      filter: brightness(1.2) saturate(1.5);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    }
+
+    .technique-content {
+      padding: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .technique-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .technique-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .technique-button {
+      background: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple), var(--plasma-pink));
+      background-size: 300% 300%;
+      color: white;
+      border: 2px solid var(--quantum-cyan);
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      animation: buttonShift 4s ease-in-out infinite;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes buttonShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .technique-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .technique-button:hover::before {
+      left: 100%;
+    }
+
+    .technique-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 
+        0 8px 30px rgba(255, 0, 255, 0.5),
+        0 0 40px rgba(0, 255, 255, 0.3);
+      border-color: var(--quantum-purple);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.9), rgba(26, 31, 58, 0.7));
+      backdrop-filter: blur(20px);
+      border: 2px solid;
+      border-image: linear-gradient(135deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan)) 1;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+    }
+
+    .stat-card:hover {
+      border-image: linear-gradient(135deg, var(--quantum-purple), var(--plasma-pink), var(--quantum-purple)) 1;
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 40px rgba(255, 0, 255, 0.3);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accent), var(--plasma-pink), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      animation: valueGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes valueGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.3); }
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(135deg, rgba(26, 31, 58, 0.95), rgba(26, 31, 58, 0.85));
+      backdrop-filter: blur(20px);
+      border-top: 2px solid;
+      border-image: linear-gradient(90deg, var(--quantum-cyan), var(--quantum-purple), var(--quantum-cyan)) 1;
+      display: flex;
+      justify-content: space-around;
+      padding: 0.75rem;
+      z-index: 100;
+      box-shadow: 0 -10px 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      padding: 0.5rem;
+      border-radius: 12px;
+      flex: 1;
+      max-width: 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(0, 255, 255, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .nav-item:hover::before {
+      opacity: 1;
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+      border: 2px solid var(--quantum-cyan);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+    }
+
+    .nav-icon {
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active .nav-icon {
+      filter: drop-shadow(0 0 10px var(--quantum-cyan));
+      transform: scale(1.1);
+    }
+
+    .nav-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .nav-item.active .nav-label {
+      color: var(--quantum-cyan);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+
+      .techniques-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .main-content {
+        padding-bottom: 80px;
+      }
+
+      .logo-container {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    /* Additional Quantum Effects */
+    @keyframes quantumPulse {
+      0%, 100% { 
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.7;
+        transform: scale(1.05);
+      }
+    }
+
+    @keyframes electricFlow {
+      0%, 100% { 
+        box-shadow: 0 0 20px var(--quantum-cyan);
+      }
+      50% { 
+        box-shadow: 0 0 40px var(--quantum-purple), 0 0 60px var(--electric-blue);
+      }
+    }
+
+    .glow-effect {
+      animation: electricFlow 2s ease-in-out infinite;
+    }
+
+    /* Scroll Animations */
+    @keyframes scrollReveal {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .scroll-reveal {
+      animation: scrollReveal 0.8s ease forwards;
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <!-- Quantum Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="logo-container">
+      <img src="f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png" alt="Quantum Logo">
+    </div>
+    <div class="loading-text" data-i18n="appTitle">Quantum Manifestation Techniques</div>
+  </div>
+
+  <div class="app" id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <div class="header-icon">🌙</div>
+        <div class="header-text">
+          <h1 data-i18n="appTitle">Quantum Manifestation Techniques</h1>
+          <p data-i18n="heroSubtitle">Bend reality through cosmic engagement</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <!-- Language Selector -->
+        <div class="language-selector">
+          <button class="language-btn" id="languageBtn" onclick="toggleLanguageDropdown()">
+            🌐 <span id="currentLang">EN</span>
+          </button>
+          <div class="language-dropdown" id="languageDropdown">
+            <div class="language-option" data-lang="en" onclick="changeLanguage('en')">
+              🇬🇧 English
+            </div>
+            <div class="language-option" data-lang="es" onclick="changeLanguage('es')">
+              🇪🇸 Español
+            </div>
+            <div class="language-option" data-lang="pt" onclick="changeLanguage('pt')">
+              🇧🇷 Português
+            </div>
+            <div class="language-option" data-lang="fr" onclick="changeLanguage('fr')">
+              🇫🇷 Français
+            </div>
+            <div class="language-option" data-lang="de" onclick="changeLanguage('de')">
+              🇩🇪 Deutsch
+            </div>
+          </div>
+        </div>
+        <button class="icon-btn glow-effect" onclick="showNotifications()">
+          🔔
+        </button>
+        <button class="icon-btn glow-effect" onclick="showProfile()">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-background">
+        <img src="f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png" alt="Quantum Hero">
+      </div>
+      <div class="hero-content">
+        <h1 class="hero-title" data-i18n="heroTitle">Transform Your Reality</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Bend reality through powerful quantum manifestation techniques</p>
+        <button class="hero-button" data-i18n="heroButton" onclick="scrollToTechniques()">EXPLORE TECHNIQUES</button>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <div class="nav-tab active" data-page="techniques" onclick="switchPage('techniques')">
+        <span data-i18n="techniquesTitle">Techniques</span>
+      </div>
+      <div class="nav-tab" data-page="timer" onclick="switchPage('timer')">
+        <span data-i18n="timerTitle">Timer</span>
+      </div>
+      <div class="nav-tab" data-page="journal" onclick="switchPage('journal')">
+        <span data-i18n="journalTitle">Journal</span>
+      </div>
+      <div class="nav-tab" data-page="progress" onclick="switchPage('progress')">
+        📊 Progress
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Techniques Page -->
+      <div class="content-page active" id="techniques-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="techniquesTitle">Quantum Techniques</h2>
+          <p class="techniques-subtitle" data-i18n="techniquesSubtitle">Choose a technique to bend your reality</p>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="streakDays">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="totalSessions">0</div>
+            <div class="stat-label">Total Sessions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="alignmentScore">0%</div>
+            <div class="stat-label">Quantum Alignment</div>
+          </div>
+        </div>
+
+        <!-- Techniques Grid -->
+        <div class="techniques-grid">
+          <!-- 369 Method -->
+          <div class="technique-card" onclick="startTechnique('369')">
+            <div class="technique-image">
+              <img src="085cb80b-3c46-4539-b09a-3904fd540120_0.png" alt="369 Method">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique1Title">369 Method</h3>
+              <p class="technique-description" data-i18n="technique1Desc">Write your desire 3 times morning, 6 times afternoon, 9 times night</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Visualization -->
+          <div class="technique-card" onclick="startTechnique('visualization')">
+            <div class="technique-image">
+              <img src="25798d6e-7279-4fb1-b05c-96b554400f42_0 (1).png" alt="Visualization">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique2Title">Visualization</h3>
+              <p class="technique-description" data-i18n="technique2Desc">Create vivid mental images and feel the quantum emotions</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Affirmations -->
+          <div class="technique-card" onclick="startTechnique('affirmations')">
+            <div class="technique-image">
+              <img src="4e80bfe6-3996-4634-8b04-b4fbb777fe7c_0.png" alt="Affirmations">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique3Title">Affirmations</h3>
+              <p class="technique-description" data-i18n="technique3Desc">Reprogram your subconscious with quantum affirmations</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Scripting -->
+          <div class="technique-card" onclick="startTechnique('scripting')">
+            <div class="technique-image">
+              <img src="672e35e1-fe93-4f67-b800-731779abadae_0.png" alt="Scripting">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique4Title">Scripting</h3>
+              <p class="technique-description" data-i18n="technique4Desc">Write your manifested reality into existence</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Gratitude -->
+          <div class="technique-card" onclick="startTechnique('gratitude')">
+            <div class="technique-image">
+              <img src="93824932-023a-44a5-927e-2c4541a4e6c3_0.png" alt="Gratitude">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique5Title">Gratitude</h3>
+              <p class="technique-description" data-i18n="technique5Desc">Amplify your manifestation frequency with gratitude</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Vision Board -->
+          <div class="technique-card" onclick="startTechnique('vision')">
+            <div class="technique-image">
+              <img src="b6530778-7109-4328-bda5-e624904e9ec5_0.png" alt="Vision Board">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique6Title">Vision Board</h3>
+              <p class="technique-description" data-i18n="technique6Desc">Create visual quantum portals to your desired reality</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Inner Child Healing -->
+          <div class="technique-card" onclick="startTechnique('innerchild')">
+            <div class="technique-image">
+              <img src="Inner Child Healing.png" alt="Inner Child Healing">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique7Title">Inner Child Healing</h3>
+              <p class="technique-description" data-i18n="technique7Desc">Heal your inner child to unlock quantum manifestation</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+
+          <!-- Vocal Grounding -->
+          <div class="technique-card" onclick="startTechnique('vocal')">
+            <div class="technique-image">
+              <img src="Vocal Grounding.png" alt="Vocal Grounding">
+            </div>
+            <div class="technique-content">
+              <h3 class="technique-title" data-i18n="technique8Title">Vocal Grounding</h3>
+              <p class="technique-description" data-i18n="technique8Desc">Use quantum sound frequencies to anchor intentions</p>
+              <button class="technique-button" data-i18n="startButton">START QUANTUM</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timer Page -->
+      <div class="content-page" id="timer-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="timerTitle">Quantum Timer</h2>
+          <p class="techniques-subtitle" data-i18n="timerSubtitle">Sync with universal quantum frequencies</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--quantum-cyan); font-size: 1.2rem; animation: textGlow 2s ease-in-out infinite;">Quantum timer interface coming soon...</p>
+        </div>
+      </div>
+
+      <!-- Journal Page -->
+      <div class="content-page" id="journal-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title" data-i18n="journalTitle">Quantum Journal</h2>
+          <p class="techniques-subtitle" data-i18n="journalSubtitle">Document your reality-bending journey</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--quantum-cyan); font-size: 1.2rem; animation: textGlow 2s ease-in-out infinite;">Quantum journal coming soon...</p>
+        </div>
+      </div>
+
+      <!-- Progress Page -->
+      <div class="content-page" id="progress-page">
+        <div class="techniques-header">
+          <h2 class="techniques-title">Quantum Progress</h2>
+          <p class="techniques-subtitle">Track your reality transformation</p>
+        </div>
+        <div style="text-align: center; padding: 3rem;">
+          <p style="color: var(--quantum-cyan); font-size: 1.2rem; animation: textGlow 2s ease-in-out infinite;">Quantum progress tracking coming soon...</p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <div class="nav-item active" onclick="switchPage('techniques')">
+        <div class="nav-icon">✨</div>
+        <div class="nav-label" data-i18n="techniquesTitle">Techniques</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('timer')">
+        <div class="nav-icon">⏱️</div>
+        <div class="nav-label" data-i18n="timerTitle">Timer</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('journal')">
+        <div class="nav-icon">📝</div>
+        <div class="nav-label" data-i18n="journalTitle">Journal</div>
+      </div>
+      <div class="nav-item" onclick="switchPage('progress')">
+        <div class="nav-icon">📊</div>
+        <div class="nav-label">Progress</div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Scripts -->
+  <script src="translations.js"></script>
+  <script src="app-quantum.js"></script>
+</body>
+</html>

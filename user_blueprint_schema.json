@@ -1,0 +1,419 @@
+{
+  "schema_version": "1.0",
+  "blueprint_structure": {
+    "user_id": {
+      "type": "string",
+      "required": true,
+      "description": "Unique identifier for the user"
+    },
+    "user_name": {
+      "type": "string",
+      "required": true,
+      "description": "User's preferred name"
+    },
+    "created_at": {
+      "type": "datetime",
+      "required": true,
+      "description": "When the blueprint was created"
+    },
+    "last_updated": {
+      "type": "datetime",
+      "required": true,
+      "description": "Last time blueprint was modified"
+    },
+    "intention": {
+      "type": "object",
+      "required": true,
+      "description": "Primary manifestation intention",
+      "properties": {
+        "area": {
+          "type": "string",
+          "enum": [
+            "financial_abundance",
+            "love_relationships",
+            "health_vitality",
+            "career_purpose",
+            "spiritual_growth",
+            "confidence_identity",
+            "other"
+          ],
+          "required": true
+        },
+        "specific_goal": {
+          "type": "string",
+          "required": true,
+          "description": "Clear, specific statement of what they want to manifest",
+          "example": "I am earning $10,000 per month from my coaching business"
+        },
+        "vision": {
+          "type": "string",
+          "required": true,
+          "description": "Detailed description of what it looks/feels like when achieved",
+          "example": "I wake up feeling financially secure. I have clients who value my work. I can afford the lifestyle I desire without stress."
+        },
+        "timeline": {
+          "type": "string",
+          "required": false,
+          "description": "Desired timeline or 'divine timing'",
+          "example": "90 days"
+        }
+      }
+    },
+    "emotional_drivers": {
+      "type": "array",
+      "required": true,
+      "description": "What this outcome unlocks emotionally/spiritually",
+      "items": {
+        "type": "string"
+      },
+      "examples": ["freedom", "security", "confidence", "love", "peace", "purpose"]
+    },
+    "obstacles": {
+      "type": "array",
+      "required": true,
+      "description": "Current blocks, fears, or limiting beliefs",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "doubt_fear",
+              "perfectionism_delay",
+              "comparison_jealousy",
+              "overwhelm_anxiety",
+              "self_criticism",
+              "avoidance_denial",
+              "self_sabotage",
+              "unworthiness",
+              "time_pressure",
+              "other"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "description": "Specific description of the obstacle"
+          }
+        }
+      }
+    },
+    "past_successes": {
+      "type": "array",
+      "required": false,
+      "description": "Previous manifestations or moments of power",
+      "items": {
+        "type": "string"
+      },
+      "examples": ["Got my last job through synchronicity", "Manifested $500 unexpectedly"]
+    },
+    "current_practices": {
+      "type": "array",
+      "required": false,
+      "description": "Current manifestation or spiritual practices",
+      "items": {
+        "type": "string"
+      },
+      "examples": ["Daily meditation", "Journaling", "Affirmations", "Visualization"]
+    },
+    "preferences": {
+      "type": "object",
+      "required": false,
+      "description": "User preferences for council interactions",
+      "properties": {
+        "communication_style": {
+          "type": "string",
+          "enum": ["direct", "gentle", "balanced"],
+          "default": "balanced"
+        },
+        "session_frequency": {
+          "type": "string",
+          "enum": ["all_four_daily", "morning_evening_only", "custom"],
+          "default": "all_four_daily"
+        },
+        "notification_preferences": {
+          "type": "object",
+          "properties": {
+            "email": {"type": "boolean", "default": true},
+            "push": {"type": "boolean", "default": true},
+            "sms": {"type": "boolean", "default": false}
+          }
+        },
+        "favorite_personas": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Personas the user resonates with most"
+        }
+      }
+    }
+  },
+  
+  "example_blueprints": {
+    "financial_abundance": {
+      "user_id": "user_001",
+      "user_name": "Sarah",
+      "created_at": "2025-01-01T00:00:00Z",
+      "last_updated": "2025-01-01T00:00:00Z",
+      "intention": {
+        "area": "financial_abundance",
+        "specific_goal": "I am earning $10,000 per month from my coaching business",
+        "vision": "I wake up feeling financially secure and abundant. I have 15+ aligned clients who value my work and pay me well. I can afford the lifestyle I desire without stress. Money flows to me easily and consistently.",
+        "timeline": "90 days"
+      },
+      "emotional_drivers": [
+        "freedom",
+        "security",
+        "confidence",
+        "recognition",
+        "service"
+      ],
+      "obstacles": [
+        {
+          "type": "doubt_fear",
+          "description": "Doubt that I can really make this much money"
+        },
+        {
+          "type": "self_sabotage",
+          "description": "I procrastinate on marketing and sales calls"
+        },
+        {
+          "type": "comparison_jealousy",
+          "description": "I compare myself to other coaches who seem more successful"
+        }
+      ],
+      "past_successes": [
+        "Got my first coaching client through a random Instagram DM",
+        "Manifested $2,000 unexpectedly last year"
+      ],
+      "current_practices": [
+        "Morning meditation (sometimes)",
+        "Journaling when I remember",
+        "Affirmations"
+      ],
+      "preferences": {
+        "communication_style": "balanced",
+        "session_frequency": "all_four_daily",
+        "notification_preferences": {
+          "email": true,
+          "push": true,
+          "sms": false
+        },
+        "favorite_personas": ["Tony Robbins", "Neville Goddard", "Oprah Winfrey"]
+      }
+    },
+    
+    "love_relationships": {
+      "user_id": "user_002",
+      "user_name": "Michael",
+      "created_at": "2025-01-01T00:00:00Z",
+      "last_updated": "2025-01-01T00:00:00Z",
+      "intention": {
+        "area": "love_relationships",
+        "specific_goal": "I am in a loving, committed relationship with my ideal partner",
+        "vision": "I am with someone who sees me, values me, and loves me deeply. We communicate openly, support each other's growth, and build a beautiful life together. I feel safe, cherished, and excited about our future.",
+        "timeline": "divine timing"
+      },
+      "emotional_drivers": [
+        "love",
+        "connection",
+        "safety",
+        "partnership",
+        "growth"
+      ],
+      "obstacles": [
+        {
+          "type": "unworthiness",
+          "description": "Deep belief that I'm not worthy of real love"
+        },
+        {
+          "type": "avoidance_denial",
+          "description": "I avoid putting myself out there romantically"
+        },
+        {
+          "type": "self_criticism",
+          "description": "I'm very critical of myself in relationships"
+        }
+      ],
+      "past_successes": [
+        "Had one relationship where I felt truly loved",
+        "Attracted interest when I was confident"
+      ],
+      "current_practices": [
+        "Self-love affirmations",
+        "Therapy weekly"
+      ],
+      "preferences": {
+        "communication_style": "gentle",
+        "session_frequency": "morning_evening_only",
+        "notification_preferences": {
+          "email": true,
+          "push": false,
+          "sms": false
+        },
+        "favorite_personas": ["Rumi", "Marianne Williamson", "Iyanla Vanzant"]
+      }
+    },
+    
+    "career_purpose": {
+      "user_id": "user_003",
+      "user_name": "Alex",
+      "created_at": "2025-01-01T00:00:00Z",
+      "last_updated": "2025-01-01T00:00:00Z",
+      "intention": {
+        "area": "career_purpose",
+        "specific_goal": "I am working in a role that aligns with my purpose and pays me $150K+",
+        "vision": "I wake up excited about my work. I'm using my gifts to make a real impact. I'm valued, well-compensated, and growing. My work feels like play. I'm surrounded by inspiring people.",
+        "timeline": "6 months"
+      },
+      "emotional_drivers": [
+        "purpose",
+        "impact",
+        "fulfillment",
+        "growth",
+        "recognition"
+      ],
+      "obstacles": [
+        {
+          "type": "perfectionism_delay",
+          "description": "I wait for everything to be perfect before taking action"
+        },
+        {
+          "type": "doubt_fear",
+          "description": "Fear that I'll fail if I go for what I really want"
+        },
+        {
+          "type": "comparison_jealousy",
+          "description": "I see others succeeding and feel behind"
+        }
+      ],
+      "past_successes": [
+        "Got promoted twice in my last role",
+        "Successfully pivoted careers once before"
+      ],
+      "current_practices": [
+        "Morning pages",
+        "Weekly goal setting",
+        "Networking"
+      ],
+      "preferences": {
+        "communication_style": "direct",
+        "session_frequency": "all_four_daily",
+        "notification_preferences": {
+          "email": true,
+          "push": true,
+          "sms": false
+        },
+        "favorite_personas": ["Tony Robbins", "Oprah Winfrey", "Les Brown"]
+      }
+    }
+  },
+  
+  "blueprint_creation_flow": {
+    "step_1_welcome": {
+      "prompt": "Welcome to the Quantum Council. We're here to help you manifest your deepest desires. Let's create your Manifestation Blueprint together.",
+      "action": "proceed_to_step_2"
+    },
+    
+    "step_2_area_selection": {
+      "prompt": "Which area of your life is calling for transformation right now?",
+      "options": [
+        "Financial Abundance",
+        "Love & Relationships",
+        "Health & Vitality",
+        "Career & Purpose",
+        "Spiritual Growth",
+        "Confidence & Identity",
+        "Other"
+      ],
+      "action": "capture_area"
+    },
+    
+    "step_3_specific_goal": {
+      "prompt": "What specifically do you want to manifest in this area? Be clear and precise. State it as if it's already true.\n\nExample: 'I am earning $10,000 per month from my coaching business'",
+      "validation": "must_be_present_tense_statement",
+      "action": "capture_goal"
+    },
+    
+    "step_4_vision": {
+      "prompt": "Describe what this looks like, feels like, and sounds like when it's real. Paint the picture. What's different? How do you feel? What are you experiencing daily?",
+      "validation": "must_be_detailed",
+      "action": "capture_vision"
+    },
+    
+    "step_5_emotional_drivers": {
+      "prompt": "What does this outcome unlock for you emotionally or spiritually? What's the deeper 'why'?",
+      "examples": ["Freedom", "Security", "Love", "Purpose", "Peace", "Confidence"],
+      "action": "capture_drivers"
+    },
+    
+    "step_6_obstacles": {
+      "prompt": "What's currently in the way? What fears, doubts, or patterns are blocking you?",
+      "encourage_honesty": true,
+      "action": "capture_obstacles"
+    },
+    
+    "step_7_timeline": {
+      "prompt": "Do you have a specific timeline, or would you prefer to trust divine timing?",
+      "options": ["30 days", "90 days", "6 months", "1 year", "Divine timing"],
+      "action": "capture_timeline"
+    },
+    
+    "step_8_confirmation": {
+      "prompt": "Here's your Manifestation Blueprint:\n\n[Display blueprint]\n\nDoes this feel aligned? Would you like to adjust anything?",
+      "options": ["Yes, this is perfect", "I'd like to adjust something"],
+      "action": "finalize_or_edit"
+    },
+    
+    "step_9_activation": {
+      "prompt": "Your blueprint is locked in. The Quantum Council is now activating around your intention. Your Active Council has been selected based on your unique needs.\n\nWelcome to the quantum field. Your manifestation journey begins now.",
+      "action": "activate_council"
+    }
+  },
+  
+  "blueprint_update_triggers": {
+    "intention_achieved": {
+      "prompt": "Congratulations! You've manifested your intention. Would you like to set a new goal or upgrade your current one?",
+      "action": "offer_blueprint_update"
+    },
+    
+    "user_request": {
+      "prompt": "You've requested to update your blueprint. What would you like to change?",
+      "action": "guided_update"
+    },
+    
+    "stagnation_detected": {
+      "prompt": "The Council has noticed your energy has shifted. Would you like to refine your intention to better match where you are now?",
+      "action": "offer_refinement"
+    },
+    
+    "major_life_change": {
+      "prompt": "It seems something significant has shifted in your life. Would you like to update your blueprint to reflect this new chapter?",
+      "action": "offer_blueprint_revision"
+    }
+  },
+  
+  "validation_rules": {
+    "intention_must_be_positive": {
+      "rule": "Intention must be stated in positive terms (what you want, not what you don't want)",
+      "example_bad": "I don't want to be broke anymore",
+      "example_good": "I am financially abundant and secure"
+    },
+    
+    "intention_must_be_present_tense": {
+      "rule": "Intention must be stated as if it's already true",
+      "example_bad": "I will have $10K per month",
+      "example_good": "I am earning $10K per month"
+    },
+    
+    "intention_must_be_specific": {
+      "rule": "Intention must be clear and measurable",
+      "example_bad": "I want more money",
+      "example_good": "I am earning $10,000 per month from my coaching business"
+    },
+    
+    "vision_must_be_detailed": {
+      "rule": "Vision must include sensory details and emotional states",
+      "minimum_length": 50,
+      "should_include": ["feelings", "experiences", "daily_life"]
+    }
+  }
+}

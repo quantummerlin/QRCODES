@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reality Check - Quantum Council</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #4A90E2, #9B59B6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .header .date {
+      color: #aaa;
+      font-size: 1.1em;
+    }
+
+    /* Reality Dashboard */
+    .reality-dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .metric-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .metric-icon {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .metric-value {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .metric-label {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    .metric-trend {
+      margin-top: 10px;
+      font-size: 0.9em;
+    }
+
+    .metric-trend.up {
+      color: #4CAF50;
+    }
+
+    .metric-trend.down {
+      color: #FF6B6B;
+    }
+
+    /* Check Form */
+    .check-form {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 30px;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .form-section h3 {
+      margin-bottom: 15px;
+      color: #4A90E2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ccc;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1em;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #4A90E2;
+    }
+
+    /* Slider */
+    .slider-group {
+      margin-bottom: 20px;
+    }
+
+    .slider-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+
+    .slider-value {
+      font-weight: bold;
+      color: #4A90E2;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #4A90E2, #9B59B6);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #4A90E2, #9B59B6);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+
+    /* Tag Input */
+    .tag-input-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      min-height: 50px;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, #4A90E2, #9B59B6);
+      padding: 5px 12px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9em;
+    }
+
+    .tag-remove {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tag-input {
+      flex: 1;
+      min-width: 150px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      outline: none;
+      padding: 5px;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 15px 30px;
+      background: linear-gradient(135deg, #4A90E2, #9B59B6);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(74, 144, 226, 0.3);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 10px;
+    }
+
+    /* Evidence List */
+    .evidence-list {
+      margin-top: 30px;
+    }
+
+    .evidence-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-left: 4px solid #4A90E2;
+    }
+
+    .evidence-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .evidence-type {
+      background: rgba(74, 144, 226, 0.2);
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-size: 0.8em;
+    }
+
+    .evidence-date {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+
+    .evidence-description {
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .evidence-significance {
+      margin-top: 10px;
+      display: flex;
+      gap: 5px;
+    }
+
+    .star {
+      color: #FFD700;
+    }
+
+    .star.empty {
+      color: rgba(255, 215, 0, 0.3);
+    }
+
+    /* Indicators Progress */
+    .indicators-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 30px;
+    }
+
+    .indicators-section h2 {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .indicator-item {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .indicator-checkbox {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    .indicator-text {
+      flex: 1;
+    }
+
+    .indicator-text.achieved {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+
+    .indicator-evidence-count {
+      background: rgba(74, 144, 226, 0.2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9em;
+    }
+
+    /* Progress Ring */
+    .progress-ring-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.5s ease;
+    }
+
+    .progress-percentage {
+      font-size: 3em;
+      font-weight: bold;
+      margin-top: -80px;
+    }
+
+    /* Insights */
+    .insights-section {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+    }
+
+    .insight-card {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid #9B59B6;
+    }
+
+    .insight-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #9B59B6;
+    }
+
+    .insight-content {
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .reality-dashboard {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+    }
+
+    /* Success Message */
+    .success-message {
+      background: rgba(76, 175, 80, 0.2);
+      border: 2px solid #4CAF50;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+      display: none;
+    }
+
+    .success-message.show {
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🎯 Daily Reality Check</h1>
+      <p class="date" id="currentDate"></p>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+      <h3>✅ Reality Check Complete!</h3>
+      <p>Your presence and awareness are shaping your reality.</p>
+    </div>
+
+    <!-- Reality Dashboard -->
+    <div class="reality-dashboard">
+      <div class="metric-card">
+        <div class="metric-icon">🎯</div>
+        <div class="metric-value" id="alignmentScore">0</div>
+        <div class="metric-label">Alignment Score</div>
+        <div class="metric-trend" id="alignmentTrend"></div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">🧘</div>
+        <div class="metric-value" id="presenceScore">0%</div>
+        <div class="metric-label">Presence Score</div>
+        <div class="metric-trend" id="presenceTrend"></div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">⚡</div>
+        <div class="metric-value" id="momentumScore">0%</div>
+        <div class="metric-label">Momentum</div>
+        <div class="metric-trend" id="momentumTrend"></div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-icon">✨</div>
+        <div class="metric-value" id="completionScore">0%</div>
+        <div class="metric-label">Manifested</div>
+        <div class="metric-trend" id="completionTrend"></div>
+      </div>
+    </div>
+
+    <!-- Indicators Progress -->
+    <div class="indicators-section">
+      <h2>📋 Manifestation Indicators</h2>
+      
+      <div class="progress-ring-container">
+        <svg class="progress-ring" width="200" height="200">
+          <circle
+            class="progress-ring-circle-bg"
+            stroke="rgba(255, 255, 255, 0.1)"
+            stroke-width="15"
+            fill="transparent"
+            r="85"
+            cx="100"
+            cy="100"
+          />
+          <circle
+            class="progress-ring-circle"
+            stroke="url(#gradient)"
+            stroke-width="15"
+            fill="transparent"
+            r="85"
+            cx="100"
+            cy="100"
+            stroke-dasharray="534.07"
+            stroke-dashoffset="534.07"
+            id="progressCircle"
+          />
+          <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#9B59B6;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="progress-percentage" id="progressPercentage">0%</div>
+      </div>
+
+      <div id="indicatorsList"></div>
+    </div>
+
+    <!-- Reality Check Form -->
+    <div class="check-form">
+      <h2 style="margin-bottom: 30px;">📝 Today's Reality Check</h2>
+
+      <!-- Current State -->
+      <div class="form-section">
+        <h3>🧠 Current State</h3>
+        
+        <div class="form-group">
+          <label>How are you feeling emotionally?</label>
+          <select id="emotionalState">
+            <option value="joyful">😊 Joyful</option>
+            <option value="grateful">🙏 Grateful</option>
+            <option value="excited">🎉 Excited</option>
+            <option value="peaceful">😌 Peaceful</option>
+            <option value="neutral" selected>😐 Neutral</option>
+            <option value="anxious">😰 Anxious</option>
+            <option value="frustrated">😤 Frustrated</option>
+            <option value="doubtful">😕 Doubtful</option>
+          </select>
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Energy Level</span>
+            <span class="slider-value" id="energyValue">5</span>
+          </div>
+          <input type="range" id="energyLevel" min="1" max="10" value="5">
+        </div>
+      </div>
+
+      <!-- Alignment Assessment -->
+      <div class="form-section">
+        <h3>🎯 Alignment with Intention</h3>
+        
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>How aligned do you feel with your intention today?</span>
+            <span class="slider-value" id="alignmentValue">5</span>
+          </div>
+          <input type="range" id="alignmentInput" min="1" max="10" value="5">
+        </div>
+
+        <div class="form-group">
+          <label>Actions taken toward your goal today:</label>
+          <div class="tag-input-container" id="actionsContainer">
+            <input type="text" class="tag-input" id="actionsInput" placeholder="Type and press Enter...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Evidence -->
+      <div class="form-section">
+        <h3>✨ Evidence of Manifestation</h3>
+        
+        <div class="form-group">
+          <label>What evidence did you notice today?</label>
+          <div class="tag-input-container" id="evidenceContainer">
+            <input type="text" class="tag-input" id="evidenceInput" placeholder="Type and press Enter...">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Synchronicities noticed:</label>
+          <div class="tag-input-container" id="synchronicitiesContainer">
+            <input type="text" class="tag-input" id="synchronicitiesInput" placeholder="Type and press Enter...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Presence -->
+      <div class="form-section">
+        <h3>🧘 Presence & Awareness</h3>
+        
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Moments of presence today</span>
+            <span class="slider-value" id="presenceMomentsValue">0</span>
+          </div>
+          <input type="range" id="presenceMoments" min="0" max="20" value="0">
+        </div>
+
+        <div class="form-group">
+          <label>What are you grateful for today?</label>
+          <div class="tag-input-container" id="gratitudeContainer">
+            <input type="text" class="tag-input" id="gratitudeInput" placeholder="Type and press Enter...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Reality Shifts -->
+      <div class="form-section">
+        <h3>🌀 Reality Shifts</h3>
+        
+        <div class="form-group">
+          <label>Any reality shifts or changes noticed?</label>
+          <textarea id="realityShifts" placeholder="Describe any shifts in your perception, circumstances, or opportunities..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Old patterns released:</label>
+          <div class="tag-input-container" id="patternsContainer">
+            <input type="text" class="tag-input" id="patternsInput" placeholder="Type and press Enter...">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn" onclick="submitRealityCheck()">Complete Reality Check</button>
+    </div>
+
+    <!-- Recent Evidence -->
+    <div class="evidence-list" id="evidenceList"></div>
+
+    <!-- Insights -->
+    <div class="insights-section" id="insightsSection"></div>
+  </div>
+
+  <script src="achievement_tracker.js"></script>
+  <script src="reality_outcome_tracker.js"></script>
+  <script>
+    let realityTracker;
+    let achievementTracker;
+    const tags = {
+      actions: [],
+      evidence: [],
+      synchronicities: [],
+      gratitude: [],
+      patterns: []
+    };
+
+    // Initialize
+    async function init() {
+      // Set current date
+      const now = new Date();
+      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      // Initialize trackers
+      achievementTracker = new AchievementTracker();
+      await achievementTracker.initialize();
+
+      realityTracker = new RealityOutcomeTracker(achievementTracker);
+      await realityTracker.initialize();
+
+      // Setup demo intention if none exists
+      if (!realityTracker.realityState.intention) {
+        await realityTracker.setIntention(
+          "Manifest financial abundance and freedom",
+          "Living a life of financial freedom with passive income streams",
+          [
+            "Receive unexpected money or opportunities",
+            "Launch successful side business",
+            "Reach $10,000 monthly passive income",
+            "Feel abundant and secure financially",
+            "Help others achieve financial freedom"
+          ]
+        );
+      }
+
+      // Load dashboard
+      updateDashboard();
+      renderIndicators();
+      renderRecentEvidence();
+      renderInsights();
+
+      // Setup tag inputs
+      setupTagInput('actionsInput', 'actionsContainer', 'actions');
+      setupTagInput('evidenceInput', 'evidenceContainer', 'evidence');
+      setupTagInput('synchronicitiesInput', 'synchronicitiesContainer', 'synchronicities');
+      setupTagInput('gratitudeInput', 'gratitudeContainer', 'gratitude');
+      setupTagInput('patternsInput', 'patternsContainer', 'patterns');
+
+      // Setup sliders
+      setupSlider('energyLevel', 'energyValue');
+      setupSlider('alignmentInput', 'alignmentValue');
+      setupSlider('presenceMoments', 'presenceMomentsValue');
+    }
+
+    function updateDashboard() {
+      const snapshot = realityTracker.getRealitySnapshot();
+      
+      document.getElementById('alignmentScore').textContent = snapshot.alignmentScore.toFixed(1);
+      document.getElementById('presenceScore').textContent = snapshot.presenceScore + '%';
+      document.getElementById('momentumScore').textContent = snapshot.momentum + '%';
+      document.getElementById('completionScore').textContent = snapshot.completionPercentage + '%';
+
+      // Update progress ring
+      updateProgressRing(snapshot.completionPercentage);
+    }
+
+    function updateProgressRing(percentage) {
+      const circle = document.getElementById('progressCircle');
+      const circumference = 2 * Math.PI * 85;
+      const offset = circumference - (percentage / 100) * circumference;
+      circle.style.strokeDashoffset = offset;
+      document.getElementById('progressPercentage').textContent = percentage + '%';
+    }
+
+    function renderIndicators() {
+      const snapshot = realityTracker.getRealitySnapshot();
+      const list = document.getElementById('indicatorsList');
+      list.innerHTML = '';
+
+      snapshot.indicators.forEach((indicator, index) => {
+        const item = document.createElement('div');
+        item.className = 'indicator-item';
+        
+        item.innerHTML = `
+          <input type="checkbox" class="indicator-checkbox" 
+                 ${indicator.achieved ? 'checked' : ''} 
+                 onchange="toggleIndicator(${index})">
+          <div class="indicator-text ${indicator.achieved ? 'achieved' : ''}">
+            ${indicator.text}
+          </div>
+          <div class="indicator-evidence-count">
+            ${indicator.evidence.length} evidence
+          </div>
+        `;
+        
+        list.appendChild(item);
+      });
+    }
+
+    async function toggleIndicator(index) {
+      const indicator = realityTracker.realityState.desiredReality.indicators[index];
+      
+      if (!indicator.achieved) {
+        await realityTracker.markIndicatorAchieved(index);
+        updateDashboard();
+        renderIndicators();
+        
+        // Show celebration
+        if (typeof confetti !== 'undefined') {
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+          });
+        }
+      }
+    }
+
+    function renderRecentEvidence() {
+      const snapshot = realityTracker.getRealitySnapshot();
+      const list = document.getElementById('evidenceList');
+      
+      if (snapshot.recentEvidence.length === 0) return;
+
+      list.innerHTML = '<h2 style="margin-bottom: 20px;">📸 Recent Evidence</h2>';
+
+      snapshot.recentEvidence.forEach(evidence => {
+        const item = document.createElement('div');
+        item.className = 'evidence-item';
+        
+        const stars = '★'.repeat(evidence.significance) + '☆'.repeat(10 - evidence.significance);
+        
+        item.innerHTML = `
+          <div class="evidence-header">
+            <div class="evidence-type">${evidence.type}</div>
+            <div class="evidence-date">${new Date(evidence.date).toLocaleDateString()}</div>
+          </div>
+          <div class="evidence-description">${evidence.description}</div>
+          <div class="evidence-significance">
+            ${stars.split('').map(s => `<span class="star ${s === '☆' ? 'empty' : ''}">${s}</span>`).join('')}
+          </div>
+        `;
+        
+        list.appendChild(item);
+      });
+    }
+
+    function renderInsights() {
+      const insights = realityTracker.getManifestationInsights();
+      if (!insights) return;
+
+      const section = document.getElementById('insightsSection');
+      section.innerHTML = '<h2 style="margin-bottom: 20px;">💡 Manifestation Insights</h2>';
+
+      const insightCards = [
+        {
+          title: '📊 Progress Overview',
+          content: `You've been active for ${insights.daysActive} days with a ${insights.checkStreak}-day check streak. Your average alignment is ${insights.averageAlignment.toFixed(1)}/10.`
+        },
+        {
+          title: '✨ Evidence Collected',
+          content: `You've logged ${insights.totalEvidence} pieces of evidence, ${insights.totalSynchronicities} synchronicities, and ${insights.totalRealityShifts} reality shifts.`
+        },
+        {
+          title: '🎯 Strongest Indicators',
+          content: insights.strongestIndicators.map(ind => 
+            `${ind.achieved ? '✅' : '⏳'} ${ind.text} (${ind.evidenceCount} evidence)`
+          ).join('<br>')
+        }
+      ];
+
+      if (insights.estimatedDaysToCompletion) {
+        insightCards.push({
+          title: '⏰ Estimated Completion',
+          content: `Based on your current momentum, you're estimated to fully manifest your intention in approximately ${insights.estimatedDaysToCompletion} days.`
+        });
+      }
+
+      insightCards.forEach(insight => {
+        const card = document.createElement('div');
+        card.className = 'insight-card';
+        card.innerHTML = `
+          <div class="insight-title">${insight.title}</div>
+          <div class="insight-content">${insight.content}</div>
+        `;
+        section.appendChild(card);
+      });
+    }
+
+    async function submitRealityCheck() {
+      const checkData = {
+        emotionalState: document.getElementById('emotionalState').value,
+        energyLevel: parseInt(document.getElementById('energyLevel').value),
+        alignmentScore: parseInt(document.getElementById('alignmentInput').value),
+        actionsTowardGoal: tags.actions,
+        evidenceToday: tags.evidence,
+        synchronicitiesNoticed: tags.synchronicities,
+        presenceMoments: parseInt(document.getElementById('presenceMoments').value),
+        gratitudeItems: tags.gratitude,
+        realityShiftsNoticed: document.getElementById('realityShifts').value ? 
+          [document.getElementById('realityShifts').value] : [],
+        oldPatternsReleased: tags.patterns
+      };
+
+      const result = await realityTracker.performDailyRealityCheck(checkData);
+
+      // Show success message
+      const successMsg = document.getElementById('successMessage');
+      successMsg.classList.add('show');
+      setTimeout(() => successMsg.classList.remove('show'), 5000);
+
+      // Update dashboard
+      updateDashboard();
+      renderRecentEvidence();
+      renderInsights();
+
+      // Reset form
+      resetForm();
+
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function resetForm() {
+      document.getElementById('emotionalState').value = 'neutral';
+      document.getElementById('energyLevel').value = 5;
+      document.getElementById('alignmentInput').value = 5;
+      document.getElementById('presenceMoments').value = 0;
+      document.getElementById('realityShifts').value = '';
+      
+      // Clear tags
+      Object.keys(tags).forEach(key => tags[key] = []);
+      ['actionsContainer', 'evidenceContainer', 'synchronicitiesContainer', 
+       'gratitudeContainer', 'patternsContainer'].forEach(id => {
+        const container = document.getElementById(id);
+        container.querySelectorAll('.tag').forEach(tag => tag.remove());
+      });
+    }
+
+    function setupTagInput(inputId, containerId, tagKey) {
+      const input = document.getElementById(inputId);
+      const container = document.getElementById(containerId);
+
+      input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && input.value.trim()) {
+          e.preventDefault();
+          addTag(input.value.trim(), container, tagKey);
+          input.value = '';
+        }
+      });
+    }
+
+    function addTag(text, container, tagKey) {
+      tags[tagKey].push(text);
+
+      const tag = document.createElement('div');
+      tag.className = 'tag';
+      tag.innerHTML = `
+        <span>${text}</span>
+        <span class="tag-remove" onclick="removeTag(this, '${tagKey}', '${text}')">×</span>
+      `;
+
+      const input = container.querySelector('.tag-input');
+      container.insertBefore(tag, input);
+    }
+
+    function removeTag(element, tagKey, text) {
+      const index = tags[tagKey].indexOf(text);
+      if (index > -1) {
+        tags[tagKey].splice(index, 1);
+      }
+      element.parentElement.remove();
+    }
+
+    function setupSlider(sliderId, valueId) {
+      const slider = document.getElementById(sliderId);
+      const valueDisplay = document.getElementById(valueId);
+
+      slider.addEventListener('input', () => {
+        valueDisplay.textContent = slider.value;
+      });
+    }
+
+    // Initialize on load
+    init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+</html>

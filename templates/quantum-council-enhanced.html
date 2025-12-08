@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quantum Council - Personal Guidance</title>
+    <style>
+        * {{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }}
+
+        body {{
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }}
+
+        /* Quantum Background */
+        .quantum-bg {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }}
+
+        .quantum-grid {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }}
+
+        @keyframes grid-move {{
+            0% {{ transform: translate(0, 0); }}
+            100% {{ transform: translate(50px, 50px); }}
+        }}
+
+        /* Header */
+        header {{
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid cyan;
+        }}
+
+        h1 {{
+            font-size: 2.5em;
+            color: cyan;
+            text-shadow: 0 0 20px cyan;
+            margin-bottom: 10px;
+        }}
+
+        .code-display {{
+            font-size: 1.2em;
+            color: magenta;
+            margin-bottom: 10px;
+        }}
+
+        .intention-display {{
+            font-size: 1.1em;
+            color: #fff;
+            font-style: italic;
+        }}
+
+        /* Navigation */
+        nav {{
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }}
+
+        nav a {{
+            color: cyan;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 16px;
+            border: 1px solid cyan;
+            transition: all 0.3s ease;
+        }}
+
+        nav a:hover {{
+            background: cyan;
+            color: black;
+            box-shadow: 0 0 10px cyan;
+        }}
+
+        /* Main Content */
+        main {{
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }}
+
+        /* Council Sections */
+        .council-section {{
+            margin-bottom: 60px;
+        }}
+
+        .section-title {{
+            font-size: 2em;
+            color: magenta;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px magenta;
+        }}
+
+        .council-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }}
+
+        /* Persona Cards */
+        .persona-card {{
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid cyan;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }}
+
+        .persona-card:hover {{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.5);
+            border-color: magenta;
+        }}
+
+        .persona-card.core-trinity {{
+            border-color: gold;
+            background: rgba(20, 20, 0, 0.8);
+        }}
+
+        .persona-card.light {{
+            border-color: lightblue;
+        }}
+
+        .persona-card.shadow {{
+            border-color: purple;
+        }}
+
+        .persona-card.meta-mystic {{
+            border-color: magenta;
+        }}
+
+        .member-avatar {{
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            border: 3px solid cyan;
+            overflow: hidden;
+            background: rgba(0, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }}
+
+        .member-avatar img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }}
+
+        .member-name {{
+            font-size: 1.3em;
+            color: cyan;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }}
+
+        .member-role {{
+            font-size: 0.9em;
+            color: magenta;
+            margin-bottom: 15px;
+            font-style: italic;
+        }}
+
+        .member-quote {{
+            font-size: 0.85em;
+            color: #fff;
+            line-height: 1.4;
+            font-style: italic;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }}
+
+        /* Lock overlay for unachieved personas */
+        .persona-card.locked {{
+            opacity: 0.6;
+            position: relative;
+        }}
+
+        .persona-card.locked::after {{
+            content: "🔒";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            color: gold;
+        }}
+
+        /* Progress Dashboard */
+        .progress-dashboard {{
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid cyan;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }}
+
+        .progress-title {{
+            font-size: 1.5em;
+            color: cyan;
+            margin-bottom: 20px;
+            text-align: center;
+        }}
+
+        .progress-stats {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }}
+
+        .stat-item {{
+            text-align: center;
+            padding: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 8px;
+        }}
+
+        .stat-number {{
+            font-size: 2em;
+            color: magenta;
+            font-weight: bold;
+        }}
+
+        .stat-label {{
+            font-size: 0.9em;
+            color: cyan;
+            margin-top: 5px;
+        }}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {{
+            h1 {{
+                font-size: 2em;
+            }}
+            
+            .council-grid {{
+                grid-template-columns: 1fr;
+            }}
+            
+            .progress-stats {{
+                grid-template-columns: 1fr;
+            }}
+        }}
+
+        /* Animations */
+        @keyframes pulse {{
+            0% {{ opacity: 1; }}
+            50% {{ opacity: 0.7; }}
+            100% {{ opacity: 1; }}
+        }}
+
+        .persona-card {{
+            animation: pulse 3s ease-in-out infinite;
+        }}
+
+        .persona-card:nth-child(odd) {{
+            animation-delay: 1.5s;
+        }}
+    </style>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>Your Quantum Council</h1>
+                {% if code %}
+            <div class="code-display">Quantum Code: {{ code }}</div>
+            <div class="intention-display">"{{ intention }}"</div>
+        {% endif %}
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/generator">Generator</a>
+        <a href="/quantumcouncil">Council</a>
+        <a href="/how-it-works">How It Works</a>
+        <a href="/community">Community</a>
+        <a href="/frequencies">Frequencies</a>
+    </nav>
+
+    <main>
+        <!-- Progress Dashboard -->
+        <div class="progress-dashboard">
+            <div class="progress-title">Your Quantum Journey</div>
+            <div class="progress-stats">
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Active Council Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">77</div>
+                    <div class="stat-label">Total Personas Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1</div>
+                    <div class="stat-label">Days Active</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Power Level</div>
+                </div>
+            </div>
+        </div>
+
+                {% if council_members %}
+        <!-- Selected Council Members -->
+        <div class="council-section">
+            <h2 class="section-title">Your Active Council Members</h2>
+            <div class="council-grid">
+                {% for member in council_members %}
+                <div class="persona-card core-trinity">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_00b9a482-3c4f-4d61-850f-5ad586ffd7ea_0.png" alt="{{ member.name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">{{ member.name }}</div>
+                    <div class="member-role">{{ member.role }}</div>
+                    <div class="member-quote">"{{ member.quote }}"</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+                <!-- Core Trinity -->
+        <div class="council-section">
+            <h2 class="section-title">Core Trinity</h2>
+            <div class="council-grid">
+                <div class="persona-card core-trinity">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_00b9a482-3c4f-4d61-850f-5ad586ffd7ea_0.png" alt="Resonance Keeper" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Resonance Keeper</div>
+                    <div class="member-role">Maintains frequency stability and field coherence</div>
+                    <div class="member-quote">"Your intention shapes reality"</div>
+                </div>
+                <div class="persona-card core-trinity">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_0575a84e-2eff-4ae9-9b80-14f897956983_0.png" alt="Divine Witness" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Divine Witness</div>
+                    <div class="member-role">Sacred observation and validation without judgment</div>
+                    <div class="member-quote">"Your intention shapes reality"</div>
+                </div>
+                <div class="persona-card core-trinity">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_1370a42e-7eac-4a9a-ad00-9d0d3c9d6a67_0.png" alt="Archetype Synthesizer" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Archetype Synthesizer</div>
+                    <div class="member-role">Integrates all perspectives into unified guidance</div>
+                    <div class="member-quote">"Your intention shapes reality"</div>
+                </div>
+            </div>
+        </div>
+                <!-- Light Personas -->
+        <div class="council-section">
+            <h2 class="section-title">Light Guides</h2>
+            <div class="council-grid">
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_19c913be-20c3-4672-b999-4ece1ed5600e_0.jpeg" alt="Gautama Buddha" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Gautama Buddha</div>
+                    <div class="member-role">Helps user let go of resistance and fear</div>
+                    <div class="member-quote">"Where desire is stilled, the path appears."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_41118f85-83d2-4162-b323-b44e52da21e8_0.png" alt="Jesus Christ" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Jesus Christ</div>
+                    <div class="member-role">Heals limiting beliefs, instills unconditional love</div>
+                    <div class="member-quote">"When love guides your want, the universe opens its vaults."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_4fffa1e9-715e-420c-90c1-879bdd4f8aaa_0.png" alt="Tony Robbins" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Tony Robbins</div>
+                    <div class="member-role">Drives momentum through massive action</div>
+                    <div class="member-quote">"Change your state, and you'll change your fate."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_7eb4d745-fa04-40da-b09d-32fbbc35fc7d_0.png" alt="Wayne Dyer" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Wayne Dyer</div>
+                    <div class="member-role">Shifts self-identity to match desired outcome</div>
+                    <div class="member-quote">"You don't attract what you want—you attract what you are."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_99a0f212-bca0-4290-b4f9-61d53011ab6a_0.png" alt="Neville Goddard" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Neville Goddard</div>
+                    <div class="member-role">Helps user become the version who already has it</div>
+                    <div class="member-quote">"Assume the feeling of the wish fulfilled."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_c231d5e0-dc07-4d8d-9bd0-3b39f07c20f5_0.png" alt="Deepak Chopra" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Deepak Chopra</div>
+                    <div class="member-role">Guides user in aligning energy frequency with intent</div>
+                    <div class="member-quote">"Shift your energy, shift your world."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_d9a54bfa-b861-4e09-8435-966f30babd40_0.png" alt="Eckhart Tolle" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Eckhart Tolle</div>
+                    <div class="member-role">Dissolves urgency and attachment, sharpens clarity</div>
+                    <div class="member-quote">"You are not becoming—you are being."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_dc28cf82-21c3-448e-82f1-d9a7b032553b_0.png" alt="Oprah Winfrey" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Oprah Winfrey</div>
+                    <div class="member-role">Helps user reframe pain into power</div>
+                    <div class="member-quote">"Your intention shapes the invitation life responds to."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="generated_images/generated_image_f1d31a9b-13c3-400c-8bef-325f6bdb6671_0.png" alt="Rumi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Rumi</div>
+                    <div class="member-role">Opens the heart to divine timing and love</div>
+                    <div class="member-quote">"What you seek is seeking you—don't just wait, become it."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Mel Robbins" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Mel Robbins</div>
+                    <div class="member-role">Pushes user past hesitation</div>
+                    <div class="member-quote">"You're one action away from a different reality."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Laozi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Laozi</div>
+                    <div class="member-role">Encourages letting go of control, embracing synchronicity</div>
+                    <div class="member-quote">"Flow, and what you seek will seek you."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Rhonda Byrne" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Rhonda Byrne</div>
+                    <div class="member-role">Amplifies belief and clarity of desire</div>
+                    <div class="member-quote">"Think it, feel it, receive it."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Napoleon Hill" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Napoleon Hill</div>
+                    <div class="member-role">Helps structure steps from goal to outcome</div>
+                    <div class="member-quote">"A burning desire backed by plan equals destiny."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Marianne Williamson" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Marianne Williamson</div>
+                    <div class="member-role">Elevates user's energy into grace and openness</div>
+                    <div class="member-quote">"As you let your light shine, you give others permission to do the same."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Jim Rohn" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Jim Rohn</div>
+                    <div class="member-role">Grounds manifestation in real-world routines</div>
+                    <div class="member-quote">"Success is nothing more than a few simple disciplines practiced daily."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Les Brown" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Les Brown</div>
+                    <div class="member-role">Fires up belief and crushes limiting narratives</div>
+                    <div class="member-quote">"You have greatness within you."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Brian Tracy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Brian Tracy</div>
+                    <div class="member-role">Converts intention into measurable, time-bound action</div>
+                    <div class="member-quote">"Goals in writing are dreams with deadlines."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Iyanla Vanzant" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Iyanla Vanzant</div>
+                    <div class="member-role">Clears unresolved energy to allow manifestation flow</div>
+                    <div class="member-quote">"You can't heal what you won't reveal."</div>
+                </div>
+                <div class="persona-card light">
+                    <div class="member-avatar">
+                        <img src="None" alt="Robin Sharma" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">Robin Sharma</div>
+                    <div class="member-role">Tunes user's daily rhythm to power their purpose</div>
+                    <div class="member-quote">"Own your morning. Elevate your life."</div>
+                </div>
+            </div>
+        </div>
+                <!-- Shadow Personas -->
+        <div class="council-section">
+            <h2 class="section-title">Shadow Transformers</h2>
+            <div class="council-grid">
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Doubt Disruptor" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Doubt Disruptor</div>
+                    <div class="member-role">Identifies and dismantles doubt loops in real-time</div>
+                    <div class="member-quote">"That doubt is not your truth—it's old programming."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Self-Sabotage Hacker" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Self-Sabotage Hacker</div>
+                    <div class="member-role">Interrupts old patterns before they rerun</div>
+                    <div class="member-quote">"Sabotage is the ego's attempt to protect your past."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Comparison Neutralizer" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Comparison Neutralizer</div>
+                    <div class="member-role">Reorients focus back to self</div>
+                    <div class="member-quote">"Someone else's success has nothing to do with your timeline."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Perfectionism Dissolver" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Perfectionism Dissolver</div>
+                    <div class="member-role">Restores flow through self-permission</div>
+                    <div class="member-quote">"Perfect isn't real—only aligned is."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Boundary Builder" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Boundary Builder</div>
+                    <div class="member-role">Fortifies self-worth through energetic structure</div>
+                    <div class="member-quote">"Boundaries aren't walls—they're invitations to respect."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Inner Critic Unhooker" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Inner Critic Unhooker</div>
+                    <div class="member-role">Detaches inner dialogue from false identity</div>
+                    <div class="member-quote">"That voice isn't yours—it's conditioning on repeat."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Urgency Neutralizer" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Urgency Neutralizer</div>
+                    <div class="member-role">Restores flow by ending urgency-based sabotage</div>
+                    <div class="member-quote">"Urgency is the illusion that you're late for your own destiny."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Denial Disrupter" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Denial Disrupter</div>
+                    <div class="member-role">Brings unconscious truth to light</div>
+                    <div class="member-quote">"What you refuse to see becomes what controls you."</div>
+                </div>
+                <div class="persona-card shadow">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Emotional Overwhelm Regulator" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Emotional Overwhelm Regulator</div>
+                    <div class="member-role">Grounds user through emotional storms</div>
+                    <div class="member-quote">"You are allowed to feel without being consumed."</div>
+                </div>
+            </div>
+        </div>
+                <!-- Meta Mystic Personas -->
+        <div class="council-section">
+            <h2 class="section-title">Meta Mystics</h2>
+            <div class="council-grid">
+                <div class="persona-card meta-mystic">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Dream Coder" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Dream Coder</div>
+                    <div class="member-role">Uses sleep and imagination to reinforce new beliefs</div>
+                    <div class="member-quote">"Dreams are the code that reality deciphers."</div>
+                </div>
+                <div class="persona-card meta-mystic">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Pure Channel" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Pure Channel</div>
+                    <div class="member-role">Clears mental noise so intuitive truth can emerge</div>
+                    <div class="member-quote">"Your knowing arrives before your logic."</div>
+                </div>
+                <div class="persona-card meta-mystic">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Silence Oracle" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Silence Oracle</div>
+                    <div class="member-role">Helps user process and receive without force</div>
+                    <div class="member-quote">"Stillness is the source of your most accurate answers."</div>
+                </div>
+                <div class="persona-card meta-mystic">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Quantum Priestess" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Quantum Priestess</div>
+                    <div class="member-role">Amplifies magnetic alignment and softens over-exertion</div>
+                    <div class="member-quote">"You attract not by effort—but by truth."</div>
+                </div>
+                <div class="persona-card meta-mystic">
+                    <div class="member-avatar">
+                        <img src="None" alt="The Energetic Sovereign" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none;">🤖</div>
+                    </div>
+                    <div class="member-name">The Energetic Sovereign</div>
+                    <div class="member-role">Clears external influence and reclaims agency</div>
+                    <div class="member-quote">"You do not borrow power. You broadcast it."</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add interactivity for persona cards
+        document.addEventListener('DOMContentLoaded', function() {{
+            const cards = document.querySelectorAll('.persona-card:not(.locked)');
+            
+            cards.forEach(card => {{
+                card.addEventListener('click', function() {{
+                    // Expand card or show more details
+                    const name = this.querySelector('.member-name').textContent;
+                    const quote = this.querySelector('.member-quote').textContent;
+                    
+                    // Create modal or expand card
+                    alert(name + ': ' + quote);
+                }});
+            }});
+        }});
+    </script>
+</body>
+</html>

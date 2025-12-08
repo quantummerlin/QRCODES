@@ -1,0 +1,20 @@
+Serving HTTP on 0.0.0.0 port 8091 (http://0.0.0.0:8091/) ...
+127.0.0.1 - - [27/Nov/2025 11:21:54] "GET /?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:21:59] code 404, message File not found
+127.0.0.1 - - [27/Nov/2025 11:21:59] "GET /favicon.ico?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2025 11:22:13] "GET /index-quantum.html?_gl=1*1m5yqv1*_gcl_aw*R0NMLjE3NjI3NzE4NjMuQ2p3S0NBaUF0OGJJQmhCcEVpd0F6SDF3NlhiMWR0MEhMcmppYTBkMlh2NmgycVVQTTBOSXlkWktOaUkwbGRoejBPd2h2U1FzNExTU2FCb0N6WFVRQXZEX0J3RQ..*_gcl_au*MTAyNjM2NjAwNC4xNzYzNDA5ODI4*_ga*OTIzMjY2ODM5LjE3NDc4MTU2OTc.*_ga_8NW18Q4WF2*czE3NjQyNDI1MTQkbzIxOSRnMCR0MTc2NDI0MjUxNyRqNTckbDAkaDE4Njc0NDc0MDE.&password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /085cb80b-3c46-4539-b09a-3904fd540120_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /4e80bfe6-3996-4634-8b04-b4fbb777fe7c_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /25798d6e-7279-4fb1-b05c-96b554400f42_0%20%281%29.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /f02b4077-d0c2-4615-9ca6-6f31445b6f2e_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /b6530778-7109-4328-bda5-e624904e9ec5_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:14] "GET /Inner%20Child%20Healing.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:15] "GET /672e35e1-fe93-4f67-b800-731779abadae_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:15] "GET /app-quantum.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:15] "GET /93824932-023a-44a5-927e-2c4541a4e6c3_0.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:18] "GET /translations.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:18] "GET /Vocal%20Grounding.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:20] "GET /sw.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 11:22:21] code 404, message File not found
+127.0.0.1 - - [27/Nov/2025 11:22:21] "GET /index.html?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2025 11:22:21] "GET /manifest.json?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -

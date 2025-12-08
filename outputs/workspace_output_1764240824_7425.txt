@@ -1,0 +1,51 @@
+  <div class="app" id="app">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-title">
+        <div class="header-icon">🌙</div>
+        <div class="header-text">
+          <h1>Quantum Council</h1>
+          <p id="headerSubtitle">Your manifestation guide</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="showNotifications()" id="notificationBtn">
+          🔔
+        </button>
+        <button class="icon-btn" onclick="showProfile()">
+          👤
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs">
+      <div class="nav-tab active" data-page="council">👥 Council</div>
+      <div class="nav-tab" data-page="reality">🎯 Reality</div>
+      <div class="nav-tab" data-page="progress">📊 Progress</div>
+      <div class="nav-tab" data-page="achievements">🏆 Achievements</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Council Page -->
+      <div class="content-page active" id="council-page">
+        <!-- Stats Overview -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="streakDays">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="alignmentScore">0</div>
+            <div class="stat-label">Alignment</div>
+          </div>
+        </div>
+
+        <!-- Daily Challenge Card -->
+        <div class="card" id="dailyChallengeCard">
+          <div class="card-header">
+            <div>
+              <div class="card-title">
+                <span>🎯</span>
+                Today's Quantum Challenge

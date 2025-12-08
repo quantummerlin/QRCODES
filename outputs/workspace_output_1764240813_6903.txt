@@ -1,0 +1,20 @@
+136:    .header {
+149:    .header-title {
+155:    .header-icon {
+167:    .header-text h1 {
+173:    .header-text p {
+178:    .header-actions {
+207:    .nav-tabs {
+216:    .nav-tabs::-webkit-scrollbar {
+220:    .nav-tab {
+234:    .nav-tab.active {
+240:    .nav-tab:hover {
+269:    .card-header {
+477:    .bottom-nav {
+491:    .nav-item {
+502:    .nav-item.active {
+506:    .nav-icon {
+511:    .nav-label {
+701:      .header-title h1 {
+852:    <header class="header">
+853:      <div class="header-title">

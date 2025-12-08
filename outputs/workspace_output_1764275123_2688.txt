@@ -1,0 +1,16 @@
+Serving HTTP on 0.0.0.0 port 8100 (http://0.0.0.0:8100/) ...
+127.0.0.1 - - [27/Nov/2025 20:31:02] "GET /?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:31:06] code 404, message File not found
+127.0.0.1 - - [27/Nov/2025 20:31:06] "GET /favicon.ico?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2025 20:39:51] "HEAD /index-intention.html HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:44:21] "GET /index-intention.html HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:55:52] "GET /?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:56:10] "GET /dashboard-enhanced.html?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:56:11] "GET /dashboard-app.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:56:11] "GET /messaging-system.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:56:50] code 404, message File not found
+127.0.0.1 - - [27/Nov/2025 20:56:50] "GET /icon-192.png?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2025 20:57:00] "GET /dashboard-enhanced.html?_gl=1*hel4zp*_gcl_aw*R0NMLjE3NjI3NzE4NjMuQ2p3S0NBaUF0OGJJQmhCcEVpd0F6SDF3NlhiMWR0MEhMcmppYTBkMlh2NmgycVVQTTBOSXlkWktOaUkwbGRoejBPd2h2U1FzNExTU2FCb0N6WFVRQXZEX0J3RQ..*_gcl_au*MTAyNjM2NjAwNC4xNzYzNDA5ODI4*_ga*OTIzMjY2ODM5LjE3NDc4MTU2OTc.*_ga_8NW18Q4WF2*czE3NjQyNzE3MzQkbzIyMCRnMSR0MTc2NDI3Njk1NSRqNTYkbDAkaDE1MTI3MTgwNDQ.&password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:57:16] "GET /?_gl=1*1ypzgrx*_gcl_aw*R0NMLjE3NjI3NzE4NjMuQ2p3S0NBaUF0OGJJQmhCcEVpd0F6SDF3NlhiMWR0MEhMcmppYTBkMlh2NmgycVVQTTBOSXlkWktOaUkwbGRoejBPd2h2U1FzNExTU2FCb0N6WFVRQXZEX0J3RQ..*_gcl_au*MTAyNjM2NjAwNC4xNzYzNDA5ODI4*_ga*OTIzMjY2ODM5LjE3NDc4MTU2OTc.*_ga_8NW18Q4WF2*czE3NjQyNzE3MzQkbzIyMCRnMSR0MTc2NDI3Njk1NSRqNTYkbDAkaDE1MTI3MTgwNDQ.&password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:57:22] "GET /index-intention.html?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2025 20:57:24] "GET /app-intention.js?password=0d2dcc2e-b87c-4f71-93d1-6a3f11dcdaa8 HTTP/1.1" 200 -

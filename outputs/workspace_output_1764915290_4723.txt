@@ -1,0 +1,10 @@
+-rw-r--r--  1 root root    15900 Nov 26 20:20 ACHIEVEMENT_SYSTEM_README.md
+-rw-r--r--  1 root root    12749 Nov 26 20:23 ACHIEVEMENT_SYSTEM_SUMMARY.md
+-rw-r--r--  1 root root    33734 Nov 27 21:04 ALL_PERSONA_IMAGE_PROMPTS.md
+-rw-r--r--  1 root root    36112 Nov 27 21:07 ALL_PERSONA_MESSAGES.md
+-rw-r--r--  1 root root    12636 Nov 26 22:55 BUILD_SUMMARY.md
+-rw-r--r--  1 root root    14017 Nov 27 20:45 COMPLETE_BUILD_SUMMARY.md
+-rw-r--r--  1 root root    12149 Dec  4 21:30 COMPLETE_QUANTUM_SYSTEM_SUMMARY.md
+-rw-r--r--  1 root root     5092 Nov 26 21:55 DEPLOYMENT_GUIDE.md
+-rw-r--r--  1 root root    10030 Nov 27 09:44 ENHANCED_DEPLOYMENT_GUIDE.md
+-rw-r--r--  1 root root     9202 Nov 27 09:46 FILE_LIST.md

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Community - Amplify Your Manifestation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Quantum Background */
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0a0a0a, #1a0a2a, #0a1a2a);
+            z-index: -2;
+        }
+
+        .quantum-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(cyan 1px, transparent 1px),
+                linear-gradient(90deg, cyan 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+            animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Navigation */
+        .quantum-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid cyan;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quantum-logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: cyan;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: magenta;
+            text-shadow: 0 0 10px magenta;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 120px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, cyan, magenta);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Community Stats */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: magenta;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: cyan;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px cyan;
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Community Platforms */
+        .platforms-section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+            color: magenta;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .platform-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .platform-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .platform-card:hover {
+            border-color: cyan;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .platform-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: cyan;
+            margin-bottom: 15px;
+        }
+
+        .platform-description {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .platform-members {
+            color: magenta;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .platform-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, cyan, magenta);
+            color: #000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .platform-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Share Templates */
+        .templates-section {
+            margin-bottom: 60px;
+        }
+
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .template-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .template-title {
+            color: magenta;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .template-content {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid cyan;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            color: #fff;
+            line-height: 1.5;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: 1px solid cyan;
+            color: cyan;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn:hover {
+            background: cyan;
+            color: #000;
+        }
+
+        /* Success Stories */
+        .stories-section {
+            margin-bottom: 60px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .story-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .story-card:hover {
+            border-color: magenta;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.3);
+        }
+
+        .story-code {
+            color: cyan;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .story-text {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .story-author {
+            color: magenta;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* Guidelines */
+        .guidelines-section {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 0, 255, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+        }
+
+        .guidelines-title {
+            color: magenta;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .guidelines-list {
+            list-style: none;
+        }
+
+        .guidelines-list li {
+            color: #aaa;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .guidelines-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            color: cyan;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 255, 255, 0.9);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 1001;
+            display: none;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+            to { transform: translateX(-50%) translateY(0); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 100px 15px 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .platforms-grid,
+            .templates-grid,
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <!-- Navigation -->
+    <nav class="quantum-nav">
+        <div class="nav-content">
+            <div class="quantum-logo">⚛️ Quantum Reality Codes</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/generator">Generator</a></li>
+                <li><a href="/quantumcouncil">Quantum Council</a></li>
+                <li><a href="/how-it-works">How It Works</a></li>
+                <li><a href="/community">Community</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Quantum Community Hub</h1>
+        <p class="page-subtitle">
+            Connect with thousands of quantum manifestors sharing codes and amplifying each other's dreams. 
+            Support others to amplify your own manifestation power.
+        </p>
+
+        <!-- Community Stats -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Active Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1M+</div>
+                <div class="stat-label">Codes Shared</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Community Support</div>
+            </div>
+        </section>
+
+        <!-- Community Platforms -->
+        <section class="platforms-section">
+            <h2 class="section-title">Join Our Quantum Communities</h2>
+            <div class="platforms-grid">
+                <!-- Facebook -->
+                <div class="platform-card">
+                    <div class="platform-icon">📘</div>
+                    <div class="platform-name">Facebook Group</div>
+                    <div class="platform-description">
+                        Join our thriving Facebook community for daily code sharing, manifestation stories, and group quantum amplification sessions.
+                    </div>
+                    <div class="platform-members">25,000+ Members</div>
+                    <a href="https://www.facebook.com/QuantumRealityCodes" target="_blank" class="platform-btn">
+                        Join Facebook Group
+                    </a>
+                </div>
+
+                <!-- Telegram -->
+                <div class="platform-card">
+                    <div class="platform-icon">✈️</div>
+                    <div class="platform-name">Telegram Channel</div>
+                    <div class="platform-description">
+                        Real-time code sharing and instant community support. Perfect for quick amplification and live manifestation celebrations.
+                    </div>
+                    <div class="platform-members">15,000+ Members</div>
+                    <a href="https://t.me/+BIChXgOqFH9iMmU1" target="_blank" class="platform-btn">
+                        Join Telegram Channel
+                    </a>
+                </div>
+
+                <!-- Instagram -->
+                <div class="platform-card">
+                    <div class="platform-icon">📷</div>
+                    <div class="platform-name">Instagram Community</div>
+                    <div class="platform-description">
+                        Share your manifestation journey through visual stories and connect with quantum manifestors worldwide.
+                    </div>
+                    <div class="platform-members">10,000+ Followers</div>
+                    <a href="#" target="_blank" class="platform-btn">
+                        Follow on Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Templates -->
+        <section class="templates-section">
+            <h2 class="section-title">Quantum Share Templates</h2>
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-title">Basic Code Share</div>
+                    <div class="template-content" id="template1">
+My Quantum Reality Code: [YOUR CODE]
+
+[Your Intention]
+
+This code is activated with Level [POWER LEVEL] manifestation energy. 
+Support my manifestation by commenting with amplification energy! ⚡
+
+#QuantumRealityCode #Manifestation #QuantumHealing
+                    </div>
+                    <button class="copy-btn" onclick="copyTemplate('template1')">Copy Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-title">Community Amplification</div>
+                    <div class="template-content" id="template2">
+🔮 QUANTUM MANIFESTATION REQUEST 🔮
+
+Code: [YOUR CODE]
+Intention: [Your Intention]
+Power Level: [POWER LEVEL]/10
+Dimensional Access: [DIMENSION]D
+
+I'm calling on the quantum community to amplify this manifestation!
+When you support this, you activate your own codes through reciprocal energy. 🌟
+
+#QuantumRealityCodes #CommunityManifestation #EnergyExchange
+                    </div>
+                    <button class="copy-btn" onclick="copyTemplate('template2')">Copy Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-title">Success Story Share</div>
+                    <div class="template-content" id="template3">
+✨ MANIFESTATION SUCCESS! ✨
+
+My Quantum Code: [YOUR CODE]
+Original Intention: [Your Original Intention]
+Manifestation Time: [Days/Weeks]
+
+This manifestation came through with the support of this amazing community! 
+Thank you to everyone who amplified my code. The quantum field responds! 🙏
+
+#QuantumSuccess #ManifestationStory #Gratitude
+                    </div>
+                    <button class="copy-btn" onclick="copyTemplate('template3')">Copy Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-title">Council Integration</div>
+                    <div class="template-content" id="template4">
+👥 QUANTUM COUNCIL ACTIVATED 👥
+
+Code: [YOUR CODE]
+Active Council: [Council Member Names]
+Focus: [Your Intention]
+
+My quantum council is guiding this manifestation with personalized messages. 
+Code [YOUR CODE] is resonating at optimal frequency for reality alignment.
+
+#QuantumCouncil #PersonalizedGuidance #CodeActivation
+                    </div>
+                    <button class="copy-btn" onclick="copyTemplate('template4')">Copy Template</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Success Stories -->
+        <section class="stories-section">
+            <h2 class="section-title">Recent Community Successes</h2>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-code">Code: 7-3-6-9</div>
+                    <div class="story-text">
+                        "My dream job manifested within 2 weeks! The community support was incredible. 
+                        So many people amplified my code and I started receiving interviews immediately."
+                    </div>
+                    <div class="story-author">— Sarah M.</div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-code">Code: 1-1-1-1</div>
+                    <div class="story-text">
+                        "Financial abundance flowed in unexpectedly. Received a promotion and found 
+                        money I didn't know I had. The quantum council guidance was spot on!"
+                    </div>
+                    <div class="story-author">— Michael R.</div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-code">Code: 8-8-8-8</div>
+                    <div class="story-text">
+                        "My soulmate appeared just 10 days after activating my code! We met in the 
+                        most synchronistic way. This community's energy is truly magical!"
+                    </div>
+                    <div class="story-author">— Emma L.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Guidelines -->
+        <section class="guidelines-section">
+            <h2 class="guidelines-title">Quantum Community Guidelines</h2>
+            <ul class="guidelines-list">
+                <li>Always support others' manifestations with positive, amplifying energy</li>
+                <li>Share your codes with clear, specific intentions for better community support</li>
+                <li>Celebrate others' successes - their manifestation power amplifies your own</li>
+                <li>Be authentic and vulnerable in your manifestation journey</li>
+                <li>Respect privacy - share only what you're comfortable with</li>
+                <li>No judgment or doubt - all intentions are valid in the quantum field</li>
+                <li>Report any negative energy to maintain community vibration</li>
+                <li>Remember: Supporting others is the fastest way to amplify your own codes</li>
+            </ul>
+        </section>
+
+        <!-- Call to Action -->
+        <section style="text-align: center; padding: 40px; background: rgba(0, 0, 0, 0.7); border: 2px solid rgba(0, 255, 255, 0.3); border-radius: 15px; backdrop-filter: blur(10px);">
+            <h2 style="color: magenta; font-size: 2rem; margin-bottom: 20px;">Ready to Amplify Your Manifestation?</h2>
+            <p style="color: #aaa; margin-bottom: 30px; font-size: 1.1rem;">
+                Generate your quantum code and join thousands who are manifesting their dreams through community amplification.
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <a href="/generator" style="padding: 15px 30px; background: linear-gradient(45deg, cyan, magenta); color: #000; text-decoration: none; border-radius: 10px; font-weight: bold; transition: all 0.3s;">
+                    ⚡ Generate Your Code
+                </a>
+                <a href="https://www.facebook.com/QuantumRealityCodes" target="_blank" style="padding: 15px 30px; border: 2px solid cyan; color: cyan; text-decoration: none; border-radius: 10px; font-weight: bold; transition: all 0.3s;">
+                    📘 Join Facebook Group
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Copy template function
+        function copyTemplate(templateId) {
+            const template = document.getElementById(templateId);
+            const text = template.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Template copied to clipboard!');
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = stat.textContent;
+                let current = 0;
+                const increment = parseInt(target.replace(/[^0-9]/g, '')) / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= parseInt(target.replace(/[^0-9]/g, ''))) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current).toLocaleString() + target.replace(/[0-9,]/g, '');
+                    }
+                }, 30);
+            });
+        }
+
+        // Check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Trigger animation when stats section is visible
+        let statsAnimated = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-section');
+            if (isInViewport(statsSection) && !statsAnimated) {
+                animateStats();
+                statsAnimated = true;
+            }
+        });
+
+        // Add floating animation to platform cards
+        document.querySelectorAll('.platform-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.5}s`;
+            card.classList.add('floating');
+        });
+
+        // Parallax scrolling effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const grid = document.querySelector('.quantum-grid');
+            grid.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+    </script>
+</body>
+</html>

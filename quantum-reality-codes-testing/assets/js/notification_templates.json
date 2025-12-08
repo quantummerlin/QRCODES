@@ -1,0 +1,221 @@
+{
+  "email_templates": {
+    "morning_activation": {
+      "subject": "🌅 Your Morning Quantum Council Session",
+      "preview_text": "The Council has convened. Your intention is active.",
+      "body_html": "<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden}.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:30px;text-align:center}.header h1{margin:0;font-size:24px}.content{padding:30px}.field-status{background:#f8f9fa;border-left:4px solid #667eea;padding:15px;margin:20px 0}.council-message{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:20px 0}.directive{background:#667eea;color:#fff;padding:20px;border-radius:8px;margin:20px 0}.footer{background:#f8f9fa;padding:20px;text-align:center;font-size:12px;color:#666}</style></head><body><div class='container'><div class='header'><h1>🌅 Morning Quantum Council</h1><p>Your intention is active</p></div><div class='content'><div class='field-status'><strong>Field Status:</strong> Coherence {coherence}%, Frequency {frequency}, Momentum {momentum}</div><div class='council-message'><h3>Council Discussion</h3>{discussion_summary}</div><div class='directive'><h3>Today's Quantum Directive</h3>{directive}</div><p><strong>Synchronicity Alert:</strong> {synchronicity_cue}</p></div><div class='footer'><p>The Council stands with you. You are not alone in this.</p><p><a href='{app_link}'>Open Full Session</a></p></div></div></body></html>",
+      "body_text": "🌅 MORNING QUANTUM COUNCIL\n\nField Status: Coherence {coherence}%, Frequency {frequency}, Momentum {momentum}\n\nCouncil Discussion:\n{discussion_summary}\n\nToday's Quantum Directive:\n{directive}\n\nSynchronicity Alert:\n{synchronicity_cue}\n\nThe Council stands with you.\n\nView full session: {app_link}"
+    },
+    
+    "win_celebration": {
+      "subject": "🎉 Victory! The Council Celebrates With You",
+      "preview_text": "You've manifested a result. The momentum window is OPEN.",
+      "body_html": "<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden}.header{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:#fff;padding:30px;text-align:center}.header h1{margin:0;font-size:28px}.celebration{background:#fff3cd;border:2px solid #ffc107;border-radius:8px;padding:20px;margin:20px 0;text-align:center}.celebration h2{color:#856404;margin:0 0 10px 0}.win-details{background:#f8f9fa;padding:20px;border-radius:8px;margin:20px 0}.momentum-window{background:#28a745;color:#fff;padding:20px;border-radius:8px;margin:20px 0;text-align:center}.momentum-window h3{margin:0 0 10px 0}.next-steps{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:20px 0}.footer{background:#f8f9fa;padding:20px;text-align:center;font-size:12px;color:#666}</style></head><body><div class='container'><div class='header'><h1>🎉 VICTORY!</h1><p>The Council Celebrates With You</p></div><div class='celebration'><h2>You Did It!</h2><p style='font-size:18px;margin:0'>{win_description}</p></div><div class='win-details'><h3>What This Means</h3><p>{council_interpretation}</p></div><div class='momentum-window'><h3>⚡ 48-HOUR MOMENTUM WINDOW ACTIVATED</h3><p>The field is WIDE OPEN right now. This is your time to strike.</p></div><div class='next-steps'><h3>Next-Level Actions</h3>{next_actions}</div><div class='footer'><p>The Council celebrates with you. This is just the beginning.</p><p><a href='{app_link}'>View Full Celebration</a></p></div></div></body></html>",
+      "body_text": "🎉 VICTORY! THE COUNCIL CELEBRATES WITH YOU\n\nYou Did It!\n{win_description}\n\nWhat This Means:\n{council_interpretation}\n\n⚡ 48-HOUR MOMENTUM WINDOW ACTIVATED\nThe field is WIDE OPEN right now. This is your time to strike.\n\nNext-Level Actions:\n{next_actions}\n\nThe Council celebrates with you. This is just the beginning.\n\nView full celebration: {app_link}"
+    },
+    
+    "doubt_emergency": {
+      "subject": "🚨 Emergency Council Activation - We've Got You",
+      "preview_text": "Doubt detected. The Council is responding immediately.",
+      "body_html": "<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden}.header{background:linear-gradient(135deg,#ff6b6b 0%,#c92a2a 100%);color:#fff;padding:30px;text-align:center}.header h1{margin:0;font-size:24px}.emergency{background:#fff5f5;border:2px solid #ff6b6b;border-radius:8px;padding:20px;margin:20px 0}.pattern-interrupt{background:#495057;color:#fff;padding:20px;border-radius:8px;margin:20px 0}.immediate-action{background:#ffc107;color:#000;padding:20px;border-radius:8px;margin:20px 0;font-weight:bold}.council-support{background:#f8f9fa;padding:20px;border-radius:8px;margin:20px 0}.footer{background:#f8f9fa;padding:20px;text-align:center;font-size:12px;color:#666}</style></head><body><div class='container'><div class='header'><h1>🚨 Emergency Council Activation</h1><p>We've got you</p></div><div class='emergency'><h3>Pattern Detected</h3><p>{doubt_pattern}</p></div><div class='pattern-interrupt'><h3>STOP. Listen.</h3><p>{pattern_interrupt_message}</p></div><div class='immediate-action'><h3>DO THIS RIGHT NOW:</h3>{immediate_action}</div><div class='council-support'><h3>The Council's Message</h3>{council_message}</div><div class='footer'><p>The Council has your back. This doubt is NOT your truth.</p><p><a href='{app_link}'>Get Full Support</a></p></div></div></body></html>",
+      "body_text": "🚨 EMERGENCY COUNCIL ACTIVATION\n\nPattern Detected:\n{doubt_pattern}\n\nSTOP. Listen.\n{pattern_interrupt_message}\n\nDO THIS RIGHT NOW:\n{immediate_action}\n\nThe Council's Message:\n{council_message}\n\nThe Council has your back. This doubt is NOT your truth.\n\nGet full support: {app_link}"
+    },
+    
+    "welcome_back": {
+      "subject": "💫 The Council Has Been Maintaining Your Field",
+      "preview_text": "Welcome back. The work continued in your absence.",
+      "body_html": "<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden}.header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:30px;text-align:center}.header h1{margin:0;font-size:24px}.welcome{background:#f8f9fa;padding:20px;border-radius:8px;margin:20px 0}.field-maintenance{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:20px 0}.awaiting{background:#667eea;color:#fff;padding:20px;border-radius:8px;margin:20px 0}.footer{background:#f8f9fa;padding:20px;text-align:center;font-size:12px;color:#666}</style></head><body><div class='container'><div class='header'><h1>💫 Welcome Back</h1><p>The Council has been maintaining your field</p></div><div class='welcome'><p>You've been away for {days_absent} days. The Council continued the work on your behalf.</p></div><div class='field-maintenance'><h3>What Happened While You Were Gone</h3><p>Field Status: Coherence {coherence}%, Frequency {frequency}</p><p>{maintenance_summary}</p></div><div class='awaiting'><h3>Message Awaiting Your Return</h3>{awaiting_message}</div><div class='footer'><p>The field has been maintained. Ready to continue?</p><p><a href='{app_link}'>Resume Your Journey</a></p></div></div></body></html>",
+      "body_text": "💫 WELCOME BACK\n\nYou've been away for {days_absent} days. The Council continued the work on your behalf.\n\nWhat Happened While You Were Gone:\nField Status: Coherence {coherence}%, Frequency {frequency}\n{maintenance_summary}\n\nMessage Awaiting Your Return:\n{awaiting_message}\n\nThe field has been maintained. Ready to continue?\n\nResume your journey: {app_link}"
+    },
+    
+    "milestone_achieved": {
+      "subject": "🏆 Milestone Achieved: {milestone_name}",
+      "preview_text": "The Council recognizes your achievement.",
+      "body_html": "<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;background:#f4f4f4;padding:20px}.container{max-width:600px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden}.header{background:linear-gradient(135deg,#ffd700 0%,#ff8c00 100%);color:#000;padding:30px;text-align:center}.header h1{margin:0;font-size:28px}.achievement{background:#fff3cd;border:2px solid #ffc107;border-radius:8px;padding:30px;margin:20px 0;text-align:center}.achievement h2{color:#856404;margin:0 0 20px 0;font-size:32px}.stats{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:20px 0}.stat-box{background:#f8f9fa;padding:15px;border-radius:8px;text-align:center}.stat-box .value{font-size:28px;font-weight:bold;color:#667eea}.stat-box .label{font-size:12px;color:#666;margin-top:5px}.council-recognition{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:20px;margin:20px 0}.next-level{background:#667eea;color:#fff;padding:20px;border-radius:8px;margin:20px 0}.footer{background:#f8f9fa;padding:20px;text-align:center;font-size:12px;color:#666}</style></head><body><div class='container'><div class='header'><h1>🏆 MILESTONE ACHIEVED</h1></div><div class='achievement'><h2>{milestone_name}</h2><p style='font-size:18px'>{achievement_date}</p></div><div class='stats'><div class='stat-box'><div class='value'>{total_sessions}</div><div class='label'>Total Sessions</div></div><div class='stat-box'><div class='value'>{total_wins}</div><div class='label'>Wins Manifested</div></div><div class='stat-box'><div class='value'>{coherence}%</div><div class='label'>Field Coherence</div></div><div class='stat-box'><div class='value'>{days_active}</div><div class='label'>Days Active</div></div></div><div class='council-recognition'><h3>The Council's Recognition</h3>{council_message}</div><div class='next-level'><h3>Ready for the Next Level?</h3>{next_level_offer}</div><div class='footer'><p>The Council celebrates your mastery.</p><p><a href='{app_link}'>View Your Progress</a></p></div></div></body></html>",
+      "body_text": "🏆 MILESTONE ACHIEVED: {milestone_name}\n\n{achievement_date}\n\nYour Stats:\n- Total Sessions: {total_sessions}\n- Wins Manifested: {total_wins}\n- Field Coherence: {coherence}%\n- Days Active: {days_active}\n\nThe Council's Recognition:\n{council_message}\n\nReady for the Next Level?\n{next_level_offer}\n\nThe Council celebrates your mastery.\n\nView your progress: {app_link}"
+    }
+  },
+  
+  "push_notifications": {
+    "morning_reminder": {
+      "title": "🌅 Morning Council Session Ready",
+      "body": "The Council has convened. Your intention is active.",
+      "action": "open_session"
+    },
+    
+    "midday_boost": {
+      "title": "⚡ Midday Energy Boost",
+      "body": "Quick check-in from the Council. Stay aligned.",
+      "action": "open_session"
+    },
+    
+    "evening_review": {
+      "title": "🌙 Evening Integration",
+      "body": "Time to review your day with the Council.",
+      "action": "open_session"
+    },
+    
+    "synchronicity_reminder": {
+      "title": "👁️ Synchronicity Alert",
+      "body": "Have you noticed any signs today? The Council wants to know.",
+      "action": "report_synchronicity"
+    },
+    
+    "momentum_window_closing": {
+      "title": "⏰ Momentum Window Closing Soon",
+      "body": "You have 6 hours left in your momentum window. Take action!",
+      "action": "view_momentum_window"
+    },
+    
+    "streak_milestone": {
+      "title": "🔥 {days}-Day Streak!",
+      "body": "You're on fire! The Council celebrates your consistency.",
+      "action": "view_progress"
+    },
+    
+    "doubt_support": {
+      "title": "💪 The Council Senses Your Doubt",
+      "body": "We're here. This is not your truth. Tap for support.",
+      "action": "emergency_session"
+    }
+  },
+  
+  "sms_templates": {
+    "morning_brief": {
+      "message": "🌅 Quantum Council: Today's directive - {brief_directive}. Synchronicity alert: {brief_cue}. Field coherence: {coherence}%. You've got this."
+    },
+    
+    "win_celebration": {
+      "message": "🎉 VICTORY! The Council celebrates your win. Momentum window OPEN for 48hrs. Strike while the field is hot! View: {link}"
+    },
+    
+    "doubt_emergency": {
+      "message": "🚨 Council Emergency: That doubt is NOT your truth. {brief_interrupt}. We've got you. Respond: {link}"
+    },
+    
+    "milestone": {
+      "message": "🏆 {milestone_name} achieved! The Council recognizes your mastery. {brief_recognition}. View: {link}"
+    }
+  },
+  
+  "in_app_notifications": {
+    "session_ready": {
+      "type": "info",
+      "title": "{time_period} Council Session Ready",
+      "message": "The Council has convened. Tap to view your session.",
+      "icon": "council",
+      "action": "open_session",
+      "priority": "high"
+    },
+    
+    "persona_activated": {
+      "type": "info",
+      "title": "New Persona Activated",
+      "message": "{persona_name} has joined your Active Council.",
+      "icon": "persona",
+      "action": "view_matrix",
+      "priority": "medium"
+    },
+    
+    "coherence_increase": {
+      "type": "success",
+      "title": "Field Coherence Rising",
+      "message": "Your coherence jumped to {coherence}%! The field is responding.",
+      "icon": "energy",
+      "action": "view_stats",
+      "priority": "medium"
+    },
+    
+    "synchronicity_logged": {
+      "type": "success",
+      "title": "Synchronicity Confirmed",
+      "message": "The Council validates this sign. Your manifestation is in motion.",
+      "icon": "sync",
+      "action": "view_session",
+      "priority": "medium"
+    },
+    
+    "action_reminder": {
+      "type": "reminder",
+      "title": "Quantum Directive Pending",
+      "message": "Have you completed today's action? {action_brief}",
+      "icon": "action",
+      "action": "view_directive",
+      "priority": "medium"
+    }
+  },
+  
+  "notification_timing": {
+    "morning_activation": {
+      "default_time": "06:00",
+      "timezone_aware": true,
+      "allow_user_customization": true
+    },
+    
+    "midday_check": {
+      "default_time": "12:00",
+      "timezone_aware": true,
+      "allow_user_customization": true
+    },
+    
+    "evening_integration": {
+      "default_time": "18:00",
+      "timezone_aware": true,
+      "allow_user_customization": true
+    },
+    
+    "night_encoding": {
+      "default_time": "22:00",
+      "timezone_aware": true,
+      "allow_user_customization": true
+    },
+    
+    "quiet_hours": {
+      "start": "22:00",
+      "end": "06:00",
+      "respect_for": ["push", "sms"],
+      "exceptions": ["emergency", "user_initiated"]
+    }
+  },
+  
+  "notification_preferences": {
+    "channels": {
+      "email": {
+        "enabled_by_default": true,
+        "digest_option": true,
+        "digest_frequency": ["daily", "weekly"],
+        "types": ["all"]
+      },
+      "push": {
+        "enabled_by_default": true,
+        "quiet_hours": true,
+        "types": ["session_ready", "win_celebration", "doubt_support", "milestone"]
+      },
+      "sms": {
+        "enabled_by_default": false,
+        "opt_in_required": true,
+        "types": ["win_celebration", "doubt_emergency", "milestone"]
+      },
+      "in_app": {
+        "enabled_by_default": true,
+        "always_on": true,
+        "types": ["all"]
+      }
+    },
+    
+    "frequency_limits": {
+      "email": {
+        "max_per_day": 4,
+        "digest_mode_available": true
+      },
+      "push": {
+        "max_per_day": 8,
+        "min_interval_minutes": 60
+      },
+      "sms": {
+        "max_per_day": 2,
+        "emergency_override": true
+      }
+    }
+  }
+}

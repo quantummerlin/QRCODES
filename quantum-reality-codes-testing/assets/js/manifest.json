@@ -1,0 +1,31 @@
+{
+  "name": "Quantum Council - Manifestation Guide",
+  "short_name": "Quantum Council",
+  "description": "Your personal council of 77 manifestation guides",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#4A90E2",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl84MThfMTU4MSkiLz4KPGNpcmNsZSBjeD0iOTYiIGN5PSI2NCIgcj0iMjQiIGZpbGw9IiNGRkQ3MDAiLz4KPGNpcmNsZSBjeD0iNjQiIGN5PSIxMDAiIHI9IjIwIiBmaWxsPSIjNEE5MEUyIi8+CjxjaXJjbGUgY3g9IjEyOCIgY3k9IjEwMCIgcj0iMjAiIGZpbGw9IiM5QjU5QjYiLz4KPGNpcmNsZSBjeD0iOTYiIGN5PSIxNDQiIHI9IjE2IiBmaWxsPSIjRTc0QzNDIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MF9saW5lYXJfODE4XzE1ODEiIHgxPSIwIiB5MT0iMCIgeDI9IjE5MiIgeTI9IjE5MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMEEwRTI3Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFBMUYzQSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPg==",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9InVybCgjZ3JhZGllbnQwX2xpbmVhcl8xMzdfMzgzNSkiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMTcxIiByPSI2NCIgZmlsbD0iI0ZGRDcwMCIvPgo8Y2lyY2xlIGN4PSIxNzEiIGN5PSIyNjgiIHI9IjUzIiBmaWxsPSIjNEE5MEUyIi8+CjxjaXJjbGUgY3g9IjM0MSIgY3k9IjI2OCIgcj0iNTMiIGZpbGw9IiM5QjU5QjYiLz4KPGNpcmNsZSBjeD0iMjU2IiBjeT0iMzg0IiByPSI0MyIgZmlsbD0iI0U3NEMzQyIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDBfbGluZWFyXzEzN18zODM1IiB4MT0iMCIgeTE9IjAiIHgyPSI1MTIiIHkyPSI1MTIiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzBBMEUyNyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMxQTFGM0EiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4=",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzg0IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDM4NCA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzODQiIGhlaWdodD0iNTEyIiBmaWxsPSIjMEEwRTI3Ii8+CjxyZWN0IHg9IjIwIiB5PSIyMCIgd2lkdGg9IjM0NCIgaGVpZ2h0PSI0NzIiIHJ4PSIyMCIgZmlsbD0iIzFBMUYzQSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiLz4KPHJlY3QgeD0iNDAiIHk9IjgwIiB3aWR0aD0iMzA0IiBoZWlnaHQ9IjgwIiByeD0iMTAiIGZpbGw9InJnYmEoNzQsIDE0NCwgMjI2LCAwLjIpIi8+CjxyZWN0IHg9IjQwIiB5PSIyMDAiIHdpZHRoPSIxNDQiIGhlaWdodD0iMTIwIiByeD0iMTAiIGZpbGw9InJnYmEoMTU1LCA4OSwgMTgyLCAwLjIpIi8+CjxyZWN0IHg9IjIwMCIgeT0iMjAwIiB3aWR0aD0iMTQ0IiBoZWlnaHQ9IjEyMCIgcng9IjEwIiBmaWxsPSJyZ2JhKDIzMSwgNzYsIDYwLCAwLjIpIi8+CjxyZWN0IHg9IjQwIiB5PSIzNTAiIHdpZHRoPSIzMDQiIGhlaWdodD0iODAiIHJ4PSIxMCIgZmlsbD0icmdiYSg3NiwgMTc1LCA4MCwgMC4yKSIvPgo8L3N2Zz4=",
+      "sizes": "384x512",
+      "type": "image/svg+xml",
+      "form_factor": "wide"
+    }
+  ]
+}

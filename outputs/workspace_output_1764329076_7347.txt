@@ -1,0 +1,12 @@
+total 104
+drwxr-xr-x 3 root root  4096 Nov 28 11:24 .
+drwxr-xr-x 1 root root  4096 Nov 28 11:22 ..
+-rw-r--r-- 1 root root  6622 Nov 28 11:24 README.md
+drwxr-xr-x 5 root root    57 Nov 28 11:22 assets
+-rw-r--r-- 1 root root 14639 Nov 28 11:24 community.html
+-rw-r--r-- 1 root root 11961 Nov 28 11:22 generator.html
+-rw-r--r-- 1 root root  6755 Nov 28 11:22 index.html
+-rw-r--r-- 1 root root 24613 Nov 28 11:24 journey.html
+-rw-r--r-- 1 root root   546 Nov 28 11:22 manifest.json
+-rw-r--r-- 1 root root 13435 Nov 28 11:23 quantumcouncil.html
+-rw-r--r-- 1 root root   776 Nov 28 11:22 sw.js

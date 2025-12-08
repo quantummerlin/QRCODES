@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Reality Codes - Transform Intentions into Reality</title>
+    <meta name="description" content="Join the collective consciousness revolution. Transform your intentions into Quantum Reality Codes amplified by community support.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00ffff">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>⚛️ Quantum Reality Codes</h1>
+        <p class="subtitle">Transform Intentions into Collective Reality</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="generator.html">Create Code</a>
+        <a href="quantumcouncil.html">Quantum Council</a>
+        <a href="journey.html">Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
+    <main>
+        <!-- Welcome Section -->
+        <div class="card">
+            <h2 class="text-cyan">🌟 Welcome to the Quantum Reality Revolution</h2>
+            <p class="voice-merlin">"Individual intention creates ripples. Collective intention creates waves. Together, we reshape reality itself."</p>
+            <p class="mt-20">You've discovered a system where your deepest intentions become powerful Quantum Reality Codes—amplified through the sacred mathematics of collective consciousness.</p>
+        </div>
+
+        <!-- The Three Steps -->
+        <div class="card card-gold">
+            <h3 class="text-gold text-center">📜 Your Quantum Journey in Three Steps</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px;">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">1️⃣</div>
+                    <h4 class="text-cyan">Create Your Code</h4>
+                    <p>Transform your intention into a unique Quantum Reality Code using sacred mathematics and consciousness principles.</p>
+                    <a href="generator.html" class="btn btn-cyan">Start Now</a>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">2️⃣</div>
+                    <h4 class="text-magenta">Amplify Together</h4>
+                    <p>Share your code in our Facebook and Telegram communities. When others echo your code back, non-linear amplification occurs.</p>
+                    <a href="community.html" class="btn btn-magenta">Join Community</a>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div style="font-size: 3rem; margin-bottom: 15px;">3️⃣</div>
+                    <h4 class="text-gold">Activate Your Council</h4>
+                    <p>Your Quantum Council will send you personalized messages using your code, anchoring your manifestation in daily guidance.</p>
+                    <a href="quantumcouncil.html" class="btn btn-gold">Meet Council</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Science Behind It -->
+        <div class="card">
+            <h3 class="text-cyan">🔬 The Science & Sacred Mathematics</h3>
+            
+            <div class="journey-section">
+                <h4>Quantum Principles in Action</h4>
+                <ul>
+                    <li><strong>Superposition:</strong> Your intention exists as pure potential until observed and encoded.</li>
+                    <li><strong>Entanglement:</strong> When the community focuses on your code, quantum-like connections amplify manifestation power.</li>
+                    <li><strong>Observation Effect:</strong> Your focused attention collapses possibilities into your desired reality.</li>
+                </ul>
+                <p class="voice-merlin mt-20">"The universe doesn't respond to what you want—it responds to what you are. Quantum Reality Codes bridge that gap."</p>
+            </div>
+
+            <div class="journey-section">
+                <h4>The Power of Group Intention</h4>
+                <p class="voice-rose">Studies show that focused group intention creates measurable effects in the physical world:</p>
+                <ul>
+                    <li><strong>The Power of 8:</strong> Lynne McTaggart's research demonstrates exponential amplification in groups of 8+.</li>
+                    <li><strong>Maharishi Effect:</strong> Group meditation has been shown to reduce crime rates by 16% in targeted areas.</li>
+                    <li><strong>Mersenne Mathematics:</strong> Using the formula 2^n - 1, 33 connected individuals can represent over 8.5 billion synergistic connections.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Quick Start CTA -->
+        <div class="card card-magenta text-center">
+            <h3 class="text-gold">🚀 Ready to Begin Your Quantum Journey?</h3>
+            <p class="mb-20">Start with your first Quantum Reality Code and join thousands manifesting together.</p>
+            <a href="generator.html" class="btn btn-gold" style="font-size: 1.3rem; padding: 20px 40px;">
+                Generate My First Code ⚡
+            </a>
+            <p class="mt-20 voice-rose">"Your intention is the seed. The community is the water. Quantum Reality Codes are the soil of possibility."</p>
+        </div>
+
+        <!-- Community Stats -->
+        <div class="card">
+            <h3 class="text-cyan text-center">📊 Collective Impact</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
+                <div class="text-center">
+                    <div style="font-size: 2rem; color: var(--quantum-gold);">1000+</div>
+                    <div>Active Manifestors</div>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 2rem; color: var(--quantum-magenta);">10,000+</div>
+                    <div>Quantum Codes Generated</div>
+                </div>
+                <div class="text-center">
+                    <div style="font-size: 2rem; color: var(--quantum-cyan);">50,000+</div>
+                    <div>Community Amplifications</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

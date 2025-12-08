@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang=en>
+  <head>
+    <title>jinja2.exceptions.TemplateSyntaxError: expected token &#39;end of print statement&#39;, got &#39;:&#39;
+ // Werkzeug Debugger</title>
+    <link rel="stylesheet" href="?__debugger__=yes&amp;cmd=resource&amp;f=style.css">
+    <link rel="shortcut icon"
+        href="?__debugger__=yes&amp;cmd=resource&amp;f=console.png">
+    <script src="?__debugger__=yes&amp;cmd=resource&amp;f=debugger.js"></script>
+    <script>
+      var CONSOLE_MODE = false,
+          EVALEX = true,
+          EVALEX_TRUSTED = false,
+          SECRET = "xgScrV738opwnS8DGRP7";
+    </script>
+  </head>
+  <body style="background-color: #fff">
+    <div class="debugger">
+<h1>TemplateSyntaxError</h1>
+<div class="detail">

@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Manifestation Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0A0A1F;
+            color: #00FFFF;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Quantum Background */
+        .quantum-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: linear-gradient(45deg, #0A0A1F 0%, #1a0a2e 50%, #0A0A1F 100%);
+            background-size: 400% 400%;
+            animation: backgroundShift 20s ease infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Grid Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #00FFFF, #FF00FF, #00FFFF);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .dashboard-header .subtitle {
+            color: #FF00FF;
+            font-size: 1.2rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(255, 0, 255, 0.5);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .stat-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .stat-card .label {
+            color: rgba(0, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .value {
+            color: #00FFFF;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .stat-card .subtext {
+            color: rgba(255, 0, 255, 0.7);
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* Section Card */
+        .section-card {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .section-card h2 {
+            color: #00FFFF;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        /* Intention Display */
+        .intention-box {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .intention-box .intention-text {
+            color: #FF00FF;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .intention-box .days-active {
+            color: rgba(0, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        /* Messages Section */
+        .messages-container {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .messages-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages-container::-webkit-scrollbar-track {
+            background: rgba(0, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .messages-container::-webkit-scrollbar-thumb {
+            background: rgba(0, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .message-item {
+            background: rgba(0, 255, 255, 0.05);
+            border-left: 3px solid #00FFFF;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .message-item:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: #FF00FF;
+        }
+
+        .message-item.unread {
+            background: rgba(255, 0, 255, 0.1);
+            border-left-color: #FF00FF;
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .message-persona {
+            color: #00FFFF;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .message-time {
+            color: rgba(255, 0, 255, 0.6);
+            font-size: 0.85rem;
+        }
+
+        .message-text {
+            color: rgba(0, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        .no-messages {
+            text-align: center;
+            color: rgba(0, 255, 255, 0.5);
+            padding: 40px;
+            font-style: italic;
+        }
+
+        /* Active Personas */
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .persona-mini {
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .persona-mini:hover {
+            background: rgba(255, 0, 255, 0.1);
+            border-color: rgba(255, 0, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .persona-mini .emoji {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .persona-mini .name {
+            color: #00FFFF;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Synchronicity Log */
+        .sync-input-area {
+            margin-bottom: 20px;
+        }
+
+        .sync-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            color: #00FFFF;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .sync-input:focus {
+            outline: none;
+            border-color: #00FFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .sync-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #00FFFF, #FF00FF);
+            border: none;
+            border-radius: 8px;
+            color: #0A0A1F;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .sync-button:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .sync-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .sync-item {
+            background: rgba(255, 0, 255, 0.05);
+            border-left: 3px solid #FF00FF;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
+        .sync-item .sync-text {
+            color: rgba(0, 255, 255, 0.9);
+            margin-bottom: 5px;
+        }
+
+        .sync-item .sync-date {
+            color: rgba(255, 0, 255, 0.6);
+            font-size: 0.8rem;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #00FFFF;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .btn:hover {
+            background: rgba(0, 255, 255, 0.1);
+            border-color: #00FFFF;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Notification Badge */
+        .notification-badge {
+            display: inline-block;
+            background: #FF00FF;
+            color: #0A0A1F;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Quantum Background -->
+    <div class="quantum-background"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="dashboard-header">
+            <h1>⚡ QUANTUM MANIFESTATION DASHBOARD ⚡</h1>
+            <p class="subtitle">Your Council is Active & Working</p>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="icon">👥</div>
+                <div class="label">Active Personas</div>
+                <div class="value" id="activePersonasCount">13</div>
+                <div class="subtext">of 113 total</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">🎯</div>
+                <div class="label">Reality Alignment</div>
+                <div class="value" id="realityAlignment">11.5%</div>
+                <div class="subtext">Growing daily</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">⏰</div>
+                <div class="label">Next Message</div>
+                <div class="value" id="nextMessageTime">--</div>
+                <div class="subtext">96-minute cycle</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon">📅</div>
+                <div class="label">Days Active</div>
+                <div class="value" id="daysActive">0</div>
+                <div class="subtext">Keep going!</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="main-grid">
+            <!-- Left Column -->
+            <div>
+                <!-- Intention Section -->
+                <div class="section-card">
+                    <h2>🎯 Your Intention</h2>
+                    <div class="intention-box">
+                        <div class="intention-text" id="intentionDisplay">
+                            Loading your intention...
+                        </div>
+                        <div class="days-active">
+                            Activated <span id="daysAgoText">today</span>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="editIntention()">✏️ Edit Intention</button>
+                </div>
+
+                <!-- Active Personas -->
+                <div class="section-card" style="margin-top: 30px;">
+                    <h2>👥 Your Quantum Council</h2>
+                    <div class="personas-grid" id="personasGrid">
+                        <!-- Personas will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div>
+                <!-- Messages Section -->
+                <div class="section-card">
+                    <h2>
+                        📡 Quantum Messages
+                        <span class="notification-badge" id="unreadBadge" style="display: none;">0</span>
+                    </h2>
+                    <div class="messages-container" id="messagesContainer">
+                        <div class="no-messages">
+                            Your first message will arrive in 96 minutes...
+                        </div>
+                    </div>
+                    <button class="btn" onclick="markAllRead()" style="margin-top: 15px;">
+                        ✓ Mark All as Read
+                    </button>
+                </div>
+
+                <!-- Synchronicity Log -->
+                <div class="section-card" style="margin-top: 30px;">
+                    <h2>🔗 Synchronicity Log</h2>
+                    <div class="sync-input-area">
+                        <textarea 
+                            class="sync-input" 
+                            id="syncInput" 
+                            placeholder="Notice a synchronicity? Log it here..."
+                        ></textarea>
+                        <button class="sync-button" onclick="logSynchronicity()">
+                            ✨ Log Synchronicity
+                        </button>
+                    </div>
+                    <div class="sync-list" id="syncList">
+                        <div class="no-messages">
+                            No synchronicities logged yet. Start noticing the signs!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="index-intention.html" class="btn">← Back to Intention</a>
+            <button class="btn" onclick="requestNotifications()">🔔 Enable Notifications</button>
+            <button class="btn" onclick="forceNewMessage()">⚡ Request Message Now</button>
+        </div>
+    </div>
+
+    <script src="messaging-system.js"></script>
+    <script src="dashboard-app.js"></script>
+</body>
+</html>

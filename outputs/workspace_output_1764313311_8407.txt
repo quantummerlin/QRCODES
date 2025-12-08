@@ -1,0 +1,9 @@
+total 148
+drwxr-xr-x 2 root root  4096 Nov 28 05:35 .
+drwxr-xr-x 1 root root  4096 Nov 28 05:24 ..
+-rw-r--r-- 1 root root 25594 Nov 28 05:33 community-hub.html
+-rw-r--r-- 1 root root 24246 Nov 28 05:30 how-it-works.html
+-rw-r--r-- 1 root root 24181 Nov 28 05:27 quantum-council-portal.html
+-rw-r--r-- 1 root root 23548 Nov 28 05:35 quantum-frequencies.html
+-rw-r--r-- 1 root root 20158 Nov 28 05:25 quantum-generator.html
+-rw-r--r-- 1 root root 16707 Nov 28 05:24 quantum-welcome.html

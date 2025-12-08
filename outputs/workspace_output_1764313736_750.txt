@@ -1,0 +1,4 @@
+  File "/workspace/integrate_avatars.py", line 429
+    (% if code %)
+     ^
+SyntaxError: f-string: invalid syntax

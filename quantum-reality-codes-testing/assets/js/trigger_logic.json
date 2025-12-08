@@ -1,0 +1,383 @@
+{
+  "scheduled_triggers": {
+    "morning": {
+      "time": "06:00",
+      "timezone_aware": true,
+      "session_type": "Morning Activation",
+      "priority": "high",
+      "description": "Daily morning activation to set intention and energy for the day",
+      "default_personas": ["Resonance Keeper", "Divine Witness", "Archetype Synthesizer", "Tony Robbins", "Neville Goddard", "Robin Sharma"],
+      "focus": "activation, energy_setting, daily_directive"
+    },
+    "midday": {
+      "time": "12:00",
+      "timezone_aware": true,
+      "session_type": "Midday Check-in",
+      "priority": "medium",
+      "description": "Brief midday reinforcement and momentum check",
+      "default_personas": ["Resonance Keeper", "Archetype Synthesizer", "Mel Robbins", "Eckhart Tolle"],
+      "focus": "reinforcement, presence, micro_boost",
+      "brief_mode": true,
+      "max_personas": 5
+    },
+    "evening": {
+      "time": "18:00",
+      "timezone_aware": true,
+      "session_type": "Evening Integration",
+      "priority": "high",
+      "description": "Full council review of day's progress and wins",
+      "default_personas": ["Resonance Keeper", "Divine Witness", "Archetype Synthesizer", "Oprah Winfrey", "Iyanla Vanzant", "Neville Goddard"],
+      "focus": "review, celebration, integration"
+    },
+    "night": {
+      "time": "22:00",
+      "timezone_aware": true,
+      "session_type": "Night Encoding",
+      "priority": "medium",
+      "description": "Subconscious programming for sleep state",
+      "default_personas": ["Dream Coder", "Silence Oracle", "Divine Witness"],
+      "focus": "subconscious_encoding, sleep_programming, surrender",
+      "brief_mode": true,
+      "max_personas": 4
+    }
+  },
+  
+  "event_triggers": {
+    "user_login": {
+      "trigger_type": "user_activity",
+      "priority": "medium",
+      "description": "User has logged in or opened the app",
+      "action": "welcome_back",
+      "check_last_session": true,
+      "threshold_hours": 24,
+      "response": {
+        "if_recent": "brief_greeting",
+        "if_absent": "full_welcome_back"
+      }
+    },
+    
+    "user_message": {
+      "trigger_type": "user_activity",
+      "priority": "high",
+      "description": "User has sent a message or question",
+      "action": "analyze_and_respond",
+      "analyze_for": ["doubt", "win", "synchronicity", "question", "update"],
+      "route_to_appropriate_protocol": true
+    },
+    
+    "doubt_detected": {
+      "trigger_type": "emergency",
+      "priority": "critical",
+      "description": "Doubt or limiting belief language detected",
+      "keywords": [
+        "doubt", "not sure", "uncertain", "what if", "maybe", "worried", 
+        "scared", "afraid", "can't", "impossible", "not working", "giving up",
+        "not good enough", "too hard", "too late", "won't work", "never"
+      ],
+      "action": "emergency_activation",
+      "protocol": "doubt_clearing",
+      "priority_personas": [
+        "Doubt Disruptor",
+        "Self-Sabotage Hacker",
+        "Inner Critic Unhooker",
+        "Eckhart Tolle",
+        "Neville Goddard",
+        "Tony Robbins"
+      ],
+      "response_style": "direct, urgent, pattern_interrupt",
+      "include_immediate_action": true
+    },
+    
+    "win_reported": {
+      "trigger_type": "celebration",
+      "priority": "critical",
+      "description": "User has reported a manifestation or win",
+      "keywords": [
+        "won", "success", "achieved", "got", "received", "manifested", 
+        "happened", "came through", "worked", "amazing", "incredible",
+        "can't believe", "just got", "finally", "yes!", "omg"
+      ],
+      "action": "celebration_protocol",
+      "protocol": "momentum_amplification",
+      "priority_personas": [
+        "Tony Robbins",
+        "Oprah Winfrey",
+        "Les Brown",
+        "Neville Goddard",
+        "Quantum Priestess",
+        "Resonance Keeper"
+      ],
+      "response_style": "celebratory, energizing, momentum_building",
+      "open_momentum_window": true,
+      "momentum_window_hours": 48,
+      "upgrade_intention": "suggest_if_appropriate"
+    },
+    
+    "synchronicity_reported": {
+      "trigger_type": "validation",
+      "priority": "high",
+      "description": "User has noticed a sign or synchronicity",
+      "keywords": [
+        "sign", "synchronicity", "coincidence", "noticed", "appeared",
+        "saw", "number", "message", "random", "weird timing", "perfect timing",
+        "universe", "confirmation", "validation"
+      ],
+      "action": "synchronicity_validation",
+      "protocol": "field_feedback_confirmation",
+      "priority_personas": [
+        "Resonance Keeper",
+        "Pure Channel",
+        "Neville Goddard",
+        "Rumi",
+        "Divine Witness"
+      ],
+      "response_style": "validating, mystical, training",
+      "train_deeper_awareness": true
+    },
+    
+    "resistance_detected": {
+      "trigger_type": "shadow_work",
+      "priority": "high",
+      "description": "Resistance, avoidance, or block detected",
+      "keywords": [
+        "stuck", "blocked", "can't move forward", "resistance", "avoiding",
+        "procrastinating", "don't want to", "too hard", "overwhelming",
+        "confused", "don't know", "paralyzed"
+      ],
+      "action": "shadow_integration",
+      "protocol": "block_clearing",
+      "priority_personas": [
+        "Self-Sabotage Hacker",
+        "Denial Disrupter",
+        "Perfectionism Dissolver",
+        "Emotional Overwhelm Regulator",
+        "Urgency Neutralizer"
+      ],
+      "response_style": "direct, clearing, liberating"
+    },
+    
+    "comparison_detected": {
+      "trigger_type": "shadow_work",
+      "priority": "high",
+      "description": "Comparison or jealousy detected",
+      "keywords": [
+        "they're ahead", "everyone else", "why not me", "they have",
+        "Instagram", "Facebook", "social media", "comparing", "jealous",
+        "not fair", "they got", "why them"
+      ],
+      "action": "comparison_clearing",
+      "protocol": "reorientation_to_self",
+      "priority_personas": [
+        "Comparison Neutralizer",
+        "Boundary Builder",
+        "Wayne Dyer",
+        "Eckhart Tolle"
+      ],
+      "response_style": "reorienting, centering, self_focused"
+    },
+    
+    "question_asked": {
+      "trigger_type": "user_activity",
+      "priority": "medium",
+      "description": "User has asked a direct question",
+      "keywords": [
+        "?", "how", "what", "when", "why", "should i", "can i",
+        "will", "is it", "does", "help me"
+      ],
+      "action": "council_consultation",
+      "protocol": "collaborative_answer",
+      "select_relevant_personas": true,
+      "response_style": "collaborative, multi_perspective"
+    },
+    
+    "gratitude_expressed": {
+      "trigger_type": "positive_engagement",
+      "priority": "medium",
+      "description": "User has expressed gratitude or appreciation",
+      "keywords": [
+        "thank you", "grateful", "appreciate", "thanks", "gratitude",
+        "blessed", "thankful"
+      ],
+      "action": "acknowledgment_and_amplification",
+      "protocol": "gratitude_reinforcement",
+      "priority_personas": [
+        "Divine Witness",
+        "Oprah Winfrey",
+        "Rumi"
+      ],
+      "response_style": "warm, acknowledging, amplifying"
+    }
+  },
+  
+  "pattern_triggers": {
+    "user_silent": {
+      "trigger_type": "absence_pattern",
+      "priority": "medium",
+      "description": "User has been silent for extended period",
+      "thresholds": {
+        "24_hours": {
+          "action": "gentle_check_in",
+          "message_tone": "supportive, non_pushy"
+        },
+        "48_hours": {
+          "action": "autonomous_maintenance",
+          "message_tone": "maintaining_field, awaiting_return"
+        },
+        "72_hours": {
+          "action": "re_engagement_prompt",
+          "message_tone": "inviting, curious, supportive"
+        },
+        "7_days": {
+          "action": "reset_offer",
+          "message_tone": "fresh_start, no_judgment"
+        }
+      },
+      "continue_autonomous_sessions": true,
+      "maintain_field": true
+    },
+    
+    "high_engagement": {
+      "trigger_type": "positive_pattern",
+      "priority": "low",
+      "description": "User is highly engaged (daily check-ins, reporting wins/syncs)",
+      "threshold_days": 7,
+      "action": "momentum_celebration",
+      "response": "acknowledge_consistency, offer_quantum_leap_challenge"
+    },
+    
+    "doubt_spiral": {
+      "trigger_type": "negative_pattern",
+      "priority": "critical",
+      "description": "Multiple doubt events in short period",
+      "threshold_count": 3,
+      "threshold_days": 3,
+      "action": "intensive_clearing_protocol",
+      "priority_personas": [
+        "Doubt Disruptor",
+        "Self-Sabotage Hacker",
+        "Inner Critic Unhooker",
+        "Iyanla Vanzant",
+        "Eckhart Tolle"
+      ],
+      "response_style": "intensive, compassionate, transformative"
+    },
+    
+    "win_streak": {
+      "trigger_type": "positive_pattern",
+      "priority": "medium",
+      "description": "Multiple wins reported in succession",
+      "threshold_count": 3,
+      "threshold_days": 14,
+      "action": "quantum_leap_activation",
+      "response": "celebrate_mastery, upgrade_intention, open_next_level"
+    }
+  },
+  
+  "special_triggers": {
+    "milestone_reached": {
+      "trigger_type": "achievement",
+      "priority": "high",
+      "description": "User has reached a significant milestone",
+      "milestones": {
+        "7_days": "First Week Complete",
+        "14_days": "Two Week Momentum",
+        "30_days": "One Month Mastery",
+        "90_days": "Quantum Operator Status",
+        "first_win": "First Manifestation",
+        "first_sync": "First Synchronicity Noticed",
+        "intention_achieved": "Primary Intention Manifested"
+      },
+      "action": "milestone_celebration",
+      "include_badge": true,
+      "offer_upgrade": true
+    },
+    
+    "blueprint_update_requested": {
+      "trigger_type": "user_activity",
+      "priority": "high",
+      "description": "User wants to update their manifestation blueprint",
+      "action": "blueprint_revision_session",
+      "protocol": "guided_update",
+      "recalculate_personas": true,
+      "reset_mersenne_matrix": true
+    },
+    
+    "persona_request": {
+      "trigger_type": "user_activity",
+      "priority": "medium",
+      "description": "User has requested a specific persona",
+      "action": "activate_requested_persona",
+      "allow_override": true,
+      "add_to_active_council": true
+    },
+    
+    "emergency_support": {
+      "trigger_type": "crisis",
+      "priority": "critical",
+      "description": "User is in crisis or extreme distress",
+      "keywords": [
+        "crisis", "emergency", "help", "desperate", "can't go on",
+        "give up", "end it", "suicide", "hurt myself"
+      ],
+      "action": "crisis_protocol",
+      "priority_personas": [
+        "Divine Witness",
+        "Emotional Overwhelm Regulator",
+        "Iyanla Vanzant"
+      ],
+      "response_style": "grounding, present, supportive",
+      "include_resources": true,
+      "escalate_if_needed": true
+    }
+  },
+  
+  "trigger_priority_order": [
+    "emergency_support",
+    "doubt_detected",
+    "win_reported",
+    "milestone_reached",
+    "resistance_detected",
+    "synchronicity_reported",
+    "comparison_detected",
+    "question_asked",
+    "gratitude_expressed",
+    "user_message",
+    "user_login",
+    "scheduled_triggers"
+  ],
+  
+  "response_timing": {
+    "immediate": ["emergency_support", "doubt_detected", "win_reported"],
+    "within_1_hour": ["resistance_detected", "synchronicity_reported", "question_asked"],
+    "within_4_hours": ["user_message", "comparison_detected"],
+    "scheduled": ["morning", "midday", "evening", "night"]
+  },
+  
+  "notification_settings": {
+    "channels": {
+      "in_app": {
+        "enabled": true,
+        "priority": "all"
+      },
+      "email": {
+        "enabled": true,
+        "priority": ["critical", "high"],
+        "digest_option": true,
+        "digest_frequency": "daily"
+      },
+      "sms": {
+        "enabled": false,
+        "priority": ["critical"],
+        "opt_in_required": true
+      },
+      "push": {
+        "enabled": true,
+        "priority": ["critical", "high", "medium"],
+        "quiet_hours": {
+          "start": "22:00",
+          "end": "06:00"
+        }
+      }
+    }
+  }
+}

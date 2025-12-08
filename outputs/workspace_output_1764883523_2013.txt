@@ -1,0 +1,7 @@
+172.16.0.1 - - [04/Dec/2025 21:34:22] "GET /?_gl=1*1014wne*_gcl_aw*R0NMLjE3NjI3NzE4NjMuQ2p3S0NBaUF0OGJJQmhCcEVpd0F6SDF3NlhiMWR0MEhMcmppYTBkMlh2NmgycVVQTTBOSXlkWktOaUkwbGRoejBPd2h2U1FzNExTU2FCb0N6WFVRQXZEX0J3RQ..*_gcl_au*MTAyNjM2NjAwNC4xNzYzNDA5ODI4*_ga*OTIzMjY2ODM5LjE3NDc4MTU2OTc.*_ga_8NW18Q4WF2*czE3NjQ4NzY5NTAkbzIzMyRnMSR0MTc2NDg4NDAzMCRqNjAkbDAkaDIyNDgxNjk5&password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 200 -
+172.16.0.1 - - [04/Dec/2025 21:34:22] "GET /assets/js/app.js?password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 200 -
+172.16.0.1 - - [04/Dec/2025 21:34:22] "GET /assets/css/style.css?password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 200 -
+172.16.0.1 - - [04/Dec/2025 21:34:24] code 404, message File not found
+172.16.0.1 - - [04/Dec/2025 21:34:24] "GET /favicon.ico?password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 404 -
+172.16.0.1 - - [04/Dec/2025 21:35:06] "GET /journey.html?password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 200 -
+172.16.0.1 - - [04/Dec/2025 21:35:22] "GET /community.html?password=8466ad06-d078-440c-9ed9-57b244ea71b0 HTTP/1.0" 200 -

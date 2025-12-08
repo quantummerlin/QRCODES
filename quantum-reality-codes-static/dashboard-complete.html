@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Dashboard - Your Complete Manifestation Command Center</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .dashboard-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            color: #00ffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            opacity: 0.7;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .progress-ring {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+        }
+
+        .progress-ring circle {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 8;
+            fill: transparent;
+        }
+
+        .progress-ring .progress {
+            stroke: url(#gradient);
+            stroke-width: 8;
+            fill: transparent;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .action-btn {
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+            border: 1px solid rgba(0, 255, 255, 0.5);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+        }
+
+        .recent-activity {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #00ffff;
+        }
+
+        .activity-time {
+            color: #666;
+            font-size: 12px;
+        }
+
+        .community-feed {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .feed-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid #ff00ff;
+        }
+
+        .guide-status {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-online {
+            background: #00ff00;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .motivational-quote {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 0, 255, 0.1));
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            font-style: italic;
+            font-size: 18px;
+            color: #ffd700;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #00ffff;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .guide-message {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #ff00ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+        .celebration {
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="quantum-bg"></div>
+    <div class="quantum-grid"></div>
+
+    <header>
+        <h1>🌊 Quantum Dashboard</h1>
+        <p class="subtitle">Your complete manifestation command center</p>
+    </header>
+
+    <nav>
+        <a href="index-enhanced.html">Home</a>
+        <a href="onboarding.html">🚀 Get Started</a>
+        <a href="generator-enhanced.html">Create Code</a>
+        <a href="quantumcouncil-enhanced.html">Quantum Council</a>
+        <a href="journey-guided.html">Guided Journey</a>
+        <a href="my-codes.html">My Codes</a>
+        <a href="community-enhanced.html">Community</a>
+        <a href="dashboard-complete.html" class="active">Dashboard</a>
+    </nav>
+
+    <main class="dashboard-container">
+        <!-- Welcome Header -->
+        <div class="dashboard-header">
+            <h2 class="text-gold">Welcome back, <span id="userName">Quantum Seeker</span>! 🌟</h2>
+            <p style="font-size: 18px; margin: 20px 0;">
+                Your quantum field is active and your manifestation is in progress. 
+                Merlin & Rose are monitoring your journey.
+            </p>
+            
+            <div class="guide-message">
+                <strong>Quantum Merlin:</strong> "Your current quantum alignment is strong. The field responds to your consistent practice."
+            </div>
+            <div class="guide-message">
+                <strong>Quantum Rose:</strong> "I feel your frequency rising. Your emotional state is perfectly aligned for manifestation."
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-grid">
+            <!-- Journey Progress -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">🎯 Journey Progress</div>
+                        <div class="stat-number" id="journeyProgress">0%</div>
+                        <div class="stat-label">12 Steps Completed</div>
+                    </div>
+                    <div class="card-icon">🛤️</div>
+                </div>
+                
+                <svg class="progress-ring" viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ff00ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="54"></circle>
+                    <circle class="progress" cx="60" cy="60" r="54" 
+                            stroke-dasharray="339.292" 
+                            stroke-dashoffset="339.292"></circle>
+                </svg>
+                
+                <div style="text-align: center;">
+                    <span id="stepCount">0</span> of 12 steps completed
+                </div>
+            </div>
+
+            <!-- Active Manifestations -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">🔢 Active Codes</div>
+                        <div class="stat-number" id="activeCodes">0</div>
+                        <div class="stat-label">Manifestations in progress</div>
+                    </div>
+                    <div class="card-icon">⚡</div>
+                </div>
+                
+                <div id="recentCodes">
+                    <!-- Recent codes will be loaded here -->
+                </div>
+                
+                <a href="my-codes.html" class="action-btn" style="width: 100%; margin-top: 15px;">
+                    View All Codes →
+                </a>
+            </div>
+
+            <!-- Community Impact -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">🌊 Community Impact</div>
+                        <div class="stat-number" id="communityImpact">0</div>
+                        <div class="stat-label">Echoes & Supports given</div>
+                    </div>
+                    <div class="card-icon">💫</div>
+                </div>
+                
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                        <span>Echoes Sent:</span>
+                        <span id="echoCount">0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                        <span>Supports Given:</span>
+                        <span id="supportCount">0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin: 10px 0;">
+                        <span>Viral Score:</span>
+                        <span id="viralScore">1.0x</span>
+                    </div>
+                </div>
+                
+                <a href="community-enhanced.html" class="action-btn" style="width: 100%; margin-top: 15px;">
+                    Amplify Others →
+                </a>
+            </div>
+
+            <!-- Messages Received -->
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div>
+                        <div class="card-title">📨 Guide Messages</div>
+                        <div class="stat-number" id="messageCount">0</div>
+                        <div class="stat-label">Messages from Merlin & Rose</div>
+                    </div>
+                    <div class="card-icon">✉️</div>
+                </div>
+                
+                <div class="guide-status">
+                    <div class="status-indicator status-online"></div>
+                    <strong>Guides Online</strong><br>
+                    <small>Next message in <span id="nextMessage">12</span> minutes</small>
+                </div>
+                
+                <div id="recentMessages">
+                    <!-- Recent messages will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="dashboard-card">
+            <h3 class="text-cyan">🚀 Quick Actions</h3>
+            <div class="quick-actions">
+                <a href="generator-enhanced.html" class="action-btn">
+                    <span>🔢</span> Create New Code
+                </a>
+                <a href="journey-guided.html" class="action-btn">
+                    <span>🛤️</span> Continue Journey
+                </a>
+                <a href="quantumcouncil-enhanced.html" class="action-btn">
+                    <span>👥</span> Check Council
+                </a>
+                <a href="community-enhanced.html" class="action-btn">
+                    <span>🌊</span> Support Community
+                </a>
+                <a href="#" class="action-btn" onclick="openStuckModal()">
+                    <span>🆘</span> Need Help
+                </a>
+                <a href="#" class="action-btn" onclick="showCelebration()">
+                    <span>🎉</span> Celebrate Win
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity & Community Feed -->
+        <div class="dashboard-grid">
+            <!-- Recent Activity -->
+            <div class="dashboard-card">
+                <h3 class="text-cyan">📅 Your Recent Activity</h3>
+                <div id="recentActivity">
+                    <!-- Activity will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Community Feed -->
+            <div class="dashboard-card">
+                <h3 class="text-magenta">🌊 Community Success Feed</h3>
+                <div class="community-feed" id="communityFeed">
+                    <!-- Community feed will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivational Quote -->
+        <div class="motivational-quote">
+            "The quantum field responds not to your wants, but to your state of being. Become the vibration of your desire, and reality must conform."
+            <br><br>
+            <small>— Quantum Merlin</small>
+        </div>
+    </main>
+
+    <!-- Stuck Modal -->
+    <div id="stuckModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeStuckModal()">&times;</span>
+            <h2 class="text-magenta">🆘 Need Help? We're Here For You</h2>
+            <p>Everyone gets stuck sometimes. That's normal. Let's get you back on track.</p>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="journey-guided.html" class="action-btn">
+                    🛤️ Continue Your Journey
+                </a>
+                <a href="community-enhanced.html" class="action-btn" style="margin-left: 15px;">
+                    🌊 Get Community Support
+                </a>
+                <a href="quantumcouncil-enhanced.html" class="action-btn" style="margin-left: 15px;">
+                    👥 Consult Your Council
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Celebration Modal -->
+    <div id="celebrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeCelebrationModal()">&times;</span>
+            <div class="celebration">
+                <h2>🎉 Quantum Celebration!</h2>
+                <p>You're doing amazing on your manifestation journey!</p>
+                <p>Every step forward strengthens your quantum field.</p>
+                <button class="action-button" style="margin-top: 20px;" onclick="closeCelebrationModal()">
+                    Continue Your Journey
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script>
+        class QuantumDashboard {
+            constructor() {
+                this.userData = null;
+                this.journeyData = null;
+                this.codesData = null;
+                this.communityData = null;
+                this.initializeDashboard();
+            }
+
+            initializeDashboard() {
+                this.loadUserData();
+                this.updateAllStats();
+                this.loadRecentActivity();
+                this.loadCommunityFeed();
+                this.startRealTimeUpdates();
+            }
+
+            loadUserData() {
+                this.userData = JSON.parse(localStorage.getItem('quantumUserProfile') || '{}');
+                this.journeyData = JSON.parse(localStorage.getItem('quantumJourneyProgress') || '{}');
+                this.codesData = JSON.parse(localStorage.getItem('quantumCodes') || '[]');
+                this.communityData = JSON.parse(localStorage.getItem('quantumCommunityData') || '{}');
+                this.communityData.currentUser = JSON.parse(localStorage.getItem('quantumCurrentUser') || '{}');
+            }
+
+            updateAllStats() {
+                // Update user name
+                document.getElementById('userName').textContent = this.userData.name || 'Quantum Seeker';
+                
+                // Update journey progress
+                const completedSteps = this.journeyData.completedSteps || [];
+                const stepCount = completedSteps.length;
+                const progressPercent = Math.round((stepCount / 12) * 100);
+                
+                document.getElementById('journeyProgress').textContent = progressPercent + '%';
+                document.getElementById('stepCount').textContent = stepCount;
+                
+                // Update progress ring
+                const progressCircle = document.querySelector('.progress-ring .progress');
+                const circumference = 2 * Math.PI * 54;
+                const offset = circumference - (progressPercent / 100) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+                
+                // Update active codes
+                const activeCodes = this.codesData.filter(code => code.status === 'active').length;
+                document.getElementById('activeCodes').textContent = activeCodes;
+                
+                // Load recent codes
+                this.loadRecentCodes();
+                
+                // Update community stats
+                const echoCount = this.communityData.currentUser.echoCount || 0;
+                const supportCount = this.communityData.currentUser.supportCount || 0;
+                const viralScore = (this.communityData.viralCoefficient || 1.0).toFixed(1);
+                
+                document.getElementById('echoCount').textContent = echoCount;
+                document.getElementById('supportCount').textContent = supportCount;
+                document.getElementById('viralScore').textContent = viralScore + 'x';
+                document.getElementById('communityImpact').textContent = echoCount + supportCount;
+                
+                // Update messages count
+                const messageHistory = JSON.parse(localStorage.getItem('quantumMessageHistory') || '[]');
+                document.getElementById('messageCount').textContent = messageHistory.length;
+                
+                // Load recent messages
+                this.loadRecentMessages();
+            }
+
+            loadRecentCodes() {
+                const container = document.getElementById('recentCodes');
+                const recentCodes = this.codesData.slice(0, 3);
+                
+                if (recentCodes.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666;">No active codes yet</p>';
+                    return;
+                }
+                
+                container.innerHTML = recentCodes.map(code => `
+                    <div class="recent-activity">
+                        <strong>${code.code}</strong><br>
+                        <small>${code.intention}</small><br>
+                        <span class="activity-time">${new Date(code.createdAt).toLocaleDateString()}</span>
+                    </div>
+                `).join('');
+            }
+
+            loadRecentMessages() {
+                const container = document.getElementById('recentMessages');
+                const messageHistory = JSON.parse(localStorage.getItem('quantumMessageHistory') || '[]');
+                const recentMessages = messageHistory.slice(-3).reverse();
+                
+                if (recentMessages.length === 0) {
+                    container.innerHTML = '<p style="color: #666;">No messages yet</p>';
+                    return;
+                }
+                
+                container.innerHTML = recentMessages.map(msg => `
+                    <div class="recent-activity" style="border-left-color: #ff00ff;">
+                        <small class="activity-time">${new Date(msg.timestamp).toLocaleString()}</small><br>
+                        ${msg.guide === 'both' ? 
+                            `<strong>Merlin:</strong> ${msg.merlin?.substring(0, 50)}...<br>
+                             <strong>Rose:</strong> ${msg.rose?.substring(0, 50)}...` :
+                            `<strong>${msg.guide}:</strong> ${msg.content?.substring(0, 80)}...`
+                        }
+                    </div>
+                `).join('');
+            }
+
+            loadRecentActivity() {
+                const container = document.getElementById('recentActivity');
+                const activities = [];
+                
+                // Add code creation activities
+                this.codesData.forEach(code => {
+                    activities.push({
+                        type: 'code_created',
+                        text: `Created quantum code ${code.code} for "${code.intention}"`,
+                        date: code.createdAt
+                    });
+                });
+                
+                // Add journey step completions
+                if (this.journeyData.completedSteps) {
+                    this.journeyData.completedSteps.forEach(step => {
+                        activities.push({
+                            type: 'step_completed',
+                            text: `Completed Journey Step ${step}`,
+                            date: new Date().toISOString()
+                        });
+                    });
+                }
+                
+                // Sort by date and show recent 5
+                activities.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const recentActivities = activities.slice(0, 5);
+                
+                if (recentActivities.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #666;">No recent activity</p>';
+                    return;
+                }
+                
+                container.innerHTML = recentActivities.map(activity => `
+                    <div class="recent-activity">
+                        <span class="activity-time">${new Date(activity.date).toLocaleDateString()}</span><br>
+                        ${activity.text}
+                    </div>
+                `).join('');
+            }
+
+            async loadCommunityFeed() {
+                const container = document.getElementById('communityFeed');
+                
+                try {
+                    const response = await fetch('success-stories.json');
+                    const storiesData = await response.json();
+                    const featuredStories = storiesData.featured.slice(0, 3);
+                    
+                    container.innerHTML = featuredStories.map(story => `
+                        <div class="feed-item">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <div>
+                                    <strong>${story.author}</strong> - ${story.category}<br>
+                                    <em>"${story.title}"</em><br>
+                                    <small>${story.timeline} • ${story.echoes} echoes</small>
+                                </div>
+                                <span style="color: #00ffff;">✨</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } catch (error) {
+                    container.innerHTML = '<p style="text-align: center; color: #666;">Loading community stories...</p>';
+                }
+            }
+
+            startRealTimeUpdates() {
+                setInterval(() => {
+                    const countdown = document.getElementById('nextMessage');
+                    if (countdown) {
+                        const currentTime = parseInt(countdown.textContent);
+                        countdown.textContent = currentTime === 1 ? 12 : currentTime - 1;
+                    }
+                }, 60000);
+            }
+        }
+
+        function openStuckModal() {
+            document.getElementById('stuckModal').style.display = 'block';
+        }
+
+        function closeStuckModal() {
+            document.getElementById('stuckModal').style.display = 'none';
+        }
+
+        function showCelebration() {
+            document.getElementById('celebrationModal').style.display = 'block';
+        }
+
+        function closeCelebrationModal() {
+            document.getElementById('celebrationModal').style.display = 'none';
+        }
+
+        let dashboard;
+        document.addEventListener('DOMContentLoaded', () => {
+            dashboard = new QuantumDashboard();
+        });
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

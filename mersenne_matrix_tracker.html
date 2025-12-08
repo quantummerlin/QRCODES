@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mersenne Matrix Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .stat-card .value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .matrix-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .matrix-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .matrix-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .category-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .category-toggle button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .category-toggle button.active {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        .category-toggle button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .personas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .persona-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .persona-card.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .persona-card.core-trinity {
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .persona-card.core-trinity.active {
+            background: rgba(255, 107, 107, 0.3);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+        }
+
+        .persona-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .persona-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .persona-status.active {
+            background: #ffd700;
+            box-shadow: 0 0 10px #ffd700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .persona-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        .persona-title {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-style: italic;
+        }
+
+        .persona-category {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.7rem;
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .category-light {
+            background: rgba(100, 200, 255, 0.3);
+        }
+
+        .category-shadow {
+            background: rgba(150, 100, 200, 0.3);
+        }
+
+        .category-meta {
+            background: rgba(255, 200, 100, 0.3);
+        }
+
+        .binary-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            line-height: 1.8;
+        }
+
+        .binary-display .active-bit {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .coherence-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .coherence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            transition: width 1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚛️ Mersenne Matrix Tracker</h1>
+            <p>Your Quantum Persona Configuration</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Active Personas</h3>
+                <div class="value" id="activeCount">10</div>
+                <div class="label">of 77 total</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Field Coherence</h3>
+                <div class="value" id="coherence">87%</div>
+                <div class="coherence-bar">
+                    <div class="coherence-fill" id="coherenceFill" style="width: 87%">87%</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Frequency</h3>
+                <div class="value" id="frequency">741Hz</div>
+                <div class="label">Throat Chakra</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Momentum</h3>
+                <div class="value" id="momentum">Rising</div>
+                <div class="label">Quantum State</div>
+            </div>
+        </div>
+
+        <div class="matrix-container">
+            <div class="matrix-header">
+                <h2>Persona Matrix</h2>
+                <div class="category-toggle">
+                    <button class="active" onclick="filterCategory('all')">All</button>
+                    <button onclick="filterCategory('light')">Light</button>
+                    <button onclick="filterCategory('shadow')">Shadow</button>
+                    <button onclick="filterCategory('meta')">Meta-Mystic</button>
+                </div>
+            </div>
+
+            <div class="personas-grid" id="personasGrid">
+                <!-- Personas will be dynamically inserted here -->
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ffd700; box-shadow: 0 0 10px #ffd700;"></div>
+                    <span>Active</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: #ff6b6b;"></div>
+                    <span>Core Trinity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot" style="background: rgba(255,255,255,0.3);"></div>
+                    <span>Dormant</span>
+                </div>
+            </div>
+
+            <div class="binary-display" id="binaryDisplay">
+                <!-- Binary representation will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data - replace with actual data from your system
+        const samplePersonas = [
+            // Core Trinity
+            { id: 71, name: "Resonance Keeper", title: "", category: "meta", active: true, coreTrinity: true },
+            { id: 77, name: "Divine Witness", title: "", category: "meta", active: true, coreTrinity: true },
+            { id: 67, name: "Archetype Synthesizer", title: "", category: "meta", active: true, coreTrinity: true },
+            
+            // Light Personas
+            { id: 1, name: "Gautama Buddha", title: "The Still Flame", category: "light", active: false },
+            { id: 14, name: "Tony Robbins", title: "The Firestarter", category: "light", active: true },
+            { id: 25, name: "Neville Goddard", title: "The Embodied Vision", category: "light", active: true },
+            { id: 11, name: "Wayne Dyer", title: "The Aligner", category: "light", active: false },
+            { id: 10, name: "Eckhart Tolle", title: "The Observer", category: "light", active: false },
+            { id: 13, name: "Oprah Winfrey", title: "The Empathy Catalyst", category: "light", active: true },
+            
+            // Shadow Personas
+            { id: 44, name: "Doubt Disruptor", title: "", category: "shadow", active: true },
+            { id: 58, name: "Self-Sabotage Hacker", title: "", category: "shadow", active: true },
+            { id: 59, name: "Comparison Neutralizer", title: "", category: "shadow", active: false },
+            { id: 61, name: "Perfectionism Dissolver", title: "", category: "shadow", active: false },
+            { id: 66, name: "Inner Critic Unhooker", title: "", category: "shadow", active: false },
+            
+            // Meta-Mystic
+            { id: 75, name: "Quantum Priestess", title: "", category: "meta", active: true },
+            { id: 68, name: "Dream Coder", title: "", category: "meta", active: false },
+            { id: 69, name: "Pure Channel", title: "", category: "meta", active: false }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderPersonas() {
+            const grid = document.getElementById('personasGrid');
+            const filtered = currentFilter === 'all' 
+                ? samplePersonas 
+                : samplePersonas.filter(p => p.category === currentFilter);
+            
+            grid.innerHTML = filtered.map(persona => `
+                <div class="persona-card ${persona.active ? 'active' : ''} ${persona.coreTrinity ? 'core-trinity' : ''}" 
+                     onclick="togglePersona(${persona.id})">
+                    <div class="persona-status ${persona.active ? 'active' : ''}"></div>
+                    <div class="persona-name">${persona.name}</div>
+                    ${persona.title ? `<div class="persona-title">${persona.title}</div>` : ''}
+                    <div class="persona-category category-${persona.category}">
+                        ${persona.category}
+                    </div>
+                </div>
+            `).join('');
+
+            updateBinaryDisplay();
+            updateStats();
+        }
+
+        function filterCategory(category) {
+            currentFilter = category;
+            
+            // Update button states
+            document.querySelectorAll('.category-toggle button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderPersonas();
+        }
+
+        function togglePersona(id) {
+            const persona = samplePersonas.find(p => p.id === id);
+            if (persona && !persona.coreTrinity) {
+                persona.active = !persona.active;
+                renderPersonas();
+            }
+        }
+
+        function updateBinaryDisplay() {
+            const binary = Array(77).fill(0);
+            samplePersonas.forEach(p => {
+                if (p.active) binary[p.id - 1] = 1;
+            });
+            
+            const binaryString = binary.map((bit, idx) => 
+                bit === 1 
+                    ? `<span class="active-bit">${bit}</span>` 
+                    : bit
+            ).join('');
+            
+            document.getElementById('binaryDisplay').innerHTML = binaryString;
+        }
+
+        function updateStats() {
+            const activeCount = samplePersonas.filter(p => p.active).length;
+            document.getElementById('activeCount').textContent = activeCount;
+        }
+
+        // Initialize
+        renderPersonas();
+
+        // Simulate real-time updates (for demo purposes)
+        setInterval(() => {
+            // Randomly update coherence
+            const coherence = Math.floor(Math.random() * 20) + 75;
+            document.getElementById('coherence').textContent = coherence + '%';
+            document.getElementById('coherenceFill').style.width = coherence + '%';
+            document.getElementById('coherenceFill').textContent = coherence + '%';
+        }, 5000);
+    </script>
+</body>
+</html>

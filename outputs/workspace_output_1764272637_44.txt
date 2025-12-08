@@ -1,0 +1,14 @@
+total 18132
+drwxr-xr-x 2 root root    4096 Nov 27 19:35 .
+drwxr-xr-x 1 root root      57 Nov 27 19:19 ..
+-rw-r--r-- 1 root root 1871771 Nov 27 19:35 generated_image_0575a84e-2eff-4ae9-9b80-14f897956983_0.png
+-rw-r--r-- 1 root root 1676026 Nov 27 19:19 generated_image_1370a42e-7eac-4a9a-ad00-9d0d3c9d6a67_0.png
+-rw-r--r-- 1 root root  200054 Nov 27 19:24 generated_image_19c913be-20c3-4672-b999-4ece1ed5600e_0.jpeg
+-rw-r--r-- 1 root root 1775650 Nov 27 19:23 generated_image_41118f85-83d2-4162-b323-b44e52da21e8_0.png
+-rw-r--r-- 1 root root 2127523 Nov 27 19:22 generated_image_4fffa1e9-715e-420c-90c1-879bdd4f8aaa_0.png
+-rw-r--r-- 1 root root 1863021 Nov 27 19:20 generated_image_7eb4d745-fa04-40da-b09d-32fbbc35fc7d_0.png
+-rw-r--r-- 1 root root 1967419 Nov 27 19:22 generated_image_99a0f212-bca0-4290-b4f9-61d53011ab6a_0.png
+-rw-r--r-- 1 root root 1943846 Nov 27 19:21 generated_image_c231d5e0-dc07-4d8d-9bd0-3b39f07c20f5_0.png
+-rw-r--r-- 1 root root 1705686 Nov 27 19:34 generated_image_d9a54bfa-b861-4e09-8435-966f30babd40_0.png
+-rw-r--r-- 1 root root 1786753 Nov 27 19:19 generated_image_dc28cf82-21c3-448e-82f1-d9a7b032553b_0.png
+-rw-r--r-- 1 root root 1625618 Nov 27 19:31 generated_image_f1d31a9b-13c3-400c-8bef-325f6bdb6671_0.png

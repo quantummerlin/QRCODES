@@ -1,0 +1,8 @@
+    <nav>
+        <a href="index-enhanced.html" class="active">Home</a>
+        <a href="generator.html">Create Code</a>
+        <a href="quantumcouncil.html">Quantum Council</a>
+        <a href="journey.html">Journey</a>
+        <a href="community.html">Community</a>
+    </nav>
+
