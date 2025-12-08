@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
   <meta name="theme-color" content="#0a0e27">
   <meta name="description" content="Quantum Reality Code - Transform your intentions into reality through quantum manifestation technology">
   
@@ -625,6 +625,198 @@
       border-color: var(--neon-cyan);
     }
 
+    .help-tag {
+      background: rgba(255, 215, 0, 0.1) !important;
+      border-color: var(--neon-gold) !important;
+      color: var(--neon-gold) !important;
+    }
+
+    .help-tag:hover {
+      background: rgba(255, 215, 0, 0.2) !important;
+      border-color: var(--neon-gold) !important;
+    }
+
+    /* Intention Helper Modal */
+    .intention-helper-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: modalFadeIn 0.3s ease;
+    }
+
+    .helper-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+    }
+
+    .helper-content {
+      position: relative;
+      background: var(--bg-card);
+      border: 2px solid var(--neon-cyan);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 0 50px rgba(0, 245, 255, 0.3);
+    }
+
+    .helper-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .helper-header h3 {
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', monospace;
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 5px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: var(--neon-magenta);
+      background: rgba(255, 0, 255, 0.1);
+    }
+
+    .strength-meter {
+      margin-bottom: 25px;
+    }
+
+    .strength-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .strength-text {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .strength-badge {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .strength-bar {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .helper-section {
+      margin-bottom: 25px;
+    }
+
+    .helper-section h4 {
+      color: var(--neon-gold);
+      font-family: 'Orbitron', monospace;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .issues-list, .suggestions-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .issues-list li, .suggestions-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+    }
+
+    .issues-list li:before {
+      content: "⚠️";
+      margin-right: 8px;
+    }
+
+    .suggestions-list li:before {
+      content: "💡";
+      margin-right: 8px;
+    }
+
+    .suggestions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .suggestion-item {
+      padding: 12px;
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .suggestion-item:hover {
+      background: rgba(0, 245, 255, 0.2);
+      border-color: var(--neon-cyan);
+      transform: translateY(-2px);
+    }
+
+    .helper-actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .quantum-btn.small {
+      padding: 10px 20px;
+      font-size: 0.9rem;
+    }
+
+    @keyframes modalFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     /* Generated Code Display */
     .quantum-code-display {
       background: var(--bg-darker);
@@ -638,17 +830,33 @@
       animation: codeReveal 0.6s ease;
     }
 
-    @keyframes codeReveal {
-      from { 
-        opacity: 0; 
-        transform: scale(0.9); 
-        filter: blur(10px);
-      }
-      to { 
-        opacity: 1; 
-        transform: scale(1); 
-        filter: blur(0);
-      }
+    .code-details {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .detail-section {
+      margin-bottom: 16px;
+      padding: 12px;
+      background: rgba(0, 245, 255, 0.05);
+      border: 1px solid rgba(0, 245, 255, 0.2);
+      border-radius: 12px;
+    }
+
+    .detail-section h4 {
+      color: var(--neon-cyan);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-family: 'Orbitron', monospace;
+    }
+
+    .detail-description {
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.4;
+      margin: 0;
     }
 
     .quantum-code-display::before {
@@ -1276,41 +1484,746 @@
     .hidden { display: none !important; }
 
     /* ============================================
-       RESPONSIVE ADJUSTMENTS
+       RESPONSIVE ADJUSTMENTS - MOBILE FIRST
     ============================================ */
-    
+
+    /* Mobile enhancements */
     @media (max-width: 768px) {
+      /* Prevent zoom on input focus on iOS */
+      .intention-textarea:focus,
+      .message-input:focus,
+      input:focus {
+        font-size: 16px;
+      }
+
+      /* Improve touch targets */
+      button,
+      .hint-tag,
+      .council-member,
+      .journey-step {
+        min-height: 44px;
+        touch-action: manipulation;
+      }
+
+      /* Better scrolling on mobile */
+      .messages-container,
+      .helper-content {
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Hide scrollbars but keep functionality */
+      .messages-container::-webkit-scrollbar,
+      .helper-content::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Better text selection */
+      .intention-textarea,
+      .message-input {
+        -webkit-user-select: text;
+        user-select: text;
+      }
+
+    .intention-textarea {
+      font-size: 16px;
+      min-height: 120px;
+      padding: 16px;
+    }
+
+    .hint-tag {
+      padding: 8px 16px;
+      font-size: 14px;
+      min-height: 36px;
+    }
+
+    /* Tablet and up */
+    @media (min-width: 768px) {
+      .quantum-btn {
+        padding: 16px 32px;
+        font-size: 18px;
+      }
+
+      .intention-textarea {
+        min-height: 140px;
+      }
+    }
+
+    /* Mobile specific adjustments */
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      /* Header mobile optimization */
+      .quantum-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: rgba(10, 10, 15, 0.9);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        min-height: 56px;
+      }
+
+      .header-brand {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .brand-text h1 {
+        font-size: 16px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .tagline {
+        font-size: 10px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 4px;
+      }
+
+      .header-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        border-radius: 8px;
+      }
+
+      .badge {
+        top: -8px;
+        right: -8px;
+        min-width: 18px;
+        height: 18px;
+        font-size: 10px;
+      }
+
+      .header-brand h1 {
+        font-size: 18px;
+      }
+
+      .tagline {
+        font-size: 12px;
+      }
+
+      .header-actions {
+        gap: 8px;
+      }
+
+      .header-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .main-content {
+        padding: 16px;
+        padding-top: 72px; /* Account for sticky header */
+        padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+        min-height: calc(100vh - 56px);
+        overflow-x: hidden;
+      }
+
+      /* Better mobile scrolling */
+      .app-container {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Page transitions on mobile */
+      .page-section {
+        scroll-margin-top: 72px; /* Account for sticky header */
+      }
+
+      .page-section {
+        padding: 20px 0;
+      }
+
+      .section-header h2 {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .section-header p {
+        font-size: 16px;
+      }
+
       .guides-intro {
-        gap: 20px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .guide-avatar {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
       }
 
       .guide-image {
-        width: 80px;
-        height: 80px;
-        font-size: 40px;
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        flex-shrink: 0;
       }
 
-      .quantum-code-display .code-value {
-        font-size: 36px;
+      .guide-name {
+        font-size: 18px;
+        margin-bottom: 4px;
+      }
+
+      .guide-role {
+        font-size: 14px;
+      }
+
+      .welcome-message h2 {
+        font-size: 22px;
+        margin-bottom: 16px;
+      }
+
+      .welcome-message p {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .intention-input-container {
+        margin: 20px 0;
+      }
+
+      .intention-hints {
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hint-tag {
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 18px;
+      }
+
+      .help-tag {
+        background: rgba(255, 215, 0, 0.1);
+        border-color: rgba(255, 215, 0, 0.3);
+        color: var(--neon-gold);
+      }
+
+      .help-tag:hover {
+        background: rgba(255, 215, 0, 0.2);
+        border-color: var(--neon-gold);
+      }
+
+      .quantum-code-display {
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .code-label {
+        font-size: 16px;
+        margin-bottom: 16px;
+      }
+
+      .code-value {
+        font-size: 32px;
+        margin-bottom: 20px;
       }
 
       .code-properties {
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        gap: 12px;
+      }
+
+      .code-property {
+        padding: 12px;
+      }
+
+      .code-property .label {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .code-property .value {
+        font-size: 16px;
       }
 
       .council-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .council-member {
+        padding: 12px;
+        min-height: 80px;
+      }
+
+      .member-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .member-name {
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+
+      .member-role {
+        font-size: 12px;
+      }
+
+      .journey-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .journey-step {
+        padding: 16px;
+      }
+
+      .step-number {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+      }
+
+      .step-content h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      .step-content p {
+        font-size: 14px;
+      }
+
+      .messages-container {
+        max-height: 300px;
+        padding: 16px;
+      }
+
+      .message-item {
+        padding: 12px 16px;
+        margin-bottom: 12px;
+      }
+
+      .message-avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+
+      .message-content {
+        font-size: 14px;
+      }
+
+      .message-sender {
+        font-size: 12px;
+      }
+
+      .message-text {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .message-time {
+        font-size: 11px;
+      }
+
+      .message-input-container {
+        padding: 16px;
+      }
+
+      .message-input {
+        font-size: 16px;
+        padding: 12px 16px;
+        min-height: 48px;
+      }
+
+      .send-btn {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+      }
+
+      /* Modal improvements for mobile */
+      .modal-overlay {
+        padding: 16px;
+      }
+
+      .modal-content {
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        margin: 0;
+        border-radius: 16px;
+      }
+
+      .modal-header {
+        padding: 20px 20px 16px;
+      }
+
+      .modal-body {
+        padding: 0 20px 20px;
+      }
+
+      /* Settings modal mobile */
+      .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .setting-item {
+        padding: 16px;
+      }
+
+      /* Achievement modal mobile */
+      .achievement-item {
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+
+      .achievement-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+      }
+
+      .achievement-content h3 {
+        font-size: 16px;
+      }
+
+      .achievement-content p {
+        font-size: 14px;
+      }
+
+      /* Notification improvements */
+      .notification-item {
+        padding: 12px 16px;
+      }
+
+      .notification-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+      }
+
+      .notification-content {
+        font-size: 14px;
+      }
+
+      /* Loading screen mobile */
+      .loading-screen {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+      }
+
+      .loading-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 24px;
+      }
+
+      .loading-text {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .loading-subtitle {
+        font-size: 14px;
+        max-width: 280px;
+      }
+
+      /* Performance optimizations for mobile */
+      .quantum-background {
+        will-change: transform;
+      }
+
+      .grid-floor,
+      .quantum-sun {
+        will-change: transform, opacity;
+      }
+
+      /* Reduce motion for mobile performance */
+      @media (prefers-reduced-motion: reduce) {
+        .quantum-background *,
+        .loading-screen * {
+          animation: none !important;
+        }
+      }
+
+      /* Safe area adjustments */
+      .app-container {
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+
+      /* Intention Helper Modal Mobile */
+      .helper-content {
+        width: 95%;
+        max-width: none;
+        padding: 20px;
+        max-height: calc(100vh - 32px);
+        margin: 16px;
+      }
+
+      .helper-header h3 {
+        font-size: 1.2rem;
+      }
+
+      .strength-label {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      .strength-badge {
+        font-size: 0.8rem;
+      }
+
+      .suggestions-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .suggestion-item {
+        padding: 14px;
+        font-size: 14px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .helper-actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .quantum-btn.small {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
       }
     }
 
+    /* Small mobile devices */
     @media (max-width: 480px) {
-      .code-properties {
-        grid-template-columns: 1fr;
+      .main-content {
+        padding: 12px;
+      }
+
+      .page-section {
+        padding: 16px 0;
+      }
+
+      .section-header h2 {
+        font-size: 20px;
       }
 
       .welcome-message h2 {
         font-size: 20px;
+      }
+
+      .guides-intro {
+        gap: 12px;
+      }
+
+      .guide-avatar {
+        padding: 12px;
+      }
+
+      .guide-image {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+      }
+
+      .guide-name {
+        font-size: 16px;
+      }
+
+      .guide-role {
+        font-size: 13px;
+      }
+
+      .intention-hints {
+        gap: 6px;
+      }
+
+      .hint-tag {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+
+      .code-value {
+        font-size: 28px;
+      }
+
+      .code-properties {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .council-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .journey-grid {
+        gap: 12px;
+      }
+
+      .journey-step {
+        padding: 12px;
+      }
+
+      .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+
+      .messages-container {
+        max-height: 250px;
+        padding: 12px;
+      }
+
+      .message-item {
+        padding: 10px 12px;
+        margin-bottom: 8px;
+      }
+
+      .message-input-container {
+        padding: 12px;
+      }
+
+      .modal-overlay {
+        padding: 12px;
+      }
+
+      .modal-content {
+        max-height: calc(100vh - 24px);
+      }
+
+      .settings-grid {
+        gap: 12px;
+      }
+
+      .setting-item {
+        padding: 12px;
+      }
+
+      .achievement-item {
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+
+      .achievement-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+      }
+
+      .loading-logo {
+        width: 70px;
+        height: 70px;
+      }
+
+      .loading-text {
+        font-size: 16px;
+      }
+
+      /* Intention Helper Modal Small Mobile */
+      .helper-content {
+        width: calc(100vw - 16px);
+        padding: 16px;
+        margin: 8px;
+        max-height: calc(100vh - 16px);
+      }
+
+      .helper-header {
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+      }
+
+      .helper-header h3 {
+        font-size: 1.1rem;
+      }
+
+      .close-btn {
+        font-size: 20px;
+        padding: 8px;
+      }
+
+      .strength-meter {
+        margin-bottom: 20px;
+      }
+
+      .helper-section {
+        margin-bottom: 20px;
+      }
+
+      .helper-section h4 {
+        font-size: 1rem;
+      }
+
+      .issues-list li,
+      .suggestions-list li {
+        padding: 6px 0;
+        font-size: 14px;
+      }
+
+      .suggestion-item {
+        padding: 12px;
+        font-size: 13px;
+        min-height: 44px;
+      }
+    }
+    @media (max-width: 896px) and (max-height: 500px) {
+      .quantum-header {
+        min-height: 50px;
+        padding: 8px 16px;
+      }
+
+      .main-content {
+        padding: 8px;
+      }
+
+      .page-section {
+        padding: 12px 0;
+      }
+
+      .guides-intro {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .guide-avatar {
+        flex: 1;
+        max-width: 140px;
+      }
+
+      .welcome-message {
+        text-align: center;
+      }
+
+      .council-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .journey-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
@@ -1385,9 +2298,23 @@
               <strong>Quantum Reality Code</strong> — a sacred numerical key that unlocks 
               the precise frequencies needed to collapse your desired timeline into existence.
             </p>
-            <button class="quantum-btn" onclick="app.startJourney()">
-              🌟 Begin Your Quantum Journey
+            
+            <!-- Quick Access to Intention Wizard -->
+            <div style="text-align: center; margin: 20px 0; padding: 15px; background: var(--bg-card); border-radius: 10px; border: 1px solid var(--neon-cyan);">
+              <p style="color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9rem;">
+                💡 <strong>New users:</strong> Start with our guided Intention Wizard for best results
+              </p>
+              <button class="quantum-btn primary" onclick="window.location.href='intention-wizard.html'" style="font-size: 1rem; padding: 12px 25px;">
+                🎯 Launch Intention Wizard
+              </button>
+            </div>
+            
+            <button class="quantum-btn" onclick="app.startJourney()" style="margin-top: 10px;">
+              🌟 Continue to Generator
             </button>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
+              Or skip ahead and use the Intention Wizard above
+            </p>
           </div>
         </div>
       </section>
@@ -1421,6 +2348,22 @@
             <p>State your intention with clarity and conviction</p>
           </div>
 
+          <!-- Intention Wizard - Primary Option -->
+          <div class="wizard-highlight" style="text-align: center; margin-bottom: 30px; padding: 20px; background: var(--bg-card); border-radius: 15px; border: 1px solid var(--neon-cyan);">
+            <h3 style="color: var(--neon-cyan); margin-bottom: 10px;">🎯 Recommended: Use the Intention Wizard</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">
+              Get guided step-by-step to craft the perfect intention for maximum manifestation power
+            </p>
+            <button class="quantum-btn primary" onclick="window.location.href='intention-wizard.html'" style="font-size: 1.1rem; padding: 15px 30px;">
+              ✨ Launch Intention Wizard
+            </button>
+          </div>
+
+          <!-- Manual Input - For Experienced Users -->
+          <div style="text-align: center; margin: 20px 0; color: var(--text-muted); font-size: 0.9rem;">
+            ── or enter manually below ──
+          </div>
+
           <div class="intention-input-container">
             <textarea class="intention-textarea" id="intentionInput" 
                       placeholder="I am manifesting... (e.g., I am manifesting financial abundance and freedom, I attract perfect health and vitality, I receive my soulmate connection now)"></textarea>
@@ -1430,6 +2373,7 @@
               <span class="hint-tag" onclick="app.useHint('love')">💕 Love</span>
               <span class="hint-tag" onclick="app.useHint('career')">🚀 Career</span>
               <span class="hint-tag" onclick="app.useHint('spiritual')">🔮 Spiritual</span>
+              <span class="hint-tag help-tag" onclick="app.showIntentionHelper()">✨ Get Help Writing</span>
             </div>
           </div>
 
@@ -1609,6 +2553,9 @@
     </div>
   </div>
 
+  <!-- Intention Helper -->
+  <script src="intention-helper.js"></script>
+  
   <!-- Main JavaScript -->
   <script src="app.js"></script>
   

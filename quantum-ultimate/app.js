@@ -30,39 +30,39 @@ const QUANTUM_PERSONAS = {
   
   // Light Personas (33)
   light: [
-    { id: 'buddha', name: 'Gautama Buddha', avatar: '☸️', title: 'The Still Flame', focus: 'Inner peace, detachment', signature: 'Where desire is stilled, the path appears.', keywords: ['peace', 'detachment', 'stillness'] },
-    { id: 'jesus', name: 'Jesus Christ', avatar: '✝️', title: 'The Heart of Light', focus: 'Love, faith, forgiveness', signature: 'When love guides your want, the universe opens its vaults.', keywords: ['love', 'faith', 'forgiveness'] },
-    { id: 'neville', name: 'Neville Goddard', avatar: '🌌', title: 'The Embodied Vision', focus: 'Assumption, imagination', signature: 'Assume the feeling of the wish fulfilled.', keywords: ['assumption', 'imagination', 'embodiment'] },
-    { id: 'wayne_dyer', name: 'Wayne Dyer', avatar: '🌟', title: 'The Aligner', focus: 'Intention, self-concept', signature: "You don't attract what you want—you attract what you are.", keywords: ['identity', 'intention', 'alignment'] },
-    { id: 'tony_robbins', name: 'Tony Robbins', avatar: '🔥', title: 'The Firestarter', focus: 'Action, state change', signature: "Change your state, and you'll change your fate.", keywords: ['action', 'momentum', 'certainty'] },
-    { id: 'deepak', name: 'Deepak Chopra', avatar: '🔮', title: 'The Quantum Doctor', focus: 'Mind-body connection', signature: 'Shift your energy, shift your world.', keywords: ['energy', 'vibration', 'quantum'] },
-    { id: 'eckhart', name: 'Eckhart Tolle', avatar: '🧘', title: 'The Observer', focus: 'Stillness, presence', signature: 'You are not becoming—you are being.', keywords: ['presence', 'stillness', 'now'] },
-    { id: 'rumi', name: 'Rumi', avatar: '🌹', title: 'The Mystic Poet', focus: 'Union, surrender', signature: "What you seek is seeking you—don't just wait, become it.", keywords: ['love', 'union', 'surrender'] },
-    { id: 'laozi', name: 'Laozi', avatar: '☯️', title: 'The River of Flow', focus: 'Effortless action', signature: 'Flow, and what you seek will seek you.', keywords: ['flow', 'surrender', 'effortless'] },
-    { id: 'confucius', name: 'Confucius', avatar: '📜', title: 'The Harmonizer', focus: 'Ethical action', signature: 'Right action brings right outcome.', keywords: ['harmony', 'ethics', 'wisdom'] },
-    { id: 'moses', name: 'Moses', avatar: '⛰️', title: 'The Pathfinder', focus: 'Liberation, leadership', signature: 'Breakthroughs are born on the edge of obedience.', keywords: ['liberation', 'faith', 'breakthrough'] },
-    { id: 'dalai_lama', name: 'Dalai Lama', avatar: '🙏', title: 'The Compassionate Mirror', focus: 'Compassion, joy', signature: 'Peace is fertile soil for dreams.', keywords: ['compassion', 'joy', 'peace'] },
-    { id: 'thich', name: 'Thich Nhat Hanh', avatar: '🌸', title: 'The Present Whisperer', focus: 'Mindfulness', signature: 'Now is the only moment that manifests.', keywords: ['mindfulness', 'presence', 'now'] },
-    { id: 'louise_hay', name: 'Louise Hay', avatar: '💕', title: 'The Healer Within', focus: 'Affirmations, healing', signature: 'Every thought is a message to your future.', keywords: ['healing', 'affirmations', 'love'] },
-    { id: 'mel_robbins', name: 'Mel Robbins', avatar: '⚡', title: 'The Activation Trigger', focus: 'Decision, immediacy', signature: "You're one action away from a different reality.", keywords: ['action', 'decision', 'momentum'] },
-    { id: 'brene_brown', name: 'Brené Brown', avatar: '💎', title: 'The Vulnerable Strength', focus: 'Courage, authenticity', signature: 'The boldest dreams are born in honest hearts.', keywords: ['vulnerability', 'courage', 'truth'] },
-    { id: 'rhonda_byrne', name: 'Rhonda Byrne', avatar: '✨', title: 'The Magnetic Mind', focus: 'Law of Attraction', signature: 'Think it, feel it, receive it.', keywords: ['attraction', 'visualization', 'belief'] },
-    { id: 'napoleon_hill', name: 'Napoleon Hill', avatar: '📈', title: 'The Strategist', focus: 'Definite purpose', signature: 'Whatever the mind can conceive and believe, it can achieve.', keywords: ['strategy', 'purpose', 'persistence'] },
-    { id: 'joe_dispenza', name: 'Dr. Joe Dispenza', avatar: '🧠', title: 'The Neural Architect', focus: 'Brain rewiring', signature: 'Become the frequency of your future self.', keywords: ['neuroscience', 'meditation', 'transformation'] },
-    { id: 'oprah', name: 'Oprah Winfrey', avatar: '👑', title: 'The Empathy Catalyst', focus: 'Belief, breakthrough', signature: 'Your intention shapes the invitation life responds to.', keywords: ['belief', 'breakthrough', 'resilience'] },
-    { id: 'abraham_hicks', name: 'Abraham-Hicks', avatar: '🌊', title: 'The Vortex Guide', focus: 'Alignment, vibration', signature: 'Get into the vortex and watch everything align.', keywords: ['vortex', 'alignment', 'vibration'] },
-    { id: 'paulo_coelho', name: 'Paulo Coelho', avatar: '📖', title: 'The Story Weaver', focus: 'Destiny, symbols', signature: 'The universe conspires with a soul on fire.', keywords: ['destiny', 'symbols', 'omens'] },
-    { id: 'gandhi', name: 'Mahatma Gandhi', avatar: '🕊️', title: 'The Inner Force', focus: 'Non-resistance, truth', signature: 'The gentlest force is still unstoppable.', keywords: ['truth', 'peace', 'power'] },
-    { id: 'mother_teresa', name: 'Mother Teresa', avatar: '🤲', title: 'The Silent Giver', focus: 'Service, compassion', signature: 'Love does the heavy lifting.', keywords: ['service', 'compassion', 'love'] },
-    { id: 'thoreau', name: 'Henry Thoreau', avatar: '🌲', title: 'The Solitude Seeker', focus: 'Simplicity, truth', signature: 'Live the life you imagined—quietly, resolutely.', keywords: ['simplicity', 'solitude', 'authenticity'] },
-    { id: 'florence', name: 'Florence Scovel Shinn', avatar: '🎯', title: 'The Word Alchemist', focus: 'Spoken word power', signature: 'Your word is your wand.', keywords: ['words', 'affirmation', 'creation'] },
-    { id: 'jim_rohn', name: 'Jim Rohn', avatar: '🎓', title: 'The Philosopher of Success', focus: 'Personal development', signature: 'Work harder on yourself than on your job.', keywords: ['growth', 'discipline', 'wisdom'] },
-    { id: 'bob_proctor', name: 'Bob Proctor', avatar: '💰', title: 'The Paradigm Shifter', focus: 'Paradigm change', signature: 'Change your paradigm and you change your life.', keywords: ['paradigm', 'wealth', 'mindset'] },
-    { id: 'alan_watts', name: 'Alan Watts', avatar: '🌀', title: 'The Cosmic Jester', focus: 'Playful wisdom', signature: "You are the universe experiencing itself.", keywords: ['cosmic', 'play', 'wisdom'] },
-    { id: 'tesla', name: 'Nikola Tesla', avatar: '⚡', title: 'The Frequency Master', focus: 'Energy, vibration', signature: 'If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration.', keywords: ['frequency', 'energy', 'vibration'] },
-    { id: 'einstein', name: 'Albert Einstein', avatar: '🌌', title: 'The Imagineer', focus: 'Imagination, curiosity', signature: 'Imagination is more important than knowledge.', keywords: ['imagination', 'curiosity', 'possibility'] },
-    { id: 'marcus_aurelius', name: 'Marcus Aurelius', avatar: '🏛️', title: 'The Stoic Emperor', focus: 'Inner citadel', signature: 'You have power over your mind, not outside events.', keywords: ['stoic', 'control', 'inner'] },
-    { id: 'bruce_lee', name: 'Bruce Lee', avatar: '🥋', title: 'The Flowing Warrior', focus: 'Adaptability, mastery', signature: 'Be water, my friend.', keywords: ['flow', 'mastery', 'adaptability'] }
+    { id: 'harmony_weaver', name: 'Harmony Weaver', avatar: '🎵', title: 'The Peace Architect', focus: 'Inner peace, balance', signature: 'Where chaos meets calm, creation begins.', keywords: ['peace', 'harmony', 'balance'] },
+    { id: 'light_bringer', name: 'Light Bringer', avatar: '✨', title: 'The Illumination Guide', focus: 'Love, compassion, healing', signature: 'Love is the frequency that heals all wounds.', keywords: ['love', 'light', 'healing'] },
+    { id: 'vision_architect', name: 'Vision Architect', avatar: '🌌', title: 'The Reality Sculptor', focus: 'Imagination, creation', signature: 'What you vividly imagine becomes your reality.', keywords: ['imagination', 'creation', 'manifestation'] },
+    { id: 'alignment_master', name: 'Alignment Master', avatar: '🎯', title: 'The Frequency Aligner', focus: 'Purpose, self-concept', signature: 'You attract not what you want, but what you are.', keywords: ['alignment', 'purpose', 'identity'] },
+    { id: 'momentum_catalyst', name: 'Momentum Catalyst', avatar: '⚡', title: 'The Action Initiator', focus: 'Movement, momentum', signature: 'One decisive action changes everything.', keywords: ['action', 'momentum', 'change'] },
+    { id: 'quantum_healer', name: 'Quantum Healer', avatar: '🔮', title: 'The Energy Physician', focus: 'Mind-body harmony', signature: 'Your energy field creates your physical reality.', keywords: ['energy', 'healing', 'quantum'] },
+    { id: 'presence_keeper', name: 'Presence Keeper', avatar: '🧘', title: 'The Now Guardian', focus: 'Stillness, awareness', signature: 'The present moment contains all possibilities.', keywords: ['presence', 'awareness', 'now'] },
+    { id: 'union_bridge', name: 'Union Bridge', avatar: '🌹', title: 'The Connection Weaver', focus: 'Unity, surrender', signature: 'What you seek is seeking you—open and receive.', keywords: ['union', 'connection', 'surrender'] },
+    { id: 'flow_master', name: 'Flow Master', avatar: '☯️', title: 'The River Guide', focus: 'Effortless action', signature: 'Flow with the universe, not against it.', keywords: ['flow', 'effortless', 'surrender'] },
+    { id: 'wisdom_keeper', name: 'Wisdom Keeper', avatar: '📜', title: 'The Ancient Scholar', focus: 'Ethical wisdom', signature: 'Right understanding leads to right action.', keywords: ['wisdom', 'ethics', 'understanding'] },
+    { id: 'freedom_pathfinder', name: 'Freedom Pathfinder', avatar: '⛰️', title: 'The Liberation Guide', focus: 'Liberation, courage', signature: 'True freedom begins with breaking internal chains.', keywords: ['freedom', 'liberation', 'courage'] },
+    { id: 'compassion_mirror', name: 'Compassion Mirror', avatar: '🙏', title: 'The Empathy Catalyst', focus: 'Compassion, joy', signature: 'Peace is fertile soil for dreams.', keywords: ['compassion', 'joy', 'peace'] },
+    { id: 'presence_whisperer', name: 'Presence Whisperer', avatar: '🌸', title: 'The Now Guardian', focus: 'Mindfulness', signature: 'Now is the only moment that manifests.', keywords: ['mindfulness', 'presence', 'now'] },
+    { id: 'healer_within', name: 'Healer Within', avatar: '💕', title: 'The Affirmation Guide', focus: 'Affirmations, healing', signature: 'Every thought is a message to your future.', keywords: ['healing', 'affirmations', 'love'] },
+    { id: 'activation_trigger', name: 'Activation Trigger', avatar: '⚡', title: 'The Momentum Catalyst', focus: 'Decision, immediacy', signature: "You're one action away from a different reality.", keywords: ['action', 'decision', 'momentum'] },
+    { id: 'vulnerable_strength', name: 'Vulnerable Strength', avatar: '💎', title: 'The Courage Architect', focus: 'Courage, authenticity', signature: 'The boldest dreams are born in honest hearts.', keywords: ['vulnerability', 'courage', 'truth'] },
+    { id: 'magnetic_mind', name: 'Magnetic Mind', avatar: '✨', title: 'The Attraction Guide', focus: 'Law of Attraction', signature: 'Think it, feel it, receive it.', keywords: ['attraction', 'visualization', 'belief'] },
+    { id: 'strategist', name: 'Strategist', avatar: '📈', title: 'The Purpose Architect', focus: 'Definite purpose', signature: 'Whatever the mind can conceive and believe, it can achieve.', keywords: ['strategy', 'purpose', 'persistence'] },
+    { id: 'neural_architect', name: 'Neural Architect', avatar: '🧠', title: 'The Mind Rewirer', focus: 'Brain rewiring', signature: 'Become the frequency of your future self.', keywords: ['neuroscience', 'meditation', 'transformation'] },
+    { id: 'empathy_catalyst', name: 'Empathy Catalyst', avatar: '👑', title: 'The Belief Amplifier', focus: 'Belief, breakthrough', signature: 'Your intention shapes the invitation life responds to.', keywords: ['belief', 'breakthrough', 'resilience'] },
+    { id: 'vortex_guide', name: 'Vortex Guide', avatar: '🌊', title: 'The Alignment Master', focus: 'Alignment, vibration', signature: 'Get into the vortex and watch everything align.', keywords: ['vortex', 'alignment', 'vibration'] },
+    { id: 'story_weaver', name: 'Story Weaver', avatar: '📖', title: 'The Destiny Guide', focus: 'Destiny, symbols', signature: 'The universe conspires with a soul on fire.', keywords: ['destiny', 'symbols', 'omens'] },
+    { id: 'inner_force', name: 'Inner Force', avatar: '🕊️', title: 'The Truth Guardian', focus: 'Non-resistance, truth', signature: 'The gentlest force is still unstoppable.', keywords: ['truth', 'peace', 'power'] },
+    { id: 'silent_giver', name: 'Silent Giver', avatar: '🤲', title: 'The Service Guide', focus: 'Service, compassion', signature: 'Love does the heavy lifting.', keywords: ['service', 'compassion', 'love'] },
+    { id: 'solitude_seeker', name: 'Solitude Seeker', avatar: '🌲', title: 'The Authenticity Guide', focus: 'Simplicity, truth', signature: 'Live the life you imagined—quietly, resolutely.', keywords: ['simplicity', 'solitude', 'authenticity'] },
+    { id: 'word_alchemist', name: 'Word Alchemist', avatar: '🎯', title: 'The Affirmation Master', focus: 'Spoken word power', signature: 'Your word is your wand.', keywords: ['words', 'affirmation', 'creation'] },
+    { id: 'success_philosopher', name: 'Success Philosopher', avatar: '🎓', title: 'The Growth Guide', focus: 'Personal development', signature: 'Work harder on yourself than on your job.', keywords: ['growth', 'discipline', 'wisdom'] },
+    { id: 'paradigm_shifter', name: 'Paradigm Shifter', avatar: '💰', title: 'The Mindset Architect', focus: 'Paradigm change', signature: 'Change your paradigm and you change your life.', keywords: ['paradigm', 'wealth', 'mindset'] },
+    { id: 'cosmic_jester', name: 'Cosmic Jester', avatar: '🌀', title: 'The Playful Sage', focus: 'Playful wisdom', signature: "You are the universe experiencing itself.", keywords: ['cosmic', 'play', 'wisdom'] },
+    { id: 'frequency_master', name: 'Frequency Master', avatar: '⚡', title: 'The Energy Architect', focus: 'Energy, vibration', signature: 'If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration.', keywords: ['frequency', 'energy', 'vibration'] },
+    { id: 'imagineer', name: 'Imagineer', avatar: '🌌', title: 'The Curiosity Guide', focus: 'Imagination, curiosity', signature: 'Imagination is more important than knowledge.', keywords: ['imagination', 'curiosity', 'possibility'] },
+    { id: 'stoic_emperor', name: 'Stoic Emperor', avatar: '🏛️', title: 'The Inner Citadel', focus: 'Inner citadel', signature: 'You have power over your mind, not outside events.', keywords: ['stoic', 'control', 'inner'] },
+    { id: 'flowing_warrior', name: 'Flowing Warrior', avatar: '🥋', title: 'The Adaptability Master', focus: 'Adaptability, mastery', signature: 'Be water, my friend.', keywords: ['flow', 'mastery', 'adaptability'] }
   ],
   
   // Shadow Personas (33) - For clearing blocks
@@ -327,6 +327,7 @@ class QuantumRealityApp {
   // ============================================
 
   startJourney() {
+    // For new users, go directly to generator where intention wizard is prominently featured
     if (!this.user.name) {
       this.navigate('onboarding');
     } else {
@@ -362,13 +363,112 @@ class QuantumRealityApp {
   useHint(category) {
     const hints = {
       abundance: "I am manifesting unlimited financial abundance and freedom in my life",
-      health: "I am experiencing perfect health, vitality, and boundless energy",
-      love: "I am attracting my perfect soulmate and experiencing deep, fulfilling love",
-      career: "I am creating massive success in my career and living my purpose",
-      spiritual: "I am awakening to my highest spiritual potential and divine connection"
+      health: "I am experiencing perfect health, vitality, and boundless energy every day",
+      love: "I am attracting my perfect soulmate and experiencing deep, fulfilling love now",
+      career: "I am creating massive success in my career and living my divine purpose daily",
+      spiritual: "I am awakening to my highest spiritual potential and divine connection fully"
     };
 
     document.getElementById('intentionInput').value = hints[category];
+  }
+
+  // Intention Helper Integration
+  showIntentionHelper() {
+    const intentionInput = document.getElementById('intentionInput');
+    const text = intentionInput.value.trim();
+
+    if (!text) {
+      this.showToast('Please enter some text first to get help', 'warning');
+      return;
+    }
+
+    const helper = new IntentionHelper();
+    const analysis = helper.analyzeIntention(text);
+    const strength = helper.getIntentionStrength(text);
+    const strengthInfo = helper.getStrengthLabel(strength);
+    const suggestions = helper.generateSuggestions(text);
+
+    // Create helper modal
+    const modal = document.createElement('div');
+    modal.className = 'intention-helper-modal';
+    modal.innerHTML = `
+      <div class="helper-overlay" onclick="this.parentElement.remove()"></div>
+      <div class="helper-content">
+        <div class="helper-header">
+          <h3>Intention Analysis & Help</h3>
+          <button class="close-btn" onclick="this.closest('.intention-helper-modal').remove()">×</button>
+        </div>
+
+        <div class="strength-meter">
+          <div class="strength-label">
+            <span class="strength-text">Intention Strength: ${strength}%</span>
+            <span class="strength-badge" style="color: ${strengthInfo.color}">${strengthInfo.label}</span>
+          </div>
+          <div class="strength-bar">
+            <div class="strength-fill" style="width: ${strength}%; background: linear-gradient(90deg, ${strengthInfo.color}, #00f5ff)"></div>
+          </div>
+        </div>
+
+        ${analysis.issues.length > 0 ? `
+          <div class="helper-section">
+            <h4>⚠️ Areas to Improve</h4>
+            <ul class="issues-list">
+              ${analysis.issues.map(issue => `<li>${issue.message}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        ${analysis.suggestions.length > 0 ? `
+          <div class="helper-section">
+            <h4>💡 Suggestions</h4>
+            <ul class="suggestions-list">
+              ${analysis.suggestions.map(suggestion => `<li>${suggestion.message}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <div class="helper-section">
+          <h4>✨ Power Suggestions</h4>
+          <div class="suggestions-grid">
+            ${suggestions.slice(0, 6).map(suggestion => `
+              <div class="suggestion-item" onclick="app.applySuggestion('${suggestion.replace(/'/g, "\\'")}')">
+                ${suggestion}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="helper-actions">
+          <button class="quantum-btn small" onclick="app.reframeIntention()">🔄 Auto-Reframe</button>
+          <button class="quantum-btn small secondary" onclick="this.closest('.intention-helper-modal').remove()">Close</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+  }
+
+  applySuggestion(suggestion) {
+    document.getElementById('intentionInput').value = suggestion;
+    document.querySelector('.intention-helper-modal').remove();
+    this.showToast('Suggestion applied! Feel free to customize it.', 'success');
+  }
+
+  reframeIntention() {
+    const intentionInput = document.getElementById('intentionInput');
+    const text = intentionInput.value.trim();
+
+    if (!text) {
+      this.showToast('Please enter some text first', 'warning');
+      return;
+    }
+
+    const helper = new IntentionHelper();
+    const reframed = helper.reframeIntention(text);
+    intentionInput.value = reframed;
+
+    document.querySelector('.intention-helper-modal').remove();
+    this.showToast('Intention reframed for maximum power!', 'success');
   }
 
   generateCode() {
@@ -401,56 +501,443 @@ class QuantumRealityApp {
   }
 
   calculateQuantumCode(text) {
-    let total = 0;
-    
-    // Basic gematria calculation
+    // Advanced Quantum Code Generation Algorithm
+    // Based on sacred geometry, numerology, and quantum principles
+
+    const intention = text.toLowerCase().trim();
+
+    // Step 1: Sacred Gematria with multiple cipher systems
+    let primaryCode = this.calculateSacredGematria(intention);
+
+    // Step 2: Quantum Resonance Analysis
+    let resonanceValue = this.calculateQuantumResonance(intention);
+
+    // Step 3: Frequency Harmonics
+    let harmonicCode = this.calculateHarmonicFrequency(intention);
+
+    // Step 4: Sacred Number Integration (Fibonacci, Prime, Master Numbers)
+    let sacredMultiplier = this.calculateSacredMultiplier(intention);
+
+    // Step 5: Final Quantum Code Synthesis
+    let quantumCode = Math.round((primaryCode + resonanceValue + harmonicCode) * sacredMultiplier);
+
+    // Step 6: Code Normalization (ensure meaningful range)
+    quantumCode = this.normalizeQuantumCode(quantumCode, intention);
+
+    return quantumCode;
+  }
+
+  calculateSacredGematria(text) {
+    // Multiple cipher systems for depth
+    let englishOrdinal = 0;
+    let pythagorean = 0;
+    let jewish = 0;
+
     for (const char of text.toUpperCase()) {
       if (char >= 'A' && char <= 'Z') {
-        total += char.charCodeAt(0) - 64; // A=1, B=2, etc.
-      } else if (char >= '0' && char <= '9') {
-        total += parseInt(char);
+        // English Ordinal (A=1, B=2, ..., I=9, J=1, etc.)
+        const ordinal = ((char.charCodeAt(0) - 65) % 9) + 1;
+        englishOrdinal += ordinal;
+
+        // Pythagorean (A=1, B=2, ..., I=9, J=1, etc.)
+        pythagorean += ordinal;
+
+        // Jewish Gematria (more complex mapping)
+        jewish += this.getJewishGematriaValue(char);
       }
     }
 
-    // Add sacred number influence (7, 11, 13, 77)
+    // Weighted combination
+    return Math.round((englishOrdinal * 0.4) + (pythagorean * 0.4) + (jewish * 0.2));
+  }
+
+  getJewishGematriaValue(char) {
+    const gematriaMap = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8,
+      'I': 9, 'J': 10, 'K': 20, 'L': 30, 'M': 40, 'N': 50, 'O': 60,
+      'P': 70, 'Q': 80, 'R': 90, 'S': 100, 'T': 200, 'U': 300,
+      'V': 400, 'W': 500, 'X': 600, 'Y': 700, 'Z': 800
+    };
+    return gematriaMap[char] || 0;
+  }
+
+  calculateQuantumResonance(text) {
+    // Analyze vibrational patterns in the intention
+    let resonance = 0;
+
+    // Word count resonance (Fibonacci numbers are powerful)
     const wordCount = text.split(/\s+/).length;
-    const sacredMultiplier = 1 + (wordCount % 7) * 0.1 + (text.length % 11) * 0.05;
-    
-    // Calculate final code
-    let code = Math.round(total * sacredMultiplier);
-    
-    // Ensure it's within a meaningful range
-    while (code < 100) code *= 7;
-    while (code > 99999) code = Math.round(code / 7);
+    const fibonacci = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+    const fibIndex = fibonacci.findIndex(f => f >= wordCount);
+    resonance += fibonacci[fibIndex] || wordCount;
+
+    // Vowel-consonant balance (sacred ratio)
+    const vowels = text.match(/[aeiou]/gi) || [];
+    const consonants = text.match(/[bcdfghjklmnpqrstvwxyz]/gi) || [];
+    const ratio = vowels.length / Math.max(consonants.length, 1);
+    resonance += Math.round(ratio * 10);
+
+    // Sacred word detection
+    const sacredWords = ['love', 'light', 'peace', 'harmony', 'abundance', 'joy', 'wisdom', 'power', 'creation', 'manifest'];
+    sacredWords.forEach(word => {
+      if (text.includes(word)) resonance += 5;
+    });
+
+    return resonance;
+  }
+
+  calculateHarmonicFrequency(text) {
+    // Calculate frequency based on word patterns and energy flow
+    let frequency = 0;
+
+    // Sentence structure harmonics
+    const sentences = text.split(/[.!?]+/).length;
+    frequency += sentences * 7; // 7 is a sacred number
+
+    // Syllable count (rhythm affects manifestation)
+    const syllables = this.countSyllables(text);
+    frequency += syllables * 3;
+
+    // Emotional word harmonics
+    const emotionalWords = ['feel', 'experience', 'joy', 'happy', 'excited', 'grateful', 'blessed', 'amazing'];
+    emotionalWords.forEach(word => {
+      if (text.includes(word)) frequency += 11; // 11 is a master number
+    });
+
+    return frequency;
+  }
+
+  countSyllables(text) {
+    // Simple syllable counting algorithm
+    const words = text.toLowerCase().split(/\s+/);
+    let syllables = 0;
+
+    words.forEach(word => {
+      syllables += word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '')
+                        .replace(/^y/, '')
+                        .match(/[aeiouy]{1,2}/g)?.length || 1;
+    });
+
+    return syllables;
+  }
+
+  calculateSacredMultiplier(text) {
+    // Sacred number integration
+    let multiplier = 1.0;
+
+    // Prime number influence
+    const primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31];
+    const textLength = text.length;
+    const primeIndex = primes.findIndex(p => p >= textLength);
+    multiplier += (primes[primeIndex] || textLength) * 0.01;
+
+    // Master number detection (11, 22, 33, etc.)
+    if (text.includes('master') || text.includes('divine') || text.includes('sacred')) {
+      multiplier += 0.11; // Master number influence
+    }
+
+    // Fibonacci sequence in word count
+    const wordCount = text.split(/\s+/).length;
+    if ([1, 2, 3, 5, 8, 13, 21].includes(wordCount)) {
+      multiplier += 0.13; // Fibonacci bonus
+    }
+
+    return multiplier;
+  }
+
+  normalizeQuantumCode(code, intention) {
+    // Ensure code falls within meaningful quantum ranges
+    // Based on sacred geometry and numerology principles
+
+    // Reduce to master number range if too high
+    while (code > 9999) {
+      code = Math.round(code / 7); // 7 is sacred
+    }
+
+    // Amplify if too low
+    while (code < 100) {
+      code *= 11; // 11 is a master number
+    }
+
+    // Final range check
+    if (code > 9999) code = code % 10000;
+    if (code < 100) code += 1000;
 
     return code;
   }
 
   calculateCodeProperties(code, intention) {
     const intentionLower = intention.toLowerCase();
-    
-    // Determine category
+
+    // Enhanced category detection with more keywords
     let category = 'general';
-    if (intentionLower.includes('money') || intentionLower.includes('abundance') || intentionLower.includes('wealth') || intentionLower.includes('financial')) {
-      category = 'abundance';
-    } else if (intentionLower.includes('love') || intentionLower.includes('relationship') || intentionLower.includes('soulmate') || intentionLower.includes('partner')) {
-      category = 'love';
-    } else if (intentionLower.includes('health') || intentionLower.includes('healing') || intentionLower.includes('energy') || intentionLower.includes('body')) {
-      category = 'health';
-    } else if (intentionLower.includes('career') || intentionLower.includes('job') || intentionLower.includes('business') || intentionLower.includes('success')) {
-      category = 'career';
-    } else if (intentionLower.includes('spiritual') || intentionLower.includes('awakening') || intentionLower.includes('purpose') || intentionLower.includes('divine')) {
-      category = 'spiritual';
+    const categories = {
+      abundance: ['money', 'wealth', 'abundance', 'financial', 'prosperity', 'rich', 'million', 'billion', 'income', 'profit'],
+      love: ['love', 'relationship', 'soulmate', 'partner', 'romance', 'heart', 'passion', 'intimate', 'connection'],
+      health: ['health', 'healing', 'energy', 'body', 'vitality', 'strong', 'fit', 'wellness', 'heal', 'recovery'],
+      career: ['career', 'job', 'business', 'success', 'work', 'professional', 'achievement', 'promotion', 'leadership'],
+      spiritual: ['spiritual', 'awakening', 'purpose', 'divine', 'soul', 'consciousness', 'enlightenment', 'higher self', 'cosmic'],
+      creativity: ['create', 'art', 'music', 'write', 'design', 'innovate', 'inspire', 'expression', 'talent'],
+      wisdom: ['wisdom', 'knowledge', 'learn', 'teach', 'understand', 'insight', 'clarity', 'truth', 'wisdom'],
+      freedom: ['freedom', 'liberation', 'independent', 'autonomy', 'travel', 'explore', 'adventure', ' unbound']
+    };
+
+    for (const [cat, keywords] of Object.entries(categories)) {
+      if (keywords.some(keyword => intentionLower.includes(keyword))) {
+        category = cat;
+        break;
+      }
     }
 
+    // Calculate meaningful properties based on quantum principles
+
+    // RESONANCE: Master number alignment (1-13, with special emphasis on master numbers)
+    const resonance = this.calculateResonance(code, intention);
+
+    // FREQUENCY: Scientifically meaningful Hz based on category and code
+    const frequency = this.calculateTrueFrequency(code, category, intention);
+
+    // DIMENSION: Quantum field access level (1-11, based on consciousness expansion)
+    const dimension = this.calculateDimension(code, intention);
+
+    // POWER: Manifestation potency (1-10, based on intention clarity and energy)
+    const power = this.calculatePower(code, intention);
+
+    // ALIGNMENT: Council synchronization percentage
+    const alignment = this.calculateAlignment(code, intention);
+
     return {
-      resonance: (code % 13) + 1, // 1-13 master number resonance
-      frequency: 432 + (code % 100), // Base frequency + variation (432-531Hz)
-      dimension: (code % 11) + 1, // 1-11 dimensional access
-      power: Math.min(10, (code % 10) + 1), // 1-10 power level
-      category: category,
-      alignment: code % 100 // Council persona alignment
+      resonance,
+      frequency,
+      dimension,
+      power,
+      category,
+      alignment,
+      resonanceDescription: this.getResonanceDescription(resonance),
+      frequencyDescription: this.getFrequencyDescription(frequency, category),
+      dimensionDescription: this.getDimensionDescription(dimension),
+      powerDescription: this.getPowerDescription(power)
     };
+  }
+
+  calculateResonance(code, intention) {
+    // Master number resonance (1-13)
+    // Special emphasis on master numbers: 11, 22, 33
+    let resonance = (code % 13) + 1;
+
+    // Boost for master numbers
+    if ([11, 22, 33].includes(resonance)) {
+      resonance += 10; // Master number bonus
+    }
+
+    // Intention clarity bonus
+    const clarity = this.calculateIntentionClarity(intention);
+    resonance = Math.min(13, resonance + Math.floor(clarity / 10));
+
+    return Math.min(13, Math.max(1, resonance));
+  }
+
+  calculateTrueFrequency(code, category, intention) {
+    // Base frequencies from scientific research on beneficial frequencies
+    const baseFrequencies = {
+      general: 432,    // Schumann resonance harmonic
+      abundance: 528,  // Love frequency, DNA repair
+      love: 528,       // Love and miracles
+      health: 528,     // Healing and DNA repair
+      career: 741,     // Problem solving, intuition
+      spiritual: 963,  // Pineal gland activation
+      creativity: 852, // Intuition and inner strength
+      wisdom: 741,     // Problem solving and learning
+      freedom: 396     // Liberating guilt and fear
+    };
+
+    let baseFreq = baseFrequencies[category] || 432;
+
+    // Code-based variation (±50Hz for personalization)
+    const variation = (code % 100) - 50;
+    let frequency = baseFreq + variation;
+
+    // Intention energy adjustment
+    const energy = this.calculateIntentionEnergy(intention);
+    frequency += Math.floor(energy / 10);
+
+    // Keep within beneficial range (300-1000Hz)
+    return Math.max(300, Math.min(1000, frequency));
+  }
+
+  calculateDimension(code, intention) {
+    // Quantum consciousness dimensions (1-11)
+    // Based on Dr. David Hawkins' consciousness scale and quantum field theory
+
+    let dimension = (code % 11) + 1;
+
+    // Intention depth bonus
+    const depth = this.calculateIntentionDepth(intention);
+    dimension = Math.min(11, dimension + Math.floor(depth / 15));
+
+    return Math.min(11, Math.max(1, dimension));
+  }
+
+  calculatePower(code, intention) {
+    // Manifestation power level (1-10)
+    // Based on intention clarity, emotional charge, and specificity
+
+    let power = (code % 10) + 1;
+
+    // Clarity bonus
+    const clarity = this.calculateIntentionClarity(intention);
+    power += Math.floor(clarity / 15);
+
+    // Emotional intensity bonus
+    const emotion = this.calculateEmotionalIntensity(intention);
+    power += Math.floor(emotion / 20);
+
+    return Math.min(10, Math.max(1, power));
+  }
+
+  calculateAlignment(code, intention) {
+    // Council synchronization (0-100%)
+    return Math.min(100, Math.max(10, code % 100));
+  }
+
+  calculateIntentionClarity(intention) {
+    // Analyze how clear and specific the intention is
+    let clarity = 50; // Base clarity
+
+    // Length bonus (not too short, not too long)
+    const wordCount = intention.split(/\s+/).length;
+    if (wordCount >= 5 && wordCount <= 25) clarity += 20;
+    else if (wordCount < 5) clarity -= 10;
+
+    // Specificity indicators
+    const specificWords = ['specific', 'exact', 'precise', 'clear', 'definite', 'particular'];
+    specificWords.forEach(word => {
+      if (intention.includes(word)) clarity += 5;
+    });
+
+    // Present tense usage
+    const presentTense = intention.match(/\b(am|have|feel|experience|attract|receive|create|manifest)\b/gi) || [];
+    clarity += presentTense.length * 3;
+
+    return Math.min(100, Math.max(0, clarity));
+  }
+
+  calculateIntentionEnergy(intention) {
+    // Measure emotional and energetic charge
+    let energy = 30; // Base energy
+
+    const highEnergyWords = ['excited', 'thrilled', 'passionate', 'energized', 'powerful', 'amazing', 'incredible', 'unlimited'];
+    const mediumEnergyWords = ['happy', 'joyful', 'grateful', 'blessed', 'confident', 'strong', 'clear'];
+
+    highEnergyWords.forEach(word => {
+      if (intention.includes(word)) energy += 15;
+    });
+
+    mediumEnergyWords.forEach(word => {
+      if (intention.includes(word)) energy += 8;
+    });
+
+    return Math.min(100, Math.max(0, energy));
+  }
+
+  calculateIntentionDepth(intention) {
+    // Measure how deep and meaningful the intention is
+    let depth = 25; // Base depth
+
+    const deepWords = ['soul', 'purpose', 'divine', 'spiritual', 'consciousness', 'transformation', 'awakening', 'enlightenment'];
+    deepWords.forEach(word => {
+      if (intention.includes(word)) depth += 10;
+    });
+
+    // Question words indicate deeper inquiry
+    const questionWords = ['why', 'how', 'what', 'when', 'where', 'who'];
+    questionWords.forEach(word => {
+      if (intention.includes(word)) depth += 5;
+    });
+
+    return Math.min(100, Math.max(0, depth));
+  }
+
+  calculateEmotionalIntensity(intention) {
+    // Measure emotional charge level
+    let intensity = 20; // Base intensity
+
+    const intenseWords = ['deeply', 'intensely', 'profoundly', 'completely', 'totally', 'absolutely', 'unconditionally'];
+    intenseWords.forEach(word => {
+      if (intention.includes(word)) intensity += 12;
+    });
+
+    const emotionWords = ['love', 'joy', 'peace', 'gratitude', 'excitement', 'passion', 'bliss'];
+    emotionWords.forEach(word => {
+      if (intention.includes(word)) intensity += 8;
+    });
+
+    return Math.min(100, Math.max(0, intensity));
+  }
+
+  getResonanceDescription(resonance) {
+    const descriptions = {
+      1: "Foundation - Building strong roots",
+      2: "Cooperation - Harmonious partnerships",
+      3: "Expression - Creative communication",
+      4: "Stability - Solid structure and order",
+      5: "Freedom - Change and adventure",
+      6: "Harmony - Balance and responsibility",
+      7: "Spirituality - Inner wisdom and analysis",
+      8: "Power - Achievement and material success",
+      9: "Humanitarian - Universal love and compassion",
+      11: "Master Teacher - Spiritual illumination",
+      22: "Master Builder - Large-scale manifestation",
+      33: "Master Healer - Christ consciousness"
+    };
+    return descriptions[resonance] || `${resonance} - Unique vibrational signature`;
+  }
+
+  getFrequencyDescription(frequency, category) {
+    const descriptions = {
+      abundance: `${frequency}Hz - Prosperity vibration for financial flow`,
+      love: `${frequency}Hz - Heart chakra frequency for love attraction`,
+      health: `${frequency}Hz - Healing frequency for cellular regeneration`,
+      career: `${frequency}Hz - Success frequency for professional achievement`,
+      spiritual: `${frequency}Hz - Higher consciousness activation`,
+      creativity: `${frequency}Hz - Creative inspiration and innovation`,
+      wisdom: `${frequency}Hz - Mental clarity and intuitive insight`,
+      freedom: `${frequency}Hz - Liberation from limiting beliefs`
+    };
+    return descriptions[category] || `${frequency}Hz - Universal harmony frequency`;
+  }
+
+  getDimensionDescription(dimension) {
+    const descriptions = {
+      1: "Physical Reality - Material manifestation",
+      2: "Emotional Body - Feeling and intuition",
+      3: "Mental Realm - Thought and logic",
+      4: "Astral Plane - Dreams and symbols",
+      5: "Causal World - Karma and destiny",
+      6: "Soul Level - Life purpose and meaning",
+      7: "Spiritual Realm - Divine connection",
+      8: "Cosmic Consciousness - Universal awareness",
+      9: "Christ Consciousness - Unconditional love",
+      10: "Buddha Consciousness - Enlightenment",
+      11: "Unity Consciousness - Oneness with all"
+    };
+    return descriptions[dimension] || `Dimension ${dimension} - Expanded awareness`;
+  }
+
+  getPowerDescription(power) {
+    const levels = {
+      1: "Seed Level - Initial spark of intention",
+      2: "Sprout Level - Early growth and momentum",
+      3: "Sapling Level - Developing strength",
+      4: "Young Tree - Building resilience",
+      5: "Mature Tree - Strong manifestation power",
+      6: "Ancient Tree - Deep roots and wisdom",
+      7: "Forest Guardian - Protective and guiding",
+      8: "Mountain Peak - Elevated perspective",
+      9: "Sky Walker - Transcendent vision",
+      10: "Star Weaver - Cosmic manifestation mastery"
+    };
+    return levels[power] || `Power Level ${power} - Manifestation strength`;
   }
 
   displayGeneratedCode(code, properties) {
@@ -462,9 +949,43 @@ class QuantumRealityApp {
     const activateBtn = document.getElementById('activateCouncilBtn');
 
     codeValue.textContent = code;
-    codeFrequency.textContent = properties.frequency + 'Hz';
-    codeResonance.textContent = properties.resonance + '/13';
-    codePower.textContent = properties.power + '/10';
+    codeFrequency.textContent = `${properties.frequency}Hz`;
+    codeResonance.textContent = `${properties.resonance}/13`;
+    codePower.textContent = `${properties.power}/10`;
+
+    // Add detailed descriptions
+    const codeDetails = document.createElement('div');
+    codeDetails.className = 'code-details';
+    codeDetails.innerHTML = `
+      <div class="detail-section">
+        <h4>🎯 Category: ${properties.category.charAt(0).toUpperCase() + properties.category.slice(1)}</h4>
+        <p class="detail-description">${properties.frequencyDescription}</p>
+      </div>
+      <div class="detail-section">
+        <h4>🔮 Resonance: ${properties.resonanceDescription}</h4>
+        <p class="detail-description">Master number alignment for manifestation potency</p>
+      </div>
+      <div class="detail-section">
+        <h4>🌌 Dimension: ${properties.dimensionDescription}</h4>
+        <p class="detail-description">Quantum field access level for consciousness expansion</p>
+      </div>
+      <div class="detail-section">
+        <h4>⚡ Power: ${properties.powerDescription}</h4>
+        <p class="detail-description">Manifestation strength and timeline acceleration</p>
+      </div>
+      <div class="detail-section">
+        <h4>🎭 Council Alignment: ${properties.alignment}%</h4>
+        <p class="detail-description">Persona synchronization for optimal guidance</p>
+      </div>
+    `;
+
+    // Remove existing details if present
+    const existingDetails = codeDisplay.querySelector('.code-details');
+    if (existingDetails) existingDetails.remove();
+
+    // Insert details after code properties
+    const codeProperties = codeDisplay.querySelector('.code-properties');
+    codeProperties.insertAdjacentElement('afterend', codeDetails);
 
     codeDisplay.classList.remove('hidden');
     activateBtn.classList.remove('hidden');
