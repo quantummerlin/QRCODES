@@ -3,15 +3,20 @@
  * Enables offline functionality and push notifications
  */
 
-const CACHE_NAME = 'quantum-reality-v2.0.0';
-const OFFLINE_URL = 'offline.html';
+const CACHE_NAME = 'quantum-reality-v2.0.2';
+const OFFLINE_URL = './index.html';
 
 // Files to cache for offline use
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
-  '/app.js',
-  '/manifest.json'
+  './',
+  './index.html',
+  './app.js',
+  './manifest.json',
+  './community.html',
+  './achievements.html',
+  './journey.html',
+  './icon-192.svg',
+  './icon-512.svg'
 ];
 
 // Install event - cache static assets
