@@ -264,6 +264,9 @@ class QuantumRealityApp {
       // Render journey steps
       this.renderJourneySteps();
       
+      // Render streak display
+      this.renderStreakDisplay();
+      
       // Hide loading screen - don't wait for everything to complete
       setTimeout(() => {
         const loadingScreen = document.getElementById('loadingScreen');
@@ -317,10 +320,100 @@ class QuantumRealityApp {
       createdAt: Date.now()
     };
 
+    // Update login streak
+    this.updateLoginStreak();
+
     // Update stats
     this.user.stats.totalSessions++;
     this.user.stats.lastVisit = Date.now();
     this.saveUser();
+  }
+
+  updateLoginStreak() {
+    const now = Date.now();
+    const lastLogin = this.user.streak.lastLogin;
+    
+    if (!lastLogin) {
+      // First login ever
+      this.user.streak.current = 1;
+      this.user.streak.longest = 1;
+      this.user.streak.lastLogin = now;
+      return;
+    }
+
+    // Calculate days since last login
+    const daysSince = Math.floor((now - lastLogin) / (24 * 60 * 60 * 1000));
+    
+    // Get today's date at midnight
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    // Get last login date at midnight
+    const lastLoginDate = new Date(lastLogin);
+    lastLoginDate.setHours(0, 0, 0, 0);
+    
+    // Same day - no change
+    if (today.getTime() === lastLoginDate.getTime()) {
+      return;
+    }
+    
+    // Yesterday - continue streak
+    if (daysSince === 1) {
+      this.user.streak.current++;
+      this.user.streak.lastLogin = now;
+      
+      // Check for new longest streak
+      if (this.user.streak.current > this.user.streak.longest) {
+        this.user.streak.longest = this.user.streak.current;
+        this.showToast(`🔥 NEW RECORD! ${this.user.streak.current} day streak!`, 'success');
+      } else if (this.user.streak.current % 7 === 0) {
+        // Milestone celebration
+        this.showToast(`🎉 ${this.user.streak.current} DAY STREAK! You're unstoppable!`, 'success');
+      }
+      
+      // Track achievement
+      if (this.achievementTracker) {
+        this.achievementTracker.trackEvent('daily_login', { streak: this.user.streak.current });
+      }
+      
+      // Milestone messages from council
+      this.handleStreakMilestone(this.user.streak.current);
+    } else {
+      // Streak broken
+      const wasOnStreak = this.user.streak.current > 3;
+      this.user.streak.current = 1;
+      this.user.streak.lastLogin = now;
+      
+      if (wasOnStreak) {
+        this.showToast('⚠️ Streak reset. Start a new one today!', 'warning');
+        // Encouragement message
+        const encouragement = [
+          `${this.user.name}, consistency creates miracles. Let's restart your momentum.`,
+          `Every master has stumbled. Your streak begins again—stronger than before.`,
+          `The quantum field doesn't judge breaks. It only responds to your return. Welcome back.`
+        ];
+        const randomPersona = ['resonance_keeper', 'divine_witness', 'momentum_catalyst'][Math.floor(Math.random() * 3)];
+        this.addCouncilMessage(randomPersona, encouragement[Math.floor(Math.random() * encouragement.length)]);
+      }
+    }
+  }
+
+  handleStreakMilestone(streak) {
+    const milestones = {
+      3: { message: "3 days! The quantum field recognizes your commitment.", persona: 'resonance_keeper' },
+      7: { message: "🔥 ONE WEEK STREAK! Your manifestation momentum is building exponentially!", persona: 'momentum_catalyst' },
+      14: { message: "⚡ TWO WEEKS! You've established a powerful quantum habit. The universe is taking notice.", persona: 'divine_witness' },
+      30: { message: "🎯 30 DAY MASTERY! You are officially a quantum reality architect. Miracles are your new normal.", persona: 'merlin' },
+      60: { message: "💎 60 DAYS OF PURE DEDICATION! You've transcended consistency—you ARE the frequency.", persona: 'seraphina' },
+      100: { message: "👑 100 DAY LEGEND! The quantum field itself bows to your commitment. Reality reshapes around you.", persona: 'archetype_synthesizer' }
+    };
+
+    if (milestones[streak]) {
+      const milestone = milestones[streak];
+      setTimeout(() => {
+        this.addCouncilMessage(milestone.persona, milestone.message);
+      }, 1000);
+    }
   }
 
   async loadPersonas111() {
@@ -1961,6 +2054,61 @@ I'm manifesting my dream reality using quantum frequency alignment.
         </div>
       `;
     }).join('');
+  }
+
+  // ============================================
+  // STREAK DISPLAY
+  // ============================================
+
+  renderStreakDisplay() {
+    const display = document.getElementById('streakDisplay');
+    const currentEl = document.getElementById('currentStreak');
+    const longestEl = document.getElementById('longestStreak');
+    const messageEl = document.getElementById('streakMessage');
+
+    if (!display || !this.user) return;
+
+    const streak = this.user.streak || { current: 0, longest: 0 };
+
+    // Only show if user has logged in at least once
+    if (streak.current > 0) {
+      display.style.display = 'block';
+      
+      if (currentEl) currentEl.textContent = streak.current;
+      if (longestEl) longestEl.textContent = streak.longest;
+      
+      // Dynamic motivational messages based on streak
+      const messages = {
+        1: "🌱 Every journey begins with a single step. You're building momentum!",
+        2: "⚡ Two days in a row! The quantum field is starting to respond.",
+        3: "🔥 Three days! Consistency is the key to manifestation.",
+        7: "🎯 ONE WEEK COMPLETE! Your manifestation energy is exponentially stronger.",
+        14: "💎 TWO WEEKS! You've established a powerful quantum habit.",
+        21: "🌟 21 DAYS - The habit is formed! You're a manifestation master.",
+        30: "👑 30 DAY LEGEND! Reality reshapes around consistent creators like you.",
+        60: "⚡ 60 DAYS OF MASTERY! You ARE the frequency now.",
+        100: "🏆 100 DAY QUANTUM ARCHITECT! The field bends to your will."
+      };
+
+      if (messageEl) {
+        // Use specific message if available, otherwise use range-based message
+        if (messages[streak.current]) {
+          messageEl.textContent = messages[streak.current];
+        } else if (streak.current >= 100) {
+          messageEl.textContent = `🔮 ${streak.current} days of pure quantum mastery! You've transcended consistency.`;
+        } else if (streak.current >= 30) {
+          messageEl.textContent = `✨ ${streak.current} days strong! You're in the quantum zone.`;
+        } else if (streak.current >= 14) {
+          messageEl.textContent = `💪 ${streak.current} days! Your momentum is unstoppable.`;
+        } else if (streak.current >= 7) {
+          messageEl.textContent = `🚀 ${streak.current} days! The universe notices your dedication.`;
+        } else {
+          messageEl.textContent = `🌟 Keep going! Building to your next milestone.`;
+        }
+      }
+    } else {
+      display.style.display = 'none';
+    }
   }
 
   // ============================================

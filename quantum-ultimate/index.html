@@ -2986,6 +2986,24 @@
           <div class="welcome-header">
             <h2>Welcome to the Quantum Field</h2>
           </div>
+
+          <!-- Daily Streak Display -->
+          <div id="streakDisplay" style="background: linear-gradient(135deg, rgba(255, 140, 0, 0.08), rgba(255, 69, 0, 0.08)); border: 2px solid rgba(255, 140, 0, 0.3); border-radius: 16px; padding: 20px; margin-bottom: 30px; text-align: center; display: none;">
+            <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap;">
+              <div style="font-size: 48px; animation: electricPulse 2s infinite;">🔥</div>
+              <div style="text-align: left;">
+                <div style="font-size: 28px; color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: bold;">
+                  <span id="currentStreak">0</span> DAY STREAK
+                </div>
+                <div style="font-size: 14px; color: var(--text-secondary); margin-top: 5px;">
+                  Longest: <span id="longestStreak" style="color: var(--neon-gold);">0</span> days
+                </div>
+              </div>
+            </div>
+            <div id="streakMessage" style="margin-top: 15px; font-size: 14px; color: var(--text-primary); font-style: italic;">
+              <!-- Dynamic message populated by JS -->
+            </div>
+          </div>
           
           <div class="guides-intro">
             <div class="guide-avatar merlin">
