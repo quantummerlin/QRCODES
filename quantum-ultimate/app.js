@@ -794,7 +794,8 @@ class QuantumRealityApp {
       'journey': 'journeySection',
       'dashboard': 'dashboardSection',
       'achievements': 'achievementsSection',
-      'synchronicity': 'synchronicitySection'
+      'synchronicity': 'synchronicitySection',
+      'wins': 'winsSection'
     };
 
     const targetId = sectionMap[section];
@@ -815,6 +816,11 @@ class QuantumRealityApp {
       // Special handling for synchronicities
       if (section === 'synchronicity') {
         this.renderSynchronicities();
+      }
+
+      // Special handling for wins
+      if (section === 'wins') {
+        this.renderWins();
       }
     }
   }
@@ -1816,6 +1822,145 @@ I'm manifesting my dream reality using quantum frequency alignment.
     
     this.navigate('council');
     this.showToast('Select 5-11 personas for your Quantum Council', 'info');
+  }
+
+  // ============================================
+  // WIN/SUCCESS TRACKING
+  // ============================================
+
+  logWin() {
+    const description = document.getElementById('winDescription')?.value.trim();
+    
+    if (!description) {
+      this.showToast('Please describe your win!', 'warning');
+      return;
+    }
+
+    const win = {
+      id: Date.now(),
+      description,
+      timestamp: Date.now(),
+      code: this.user.quantumCode,
+      celebrated: false
+    };
+
+    if (!this.user.wins) this.user.wins = [];
+    this.user.wins.push(win);
+    
+    // Open 48-hour momentum window
+    this.user.momentumWindow = {
+      opened: Date.now(),
+      expires: Date.now() + (48 * 60 * 60 * 1000)
+    };
+    
+    this.saveUser();
+
+    // Clear input
+    document.getElementById('winDescription').value = '';
+
+    // Track achievement
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('win_logged', win);
+    }
+
+    // Render wins
+    this.renderWins();
+
+    // MEGA celebration protocol - ALL council members respond!
+    const celebrationMessages = [
+      `🎉 INCREDIBLE! ${this.user.name}, you just proved quantum manifestation is REAL! This is physical evidence!`,
+      `🔥 THIS IS IT! The 48-hour momentum window is NOW OPEN! Whatever you focus on next will manifest FASTER!`,
+      `⚡ I WITNESSED THIS VICTORY! Your quantum field just shifted to a higher frequency. More wins are incoming!`,
+      `🏆 MANIFESTATION CONFIRMED! This proves your intention worked. The universe is delivering!`,
+      `💫 THE FLOODGATES ARE OPEN! Document everything that happens in the next 48 hours—synchronicities will multiply!`,
+      `✨ Your reality just SHIFTED! This win creates a ripple effect. Expect more manifestations to cascade in!`,
+      `🌟 QUANTUM ACCELERATION ACTIVATED! The momentum window means the next 48 hours are GOLDEN for manifesting!`,
+      `🎯 BULLSEYE! You hit the quantum target. This is what alignment looks like. Stay in this frequency!`
+    ];
+
+    // Get random council members for celebration
+    const councilPersonas = this.user.selectedPersonas || [];
+    if (councilPersonas.length > 0) {
+      const celebrateCount = Math.min(3, councilPersonas.length);
+      const shuffled = [...councilPersonas].sort(() => Math.random() - 0.5);
+      
+      for (let i = 0; i < celebrateCount; i++) {
+        const persona = shuffled[i];
+        const message = celebrationMessages[Math.floor(Math.random() * celebrationMessages.length)];
+        setTimeout(() => {
+          this.addCouncilMessage(persona, message);
+        }, i * 800);
+      }
+    }
+
+    this.showToast('🏆 VICTORY LOGGED! 48-hour momentum window OPEN!', 'success');
+  }
+
+  renderWins() {
+    const feed = document.getElementById('winFeed');
+    const countEl = document.getElementById('winCount');
+    const weekEl = document.getElementById('winThisWeek');
+    const windowEl = document.getElementById('momentumWindow');
+
+    if (!feed || !this.user) return;
+
+    const wins = this.user.wins || [];
+    
+    // Update stats
+    if (countEl) countEl.textContent = wins.length;
+    
+    // Calculate this week
+    const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+    const thisWeek = wins.filter(w => w.timestamp > weekAgo).length;
+    if (weekEl) weekEl.textContent = thisWeek;
+    
+    // Check momentum window
+    if (windowEl) {
+      const window = this.user.momentumWindow;
+      if (window && Date.now() < window.expires) {
+        const hoursLeft = Math.ceil((window.expires - Date.now()) / (60 * 60 * 1000));
+        windowEl.textContent = `${hoursLeft}h`;
+        windowEl.style.color = '#00ff64';
+        windowEl.style.animation = 'electricPulse 2s infinite';
+      } else {
+        windowEl.textContent = 'CLOSED';
+        windowEl.style.color = '#666';
+        windowEl.style.animation = 'none';
+      }
+    }
+
+    // Render feed
+    if (wins.length === 0) {
+      feed.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+          <div style="font-size: 48px; opacity: 0.5; margin-bottom: 20px;">🏆</div>
+          <div style="font-size: 18px; margin-bottom: 10px;">No wins logged yet</div>
+          <div style="font-size: 14px; opacity: 0.7;">When something manifests, log it here to celebrate and open the momentum window!</div>
+        </div>
+      `;
+      return;
+    }
+
+    feed.innerHTML = wins.slice().reverse().map(win => {
+      const time = this.formatTime(win.timestamp);
+      const date = new Date(win.timestamp).toLocaleDateString();
+      
+      return `
+        <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.08)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 12px; padding: 20px; animation: messageSlide 0.4s ease; box-shadow: 0 4px 20px rgba(255, 215, 0, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 140, 0, 0.4)); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); animation: electricGlow 3s infinite;">🏆</div>
+              <div>
+                <div style="font-size: 14px; color: var(--neon-gold); font-family: 'Orbitron', sans-serif; font-weight: bold;">MANIFESTATION WIN</div>
+                <div style="font-size: 11px; color: var(--text-muted);">${date} • ${time}</div>
+              </div>
+            </div>
+            ${win.code ? `<div style="background: rgba(255, 215, 0, 0.2); padding: 6px 12px; border-radius: 20px; font-size: 12px; color: var(--neon-gold); font-family: 'Orbitron', sans-serif; border: 1px solid rgba(255, 215, 0, 0.3);">Code ${win.code}</div>` : ''}
+          </div>
+          <div style="color: var(--text-primary); line-height: 1.6; font-size: 15px; font-weight: 500;">${this.sanitizeHTML(win.description)}</div>
+        </div>
+      `;
+    }).join('');
   }
 
   // ============================================

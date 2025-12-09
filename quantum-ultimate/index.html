@@ -3306,6 +3306,43 @@
         </div>
       </section>
 
+      <!-- Wins Section -->
+      <section class="page-section" id="winsSection">
+        <div class="wins-section">
+          <div class="section-header">
+            <h2>🎉 Manifestation Wins</h2>
+            <p>Celebrate your quantum reality victories</p>
+          </div>
+
+          <div class="win-input-card" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 140, 0, 0.08)); border: 2px solid rgba(255, 215, 0, 0.3); border-radius: 16px; padding: 25px; margin-bottom: 30px;">
+            <div style="font-size: 16px; color: var(--neon-gold); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">⚡ Report New Win</div>
+            <textarea id="winDescription" placeholder="What manifested? (e.g., Got the job!, Received unexpected money, Met the perfect person, Dream opportunity appeared, etc.)" style="width: 100%; min-height: 100px; padding: 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 215, 0, 0.3); border-radius: 12px; color: var(--text-primary); font-size: 14px; resize: vertical; font-family: 'Exo 2', sans-serif;"></textarea>
+            <button class="quantum-btn" onclick="app.logWin()" style="margin-top: 15px; width: 100%; background: var(--gradient-gold); border: 2px solid var(--neon-gold);">
+              🏆 Log Victory
+            </button>
+          </div>
+
+          <div class="win-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 215, 0, 0.3);">
+              <div style="font-size: 32px; color: var(--neon-gold); font-family: 'Orbitron', sans-serif; font-weight: bold;" id="winCount">0</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">Total Wins</div>
+            </div>
+            <div style="background: rgba(255, 140, 0, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 140, 0, 0.3);">
+              <div style="font-size: 32px; color: #ff8c00; font-family: 'Orbitron', sans-serif; font-weight: bold;" id="winThisWeek">0</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">This Week</div>
+            </div>
+            <div style="background: rgba(0, 255, 100, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(0, 255, 100, 0.3);">
+              <div style="font-size: 32px; color: #00ff64; font-family: 'Orbitron', sans-serif; font-weight: bold;" id="momentumWindow">CLOSED</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">Momentum Window</div>
+            </div>
+          </div>
+
+          <div id="winFeed" style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
       <!-- Achievements Section -->
       <section class="page-section" id="achievementsSection">
         <div class="achievements-section">
@@ -3342,6 +3379,10 @@
       <button class="nav-item" data-section="synchronicity" onclick="app.navigate('synchronicity')">
         <span class="nav-icon">🔮</span>
         <span class="nav-label">Signs</span>
+      </button>
+      <button class="nav-item" data-section="wins" onclick="app.navigate('wins')">
+        <span class="nav-icon">🎉</span>
+        <span class="nav-label">Wins</span>
       </button>
       <button class="nav-item" data-section="achievements" onclick="app.navigate('achievements')">
         <span class="nav-icon">🏆</span>
