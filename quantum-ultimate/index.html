@@ -3269,6 +3269,43 @@
         </div>
       </section>
 
+      <!-- Synchronicity Section -->
+      <section class="page-section" id="synchronicitySection">
+        <div class="sync-section">
+          <div class="section-header">
+            <h2>🔮 Synchronicity Tracker</h2>
+            <p>Log the signs and confirmations from the universe</p>
+          </div>
+
+          <div class="sync-input-card" style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.08), rgba(255, 0, 255, 0.08)); border: 2px solid rgba(0, 245, 255, 0.2); border-radius: 16px; padding: 25px; margin-bottom: 30px;">
+            <div style="font-size: 16px; color: var(--neon-cyan); margin-bottom: 15px; font-family: 'Orbitron', sans-serif;">✨ Report New Synchronicity</div>
+            <textarea id="syncDescription" placeholder="Describe what happened... (e.g., I saw 11:11 right after thinking about my intention, Someone randomly mentioned exactly what I needed, etc.)" style="width: 100%; min-height: 100px; padding: 15px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 12px; color: var(--text-primary); font-size: 14px; resize: vertical; font-family: 'Exo 2', sans-serif;"></textarea>
+            <button class="quantum-btn" onclick="app.logSynchronicity()" style="margin-top: 15px; width: 100%;">
+              🔮 Log Synchronicity
+            </button>
+          </div>
+
+          <div class="sync-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px;">
+            <div style="background: rgba(0, 245, 255, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(0, 245, 255, 0.3);">
+              <div style="font-size: 32px; color: var(--neon-cyan); font-family: 'Orbitron', sans-serif; font-weight: bold;" id="syncCount">0</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">Total Synchronicities</div>
+            </div>
+            <div style="background: rgba(255, 0, 255, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 0, 255, 0.3);">
+              <div style="font-size: 32px; color: var(--neon-magenta); font-family: 'Orbitron', sans-serif; font-weight: bold;" id="syncThisWeek">0</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">This Week</div>
+            </div>
+            <div style="background: rgba(0, 200, 100, 0.1); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(0, 200, 100, 0.3);">
+              <div style="font-size: 32px; color: #00c864; font-family: 'Orbitron', sans-serif; font-weight: bold;" id="syncStreak">0</div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-top: 5px;">Day Streak</div>
+            </div>
+          </div>
+
+          <div id="syncFeed" style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
       <!-- Achievements Section -->
       <section class="page-section" id="achievementsSection">
         <div class="achievements-section">
@@ -3302,13 +3339,13 @@
         <span class="nav-icon">💬</span>
         <span class="nav-label">Messages</span>
       </button>
+      <button class="nav-item" data-section="synchronicity" onclick="app.navigate('synchronicity')">
+        <span class="nav-icon">🔮</span>
+        <span class="nav-label">Signs</span>
+      </button>
       <button class="nav-item" data-section="achievements" onclick="app.navigate('achievements')">
         <span class="nav-icon">🏆</span>
-        <span class="nav-label">Achievements</span>
-      </button>
-      <button class="nav-item" data-section="journey" onclick="app.navigate('journey')">
-        <span class="nav-icon">🗺️</span>
-        <span class="nav-label">Journey</span>
+        <span class="nav-label">Progress</span>
       </button>
     </nav>
   </div>

@@ -296,6 +296,12 @@ class QuantumRealityApp {
       journeyCompleted: [],
       threads: {}, // Changed from messages: []
       synchronicities: [],
+      wins: [],
+      streak: {
+        current: 0,
+        lastLogin: null,
+        longest: 0
+      },
       achievements: [],
       settings: {
         guideStyle: 'gentle',
@@ -787,7 +793,8 @@ class QuantumRealityApp {
       'messages': 'messagesSection',
       'journey': 'journeySection',
       'dashboard': 'dashboardSection',
-      'achievements': 'achievementsSection'
+      'achievements': 'achievementsSection',
+      'synchronicity': 'synchronicitySection'
     };
 
     const targetId = sectionMap[section];
@@ -803,6 +810,11 @@ class QuantumRealityApp {
       // Special handling for achievements
       if (section === 'achievements') {
         this.renderAchievements();
+      }
+
+      // Special handling for synchronicities
+      if (section === 'synchronicity') {
+        this.renderSynchronicities();
       }
     }
   }
@@ -1662,6 +1674,139 @@ I'm manifesting my dream reality using quantum frequency alignment.
         container.appendChild(letterBox);
       }, index * 50); // Stagger animation
     });
+  }
+
+  // ============================================
+  // SYNCHRONICITY TRACKING
+  // ============================================
+
+  logSynchronicity() {
+    const description = document.getElementById('syncDescription')?.value.trim();
+    
+    if (!description) {
+      this.showToast('Please describe the synchronicity', 'warning');
+      return;
+    }
+
+    const sync = {
+      id: Date.now(),
+      description,
+      timestamp: Date.now(),
+      code: this.user.quantumCode,
+      read: false
+    };
+
+    if (!this.user.synchronicities) this.user.synchronicities = [];
+    this.user.synchronicities.push(sync);
+    this.saveUser();
+
+    // Clear input
+    document.getElementById('syncDescription').value = '';
+
+    // Track achievement
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('synchronicity_logged', sync);
+    }
+
+    // Render synchronicities
+    this.renderSynchronicities();
+
+    // Add celebration message from council
+    const celebrationPersonas = ['resonance_keeper', 'divine_witness', 'seraphina'];
+    const randomPersona = celebrationPersonas[Math.floor(Math.random() * celebrationPersonas.length)];
+    const messages = [
+      `${this.user.name}, the universe is responding! This synchronicity is confirmation that your manifestation is active.`,
+      `I witness this sign! The quantum field is aligning with your intention. More synchronicities are coming.`,
+      `Your frequency is attracting these confirmations. This is evidence of your manifestation becoming physical.`,
+      `The universe speaks in synchronicities. You're tuned to the right frequency to receive them.`,
+      `This is not coincidence—this is the quantum field confirming your reality is shifting.`
+    ];
+    this.addCouncilMessage(randomPersona, messages[Math.floor(Math.random() * messages.length)]);
+
+    this.showToast('🔮 Synchronicity logged! The universe is speaking.', 'success');
+  }
+
+  renderSynchronicities() {
+    const feed = document.getElementById('syncFeed');
+    const countEl = document.getElementById('syncCount');
+    const weekEl = document.getElementById('syncThisWeek');
+    const streakEl = document.getElementById('syncStreak');
+
+    if (!feed || !this.user) return;
+
+    const syncs = this.user.synchronicities || [];
+    
+    // Update stats
+    if (countEl) countEl.textContent = syncs.length;
+    
+    // Calculate this week
+    const weekAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+    const thisWeek = syncs.filter(s => s.timestamp > weekAgo).length;
+    if (weekEl) weekEl.textContent = thisWeek;
+    
+    // Calculate streak (days with at least one sync)
+    const streak = this.calculateSyncStreak(syncs);
+    if (streakEl) streakEl.textContent = streak;
+
+    // Render feed
+    if (syncs.length === 0) {
+      feed.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; color: var(--text-secondary);">
+          <div style="font-size: 48px; opacity: 0.5; margin-bottom: 20px;">🔮</div>
+          <div style="font-size: 18px; margin-bottom: 10px;">No synchronicities logged yet</div>
+          <div style="font-size: 14px; opacity: 0.7;">Start noticing the signs from the universe and log them above.</div>
+        </div>
+      `;
+      return;
+    }
+
+    feed.innerHTML = syncs.slice().reverse().map(sync => {
+      const time = this.formatTime(sync.timestamp);
+      const date = new Date(sync.timestamp).toLocaleDateString();
+      
+      return `
+        <div style="background: linear-gradient(135deg, rgba(0, 245, 255, 0.05), rgba(255, 0, 255, 0.05)); border: 1px solid rgba(0, 245, 255, 0.2); border-radius: 12px; padding: 20px; animation: messageSlide 0.4s ease;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, rgba(0, 245, 255, 0.3), rgba(255, 0, 255, 0.3)); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);">🔮</div>
+              <div>
+                <div style="font-size: 14px; color: var(--neon-cyan); font-family: 'Orbitron', sans-serif;">Synchronicity</div>
+                <div style="font-size: 11px; color: var(--text-muted);">${date} • ${time}</div>
+              </div>
+            </div>
+            ${sync.code ? `<div style="background: rgba(0, 245, 255, 0.1); padding: 6px 12px; border-radius: 20px; font-size: 12px; color: var(--neon-cyan); font-family: 'Orbitron', sans-serif;">Code ${sync.code}</div>` : ''}
+          </div>
+          <div style="color: var(--text-secondary); line-height: 1.6; font-size: 14px;">${this.sanitizeHTML(sync.description)}</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  calculateSyncStreak(syncs) {
+    if (!syncs || syncs.length === 0) return 0;
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    let streak = 0;
+    let checkDate = new Date(today);
+
+    // Check each day going backwards
+    for (let i = 0; i < 365; i++) { // Max 365 day streak
+      const dayStart = checkDate.getTime();
+      const dayEnd = dayStart + (24 * 60 * 60 * 1000);
+      
+      const hasSyncThisDay = syncs.some(s => s.timestamp >= dayStart && s.timestamp < dayEnd);
+      
+      if (hasSyncThisDay) {
+        streak++;
+        checkDate.setDate(checkDate.getDate() - 1);
+      } else {
+        break;
+      }
+    }
+
+    return streak;
   }
 
   activateCouncil() {
