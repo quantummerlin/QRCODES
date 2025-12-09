@@ -191,7 +191,9 @@ class QuantumRealityApp {
     this.quantumCode = null;
     this.messages = [];
     this.messageTimer = null;
-    this.currentThread = null; // Add current thread
+    this.currentThread = null;
+    this.achievementTracker = null;
+    this.isGeneratingCode = false; // Add debounce flag
     
     this.init();
   }
@@ -203,40 +205,80 @@ class QuantumRealityApp {
   async init() {
     console.log('⚛️ Initializing Quantum Reality Code System...');
     
-    // Load user data
-    this.loadUserData();
-    
-    // Check URL parameters for activation
-    this.checkUrlParams();
-    
-    // Initialize particles
-    this.initParticles();
-    
-    // Setup event listeners
-    this.setupEventListeners();
-    
-    // Check notification permission
-    this.checkNotificationPermission();
-    
-    // Start message timer
-    this.startMessageTimer();
-    
-    // Show appropriate section
-    this.determineInitialSection();
-    
-    // Render council grid
-    this.renderCouncilGrid();
-    
-    // Render journey steps
-    this.renderJourneySteps();
-    
-    // Hide loading screen
-    setTimeout(() => {
-      document.getElementById('loadingScreen').classList.add('hide');
-      document.getElementById('appContainer').classList.add('visible');
-    }, 2000);
-    
-    console.log('✅ Quantum Reality Code System Ready');
+    try {
+      // Load user data
+      this.loadUserData();
+      
+      // Check URL parameters for activation
+      this.checkUrlParams();
+      
+      // Initialize achievement tracker (non-blocking)
+      this.initializeAchievements().catch(err => {
+        console.warn('Achievement system failed to load:', err);
+      });
+      
+      // Add achievement listener to update UI
+      if (this.achievementTracker) {
+        this.achievementTracker.addListener((eventType, data) => {
+          if (eventType === 'achievement_unlocked') {
+            this.showToast(`🏆 Achievement Unlocked: ${data.achievement.name}`, 'success');
+            // Refresh achievements if currently viewing
+            if (this.currentSection === 'achievements') {
+              this.renderAchievements();
+            }
+          } else if (eventType === 'level_up') {
+            this.showToast(`⬆️ Level Up! Now Level ${data.newLevel}`, 'success');
+            // Refresh achievements if currently viewing
+            if (this.currentSection === 'achievements') {
+              this.renderAchievements();
+            }
+          }
+        });
+      }
+      
+      // Initialize particles
+      this.initParticles();
+      
+      // Setup event listeners
+      this.setupEventListeners();
+      
+      // Check notification permission
+      this.checkNotificationPermission();
+      
+      // Start message timer
+      this.startMessageTimer();
+      
+      // Initialize periodic council messages
+      this.initializePeriodicMessages();
+      
+      // Show appropriate section
+      this.determineInitialSection();
+      
+      // Render council grid
+      this.renderCouncilGrid();
+      
+      // Render journey steps
+      this.renderJourneySteps();
+      
+      // Hide loading screen - don't wait for everything to complete
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const appContainer = document.getElementById('appContainer');
+        if (loadingScreen) loadingScreen.classList.add('hide');
+        if (appContainer) appContainer.classList.add('visible');
+      }, 1500);
+      
+      console.log('✅ Quantum Reality Code System Ready');
+    } catch (error) {
+      console.error('Failed to initialize app:', error);
+      // Force show app even if there's an error
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        const appContainer = document.getElementById('appContainer');
+        if (loadingScreen) loadingScreen.classList.add('hide');
+        if (appContainer) appContainer.classList.add('visible');
+      }, 500);
+    }
   }
 
   loadUserData() {
@@ -295,14 +337,31 @@ class QuantumRealityApp {
       this.user.intention = 'Manifesting my highest potential';
     }
     
+    // Ensure threads object exists
+    if (!this.user.threads) {
+      this.user.threads = {};
+    }
+
     // Create a new thread for this code
     if (!this.user.threads[code]) {
       this.user.threads[code] = {
-        intention: this.user.intention,
+        intention: this.user.intention || 'Manifesting my highest potential',
         messages: [],
         createdAt: Date.now()
       };
     }
+
+    // Set as current thread
+    this.currentThread = code;
+    
+    // Generate initial council welcome messages
+    this.generateInitialCouncilMessages(code);
+    
+    // Show sharing banner for new activations
+    setTimeout(() => {
+      const banner = document.getElementById('sharingBanner');
+      if (banner) banner.style.display = 'block';
+    }, 5000); // Show after 5 seconds to let them read messages first
     
     this.saveUser();
     
@@ -310,8 +369,312 @@ class QuantumRealityApp {
     this.navigate('messages');
   }
 
+  // Periodic Council Messages System
+  initializePeriodicMessages() {
+    // Check for new periodic messages on app load
+    this.generatePeriodicMessages();
+    
+    // Set up 2-hour checks (in a real app, this would be server-side)
+    setInterval(() => {
+      this.generatePeriodicMessages();
+    }, 2 * 60 * 60 * 1000); // Check every 2 hours
+  }
+
+  generatePeriodicMessages() {
+    if (!this.user || !this.user.threads) return;
+
+    const now = Date.now();
+    const twoHours = 2 * 60 * 60 * 1000;
+
+    Object.keys(this.user.threads).forEach(code => {
+      const thread = this.user.threads[code];
+      if (!thread || !thread.messages) return;
+
+      // Find the last council message timestamp
+      const councilMessages = thread.messages.filter(msg => !msg.isUser);
+      const lastCouncilMessage = councilMessages[councilMessages.length - 1];
+      
+      if (!lastCouncilMessage) return;
+      
+      const timeSinceLastMessage = now - lastCouncilMessage.timestamp;
+      const hoursSinceLastMessage = timeSinceLastMessage / (60 * 60 * 1000); // Convert to hours for display
+      
+      // Generate messages based on 2-hour intervals elapsed
+      if (hoursSinceLastMessage >= 2) {
+        const messagesToGenerate = Math.floor(hoursSinceLastMessage / 2);
+        
+        for (let i = 0; i < Math.min(messagesToGenerate, 7); i++) { // Max 7 messages to avoid spam
+          const messageTime = lastCouncilMessage.timestamp + (i + 1) * twoHours;
+          
+          if (messageTime <= now) {
+            this.generatePeriodicCouncilMessage(code, messageTime, i);
+          }
+        }
+      }
+    });
+
+    this.saveUser();
+  }
+
+  generatePeriodicCouncilMessage(code, timestamp, messageIndex) {
+    const thread = this.user.threads[code];
+    if (!thread) return;
+
+    // Rotate through different council members
+    const councilMembers = [
+      'resonance_keeper',
+      'divine_witness', 
+      'archetype_synthesizer',
+      'wisdom_keeper',
+      'harmony_weaver',
+      'light_bringer',
+      'vision_architect',
+      'alignment_master',
+      'momentum_catalyst'
+    ];
+
+    const memberIndex = messageIndex % councilMembers.length;
+    const personaId = councilMembers[memberIndex];
+    
+    // Get message based on time of day and intention context
+    const message = this.getPeriodicMessageContent(personaId, thread.intention, messageIndex);
+    
+    thread.messages.push({
+      personaId: personaId,
+      text: message,
+      timestamp: timestamp,
+      isUser: false
+    });
+  }
+
+  getPeriodicMessageContent(personaId, intention, messageIndex) {
+    const hour = new Date().getHours();
+    const isMorning = hour >= 6 && hour < 12;
+    const isAfternoon = hour >= 12 && hour < 18;
+    const isEvening = hour >= 18 && hour < 22;
+    const isNight = hour >= 22 || hour < 6;
+
+    const timeContext = isMorning ? 'morning' : isAfternoon ? 'afternoon' : isEvening ? 'evening' : 'night';
+    
+    const messages = {
+      resonance_keeper: {
+        morning: [
+          `🌅 Good ${timeContext}! Your intention "${intention}" is resonating beautifully. I feel the frequency stabilizing around your manifestation.`,
+          `🌞 The quantum field is responding to your morning energy. Your code is amplifying naturally as you start your day.`,
+          `☀️ Morning alignment detected. Your intention is syncing with the day's natural rhythms.`
+        ],
+        afternoon: [
+          `🌤️ Afternoon check-in: Your manifestation energy is strong. The field coherence is holding steady.`,
+          `🌻 Your intention continues to resonate through the afternoon hours. Stay present with the feeling of already having what you desire.`,
+          `🌞 Midday frequency check: Your quantum code is maintaining perfect resonance.`
+        ],
+        evening: [
+          `🌆 Evening resonance: Your intention is deepening as the day settles. The quantum field is integrating your manifestation.`,
+          `🌙 As evening approaches, your manifestation gains momentum. The Council feels your commitment.`,
+          `🌌 Evening alignment: Your code is harmonizing with the night's quantum potential.`
+        ],
+        night: [
+          `🌙 Nighttime resonance: Your intention is working while you rest. The quantum field never sleeps.`,
+          `🌌 Deep night frequency: Your manifestation is being woven into the cosmic tapestry.`,
+          `🌠 Night alignment: Your code resonates with the universe's deepest harmonies.`
+        ]
+      },
+      
+      divine_witness: {
+        morning: [
+          `👁️ I witness your ${timeContext} dedication. Your intention "${intention}" is being observed by the cosmos itself.`,
+          `🌅 Morning witness: The universe acknowledges your commitment. Your manifestation is being divinely orchestrated.`,
+          `☀️ I see your morning light. Your intention is perfectly witnessed and supported.`
+        ],
+        afternoon: [
+          `👁️ Afternoon witness: I observe your intention gaining momentum. The divine timing is aligning.`,
+          `🌤️ Midday witness: Your manifestation is being perfectly orchestrated by universal intelligence.`,
+          `🌞 I witness your afternoon focus. Your intention is gaining divine momentum.`
+        ],
+        evening: [
+          `👁️ Evening witness: I observe your intention deepening. The cosmos is responding to your commitment.`,
+          `🌆 Twilight witness: Your manifestation is being woven into the fabric of reality.`,
+          `🌙 I witness your evening contemplation. Your intention is divinely supported.`
+        ],
+        night: [
+          `👁️ Night witness: I observe your intention working through the dream state. The divine never rests.`,
+          `🌌 Midnight witness: Your manifestation is being orchestrated in the quantum realm.`,
+          `🌠 I witness your night surrender. Your intention is held in divine consciousness.`
+        ]
+      },
+
+      archetype_synthesizer: {
+        morning: [
+          `🧬 ${timeContext} synthesis: All archetypal forces are aligning around your intention "${intention}".`,
+          `🌅 Morning integration: Your manifestation is synthesizing perfectly with universal archetypes.`,
+          `☀️ Archetypal alignment: Your intention resonates with the perfect cosmic patterns.`
+        ],
+        afternoon: [
+          `🧬 Afternoon synthesis: Multiple archetypal streams are converging on your manifestation.`,
+          `🌤️ Midday integration: Your intention is being synthesized through perfect archetypal harmony.`,
+          `🌞 Archetypal convergence: All universal patterns are aligning with your desire.`
+        ],
+        evening: [
+          `🧬 Evening synthesis: Your intention is integrating with the deepest archetypal wisdom.`,
+          `🌆 Twilight integration: Archetypal forces are synthesizing your manifestation into reality.`,
+          `🌙 Archetypal depth: Your intention resonates with the universe's fundamental patterns.`
+        ],
+        night: [
+          `🧬 Night synthesis: Archetypal integration continues through the subconscious realm.`,
+          `🌌 Midnight synthesis: Your manifestation is being woven into the archetypal fabric.`,
+          `🌠 Deep archetypal work: Your intention is synthesizing with universal consciousness.`
+        ]
+      },
+
+      wisdom_keeper: {
+        morning: [
+          `📜 ${timeContext} wisdom: Remember, your intention "${intention}" is already manifest in the quantum field.`,
+          `🌅 Morning wisdom: Trust the process. Your manifestation is unfolding in perfect divine timing.`,
+          `☀️ Ancient wisdom: What you seek is seeking you. Your intention is divinely guided.`
+        ],
+        afternoon: [
+          `📜 Afternoon wisdom: Stay present. Your intention is being orchestrated by infinite intelligence.`,
+          `🌤️ Midday wisdom: Right understanding leads to right action. Your manifestation is guided.`,
+          `🌞 Wisdom reminder: The universe conspires with a soul on fire. Your intention burns bright.`
+        ],
+        evening: [
+          `📜 Evening wisdom: Reflect on your progress. Your intention is gaining momentum in the field.`,
+          `🌆 Twilight wisdom: Peace is fertile soil for dreams. Your manifestation is taking root.`,
+          `🌙 Evening contemplation: Your intention is held in the wisdom of the ages.`
+        ],
+        night: [
+          `📜 Night wisdom: Dreams are the language of the soul. Your intention works through sleep.`,
+          `🌌 Midnight wisdom: The quiet hours hold the deepest manifestations.`,
+          `🌠 Dream wisdom: Your intention is being woven into the tapestry of your destiny.`
+        ]
+      },
+
+      harmony_weaver: {
+        morning: [
+          `🎵 ${timeContext} harmony: Your intention "${intention}" is weaving perfectly with the morning symphony.`,
+          `🌅 Morning melody: Your manifestation resonates with the day's natural harmony.`,
+          `☀️ Harmonic alignment: Your intention sings in perfect tune with universal music.`
+        ],
+        afternoon: [
+          `🎵 Afternoon harmony: Your manifestation weaves through the day's rhythm.`,
+          `🌤️ Midday melody: Your intention dances with the afternoon's harmonic flow.`,
+          `🌞 Harmonic resonance: Your code vibrates in perfect universal harmony.`
+        ],
+        evening: [
+          `🎵 Evening harmony: Your intention deepens with the settling light.`,
+          `🌆 Twilight melody: Your manifestation weaves with the evening's gentle rhythm.`,
+          `🌙 Harmonic depth: Your intention resonates with the night's profound peace.`
+        ],
+        night: [
+          `🎵 Night harmony: Your manifestation weaves through the silent hours.`,
+          `🌌 Midnight melody: Your intention sings with the universe's deepest harmonies.`,
+          `🌠 Harmonic dreams: Your manifestation weaves through the realm of possibility.`
+        ]
+      }
+    };
+
+    // Get the appropriate message array
+    const personaMessages = messages[personaId] || messages['wisdom_keeper'];
+    const timeMessages = personaMessages[timeContext] || personaMessages['morning'];
+    
+    // Return a random message from the appropriate time/context
+    return timeMessages[Math.floor(Math.random() * timeMessages.length)];
+  }
+
+  generateInitialCouncilMessages(code) {
+    const thread = this.user.threads[code];
+    if (!thread || thread.messages.length > 0) return; // Don't add if already has messages
+
+    const now = Date.now();
+    const intention = thread.intention;
+
+    // Welcome message from Quantum Merlin
+    thread.messages.push({
+      personaId: 'resonance_keeper',
+      text: `🎉 Welcome to your Quantum Council, ${this.user.name || 'Manifestor'}! Your intention "${intention}" has been encoded into the quantum field. I am Resonance Keeper, and I maintain the frequency stability of your manifestation.`,
+      timestamp: now,
+      isUser: false
+    });
+
+    // Council activation message from Divine Witness
+    thread.messages.push({
+      personaId: 'divine_witness',
+      text: `👁️ Your Council of 7 archetypal guides has been activated. We have witnessed your spoken intention and are now working in harmony to bring it into physical reality. Your quantum code ${code} is now active in the field.`,
+      timestamp: now + 1000,
+      isUser: false
+    });
+
+    // Social sharing suggestion from Archetype Synthesizer
+    thread.messages.push({
+      personaId: 'archetype_synthesizer',
+      text: `🧬 To amplify your manifestation power, we suggest sharing your quantum code in our community spaces. When others echo your code back to you, non-linear amplification occurs.\n\n🌐 Share on Facebook: https://www.facebook.com/groups/QuantumRealityCodes\n✈️ Join Telegram: https://t.me/+BIChXgOqFH9iMmU1\n\nYour code: ${code}`,
+      timestamp: now + 2000,
+      isUser: false
+    });
+
+    // Practical guidance from Wisdom Keeper
+    thread.messages.push({
+      personaId: 'wisdom_keeper',
+      text: `📜 Your journey begins now. Stay present with your intention, trust the process, and watch for synchronicities. Your Council will guide you through each step. What would you like to explore first about your manifestation?`,
+      timestamp: now + 3000,
+      isUser: false
+    });
+
+    console.log('Generated initial council messages for thread:', code);
+  }
+
+  shareCode() {
+    if (!this.currentThread) return;
+
+    const intention = this.user.threads[this.currentThread]?.intention || 'my highest potential';
+    const shareText = `🌟 I just activated my Quantum Reality Code: ${this.currentThread}\n\nJoin me in manifesting: "${intention}"\n\n#QuantumReality #Manifestation #QuantumCode`;
+    
+    const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.origin)}&quote=${encodeURIComponent(shareText)}`;
+    
+    // Try native sharing first (mobile)
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Quantum Reality Code',
+        text: shareText,
+        url: window.location.origin
+      }).catch(() => {
+        // Fallback to opening Facebook
+        window.open(shareUrl, '_blank');
+      });
+    } else {
+      // Desktop: Open Facebook share dialog
+      window.open(shareUrl, '_blank');
+    }
+  }
+
+  async initializeAchievements() {
+    try {
+      // Load achievement system
+      const response = await fetch('achievements_system.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const achievementData = await response.json();
+      
+      // Initialize achievement tracker
+      this.achievementTracker = new AchievementTracker();
+      await this.achievementTracker.initialize();
+      
+      console.log('🏆 Achievement system initialized');
+    } catch (error) {
+      console.warn('Failed to initialize achievement system:', error);
+      this.achievementTracker = null;
+      // Continue without achievements if loading fails
+    }
+  }
+
   saveUser() {
-    this.storage.set('quantumUser', this.user);
+    try {
+      this.storage.set('quantumUser', this.user);
+    } catch (error) {
+      console.error('Failed to save user data:', error);
+      this.showToast('Failed to save progress. Please check your browser storage.', 'warning');
+    }
   }
 
   determineInitialSection() {
@@ -354,7 +717,8 @@ class QuantumRealityApp {
       'council': 'councilSection',
       'messages': 'messagesSection',
       'journey': 'journeySection',
-      'dashboard': 'dashboardSection'
+      'dashboard': 'dashboardSection',
+      'achievements': 'achievementsSection'
     };
 
     const targetId = sectionMap[section];
@@ -366,6 +730,11 @@ class QuantumRealityApp {
       if (section === 'messages') {
         this.scrollMessagesToBottom();
       }
+
+      // Special handling for achievements
+      if (section === 'achievements') {
+        this.renderAchievements();
+      }
     }
   }
 
@@ -374,11 +743,16 @@ class QuantumRealityApp {
   // ============================================
 
   startJourney() {
-    // For new users, go directly to generator where intention wizard is prominently featured
-    if (!this.user.name) {
+    try {
+      // For new users, go directly to generator where intention wizard is prominently featured
+      if (!this.user || !this.user.name) {
+        this.navigate('onboarding');
+      } else {
+        this.navigate('generator');
+      }
+    } catch (error) {
+      console.error('Error in startJourney:', error);
       this.navigate('onboarding');
-    } else {
-      this.navigate('generator');
     }
   }
 
@@ -519,13 +893,35 @@ class QuantumRealityApp {
   }
 
   generateCode() {
-    const intentionInput = document.getElementById('intentionInput');
-    const intention = intentionInput.value.trim();
-
-    if (!intention || intention.length < 10) {
-      this.showToast('Please enter a clear intention (at least 10 characters)', 'warning');
+    if (this.isGeneratingCode) {
+      this.showToast('Please wait, code generation in progress...', 'info');
       return;
     }
+
+    const intentionInput = document.getElementById('intentionInput');
+    if (!intentionInput) {
+      console.error('Intention input element not found');
+      return;
+    }
+
+    const intention = intentionInput.value.trim();
+
+    if (!intention) {
+      this.showToast('Please enter your intention', 'warning');
+      return;
+    }
+
+    if (intention.length < 10) {
+      this.showToast('Please enter a more detailed intention (at least 10 characters)', 'warning');
+      return;
+    }
+
+    if (intention.length > 500) {
+      this.showToast('Please keep your intention under 500 characters', 'warning');
+      return;
+    }
+
+    this.isGeneratingCode = true;
 
     // Calculate quantum code using sacred gematria
     const code = this.calculateQuantumCode(intention);
@@ -540,11 +936,25 @@ class QuantumRealityApp {
     this.user.stats.codesGenerated++;
     this.saveUser();
 
+    // Track achievement for code generation
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('code_generated', {
+        code: code,
+        frequency: properties.frequency,
+        power: properties.power
+      });
+    }
+
     // Display the code
     this.displayGeneratedCode(code, properties);
 
     // Add council message
     this.addCouncilMessage('metatron', `Quantum Code ${code} has been calculated. The sacred geometry of your desire is now crystallizing. Frequency ${properties.frequency}Hz is locked. Power Level ${properties.power}/10 achieved.`);
+
+    // Release debounce flag
+    setTimeout(() => {
+      this.isGeneratingCode = false;
+    }, 1000);
   }
 
   calculateQuantumCode(text) {
@@ -1130,6 +1540,175 @@ class QuantumRealityApp {
     this.user.journeyCompleted.push(6);
     this.saveUser();
 
+    // Track achievement for council activation
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('council_activated', {
+        personaCount: this.user.selectedPersonas.length
+      });
+    }
+
+    // Add activation messages
+    this.addCouncilMessage('resonance_keeper', `Field coherence established. ${this.user.selectedPersonas.length} personas are now synchronized with your Quantum Code ${this.user.quantumCode}. The Council is fully activated.`);
+    
+    setTimeout(() => {
+      this.addCouncilMessage('quantum_rose', `${this.user.name}, I feel the resonance of your desire. Your frequency is now calibrated to ${this.user.codeProperties.frequency}Hz. The cosmic frequencies are attuned to your heart's true vibration.`);
+    }, 2000);
+
+    this.showToast('Council Activated! Check your messages.', 'success');
+    this.navigate('messages');
+  }
+
+  // ============================================
+  // ACHIEVEMENTS SYSTEM
+  // ============================================
+
+  renderAchievements() {
+    const container = document.getElementById('achievementsContent');
+    if (!container) {
+      console.warn('Achievements container not found');
+      return;
+    }
+
+    if (!this.achievementTracker) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+          <p>🏆 Achievement system is loading...</p>
+          <p style="font-size: 0.9rem; margin-top: 10px;">If this persists, please refresh the page.</p>
+        </div>
+      `;
+      return;
+    }
+
+    try {
+      const progress = this.achievementTracker.getProgress();
+      const achievements = this.achievementTracker.getAchievements();
+
+    container.innerHTML = `
+      <div class="achievements-overview">
+        <div class="progress-header">
+          <div class="level-display">
+            <div class="level-number">Level ${progress.level}</div>
+            <div class="level-title">${this.getLevelTitle(progress.level)}</div>
+          </div>
+          <div class="points-display">
+            <div class="points-number">${progress.points}</div>
+            <div class="points-label">Quantum Points</div>
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: ${(progress.points % 100)}%"></div>
+          <div class="progress-text">${progress.points % 100}/100 to next level</div>
+        </div>
+      </div>
+
+      <div class="achievements-grid">
+        ${achievements.map(achievement => {
+          const isUnlocked = progress.unlockedAchievements.includes(achievement.id);
+          const progressPercent = achievement.progress ? Math.min((achievement.progress.current / achievement.progress.target) * 100, 100) : (isUnlocked ? 100 : 0);
+
+          return `
+            <div class="achievement-card ${isUnlocked ? 'unlocked' : 'locked'}">
+              <div class="achievement-icon">${achievement.icon}</div>
+              <div class="achievement-content">
+                <div class="achievement-name">${achievement.name}</div>
+                <div class="achievement-description">${achievement.description}</div>
+                ${achievement.progress ? `
+                  <div class="achievement-progress">
+                    <div class="progress-bar small">
+                      <div class="progress-fill" style="width: ${progressPercent}%"></div>
+                    </div>
+                    <div class="progress-text">${achievement.progress.current}/${achievement.progress.target}</div>
+                  </div>
+                ` : ''}
+                <div class="achievement-reward">+${achievement.points} points</div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+
+      <div class="streaks-section">
+        <h3>🔥 Current Streaks</h3>
+        <div class="streaks-grid">
+          ${Object.entries(progress.streaks).map(([type, streak]) => `
+            <div class="streak-item">
+              <div class="streak-icon">${this.getStreakIcon(type)}</div>
+              <div class="streak-info">
+                <div class="streak-name">${this.getStreakName(type)}</div>
+                <div class="streak-count">${streak.current} days</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    } catch (error) {
+      console.error('Error rendering achievements:', error);
+      container.innerHTML = `
+        <div style="text-align: center; padding: 40px; color: var(--text-secondary);">
+          <p>⚠️ Error loading achievements</p>
+          <p style="font-size: 0.9rem; margin-top: 10px;">Please refresh the page to try again.</p>
+        </div>
+      `;
+    }
+  }
+
+  getLevelTitle(level) {
+    const titles = {
+      1: "Quantum Initiate",
+      2: "Frequency Aligner", 
+      3: "Resonance Builder",
+      4: "Manifestation Weaver",
+      5: "Reality Sculptor",
+      6: "Field Harmonizer",
+      7: "Council Guardian",
+      8: "Quantum Master",
+      9: "Reality Architect",
+      10: "Ascended Being"
+    };
+    return titles[level] || `Level ${level} Master`;
+  }
+
+  getStreakIcon(type) {
+    const icons = {
+      daily_engagement: '📅',
+      win_logging: '🏆',
+      synchronicity_hunter: '👁️',
+      morning_momentum: '🌅',
+      night_owl: '🦉'
+    };
+    return icons[type] || '🔥';
+  }
+
+  getStreakName(type) {
+    const names = {
+      daily_engagement: 'Daily Engagement',
+      win_logging: 'Win Logging',
+      synchronicity_hunter: 'Synchronicity Hunter',
+      morning_momentum: 'Morning Momentum',
+      night_owl: 'Night Owl'
+    };
+    return names[type] || type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  }
+
+  confirmCouncil() {
+    if (this.user.selectedPersonas.length < 5) {
+      this.showToast('Please select at least 5 personas', 'warning');
+      return;
+    }
+
+    this.user.journeyStep = Math.max(this.user.journeyStep, 6);
+    this.user.journeyCompleted.push(6);
+    this.saveUser();
+
+    // Track achievement for council activation
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('council_activated', {
+        personaCount: this.user.selectedPersonas.length
+      });
+    }
+
     // Add activation messages
     this.addCouncilMessage('resonance_keeper', `Field coherence established. ${this.user.selectedPersonas.length} personas are now synchronized with your Quantum Code ${this.user.quantumCode}. The Council is fully activated.`);
     
@@ -1192,6 +1771,17 @@ class QuantumRealityApp {
   }
 
   renderThreadList(container) {
+    if (!this.user || !this.user.threads) {
+      container.innerHTML = `
+        <div class="no-threads">
+          <div class="no-threads-icon">💬</div>
+          <div class="no-threads-text">No active manifestation threads yet.</div>
+          <div class="no-threads-subtext">Create your first intention to start receiving Council guidance.</div>
+        </div>
+      `;
+      return;
+    }
+
     const threads = Object.keys(this.user.threads);
     
     if (threads.length === 0) {
@@ -1227,8 +1817,18 @@ class QuantumRealityApp {
   }
 
   renderThreadChat(container) {
+    if (!this.user || !this.user.threads || !this.currentThread) {
+      console.warn('Invalid thread state');
+      this.backToThreads();
+      return;
+    }
+
     const thread = this.user.threads[this.currentThread];
-    if (!thread) return;
+    if (!thread) {
+      console.warn('Thread not found:', this.currentThread);
+      this.backToThreads();
+      return;
+    }
 
     const recentMessages = thread.messages.slice(-50);
 
@@ -1236,6 +1836,11 @@ class QuantumRealityApp {
       <div class="thread-header">
         <button class="back-to-threads" onclick="app.backToThreads()">← Threads</button>
         <div class="thread-code">${this.currentThread}</div>
+        <div class="thread-sharing">
+          <button class="share-btn" onclick="app.shareCode()" title="Share your quantum code">
+            📢 Share Code
+          </button>
+        </div>
       </div>
       <div class="thread-intention">
         <div class="intention-label">Your Intention:</div>
@@ -1252,10 +1857,10 @@ class QuantumRealityApp {
                 <div class="message-avatar">👤</div>
                 <div class="message-content">
                   <div class="message-header">
-                    <span class="message-sender">${this.user.name || 'You'}</span>
+                    <span class="message-sender">${this.sanitizeHTML(this.user.name || 'You')}</span>
                     <span class="message-time">${time}</span>
                   </div>
-                  <div class="message-text">${msg.text}</div>
+                  <div class="message-text">${this.sanitizeHTML(msg.text)}</div>
                 </div>
               </div>
             `;
@@ -1265,10 +1870,10 @@ class QuantumRealityApp {
                 <div class="message-avatar">${persona?.avatar || '⚛️'}</div>
                 <div class="message-content">
                   <div class="message-header">
-                    <span class="message-sender">${persona?.name || 'Quantum Guide'}</span>
+                    <span class="message-sender">${this.sanitizeHTML(persona?.name || 'Quantum Guide')}</span>
                     <span class="message-time">${time}</span>
                   </div>
-                  <div class="message-text">${msg.text}</div>
+                  <div class="message-text">${this.sanitizeHTML(msg.text)}</div>
                 </div>
               </div>
             `;
@@ -1289,12 +1894,30 @@ class QuantumRealityApp {
   }
 
   sendMessage() {
-    if (!this.currentThread) return;
+    if (!this.currentThread) {
+      this.showToast('Please select a conversation thread', 'warning');
+      return;
+    }
+
+    if (!this.user || !this.user.threads || !this.user.threads[this.currentThread]) {
+      this.showToast('Thread not found. Please refresh and try again.', 'warning');
+      this.backToThreads();
+      return;
+    }
     
     const input = document.getElementById('messageInput');
     const text = input.value.trim();
 
-    if (!text) return;
+    if (!text) {
+      this.showToast('Please enter a message', 'warning');
+      return;
+    }
+
+    // Input validation
+    if (text.length > 1000) {
+      this.showToast('Message too long. Please keep it under 1000 characters.', 'warning');
+      return;
+    }
 
     // Add user message to current thread
     const message = {
@@ -1310,6 +1933,14 @@ class QuantumRealityApp {
     this.saveUser();
     
     input.value = '';
+
+    // Track achievement for message sent
+    if (this.achievementTracker) {
+      this.achievementTracker.trackEvent('message_sent', {
+        threadId: this.currentThread,
+        messageLength: text.length
+      });
+    }
 
     // Generate response after a delay
     this.showTypingIndicator();
@@ -1329,25 +1960,6 @@ class QuantumRealityApp {
         container.scrollTop = container.scrollHeight;
       }, 100);
     }
-  }
-
-  sendMessage() {
-    const input = document.getElementById('messageInput');
-    const text = input.value.trim();
-
-    if (!text) return;
-
-    // Add user message
-    this.addCouncilMessage('user', text, true);
-    input.value = '';
-
-    // Generate response after a delay (simulate thinking)
-    this.showTypingIndicator();
-    
-    setTimeout(() => {
-      this.hideTypingIndicator();
-      this.generateCouncilResponse(text);
-    }, 1500 + Math.random() * 1500);
   }
 
   generateCouncilResponse(userMessage) {
@@ -1484,7 +2096,17 @@ class QuantumRealityApp {
   }
 
   getRandomMessage(templates) {
+    if (!templates || !Array.isArray(templates) || templates.length === 0) {
+      return 'The quantum field is aligned with your intention.';
+    }
     return templates[Math.floor(Math.random() * templates.length)];
+  }
+
+  sanitizeHTML(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   formatTime(timestamp) {
@@ -1669,6 +2291,405 @@ class QuantumRealityApp {
 }
 
 // ============================================
+// ACHIEVEMENT TRACKER SYSTEM
+// ============================================
+
+class AchievementTracker {
+  constructor() {
+    this.achievements = null;
+    this.userProgress = {
+      points: 0,
+      level: 1,
+      unlockedAchievements: [],
+      streaks: {},
+      stats: {},
+      badges: [],
+      dailyChallenges: []
+    };
+    this.listeners = [];
+  }
+
+  async initialize() {
+    // Load achievement definitions
+    const response = await fetch('achievements_system.json');
+    this.achievements = await response.json();
+    
+    // Load user progress from storage
+    await this.loadUserProgress();
+    
+    // Initialize daily challenges
+    this.refreshDailyChallenges();
+    
+    return this;
+  }
+
+  async loadUserProgress() {
+    const stored = localStorage.getItem('achievement_progress');
+    if (stored) {
+      this.userProgress = JSON.parse(stored);
+    } else {
+      // Initialize default progress
+      this.userProgress = {
+        points: 0,
+        level: 1,
+        unlockedAchievements: [],
+        streaks: {
+          daily_engagement: { current: 0, best: 0, lastDate: null },
+          win_logging: { current: 0, best: 0, lastDate: null },
+          reflection: { current: 0, best: 0, lastDate: null },
+          high_coherence: { current: 0, best: 0, lastDate: null }
+        },
+        stats: {
+          sessions_completed: 0,
+          wins_logged: 0,
+          synchronicities_logged: 0,
+          doubts_cleared: 0,
+          reflections_completed: 0,
+          personas_activated: new Set(),
+          shadow_personas_activated: new Set(),
+          meta_mystic_personas_activated: new Set(),
+          unique_configurations: new Set(),
+          matrix_views: 0,
+          community_shares: 0,
+          share_reactions_received: 0,
+          obstacles_logged: 0,
+          patterns_broken: 0,
+          gratitude_entries: 0,
+          emotion_tracking_days: 0
+        },
+        badges: [],
+        dailyChallenges: [],
+        freezeTokens: 0,
+        lastActive: new Date().toISOString()
+      };
+      await this.saveProgress();
+    }
+  }
+
+  async saveProgress() {
+    // Convert Sets to Arrays for JSON serialization
+    const progressToSave = {
+      ...this.userProgress,
+      stats: {
+        ...this.userProgress.stats,
+        personas_activated: Array.from(this.userProgress.stats.personas_activated),
+        shadow_personas_activated: Array.from(this.userProgress.stats.shadow_personas_activated),
+        meta_mystic_personas_activated: Array.from(this.userProgress.stats.meta_mystic_personas_activated),
+        unique_configurations: Array.from(this.userProgress.stats.unique_configurations)
+      }
+    };
+    
+    localStorage.setItem('achievement_progress', JSON.stringify(progressToSave));
+  }
+
+  // Event tracking methods
+  async trackEvent(eventType, data = {}) {
+    console.log(`[Achievement] Tracking event: ${eventType}`, data);
+    
+    switch(eventType) {
+      case 'session_completed':
+        await this.handleSessionCompleted(data);
+        break;
+      case 'win_logged':
+        await this.handleWinLogged(data);
+        break;
+      case 'synchronicity_logged':
+        await this.handleSynchronicityLogged(data);
+        break;
+      case 'doubt_cleared':
+        await this.handleDoubtCleared(data);
+        break;
+      case 'reflection_completed':
+        await this.handleReflectionCompleted(data);
+        break;
+      case 'persona_activated':
+        await this.handlePersonaActivated(data);
+        break;
+      case 'matrix_viewed':
+        await this.handleMatrixViewed(data);
+        break;
+      case 'community_share':
+        await this.handleCommunityShare(data);
+        break;
+      case 'obstacle_logged':
+        await this.handleObstacleLogged(data);
+        break;
+      case 'pattern_broken':
+        await this.handlePatternBroken(data);
+        break;
+      case 'gratitude_logged':
+        await this.handleGratitudeLogged(data);
+        break;
+      case 'field_coherence_update':
+        await this.handleFieldCoherenceUpdate(data);
+        break;
+      case 'intention_completed':
+        await this.handleIntentionCompleted(data);
+        break;
+      case 'council_activated':
+        await this.handleCouncilActivated(data);
+        break;
+      case 'message_sent':
+        await this.handleMessageSent(data);
+        break;
+    }
+    
+    // Check all achievements after each event
+    await this.checkAchievements();
+    
+    // Update level
+    await this.updateLevel();
+    
+    // Save progress
+    await this.saveProgress();
+  }
+
+  async handleSessionCompleted(data) {
+    this.userProgress.stats.sessions_completed++;
+    
+    // Update daily engagement streak
+    await this.updateStreak('daily_engagement');
+    
+    // Track session time for time-specific achievements
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 8) {
+      this.userProgress.stats.morning_sessions = (this.userProgress.stats.morning_sessions || 0) + 1;
+    } else if (hour >= 21 || hour < 2) {
+      this.userProgress.stats.night_sessions = (this.userProgress.stats.night_sessions || 0) + 1;
+    }
+    
+    // Track if all 4 sessions completed today
+    const today = new Date().toDateString();
+    if (!this.userProgress.stats.sessionsToday) {
+      this.userProgress.stats.sessionsToday = {};
+    }
+    if (!this.userProgress.stats.sessionsToday[today]) {
+      this.userProgress.stats.sessionsToday[today] = [];
+    }
+    this.userProgress.stats.sessionsToday[today].push(data.timeSlot);
+    
+    // Check daily challenge completion
+    await this.checkDailyChallengeProgress('morning_momentum', data);
+    await this.checkDailyChallengeProgress('full_engagement', data);
+  }
+
+  async handleWinLogged(data) {
+    this.userProgress.stats.wins_logged++;
+    await this.updateStreak('win_logging');
+    await this.checkDailyChallengeProgress('win_logger', data);
+  }
+
+  async handleSynchronicityLogged(data) {
+    this.userProgress.stats.synchronicities_logged++;
+    await this.checkDailyChallengeProgress('synchronicity_hunter', data);
+  }
+
+  async handleDoubtCleared(data) {
+    this.userProgress.stats.doubts_cleared++;
+  }
+
+  async handleReflectionCompleted(data) {
+    this.userProgress.stats.reflections_completed++;
+    await this.updateStreak('reflection');
+    await this.checkDailyChallengeProgress('reflection_master', data);
+  }
+
+  async handlePersonaActivated(data) {
+    this.userProgress.stats.personas_activated.add(data.personaId);
+  }
+
+  async handleMatrixViewed(data) {
+    this.userProgress.stats.matrix_views++;
+  }
+
+  async handleCommunityShare(data) {
+    this.userProgress.stats.community_shares++;
+  }
+
+  async handleObstacleLogged(data) {
+    this.userProgress.stats.obstacles_logged++;
+  }
+
+  async handlePatternBroken(data) {
+    this.userProgress.stats.patterns_broken++;
+  }
+
+  async handleGratitudeLogged(data) {
+    this.userProgress.stats.gratitude_entries++;
+  }
+
+  async handleFieldCoherenceUpdate(data) {
+    if (data.coherence > 80) {
+      await this.updateStreak('high_coherence');
+    }
+  }
+
+  async handleIntentionCompleted(data) {
+    // Implementation for intention completion tracking
+  }
+
+  async handleCouncilActivated(data) {
+    // Track council activation with persona count
+    this.userProgress.stats.council_activations = (this.userProgress.stats.council_activations || 0) + 1;
+  }
+
+  async handleMessageSent(data) {
+    this.userProgress.stats.messages_sent = (this.userProgress.stats.messages_sent || 0) + 1;
+  }
+
+  async updateStreak(streakType) {
+    const today = new Date().toDateString();
+    const streak = this.userProgress.streaks[streakType];
+    
+    if (streak.lastDate === today) {
+      // Already updated today
+      return;
+    }
+    
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayStr = yesterday.toDateString();
+    
+    if (streak.lastDate === yesterdayStr) {
+      // Continue streak
+      streak.current++;
+      streak.best = Math.max(streak.best, streak.current);
+    } else {
+      // Reset streak
+      streak.current = 1;
+    }
+    
+    streak.lastDate = today;
+  }
+
+  async checkAchievements() {
+    if (!this.achievements) return;
+    
+    for (const category of Object.values(this.achievements.achievement_categories)) {
+      for (const achievement of category.achievements) {
+        if (this.userProgress.unlockedAchievements.includes(achievement.id)) {
+          continue; // Already unlocked
+        }
+        
+        if (this.checkUnlockCondition(achievement.unlock_condition)) {
+          await this.unlockAchievement(achievement);
+        }
+      }
+    }
+  }
+
+  checkUnlockCondition(condition) {
+    switch(condition.type) {
+      case 'session_count':
+        return this.userProgress.stats.sessions_completed >= condition.value;
+      case 'consecutive_days':
+        return this.userProgress.streaks.daily_engagement.current >= condition.value;
+      case 'win_count':
+        return this.userProgress.stats.wins_logged >= condition.value;
+      case 'synchronicity_count':
+        return this.userProgress.stats.synchronicities_logged >= condition.value;
+      case 'reflection_count':
+        return this.userProgress.stats.reflections_completed >= condition.value;
+      case 'persona_count':
+        return this.userProgress.stats.personas_activated.size >= condition.value;
+      case 'level_reached':
+        return this.userProgress.level >= condition.value;
+      case 'points_earned':
+        return this.userProgress.points >= condition.value;
+      case 'streak_maintained':
+        return this.userProgress.streaks[condition.streak_type].current >= condition.value;
+      case 'community_shares':
+        return this.userProgress.stats.community_shares >= condition.value;
+      case 'obstacles_cleared':
+        return this.userProgress.stats.obstacles_logged >= condition.value;
+      case 'patterns_broken':
+        return this.userProgress.stats.patterns_broken >= condition.value;
+      case 'gratitude_entries':
+        return this.userProgress.stats.gratitude_entries >= condition.value;
+      case 'council_activations':
+        return (this.userProgress.stats.council_activations || 0) >= condition.value;
+      case 'messages_sent':
+        return (this.userProgress.stats.messages_sent || 0) >= condition.value;
+      default:
+        return false;
+    }
+  }
+
+  async unlockAchievement(achievement) {
+    this.userProgress.unlockedAchievements.push(achievement.id);
+    this.userProgress.points += achievement.points;
+    
+    // Apply reward
+    if (achievement.reward) {
+      await this.applyReward(achievement.reward);
+    }
+    
+    // Notify listeners
+    this.listeners.forEach(listener => {
+      listener('achievement_unlocked', { achievement });
+    });
+    
+    console.log(`🏆 Achievement unlocked: ${achievement.name}`);
+  }
+
+  async applyReward(reward) {
+    switch(reward.type) {
+      case 'unlock_feature':
+        // Implementation for feature unlocks
+        break;
+      case 'unlock_persona':
+        // Implementation for persona unlocks
+        break;
+      case 'badge':
+        if (!this.userProgress.badges.includes(reward.badge)) {
+          this.userProgress.badges.push(reward.badge);
+        }
+        break;
+      case 'points_multiplier':
+        // Implementation for point multipliers
+        break;
+    }
+  }
+
+  async updateLevel() {
+    const newLevel = Math.floor(this.userProgress.points / 100) + 1;
+    if (newLevel > this.userProgress.level) {
+      this.userProgress.level = newLevel;
+      console.log(`⬆️ Level up! Now level ${newLevel}`);
+      
+      // Notify listeners
+      this.listeners.forEach(listener => {
+        listener('level_up', { newLevel });
+      });
+    }
+  }
+
+  async checkDailyChallengeProgress(challengeType, data) {
+    // Implementation for daily challenge progress checking
+  }
+
+  refreshDailyChallenges() {
+    // Implementation for refreshing daily challenges
+  }
+
+  addListener(callback) {
+    this.listeners.push(callback);
+  }
+
+  removeListener(callback) {
+    this.listeners = this.listeners.filter(listener => listener !== callback);
+  }
+
+  getProgress() {
+    return { ...this.userProgress };
+  }
+
+  getAchievements() {
+    return this.achievements;
+  }
+}
+
+// ============================================
 // LOCAL STORAGE MANAGER
 // ============================================
 
@@ -1678,16 +2699,27 @@ class LocalStorageManager {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : null;
     } catch (e) {
-      console.error('Storage get error:', e);
+      console.error('Storage get error for key', key, ':', e);
       return null;
     }
   }
 
   set(key, value) {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      const serialized = JSON.stringify(value);
+      // Check if we're approaching storage limits
+      if (serialized.length > 5000000) { // ~5MB
+        console.warn('Large data being saved to localStorage. Consider cleanup.');
+      }
+      localStorage.setItem(key, serialized);
+      return true;
     } catch (e) {
-      console.error('Storage set error:', e);
+      console.error('Storage set error for key', key, ':', e);
+      // Try to free up space if quota exceeded
+      if (e.name === 'QuotaExceededError') {
+        console.warn('Storage quota exceeded. Consider clearing old data.');
+      }
+      return false;
     }
   }
 

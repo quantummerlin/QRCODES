@@ -1,0 +1,925 @@
+{
+  "achievement_categories": {
+    "engagement": {
+      "name": "Presence & Engagement",
+      "description": "Achievements for staying present and engaged with the Council",
+      "color": "#4A90E2",
+      "icon": "🎯",
+      "achievements": [
+        {
+          "id": "first_session",
+          "name": "First Contact",
+          "description": "Complete your first Council session",
+          "points": 10,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "session_count",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "daily_reflection_journal"
+          }
+        },
+        {
+          "id": "week_warrior",
+          "name": "Week Warrior",
+          "description": "Engage with the Council for 7 consecutive days",
+          "points": 50,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "consecutive_days",
+            "value": 7
+          },
+          "reward": {
+            "type": "unlock_persona",
+            "persona": "Momentum Master"
+          }
+        },
+        {
+          "id": "month_master",
+          "name": "Month Master",
+          "description": "Maintain presence for 30 consecutive days",
+          "points": 200,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "consecutive_days",
+            "value": 30
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "custom_session_timing"
+          }
+        },
+        {
+          "id": "quantum_keeper",
+          "name": "Quantum Keeper",
+          "description": "100 days of continuous presence",
+          "points": 1000,
+          "tier": "diamond",
+          "unlock_condition": {
+            "type": "consecutive_days",
+            "value": 100
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "mersenne_matrix_customization"
+          }
+        },
+        {
+          "id": "early_bird",
+          "name": "Dawn Awakener",
+          "description": "Complete 10 morning sessions (6am)",
+          "points": 30,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "session_time_count",
+            "time_slot": "morning",
+            "value": 10
+          },
+          "reward": {
+            "type": "badge",
+            "badge": "sunrise_seeker"
+          }
+        },
+        {
+          "id": "night_owl",
+          "name": "Twilight Keeper",
+          "description": "Complete 10 evening sessions (10pm)",
+          "points": 30,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "session_time_count",
+            "time_slot": "night",
+            "value": 10
+          },
+          "reward": {
+            "type": "badge",
+            "badge": "moonlight_guardian"
+          }
+        },
+        {
+          "id": "full_spectrum",
+          "name": "Full Spectrum Presence",
+          "description": "Complete all 4 daily sessions in one day",
+          "points": 75,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "all_sessions_one_day",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "priority_council_access"
+          }
+        }
+      ]
+    },
+    "manifestation_progress": {
+      "name": "Reality Shaping",
+      "description": "Achievements for manifesting your desired reality",
+      "color": "#9B59B6",
+      "icon": "✨",
+      "achievements": [
+        {
+          "id": "first_win",
+          "name": "First Manifestation",
+          "description": "Log your first win or synchronicity",
+          "points": 25,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "win_count",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "win_celebration_animation"
+          }
+        },
+        {
+          "id": "win_streak_3",
+          "name": "Momentum Builder",
+          "description": "Log wins for 3 consecutive days",
+          "points": 50,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "win_streak",
+            "value": 3
+          },
+          "reward": {
+            "type": "field_boost",
+            "boost_percentage": 10,
+            "duration_days": 7
+          }
+        },
+        {
+          "id": "win_streak_7",
+          "name": "Reality Architect",
+          "description": "Log wins for 7 consecutive days",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "win_streak",
+            "value": 7
+          },
+          "reward": {
+            "type": "unlock_persona",
+            "persona": "Victory Amplifier"
+          }
+        },
+        {
+          "id": "synchronicity_spotter",
+          "name": "Synchronicity Spotter",
+          "description": "Log 10 synchronicities",
+          "points": 100,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "synchronicity_count",
+            "value": 10
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "synchronicity_pattern_analyzer"
+          }
+        },
+        {
+          "id": "doubt_crusher",
+          "name": "Doubt Crusher",
+          "description": "Clear 5 doubt spirals with Council support",
+          "points": 75,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "doubt_cleared_count",
+            "value": 5
+          },
+          "reward": {
+            "type": "unlock_persona",
+            "persona": "Doubt Disruptor"
+          }
+        },
+        {
+          "id": "field_coherence_high",
+          "name": "Coherence Master",
+          "description": "Maintain 80%+ field coherence for 7 days",
+          "points": 200,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "field_coherence_sustained",
+            "threshold": 0.8,
+            "days": 7
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "advanced_field_analytics"
+          }
+        },
+        {
+          "id": "intention_fulfilled",
+          "name": "Intention Fulfilled",
+          "description": "Mark your primary intention as manifested",
+          "points": 500,
+          "tier": "diamond",
+          "unlock_condition": {
+            "type": "intention_completed",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "legacy_intention_archive"
+          }
+        }
+      ]
+    },
+    "council_mastery": {
+      "name": "Council Mastery",
+      "description": "Achievements for deepening your relationship with the Council",
+      "color": "#E74C3C",
+      "icon": "👥",
+      "achievements": [
+        {
+          "id": "meet_trinity",
+          "name": "Trinity Awakening",
+          "description": "Complete a session with the Core Trinity",
+          "points": 15,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "trinity_session",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "trinity_direct_message"
+          }
+        },
+        {
+          "id": "full_council_activation",
+          "name": "Full Council Activation",
+          "description": "Activate all 77 personas at least once",
+          "points": 300,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "unique_personas_activated",
+            "value": 77
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "council_constellation_view"
+          }
+        },
+        {
+          "id": "shadow_integration",
+          "name": "Shadow Integration",
+          "description": "Work with 10 different shadow personas",
+          "points": 100,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "shadow_personas_activated",
+            "value": 10
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "shadow_work_journal"
+          }
+        },
+        {
+          "id": "meta_mystic_connection",
+          "name": "Meta-Mystic Connection",
+          "description": "Engage with all 11 Meta-Mystic personas",
+          "points": 250,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "meta_mystic_personas_activated",
+            "value": 11
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "cosmic_consciousness_mode"
+          }
+        },
+        {
+          "id": "favorite_persona",
+          "name": "Soul Resonance",
+          "description": "Interact with the same persona 20 times",
+          "points": 50,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "single_persona_count",
+            "value": 20
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "persona_affinity_insights"
+          }
+        },
+        {
+          "id": "council_dialogue_master",
+          "name": "Dialogue Master",
+          "description": "Witness 100 inter-persona dialogues",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "dialogue_witnessed_count",
+            "value": 100
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "dialogue_replay_library"
+          }
+        }
+      ]
+    },
+    "self_awareness": {
+      "name": "Self-Awareness",
+      "description": "Achievements for deepening self-knowledge and presence",
+      "color": "#F39C12",
+      "icon": "🧘",
+      "achievements": [
+        {
+          "id": "first_reflection",
+          "name": "Mirror Gazer",
+          "description": "Complete your first daily reflection",
+          "points": 10,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "reflection_count",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "reflection_prompts"
+          }
+        },
+        {
+          "id": "reflection_streak",
+          "name": "Inner Observer",
+          "description": "Complete daily reflections for 14 days",
+          "points": 100,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "reflection_streak",
+            "value": 14
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "reflection_pattern_analysis"
+          }
+        },
+        {
+          "id": "obstacle_identifier",
+          "name": "Obstacle Identifier",
+          "description": "Identify and log 5 personal obstacles",
+          "points": 50,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "obstacles_logged",
+            "value": 5
+          },
+          "reward": {
+            "type": "unlock_persona",
+            "persona": "Obstacle Obliterator"
+          }
+        },
+        {
+          "id": "pattern_breaker",
+          "name": "Pattern Breaker",
+          "description": "Break 3 identified limiting patterns",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "patterns_broken",
+            "value": 3
+          },
+          "reward": {
+            "type": "field_boost",
+            "boost_percentage": 15,
+            "duration_days": 14
+          }
+        },
+        {
+          "id": "emotional_mastery",
+          "name": "Emotional Alchemist",
+          "description": "Track emotional states for 30 days",
+          "points": 125,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "emotion_tracking_days",
+            "value": 30
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "emotional_intelligence_dashboard"
+          }
+        },
+        {
+          "id": "gratitude_practice",
+          "name": "Gratitude Guardian",
+          "description": "Log gratitude entries for 21 consecutive days",
+          "points": 100,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "gratitude_streak",
+            "value": 21
+          },
+          "reward": {
+            "type": "field_boost",
+            "boost_percentage": 20,
+            "duration_days": 7
+          }
+        }
+      ]
+    },
+    "quantum_mastery": {
+      "name": "Quantum Mastery",
+      "description": "Advanced achievements for quantum field manipulation",
+      "color": "#1ABC9C",
+      "icon": "⚛️",
+      "achievements": [
+        {
+          "id": "mersenne_explorer",
+          "name": "Mersenne Explorer",
+          "description": "View the Mersenne Matrix 10 times",
+          "points": 25,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "matrix_views",
+            "value": 10
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "matrix_state_history"
+          }
+        },
+        {
+          "id": "configuration_master",
+          "name": "Configuration Master",
+          "description": "Experience 100 unique persona configurations",
+          "points": 200,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "unique_configurations",
+            "value": 100
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "configuration_favorites"
+          }
+        },
+        {
+          "id": "frequency_tuner",
+          "name": "Frequency Tuner",
+          "description": "Maintain high frequency (80%+) for 14 days",
+          "points": 175,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "frequency_sustained",
+            "threshold": 0.8,
+            "days": 14
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "frequency_amplifier_mode"
+          }
+        },
+        {
+          "id": "momentum_surge",
+          "name": "Momentum Surge",
+          "description": "Achieve 90%+ momentum score",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "momentum_threshold",
+            "value": 0.9
+          },
+          "reward": {
+            "type": "field_boost",
+            "boost_percentage": 25,
+            "duration_days": 3
+          }
+        },
+        {
+          "id": "quantum_leap",
+          "name": "Quantum Leap",
+          "description": "Increase field coherence by 30% in 7 days",
+          "points": 250,
+          "tier": "diamond",
+          "unlock_condition": {
+            "type": "coherence_increase",
+            "percentage": 0.3,
+            "days": 7
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "quantum_acceleration_protocol"
+          }
+        },
+        {
+          "id": "reality_weaver",
+          "name": "Reality Weaver",
+          "description": "Maintain 90%+ coherence for 30 days",
+          "points": 1000,
+          "tier": "diamond",
+          "unlock_condition": {
+            "type": "coherence_sustained",
+            "threshold": 0.9,
+            "days": 30
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "master_manifestor_status"
+          }
+        }
+      ]
+    },
+    "community": {
+      "name": "Community & Sharing",
+      "description": "Achievements for contributing to the collective field",
+      "color": "#E67E22",
+      "icon": "🌍",
+      "achievements": [
+        {
+          "id": "first_share",
+          "name": "Field Contributor",
+          "description": "Share your first win with the community",
+          "points": 20,
+          "tier": "bronze",
+          "unlock_condition": {
+            "type": "community_shares",
+            "value": 1
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "community_feed_access"
+          }
+        },
+        {
+          "id": "inspiration_giver",
+          "name": "Inspiration Giver",
+          "description": "Have 10 users react to your shared wins",
+          "points": 75,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "share_reactions_received",
+            "value": 10
+          },
+          "reward": {
+            "type": "badge",
+            "badge": "community_beacon"
+          }
+        },
+        {
+          "id": "collective_field_booster",
+          "name": "Collective Field Booster",
+          "description": "Contribute to 50 community manifestations",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "community_contributions",
+            "value": 50
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "collective_field_amplifier"
+          }
+        }
+      ]
+    },
+    "special_events": {
+      "name": "Special Events",
+      "description": "Limited-time and milestone achievements",
+      "color": "#8E44AD",
+      "icon": "🎊",
+      "achievements": [
+        {
+          "id": "birthday_manifestor",
+          "name": "Birthday Manifestor",
+          "description": "Complete a session on your birthday",
+          "points": 100,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "special_date",
+            "date_type": "birthday"
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "birthday_blessing_session"
+          }
+        },
+        {
+          "id": "new_year_intention",
+          "name": "New Year Visionary",
+          "description": "Set an intention on New Year's Day",
+          "points": 75,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "special_date",
+            "date_type": "new_year"
+          },
+          "reward": {
+            "type": "field_boost",
+            "boost_percentage": 30,
+            "duration_days": 7
+          }
+        },
+        {
+          "id": "full_moon_manifestor",
+          "name": "Full Moon Manifestor",
+          "description": "Complete a session during a full moon",
+          "points": 50,
+          "tier": "silver",
+          "unlock_condition": {
+            "type": "lunar_phase",
+            "phase": "full_moon"
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "lunar_cycle_tracker"
+          }
+        },
+        {
+          "id": "solstice_keeper",
+          "name": "Solstice Keeper",
+          "description": "Complete sessions on both solstices in a year",
+          "points": 150,
+          "tier": "gold",
+          "unlock_condition": {
+            "type": "special_dates_multiple",
+            "dates": ["summer_solstice", "winter_solstice"]
+          },
+          "reward": {
+            "type": "unlock_feature",
+            "feature": "seasonal_alignment_protocol"
+          }
+        }
+      ]
+    }
+  },
+  "achievement_tiers": {
+    "bronze": {
+      "name": "Bronze",
+      "color": "#CD7F32",
+      "icon": "🥉",
+      "point_range": [0, 50]
+    },
+    "silver": {
+      "name": "Silver",
+      "color": "#C0C0C0",
+      "icon": "🥈",
+      "point_range": [51, 150]
+    },
+    "gold": {
+      "name": "Gold",
+      "color": "#FFD700",
+      "icon": "🥇",
+      "icon_alt": "⭐",
+      "point_range": [151, 300]
+    },
+    "diamond": {
+      "name": "Diamond",
+      "color": "#B9F2FF",
+      "icon": "💎",
+      "point_range": [301, 99999]
+    }
+  },
+  "level_system": {
+    "levels": [
+      {"level": 1, "name": "Seeker", "points_required": 0, "icon": "🌱"},
+      {"level": 2, "name": "Awakening", "points_required": 100, "icon": "🌿"},
+      {"level": 3, "name": "Initiate", "points_required": 250, "icon": "🔮"},
+      {"level": 4, "name": "Practitioner", "points_required": 500, "icon": "✨"},
+      {"level": 5, "name": "Adept", "points_required": 1000, "icon": "🌟"},
+      {"level": 6, "name": "Master", "points_required": 2000, "icon": "⚡"},
+      {"level": 7, "name": "Sage", "points_required": 3500, "icon": "🔥"},
+      {"level": 8, "name": "Mystic", "points_required": 5500, "icon": "🌙"},
+      {"level": 9, "name": "Quantum Weaver", "points_required": 8000, "icon": "⚛️"},
+      {"level": 10, "name": "Reality Architect", "points_required": 12000, "icon": "👁️"},
+      {"level": 11, "name": "Cosmic Creator", "points_required": 20000, "icon": "🌌"}
+    ],
+    "level_rewards": {
+      "2": {"type": "unlock_feature", "feature": "advanced_stats"},
+      "3": {"type": "unlock_persona", "persona": "Quantum Accelerator"},
+      "4": {"type": "field_boost", "boost_percentage": 10, "duration_days": 30},
+      "5": {"type": "unlock_feature", "feature": "custom_council_selection"},
+      "6": {"type": "unlock_feature", "feature": "intention_templates"},
+      "7": {"type": "field_boost", "boost_percentage": 15, "duration_days": 30},
+      "8": {"type": "unlock_feature", "feature": "advanced_synchronicity_detection"},
+      "9": {"type": "unlock_feature", "feature": "quantum_field_manipulation"},
+      "10": {"type": "unlock_feature", "feature": "reality_architect_dashboard"},
+      "11": {"type": "unlock_feature", "feature": "cosmic_creator_mode"}
+    }
+  },
+  "daily_challenges": {
+    "challenge_pool": [
+      {
+        "id": "morning_momentum",
+        "name": "Morning Momentum",
+        "description": "Complete your morning session before 8am",
+        "points": 15,
+        "frequency": "daily"
+      },
+      {
+        "id": "win_logger",
+        "name": "Win Logger",
+        "description": "Log at least one win today",
+        "points": 10,
+        "frequency": "daily"
+      },
+      {
+        "id": "reflection_master",
+        "name": "Reflection Master",
+        "description": "Complete a detailed reflection (100+ words)",
+        "points": 20,
+        "frequency": "daily"
+      },
+      {
+        "id": "gratitude_express",
+        "name": "Gratitude Express",
+        "description": "List 3 things you're grateful for",
+        "points": 10,
+        "frequency": "daily"
+      },
+      {
+        "id": "full_engagement",
+        "name": "Full Engagement",
+        "description": "Complete all 4 daily sessions",
+        "points": 30,
+        "frequency": "daily"
+      },
+      {
+        "id": "shadow_work",
+        "name": "Shadow Work",
+        "description": "Engage with a shadow persona today",
+        "points": 25,
+        "frequency": "weekly"
+      },
+      {
+        "id": "synchronicity_hunter",
+        "name": "Synchronicity Hunter",
+        "description": "Log 2 synchronicities this week",
+        "points": 35,
+        "frequency": "weekly"
+      },
+      {
+        "id": "community_contributor",
+        "name": "Community Contributor",
+        "description": "Share a win with the community",
+        "points": 20,
+        "frequency": "weekly"
+      }
+    ],
+    "challenge_rotation": "daily_at_midnight"
+  },
+  "badges": {
+    "sunrise_seeker": {
+      "name": "Sunrise Seeker",
+      "description": "Consistently engages in morning sessions",
+      "icon": "🌅",
+      "rarity": "common"
+    },
+    "moonlight_guardian": {
+      "name": "Moonlight Guardian",
+      "description": "Consistently engages in evening sessions",
+      "icon": "🌙",
+      "rarity": "common"
+    },
+    "community_beacon": {
+      "name": "Community Beacon",
+      "description": "Inspires others through shared wins",
+      "icon": "🔥",
+      "rarity": "rare"
+    },
+    "doubt_destroyer": {
+      "name": "Doubt Destroyer",
+      "description": "Master of clearing limiting beliefs",
+      "icon": "⚔️",
+      "rarity": "epic"
+    },
+    "quantum_pioneer": {
+      "name": "Quantum Pioneer",
+      "description": "Early adopter and system explorer",
+      "icon": "🚀",
+      "rarity": "legendary"
+    }
+  },
+  "streaks": {
+    "types": [
+      {
+        "id": "daily_engagement",
+        "name": "Daily Engagement Streak",
+        "description": "Consecutive days with at least one session",
+        "icon": "🔥",
+        "milestones": [3, 7, 14, 30, 60, 100, 365]
+      },
+      {
+        "id": "win_logging",
+        "name": "Win Logging Streak",
+        "description": "Consecutive days logging wins",
+        "icon": "🏆",
+        "milestones": [3, 7, 14, 21, 30]
+      },
+      {
+        "id": "reflection",
+        "name": "Reflection Streak",
+        "description": "Consecutive days with reflections",
+        "icon": "📝",
+        "milestones": [7, 14, 21, 30, 60]
+      },
+      {
+        "id": "high_coherence",
+        "name": "High Coherence Streak",
+        "description": "Consecutive days with 70%+ coherence",
+        "icon": "✨",
+        "milestones": [3, 7, 14, 30]
+      }
+    ],
+    "streak_protection": {
+      "enabled": true,
+      "freeze_tokens": 3,
+      "earn_freeze_token_every_n_days": 7
+    }
+  },
+  "leaderboards": {
+    "types": [
+      {
+        "id": "total_points",
+        "name": "Total Points",
+        "description": "All-time point leaders",
+        "reset": "never"
+      },
+      {
+        "id": "monthly_points",
+        "name": "Monthly Champions",
+        "description": "Top point earners this month",
+        "reset": "monthly"
+      },
+      {
+        "id": "win_streak",
+        "name": "Win Streak Leaders",
+        "description": "Longest current win streaks",
+        "reset": "never"
+      },
+      {
+        "id": "field_coherence",
+        "name": "Field Coherence Masters",
+        "description": "Highest average coherence this month",
+        "reset": "monthly"
+      }
+    ],
+    "privacy": {
+      "opt_in_required": true,
+      "anonymous_option": true
+    }
+  },
+  "progress_milestones": {
+    "intention_journey": [
+      {
+        "milestone": "intention_set",
+        "name": "Intention Set",
+        "description": "Your journey begins",
+        "icon": "🎯",
+        "celebration": "Welcome to your manifestation journey!"
+      },
+      {
+        "milestone": "first_week",
+        "name": "First Week Complete",
+        "description": "7 days of presence",
+        "icon": "📅",
+        "celebration": "You've established the foundation!"
+      },
+      {
+        "milestone": "first_win",
+        "name": "First Manifestation",
+        "description": "Evidence of your power",
+        "icon": "🎉",
+        "celebration": "The universe is responding!"
+      },
+      {
+        "milestone": "momentum_building",
+        "name": "Momentum Building",
+        "description": "Consistent progress for 21 days",
+        "icon": "🚀",
+        "celebration": "You're in the flow!"
+      },
+      {
+        "milestone": "halfway_point",
+        "name": "Halfway There",
+        "description": "50% progress toward intention",
+        "icon": "⭐",
+        "celebration": "The finish line is in sight!"
+      },
+      {
+        "milestone": "final_stretch",
+        "name": "Final Stretch",
+        "description": "75% progress toward intention",
+        "icon": "🏁",
+        "celebration": "Your reality is shifting!"
+      },
+      {
+        "milestone": "intention_manifested",
+        "name": "Intention Manifested",
+        "description": "Your desired reality achieved",
+        "icon": "👑",
+        "celebration": "You are a conscious creator!"
+      }
+    ]
+  }
+}

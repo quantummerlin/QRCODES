@@ -733,7 +733,9 @@
             A vague desire creates a scattered frequency. A precise vision creates a <span class="highlight">quantum lock</span>. 
             Let me guide you through the process."
           </div>
+        </div>
       </div>
+      
       <div class="nav-buttons">
         <button class="btn btn-next" type="button" onclick="console.log('Button clicked!'); nextStep(); return false;">
           Begin the Process ⚡
@@ -1033,13 +1035,46 @@ When did you feel most aligned, confident, or successful?"
         <div class="guide-avatar">🧙</div>
         <div class="guide-name">QUANTUM MERLIN & ROSE</div>
         <div class="guide-text">
-          "Your blueprint is <span class="highlight">complete</span>. 
-          We have encoded your intention into the quantum field. 
-          The Council has been assigned. <span class="highlight">Your reality is now shifting.</span>"
+          "Your blueprint is <span class="highlight">almost complete</span>. 
+          Now you must <span class="highlight">speak your intention</span> into existence. 
+          Record yourself declaring your new reality to activate the quantum field."
         </div>
       </div>
       
-      <div class="blueprint-summary">
+      <div class="recording-instruction">
+        <div class="recording-title">🎙️ SPEAK YOUR INTENTION 🎙️</div>
+        <div class="recording-subtitle">
+          Read this affirmation aloud while recording yourself. This seals your quantum code.
+        </div>
+        
+        <div class="spoken-intention-box">
+          <div class="spoken-intention" id="spokenIntention">
+            "I am now [your intention]. I feel [emotions] in every cell of my being..."
+          </div>
+        </div>
+        
+        <div class="recording-controls">
+          <button class="record-btn" id="recordBtn" 
+                  onmousedown="startRecording()" 
+                  onmouseup="stopRecording()"
+                  ontouchstart="startRecording()"
+                  ontouchend="stopRecording()"
+                  onmouseleave="stopRecordingIfRecording()">
+            🎙️ Hold to Record Your Intention
+          </button>
+          <div class="recording-instructions">
+            Press and hold the button above, speak your intention clearly, then release to stop
+          </div>
+          <div class="recording-status" id="recordingStatus">
+            Ready to record - minimum 2 seconds, maximum 30 seconds
+          </div>
+          <div class="recording-timer" id="recordingTimer" style="display: none;">
+            Recording: <span id="timerDisplay">0</span> seconds
+          </div>
+        </div>
+      </div>
+      
+      <div class="blueprint-summary" style="display: none;">
         <div class="blueprint-title">⚡ YOUR MANIFESTATION BLUEPRINT ⚡</div>
         
         <div class="blueprint-section">
@@ -1074,14 +1109,14 @@ When did you feel most aligned, confident, or successful?"
         </div>
       </div>
       
-      <div class="identity-statement">
+      <div class="identity-statement" style="display: none;">
         <div class="identity-label">YOUR NEW IDENTITY STATEMENT</div>
         <div class="identity-text" id="identityStatement">
           "I am someone who..."
         </div>
       </div>
       
-      <div class="affirmation-box">
+      <div class="affirmation-box" style="display: none;">
         <div class="affirmation-instruction">
           Speak this affirmation aloud to seal your quantum code:
         </div>
@@ -1096,18 +1131,18 @@ When did you feel most aligned, confident, or successful?"
         </div>
       </div>
       
-      <p style="text-align: center; color: var(--neon-cyan); margin-top: 24px; font-size: 0.9rem;">
+      <p style="text-align: center; color: var(--neon-cyan); margin-top: 24px; font-size: 0.9rem; display: none;" id="councilMessage">
         Your personal council of 7 personas has been assigned based on your blueprint
       </p>
       
-      <div class="council-preview" id="councilPreview">
+      <div class="council-preview" id="councilPreview" style="display: none;">
         <!-- Dynamically populated -->
       </div>
       
       <div class="nav-buttons">
         <button class="btn btn-back" onclick="prevStep()">← Back</button>
-        <button class="btn btn-next" onclick="activateBlueprint()">
-          Activate Blueprint ⚡
+        <button class="btn btn-next" onclick="activateBlueprint()" disabled>
+          Record Your Intention First 🎙️
         </button>
       </div>
     </div>
@@ -1249,7 +1284,7 @@ When did you feel most aligned, confident, or successful?"
         updateOutcomeSuggestions();
       }
       if (currentStep === 8) {
-        generateFinalBlueprint();
+        prepareRecordingStep();
       }
     }
     
@@ -1367,33 +1402,32 @@ When did you feel most aligned, confident, or successful?"
     }
     
     // Generate Final Blueprint
-    function generateFinalBlueprint() {
-      // Generate quantum code from intention
-      blueprint.quantumCode = generateQuantumCode(blueprint.specificOutcome);
+    function prepareRecordingStep() {
+      console.log('Preparing recording step...');
       
-      // Populate summary
-      document.getElementById('summaryDomain').textContent = blueprint.domainLabel;
-      document.getElementById('summaryIntention').textContent = blueprint.specificOutcome;
-      document.getElementById('summaryEmotions').textContent = blueprint.emotions.join(', ');
-      document.getElementById('summaryBlocks').textContent = blueprint.obstacles.length > 0 
-        ? blueprint.obstacles.join(', ').replace(/-/g, ' ')
-        : 'No major blocks identified';
-      document.getElementById('summaryTimeline').textContent = 
-        blueprint.timeline === 'divine' ? '∞ Divine Timing' : `${blueprint.timeline} days`;
+      // Generate the spoken intention
+      const spokenIntention = generateSpokenIntention();
+      document.getElementById('spokenIntention').textContent = spokenIntention;
       
-      // Display code
-      document.getElementById('generatedCode').textContent = blueprint.quantumCode;
-      document.getElementById('codeFrequency').textContent = `Frequency: ${getCodeFrequency(blueprint.quantumCode)}`;
+      // Initially hide the blueprint summary and show recording
+      document.querySelector('.blueprint-summary').style.display = 'none';
+      document.querySelector('.identity-statement').style.display = 'none';
+      document.querySelector('.council-preview').style.display = 'none';
+      document.querySelector('.recording-instruction').style.display = 'block';
       
-      // Generate identity statement
-      const identity = generateIdentityStatement();
-      document.getElementById('identityStatement').textContent = identity;
+      // Update the activate button to be disabled until recording is done
+      const activateBtn = document.querySelector('.btn-next');
+      activateBtn.disabled = true;
+      activateBtn.textContent = 'Record Your Intention First 🎙️';
+    }
+    
+    function generateSpokenIntention() {
+      const domain = blueprint.domainLabel || 'my highest potential';
+      const intention = blueprint.specificOutcome || 'manifesting my dreams';
+      const emotions = blueprint.emotions.length > 0 ? blueprint.emotions.join(' and ') : 'joy and fulfillment';
+      const timeline = blueprint.timeline === 'divine' ? 'in divine timing' : `within ${blueprint.timeline} days`;
       
-      // Generate affirmation
-      document.getElementById('affirmationText').textContent = generateAffirmation();
-      
-      // Assign council
-      assignCouncil();
+      return `I am now ${intention}. I feel ${emotions} in every cell of my being. This is my reality in the ${domain} domain, manifesting ${timeline}. I am grateful for this manifestation. And so it is.`;
     }
     
     function generateQuantumCode(text) {
@@ -1465,17 +1499,152 @@ When did you feel most aligned, confident, or successful?"
     }
     
     // Recording (simulated)
-    function toggleRecording() {
-      const btn = document.getElementById('speakBtn');
-      btn.classList.toggle('recording');
+    let mediaRecorder = null;
+    let recordingStartTime = null;
+    let recordingTimer = null;
+    let isRecording = false;
+    
+    function startRecording() {
+      if (isRecording) return; // Prevent multiple starts
       
-      if (btn.classList.contains('recording')) {
-        setTimeout(() => {
-          btn.classList.remove('recording');
-          btn.innerHTML = '✅';
-          setTimeout(() => btn.innerHTML = '🎙️', 2000);
-        }, 3000);
+      const btn = document.getElementById('recordBtn');
+      const status = document.getElementById('recordingStatus');
+      const timer = document.getElementById('recordingTimer');
+      const timerDisplay = document.getElementById('timerDisplay');
+      
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        status.textContent = 'Recording not supported on this device';
+        status.style.color = 'var(--neon-pink)';
+        return;
       }
+      
+      isRecording = true;
+      btn.textContent = '🎙️ Recording... (Release to Stop)';
+      btn.style.background = 'var(--neon-pink)';
+      btn.style.boxShadow = '0 0 20px rgba(255, 20, 147, 0.5)';
+      status.textContent = 'Speak your intention now...';
+      status.style.color = 'var(--neon-cyan)';
+      timer.style.display = 'block';
+      
+      recordingStartTime = Date.now();
+      
+      // Start timer display
+      recordingTimer = setInterval(() => {
+        const elapsed = Math.floor((Date.now() - recordingStartTime) / 1000);
+        timerDisplay.textContent = elapsed;
+        
+        // Auto-stop after 30 seconds maximum
+        if (elapsed >= 30) {
+          stopRecording();
+          return;
+        }
+        
+        // Visual feedback - pulse the button
+        if (elapsed % 2 === 0) {
+          btn.style.transform = 'scale(1.05)';
+        } else {
+          btn.style.transform = 'scale(1.0)';
+        }
+      }, 1000);
+      
+      // Start recording
+      navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(stream => {
+          mediaRecorder = new MediaRecorder(stream);
+          const chunks = [];
+          
+          mediaRecorder.ondataavailable = e => chunks.push(e.data);
+          mediaRecorder.onstop = () => {
+            stream.getTracks().forEach(track => track.stop());
+            console.log('Recording complete, duration:', Math.floor((Date.now() - recordingStartTime) / 1000), 'seconds');
+            recordingComplete();
+          };
+          
+          mediaRecorder.start();
+        })
+        .catch(err => {
+          console.error('Recording error:', err);
+          stopRecordingUI();
+          status.textContent = 'Recording failed. Please try again.';
+          status.style.color = 'var(--neon-pink)';
+        });
+    }
+    
+    function stopRecording() {
+      if (!isRecording) return;
+      
+      const duration = Date.now() - recordingStartTime;
+      if (duration < 2000) { // Minimum 2 seconds
+        stopRecordingUI();
+        document.getElementById('recordingStatus').textContent = 'Recording too short. Please record for at least 2 seconds.';
+        document.getElementById('recordingStatus').style.color = 'var(--neon-pink)';
+        return;
+      }
+      
+      if (mediaRecorder && mediaRecorder.state === 'recording') {
+        mediaRecorder.stop();
+      }
+    }
+    
+    function stopRecordingIfRecording() {
+      // Stop recording if mouse leaves button while recording
+      if (isRecording) {
+        stopRecording();
+      }
+    }
+    
+    function stopRecordingUI() {
+      const btn = document.getElementById('recordBtn');
+      const timer = document.getElementById('recordingTimer');
+      
+      isRecording = false;
+      clearInterval(recordingTimer);
+      
+      btn.textContent = '🎙️ Hold to Record Your Intention';
+      btn.style.background = 'var(--neon-cyan)';
+      btn.style.boxShadow = '0 0 20px rgba(0, 245, 255, 0.5)';
+      btn.style.transform = 'scale(1.0)';
+      timer.style.display = 'none';
+    }
+    
+    function recordingComplete() {
+      stopRecordingUI();
+      
+      const status = document.getElementById('recordingStatus');
+      status.textContent = '✅ Recording Complete! Processing your intention...';
+      status.style.color = 'var(--neon-gold)';
+      
+      // Disable the record button
+      document.getElementById('recordBtn').disabled = true;
+      
+      // Show final blueprint after a short delay
+      setTimeout(() => {
+        showFinalBlueprint();
+      }, 2000);
+    }
+    
+    function showFinalBlueprint() {
+      // Generate the final blueprint now that recording is complete
+      generateFinalBlueprint();
+      
+      // Hide recording interface and show blueprint
+      document.querySelector('.recording-instruction').style.display = 'none';
+      document.querySelector('.blueprint-summary').style.display = 'block';
+      document.querySelector('.identity-statement').style.display = 'block';
+      document.querySelector('.affirmation-box').style.display = 'block';
+      document.getElementById('councilMessage').style.display = 'block';
+      document.querySelector('.council-preview').style.display = 'block';
+      
+      // Enable the activate button
+      const activateBtn = document.querySelector('.btn-next');
+      activateBtn.disabled = false;
+      activateBtn.textContent = 'Activate Blueprint ⚡';
+      
+      // Update the guide message
+      document.querySelector('.guide-text').innerHTML = 
+        '"Your <span class="highlight">spoken intention</span> has been recorded and encoded. ' +
+        'Your blueprint is <span class="highlight">complete</span>. ' +
+        'The Council has been assigned. <span class="highlight">Your reality is now shifting.</span>"';
     }
   </script>
   
@@ -1900,11 +2069,154 @@ When did you feel most aligned, confident, or successful?"
         flex: 1;
       }
     }
+
+    /* Recording interface styles */
+    .recording-instruction {
+      background: var(--bg-card);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .recording-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+      text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+    }
+
+    .recording-subtitle {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .spoken-intention-box {
+      background: rgba(0, 245, 255, 0.05);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .spoken-intention {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+      font-style: italic;
+      text-align: center;
+    }
+
+    .recording-controls {
+      margin-top: 24px;
+    }
+
+    .recording-instructions {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+
+    .record-btn {
+      background: var(--neon-cyan);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+      margin-bottom: 12px;
+      user-select: none;
+      -webkit-user-select: none;
+      min-width: 280px;
+    }
+
+    .record-btn:hover:not(:disabled) {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 245, 255, 0.7);
+    }
+
+    .record-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .record-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .record-btn.recording {
+      background: var(--neon-pink) !important;
+      box-shadow: 0 0 20px rgba(255, 20, 147, 0.5) !important;
+      animation: pulse 1s infinite;
+    }
+
+    .recording-status {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      min-height: 20px;
+      margin-top: 8px;
+    }
+
+    .recording-timer {
+      font-size: 1rem;
+      color: var(--neon-cyan);
+      font-weight: 600;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+  
+  <script>
     function activateBlueprint() {
+      console.log('Activating blueprint...', blueprint);
+      console.log('Current step:', currentStep);
+      console.log('Blueprint data:', {
+        domain: blueprint.domain,
+        specificOutcome: blueprint.specificOutcome,
+        quantumCode: blueprint.quantumCode
+      });
+      
+      // Ensure we completed all steps
+      if (currentStep < 8) {
+        console.error('Wizard not completed! Current step:', currentStep);
+        alert('Please complete all steps of the intention wizard first.');
+        return;
+      }
+      
+      // Ensure quantum code exists
+      if (!blueprint.quantumCode) {
+        console.error('No quantum code generated! Regenerating...');
+        if (blueprint.specificOutcome) {
+          blueprint.quantumCode = generateQuantumCode(blueprint.specificOutcome);
+          console.log('Generated code:', blueprint.quantumCode);
+        } else {
+          alert('Please enter your specific intention in step 2.');
+          return;
+        }
+      }
+      
       // Save to localStorage
       localStorage.setItem('quantum_blueprint', JSON.stringify(blueprint));
       localStorage.setItem('quantum_code', blueprint.quantumCode);
       localStorage.setItem('quantum_intention', blueprint.specificOutcome);
+      
+      console.log('Blueprint activated with code:', blueprint.quantumCode);
+      console.log('Redirecting to:', `index.html?activated=true&code=${blueprint.quantumCode}`);
       
       // Redirect to main app
       window.location.href = `index.html?activated=true&code=${blueprint.quantumCode}`;
