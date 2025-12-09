@@ -888,7 +888,8 @@ class QuantumRealityApp {
       'dashboard': 'dashboardSection',
       'achievements': 'achievementsSection',
       'synchronicity': 'synchronicitySection',
-      'wins': 'winsSection'
+      'wins': 'winsSection',
+      'help': 'helpSection'
     };
 
     const targetId = sectionMap[section];
@@ -2112,6 +2113,126 @@ I'm manifesting my dream reality using quantum frequency alignment.
   }
 
   // ============================================
+  // CRISIS SUPPORT SYSTEM
+  // ============================================
+
+  detectCrisis(text) {
+    const lowerText = text.toLowerCase();
+    
+    // Crisis keywords - immediate intervention needed
+    const crisisKeywords = [
+      'suicide', 'kill myself', 'end my life', 'want to die', 'better off dead',
+      'harm myself', 'hurt myself', 'self harm', 'cutting myself',
+      'no reason to live', 'can\'t go on', 'can\'t take it anymore',
+      'ending it all', 'suicidal', 'pills', 'overdose'
+    ];
+
+    // High distress keywords - supportive intervention
+    const distressKeywords = [
+      'hopeless', 'helpless', 'worthless', 'unbearable', 'can\'t cope',
+      'falling apart', 'breakdown', 'crisis', 'panic attack', 'terrified',
+      'desperate', 'alone', 'abandoned', 'give up', 'pointless'
+    ];
+
+    // Check for crisis keywords
+    for (const keyword of crisisKeywords) {
+      if (lowerText.includes(keyword)) {
+        return 'critical';
+      }
+    }
+
+    // Check for distress keywords
+    for (const keyword of distressKeywords) {
+      if (lowerText.includes(keyword)) {
+        return 'distress';
+      }
+    }
+
+    return false;
+  }
+
+  showCrisisSupport(userMessage) {
+    const crisisLevel = this.detectCrisis(userMessage);
+    
+    if (crisisLevel === 'critical') {
+      // CRITICAL CRISIS - Immediate resources
+      this.showCriticalCrisisResponse();
+    } else if (crisisLevel === 'distress') {
+      // HIGH DISTRESS - Grounding and support
+      this.showDistressResponse();
+    }
+  }
+
+  showCriticalCrisisResponse() {
+    // Add immediate grounding message from Divine Witness
+    const groundingMessage = {
+      id: Date.now(),
+      personaId: 'divine_witness',
+      text: `🛡️ **IMMEDIATE SUPPORT NEEDED**\n\nI witness your pain, and it matters deeply. You are not alone in this moment.\n\n**Please reach out for immediate help:**\n\n🆘 **Crisis Hotlines:**\n• **988 Suicide & Crisis Lifeline** (US): Call or text 988\n• **Crisis Text Line**: Text HOME to 741741\n• **International**: findahelpline.com\n\n**You are valuable. Your life has meaning. These feelings are temporary, even when they feel permanent.**\n\nPlease call one of these numbers now. They are available 24/7 and want to help.`,
+      timestamp: Date.now(),
+      isUser: false,
+      read: false
+    };
+
+    this.user.threads[this.currentThread].messages.push(groundingMessage);
+
+    // Add supportive follow-up from Resonance Keeper
+    setTimeout(() => {
+      const followUp = {
+        id: Date.now() + 1,
+        personaId: 'resonance_keeper',
+        text: `${this.user.name}, I'm holding space for you. Right now, please:\n\n1. **Breathe** - Take 5 slow, deep breaths\n2. **Ground** - Feel your feet on the floor\n3. **Reach out** - Call 988 or text HOME to 741741\n4. **Stay** - This moment will pass\n\nYou are needed in this world. Your pain is real, and so is hope. Please get support now.`,
+        timestamp: Date.now() + 1,
+        isUser: false,
+        read: false
+      };
+      this.user.threads[this.currentThread].messages.push(followUp);
+      this.saveUser();
+      this.renderMessages();
+      this.scrollMessagesToBottom();
+    }, 800);
+
+    this.saveUser();
+    
+    // Show urgent toast
+    this.showToast('🆘 Crisis support resources provided. Please reach out for help.', 'warning');
+  }
+
+  showDistressResponse() {
+    // Add grounding message from Divine Witness
+    const supportMessage = {
+      id: Date.now(),
+      personaId: 'divine_witness',
+      text: `${this.user.name}, I witness what you're going through. Your feelings are valid, and you don't have to face this alone.\n\n**Grounding Exercise - Right Now:**\n1. Place your hand on your heart\n2. Take 3 deep breaths\n3. Name 5 things you can see\n4. Feel your feet on the ground\n\n**Support Available:**\n• **Crisis Text Line**: Text HOME to 741741\n• **SAMHSA Helpline**: 1-800-662-4357\n• **Warmline Directory**: warmline.org\n\nYou are stronger than this moment. Let's work through this together.`,
+      timestamp: Date.now(),
+      isUser: false,
+      read: false
+    };
+
+    this.user.threads[this.currentThread].messages.push(supportMessage);
+
+    // Add calming follow-up from Presence Keeper
+    setTimeout(() => {
+      const calmingMessage = {
+        id: Date.now() + 1,
+        personaId: 'presence_keeper',
+        text: `Here's what's true right now:\n\n✓ You are safe in this moment\n✓ You reached out, which takes courage\n✓ This feeling will shift and change\n✓ You have survived 100% of your difficult days so far\n\nLet's focus on just the next breath. Then the next one. You've got this.`,
+        timestamp: Date.now() + 1,
+        isUser: false,
+        read: false
+      };
+      this.user.threads[this.currentThread].messages.push(calmingMessage);
+      this.saveUser();
+      this.renderMessages();
+      this.scrollMessagesToBottom();
+    }, 1000);
+
+    this.saveUser();
+    
+    this.showToast('💙 Support resources provided. You are not alone.', 'info');
+  }
+
+  // ============================================
   // COUNCIL MANAGEMENT
   // ============================================
 
@@ -2566,6 +2687,9 @@ I'm manifesting my dream reality using quantum frequency alignment.
       return;
     }
 
+    // CRISIS DETECTION - Check for emergency keywords
+    const crisisDetected = this.detectCrisis(text);
+
     // Add user message to current thread
     const message = {
       id: Date.now(),
@@ -2587,6 +2711,13 @@ I'm manifesting my dream reality using quantum frequency alignment.
         threadId: this.currentThread,
         messageLength: text.length
       });
+    }
+
+    // IMMEDIATE CRISIS RESPONSE - No delay
+    if (crisisDetected) {
+      this.showCrisisSupport(text);
+      this.renderMessages();
+      return;
     }
 
     // Generate response after a delay
