@@ -1954,12 +1954,9 @@ class QuantumRealityApp {
   }
 
   scrollMessagesToBottom() {
-    const container = document.getElementById('messagesContainer');
-    if (container) {
-      setTimeout(() => {
-        container.scrollTop = container.scrollHeight;
-      }, 100);
-    }
+    // Disabled: Let messages start at top like normal texting apps
+    // Users can manually scroll to see new messages
+    return;
   }
 
   generateCouncilResponse(userMessage) {
