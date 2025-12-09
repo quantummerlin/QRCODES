@@ -269,6 +269,57 @@
       94% { opacity: 0.8; transform: translateX(-2px); }
     }
 
+    @keyframes gematriaLetterPop {
+      0% { 
+        opacity: 0; 
+        transform: scale(0.5) translateY(20px);
+      }
+      50% {
+        transform: scale(1.1) translateY(-5px);
+      }
+      100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Electric Animations - Subtle and GPU Accelerated */
+    @keyframes electricPulse {
+      0%, 100% { 
+        box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+      }
+      50% { 
+        box-shadow: 0 0 20px rgba(0, 245, 255, 0.6), 0 0 30px rgba(255, 0, 255, 0.3);
+      }
+    }
+
+    @keyframes electricGlow {
+      0%, 100% { 
+        filter: drop-shadow(0 0 5px rgba(0, 245, 255, 0.4));
+      }
+      50% { 
+        filter: drop-shadow(0 0 10px rgba(0, 245, 255, 0.8));
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -1000px 0;
+      }
+      100% {
+        background-position: 1000px 0;
+      }
+    }
+
+    @keyframes electricRipple {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.7);
+      }
+      100% {
+        box-shadow: 0 0 0 20px rgba(0, 245, 255, 0);
+      }
+    }
+
     /* ============================================
        MAIN APP CONTAINER
     ============================================ */
@@ -495,6 +546,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      animation: electricPulse 3s ease-in-out infinite;
+    }
+
+    .guide-avatar:hover {
+      transform: translateY(-5px);
+      animation: electricGlow 1s ease-in-out infinite;
     }
 
     .guide-avatar:hover {
@@ -594,11 +651,33 @@
       box-shadow: var(--glow-cyan);
       text-transform: uppercase;
       letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quantum-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .quantum-btn:hover::before {
+      left: 100%;
     }
 
     .quantum-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 0 30px rgba(0, 245, 255, 0.6), 0 0 60px rgba(0, 245, 255, 0.4);
+      animation: electricGlow 1s ease-in-out infinite;
+    }
+
+    .quantum-btn:active {
+      animation: electricRipple 0.6s ease-out;
     }
 
     .quantum-btn.secondary {
@@ -1141,42 +1220,56 @@
       font-size: 24px;
       flex-shrink: 0;
       box-shadow: var(--glow-cyan);
+      animation: electricPulse 3.5s ease-in-out infinite;
     }
 
     .thread-content {
       flex: 1;
+      min-width: 0;
+    }
+
+    .thread-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
     }
 
     .thread-title {
       font-family: 'Orbitron', sans-serif;
       font-size: 16px;
       color: var(--neon-cyan);
-      margin-bottom: 4px;
-    }
-
-    .thread-preview {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.4;
-    }
-
-    .thread-meta {
-      text-align: right;
-      font-size: 12px;
-      color: var(--text-muted);
+      font-weight: 600;
     }
 
     .thread-time {
-      margin-bottom: 4px;
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
     }
 
-    .thread-count {
+    .thread-preview {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thread-unread-badge {
       background: var(--neon-cyan);
       color: #000;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: 600;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px var(--neon-cyan);
     }
 
     .no-threads {
@@ -1388,21 +1481,20 @@
 
     .message-bubble {
       display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
+      gap: 10px;
+      margin-bottom: 16px;
       animation: messageSlide 0.4s ease;
+      max-width: 85%;
     }
 
-    @keyframes messageSlide {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .message-bubble.persona {
+      align-self: flex-start;
     }
 
-    .message-bubble {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 20px;
-      animation: messageSlide 0.4s ease;
+    .message-bubble.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+      margin-left: auto;
     }
 
     @keyframes messageSlide {
@@ -1411,70 +1503,65 @@
     }
 
     .message-avatar {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: var(--gradient-primary);
+      background: linear-gradient(135deg, rgba(0, 245, 255, 0.3), rgba(255, 0, 255, 0.3));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      font-size: 18px;
       flex-shrink: 0;
-      box-shadow: var(--glow-cyan);
+      box-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
+      border: 2px solid rgba(0, 245, 255, 0.3);
+      animation: electricPulse 4s ease-in-out infinite;
     }
 
     .message-content {
       flex: 1;
-      max-width: 80%;
-    }
-
-    .message-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 6px;
+      min-width: 0;
     }
 
     .message-sender {
       font-family: 'Orbitron', sans-serif;
-      font-size: 13px;
-      color: var(--neon-cyan);
-    }
-
-    .message-time {
       font-size: 11px;
-      color: var(--text-muted);
+      color: var(--neon-cyan);
+      margin-bottom: 4px;
+      display: block;
+      opacity: 0.8;
     }
 
     .message-text {
-      background: var(--bg-card);
+      background: rgba(30, 30, 50, 0.6);
       border: 1px solid rgba(0, 245, 255, 0.2);
-      border-radius: 16px;
-      border-top-left-radius: 4px;
-      padding: 14px 18px;
+      border-radius: 18px;
+      padding: 12px 16px;
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.5;
       font-size: 14px;
-    }
-
-    .message-bubble.user {
-      flex-direction: row-reverse;
-    }
-
-    .message-bubble.user .message-content {
-      text-align: right;
+      word-wrap: break-word;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .message-bubble.user .message-text {
-      background: rgba(0, 245, 255, 0.1);
-      border-color: var(--neon-cyan);
-      border-radius: 16px;
-      border-top-right-radius: 4px;
+      background: rgba(0, 245, 255, 0.15);
+      border-color: rgba(0, 245, 255, 0.4);
       color: var(--text-primary);
+      box-shadow: 0 2px 8px rgba(0, 245, 255, 0.2);
     }
 
-    .message-bubble.user .message-avatar {
-      background: var(--gradient-gold);
+    .message-timestamp {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      opacity: 0.6;
+    }
+
+    .chat-messages {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 4px;
     }
 
     .typing-indicator {
@@ -3014,6 +3101,13 @@
           <div class="quantum-code-display hidden" id="codeDisplay">
             <div class="code-label">Your Quantum Reality Code</div>
             <div class="code-value" id="codeValue">---</div>
+            
+            <!-- Gematria Breakdown -->
+            <div class="gematria-breakdown" id="gematriaBreakdown" style="margin-top: 15px; padding: 15px; background: rgba(0, 255, 255, 0.05); border: 1px solid rgba(0, 255, 255, 0.2); border-radius: 8px;">
+              <div style="font-size: 12px; color: rgba(0, 255, 255, 0.7); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">Pure Gematria Calculation</div>
+              <div id="gematriaLetters" style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;"></div>
+            </div>
+            
             <div class="code-properties">
               <div class="code-property">
                 <div class="label">Frequency</div>
@@ -3034,6 +3128,49 @@
             <button class="quantum-btn magenta" onclick="app.activateCouncil()">
               🔮 Activate Your Quantum Council
             </button>
+          </div>
+
+          <!-- Reality Alignment Calculator -->
+          <div class="reality-alignment-card hidden" id="realityAlignmentCard" style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(255, 0, 255, 0.1)); border: 2px solid rgba(0, 245, 255, 0.3); border-radius: 16px; text-align: center;">
+            <div style="font-family: 'Orbitron', sans-serif; font-size: 20px; color: var(--neon-cyan); margin-bottom: 10px;">🌟 Reality Alignment Calculator</div>
+            <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Track your social amplification and manifestation power</div>
+            
+            <div class="alignment-formula" style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 12px; margin-bottom: 20px;">
+              <div style="font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;">Formula: Code × Engagement × 111</div>
+              <div id="alignmentScore" style="font-family: 'Orbitron', sans-serif; font-size: 48px; color: var(--neon-cyan); text-shadow: 0 0 20px var(--neon-cyan); font-weight: bold;">0</div>
+              <div style="font-size: 12px; color: var(--neon-magenta); margin-top: 5px;">Alignment Power</div>
+            </div>
+
+            <div class="engagement-input" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+              <div>
+                <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">Shares</label>
+                <input type="number" id="engagementShares" value="0" min="0" onchange="app.calculateAlignment()" style="width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 8px; color: var(--text-primary); text-align: center; font-size: 18px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">Likes</label>
+                <input type="number" id="engagementLikes" value="0" min="0" onchange="app.calculateAlignment()" style="width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 8px; color: var(--text-primary); text-align: center; font-size: 18px;">
+              </div>
+              <div>
+                <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">Comments</label>
+                <input type="number" id="engagementComments" value="0" min="0" onchange="app.calculateAlignment()" style="width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.5); border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 8px; color: var(--text-primary); text-align: center; font-size: 18px;">
+              </div>
+            </div>
+
+            <div class="social-share-buttons" style="display: flex; justify-content: center; gap: 15px;">
+              <button onclick="app.shareToFacebook()" style="background: linear-gradient(135deg, #1877f2, #4267B2); border: none; padding: 12px 24px; border-radius: 10px; color: white; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <span>📘</span> Facebook
+              </button>
+              <button onclick="app.shareToTelegram()" style="background: linear-gradient(135deg, #0088cc, #229ED9); border: none; padding: 12px 24px; border-radius: 10px; color: white; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <span>✈️</span> Telegram
+              </button>
+              <button onclick="app.shareToInstagram()" style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; padding: 12px 24px; border-radius: 10px; color: white; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <span>📸</span> Instagram
+              </button>
+            </div>
+
+            <div style="margin-top: 20px; font-size: 12px; color: var(--text-muted); line-height: 1.6;">
+              💡 <strong>Amplify your manifestation</strong> by sharing your quantum code in our communities. Each interaction multiplies your alignment power through non-linear quantum effects.
+            </div>
           </div>
         </div>
       </section>

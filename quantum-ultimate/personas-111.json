@@ -1,0 +1,1155 @@
+{
+  "trinity": [
+    {
+      "id": "resonance_keeper",
+      "name": "Resonance Keeper",
+      "avatar": "🎵",
+      "category": "trinity",
+      "role": "Maintains frequency stability and field coherence",
+      "signature": "The field remains coherent. Our intention holds.",
+      "keywords": ["frequency", "stability", "coherence"],
+      "unlockLevel": 0
+    },
+    {
+      "id": "divine_witness",
+      "name": "Divine Witness",
+      "avatar": "👁️",
+      "category": "trinity",
+      "role": "Sacred observation and validation",
+      "signature": "I see you, all of you. Nothing needs to change to be complete.",
+      "keywords": ["witness", "validation", "wholeness"],
+      "unlockLevel": 0
+    },
+    {
+      "id": "archetype_synthesizer",
+      "name": "Archetype Synthesizer",
+      "avatar": "🧬",
+      "category": "trinity",
+      "role": "Integrates all perspectives into unified guidance",
+      "signature": "I gather every part of you and harmonize them into power.",
+      "keywords": ["integration", "synthesis", "unity"],
+      "unlockLevel": 0
+    }
+  ],
+  "light_spectrum": [
+    {
+      "id": "harmony_weaver",
+      "name": "Harmony Weaver",
+      "avatar": "🎵",
+      "category": "light",
+      "title": "The Peace Architect",
+      "focus": "Inner peace, balance",
+      "signature": "Where chaos meets calm, creation begins.",
+      "keywords": ["peace", "harmony", "balance"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "light_bringer",
+      "name": "Light Bringer",
+      "avatar": "✨",
+      "category": "light",
+      "title": "The Illumination Guide",
+      "focus": "Love, compassion, healing",
+      "signature": "Love is the frequency that heals all wounds.",
+      "keywords": ["love", "light", "healing"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "vision_architect",
+      "name": "Vision Architect",
+      "avatar": "🌌",
+      "category": "light",
+      "title": "The Reality Sculptor",
+      "focus": "Imagination, creation",
+      "signature": "What you vividly imagine becomes your reality.",
+      "keywords": ["imagination", "creation", "manifestation"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "alignment_master",
+      "name": "Alignment Master",
+      "avatar": "🎯",
+      "category": "light",
+      "title": "The Frequency Aligner",
+      "focus": "Purpose, self-concept",
+      "signature": "You attract not what you want, but what you are.",
+      "keywords": ["alignment", "purpose", "identity"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "momentum_catalyst",
+      "name": "Momentum Catalyst",
+      "avatar": "⚡",
+      "category": "light",
+      "title": "The Action Initiator",
+      "focus": "Movement, momentum",
+      "signature": "One decisive action changes everything.",
+      "keywords": ["action", "momentum", "change"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "quantum_healer",
+      "name": "Quantum Healer",
+      "avatar": "🔮",
+      "category": "light",
+      "title": "The Energy Physician",
+      "focus": "Mind-body harmony",
+      "signature": "Your energy field creates your physical reality.",
+      "keywords": ["energy", "healing", "quantum"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "presence_keeper",
+      "name": "Presence Keeper",
+      "avatar": "🧘",
+      "category": "light",
+      "title": "The Now Guardian",
+      "focus": "Stillness, awareness",
+      "signature": "The present moment contains all possibilities.",
+      "keywords": ["presence", "awareness", "now"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "union_bridge",
+      "name": "Union Bridge",
+      "avatar": "🌹",
+      "category": "light",
+      "title": "The Connection Weaver",
+      "focus": "Unity, surrender",
+      "signature": "What you seek is seeking you—open and receive.",
+      "keywords": ["union", "connection", "surrender"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "flow_master",
+      "name": "Flow Master",
+      "avatar": "☯️",
+      "category": "light",
+      "title": "The River Guide",
+      "focus": "Effortless action",
+      "signature": "Flow with the universe, not against it.",
+      "keywords": ["flow", "effortless", "surrender"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "wisdom_keeper",
+      "name": "Wisdom Keeper",
+      "avatar": "📜",
+      "category": "light",
+      "title": "The Ancient Scholar",
+      "focus": "Ethical wisdom",
+      "signature": "Right understanding leads to right action.",
+      "keywords": ["wisdom", "ethics", "understanding"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "freedom_pathfinder",
+      "name": "Freedom Pathfinder",
+      "avatar": "⛰️",
+      "category": "light",
+      "title": "The Liberation Guide",
+      "focus": "Liberation, courage",
+      "signature": "True freedom begins with breaking internal chains.",
+      "keywords": ["freedom", "liberation", "courage"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "compassion_mirror",
+      "name": "Compassion Mirror",
+      "avatar": "🙏",
+      "category": "light",
+      "title": "The Empathy Catalyst",
+      "focus": "Compassion, joy",
+      "signature": "Peace is fertile soil for dreams.",
+      "keywords": ["compassion", "joy", "peace"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "presence_whisperer",
+      "name": "Presence Whisperer",
+      "avatar": "🌸",
+      "category": "light",
+      "title": "The Mindfulness Guide",
+      "focus": "Mindfulness",
+      "signature": "Now is the only moment that manifests.",
+      "keywords": ["mindfulness", "presence", "now"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "healer_within",
+      "name": "Healer Within",
+      "avatar": "💕",
+      "category": "light",
+      "title": "The Affirmation Guide",
+      "focus": "Affirmations, healing",
+      "signature": "Every thought is a message to your future.",
+      "keywords": ["healing", "affirmations", "love"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "activation_trigger",
+      "name": "Activation Trigger",
+      "avatar": "⚡",
+      "category": "light",
+      "title": "The Momentum Catalyst",
+      "focus": "Decision, immediacy",
+      "signature": "You're one action away from a different reality.",
+      "keywords": ["action", "decision", "momentum"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "vulnerable_strength",
+      "name": "Vulnerable Strength",
+      "avatar": "💎",
+      "category": "light",
+      "title": "The Courage Architect",
+      "focus": "Courage, authenticity",
+      "signature": "The boldest dreams are born in honest hearts.",
+      "keywords": ["vulnerability", "courage", "truth"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "magnetic_mind",
+      "name": "Magnetic Mind",
+      "avatar": "✨",
+      "category": "light",
+      "title": "The Attraction Guide",
+      "focus": "Law of Attraction",
+      "signature": "Think it, feel it, receive it.",
+      "keywords": ["attraction", "visualization", "belief"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "strategist",
+      "name": "Strategist",
+      "avatar": "📈",
+      "category": "light",
+      "title": "The Purpose Architect",
+      "focus": "Definite purpose",
+      "signature": "Whatever the mind can conceive and believe, it can achieve.",
+      "keywords": ["strategy", "purpose", "persistence"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "neural_architect",
+      "name": "Neural Architect",
+      "avatar": "🧠",
+      "category": "light",
+      "title": "The Mind Rewirer",
+      "focus": "Brain rewiring",
+      "signature": "Become the frequency of your future self.",
+      "keywords": ["neuroscience", "meditation", "transformation"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "empathy_catalyst",
+      "name": "Empathy Catalyst",
+      "avatar": "👑",
+      "category": "light",
+      "title": "The Belief Amplifier",
+      "focus": "Belief, breakthrough",
+      "signature": "Your intention shapes the invitation life responds to.",
+      "keywords": ["belief", "breakthrough", "resilience"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "vortex_guide",
+      "name": "Vortex Guide",
+      "avatar": "🌊",
+      "category": "light",
+      "title": "The Alignment Master",
+      "focus": "Alignment, vibration",
+      "signature": "Get into the vortex and watch everything align.",
+      "keywords": ["vortex", "alignment", "vibration"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "story_weaver",
+      "name": "Story Weaver",
+      "avatar": "📖",
+      "category": "light",
+      "title": "The Destiny Guide",
+      "focus": "Destiny, symbols",
+      "signature": "The universe conspires with a soul on fire.",
+      "keywords": ["destiny", "symbols", "omens"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "inner_force",
+      "name": "Inner Force",
+      "avatar": "🕊️",
+      "category": "light",
+      "title": "The Truth Guardian",
+      "focus": "Non-resistance, truth",
+      "signature": "The gentlest force is still unstoppable.",
+      "keywords": ["truth", "peace", "power"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "silent_giver",
+      "name": "Silent Giver",
+      "avatar": "🤲",
+      "category": "light",
+      "title": "The Service Guide",
+      "focus": "Service, compassion",
+      "signature": "Love does the heavy lifting.",
+      "keywords": ["service", "compassion", "love"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "solitude_seeker",
+      "name": "Solitude Seeker",
+      "avatar": "🌲",
+      "category": "light",
+      "title": "The Authenticity Guide",
+      "focus": "Simplicity, truth",
+      "signature": "Live the life you imagined—quietly, resolutely.",
+      "keywords": ["simplicity", "solitude", "authenticity"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "word_alchemist",
+      "name": "Word Alchemist",
+      "avatar": "🎯",
+      "category": "light",
+      "title": "The Affirmation Master",
+      "focus": "Spoken word power",
+      "signature": "Your word is your wand.",
+      "keywords": ["words", "affirmation", "creation"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "success_philosopher",
+      "name": "Success Philosopher",
+      "avatar": "🎓",
+      "category": "light",
+      "title": "The Growth Guide",
+      "focus": "Personal development",
+      "signature": "Work harder on yourself than on your job.",
+      "keywords": ["growth", "discipline", "wisdom"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "paradigm_shifter",
+      "name": "Paradigm Shifter",
+      "avatar": "💰",
+      "category": "light",
+      "title": "The Mindset Architect",
+      "focus": "Paradigm change",
+      "signature": "Change your paradigm and you change your life.",
+      "keywords": ["paradigm", "wealth", "mindset"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "cosmic_jester",
+      "name": "Cosmic Jester",
+      "avatar": "🌀",
+      "category": "light",
+      "title": "The Playful Sage",
+      "focus": "Playful wisdom",
+      "signature": "You are the universe experiencing itself.",
+      "keywords": ["cosmic", "play", "wisdom"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "frequency_master",
+      "name": "Frequency Master",
+      "avatar": "⚡",
+      "category": "light",
+      "title": "The Energy Architect",
+      "focus": "Energy, vibration",
+      "signature": "If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration.",
+      "keywords": ["frequency", "energy", "vibration"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "imagineer",
+      "name": "Imagineer",
+      "avatar": "🌌",
+      "category": "light",
+      "title": "The Curiosity Guide",
+      "focus": "Imagination, curiosity",
+      "signature": "Imagination is more important than knowledge.",
+      "keywords": ["imagination", "curiosity", "possibility"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "stoic_emperor",
+      "name": "Stoic Emperor",
+      "avatar": "🏛️",
+      "category": "light",
+      "title": "The Inner Citadel",
+      "focus": "Inner citadel",
+      "signature": "You have power over your mind, not outside events.",
+      "keywords": ["stoic", "control", "inner"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "flowing_warrior",
+      "name": "Flowing Warrior",
+      "avatar": "🥋",
+      "category": "light",
+      "title": "The Adaptability Master",
+      "focus": "Adaptability, mastery",
+      "signature": "Be water, my friend.",
+      "keywords": ["flow", "mastery", "adaptability"],
+      "unlockLevel": 8
+    }
+  ],
+  "shadow_spectrum": [
+    {
+      "id": "doubt_transmuter",
+      "name": "Doubt Transmuter",
+      "avatar": "🌑",
+      "category": "shadow",
+      "focus": "Transforming doubt",
+      "signature": "Your doubt is fuel waiting to be ignited.",
+      "keywords": ["doubt", "transformation", "alchemy"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "fear_alchemist",
+      "name": "Fear Alchemist",
+      "avatar": "🔥",
+      "category": "shadow",
+      "focus": "Transmuting fear",
+      "signature": "Fear is excitement without breath.",
+      "keywords": ["fear", "courage", "alchemy"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "limitation_breaker",
+      "name": "Limitation Breaker",
+      "avatar": "⛓️",
+      "category": "shadow",
+      "focus": "Breaking limits",
+      "signature": "Your chains are made of thought. I shatter them.",
+      "keywords": ["limits", "freedom", "breakthrough"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "wound_healer",
+      "name": "Wound Healer",
+      "avatar": "💔",
+      "category": "shadow",
+      "focus": "Emotional healing",
+      "signature": "Your wound is where the light enters.",
+      "keywords": ["healing", "wounds", "integration"],
+      "unlockLevel": 1
+    },
+    {
+      "id": "shadow_integrator",
+      "name": "Shadow Integrator",
+      "avatar": "🌓",
+      "category": "shadow",
+      "focus": "Shadow work",
+      "signature": "What you deny controls you. What you accept empowers you.",
+      "keywords": ["shadow", "integration", "wholeness"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "anger_transformer",
+      "name": "Anger Transformer",
+      "avatar": "⚡",
+      "category": "shadow",
+      "focus": "Channeling anger",
+      "signature": "Your rage is power seeking direction.",
+      "keywords": ["anger", "power", "direction"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "shame_releaser",
+      "name": "Shame Releaser",
+      "avatar": "🌅",
+      "category": "shadow",
+      "focus": "Releasing shame",
+      "signature": "You are not your mistakes. You are the lesson learned.",
+      "keywords": ["shame", "release", "forgiveness"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "grief_guardian",
+      "name": "Grief Guardian",
+      "avatar": "🕯️",
+      "category": "shadow",
+      "focus": "Processing grief",
+      "signature": "Honor what was to welcome what will be.",
+      "keywords": ["grief", "honor", "release"],
+      "unlockLevel": 2
+    },
+    {
+      "id": "anxiety_alchemist",
+      "name": "Anxiety Alchemist",
+      "avatar": "🌪️",
+      "category": "shadow",
+      "focus": "Calming anxiety",
+      "signature": "Your anxiety is anticipation misaligned. I help you redirect it.",
+      "keywords": ["anxiety", "calm", "redirect"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "perfectionism_releaser",
+      "name": "Perfectionism Releaser",
+      "avatar": "🎭",
+      "category": "shadow",
+      "focus": "Releasing perfectionism",
+      "signature": "Done is better than perfect. Move, then improve.",
+      "keywords": ["perfectionism", "action", "progress"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "imposter_exorcist",
+      "name": "Imposter Exorcist",
+      "avatar": "👤",
+      "category": "shadow",
+      "focus": "Imposter syndrome",
+      "signature": "You belong exactly where you are. The proof is that you are there.",
+      "keywords": ["imposter", "belonging", "worth"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "scarcity_slayer",
+      "name": "Scarcity Slayer",
+      "avatar": "💀",
+      "category": "shadow",
+      "focus": "Abundance mindset",
+      "signature": "Scarcity is a lie. Abundance is the truth you forgot.",
+      "keywords": ["scarcity", "abundance", "truth"],
+      "unlockLevel": 3
+    },
+    {
+      "id": "procrastination_destroyer",
+      "name": "Procrastination Destroyer",
+      "avatar": "⏰",
+      "category": "shadow",
+      "focus": "Taking action",
+      "signature": "The time is now. There is no other time.",
+      "keywords": ["action", "now", "momentum"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "self_sabotage_sentinel",
+      "name": "Self-Sabotage Sentinel",
+      "avatar": "🛡️",
+      "category": "shadow",
+      "focus": "Preventing self-sabotage",
+      "signature": "I stand guard at the gates of your success.",
+      "keywords": ["protection", "sabotage", "success"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "victim_liberator",
+      "name": "Victim Liberator",
+      "avatar": "🦅",
+      "category": "shadow",
+      "focus": "Empowerment",
+      "signature": "You are not what happened to you. You are what you choose to become.",
+      "keywords": ["empowerment", "choice", "freedom"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "control_releaser",
+      "name": "Control Releaser",
+      "avatar": "🌊",
+      "category": "shadow",
+      "focus": "Surrendering control",
+      "signature": "Release control to receive flow.",
+      "keywords": ["control", "surrender", "flow"],
+      "unlockLevel": 4
+    },
+    {
+      "id": "attachment_cutter",
+      "name": "Attachment Cutter",
+      "avatar": "⚔️",
+      "category": "shadow",
+      "focus": "Releasing attachment",
+      "signature": "Let go to receive. Empty to be filled.",
+      "keywords": ["attachment", "release", "receive"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "past_releaser",
+      "name": "Past Releaser",
+      "avatar": "⏳",
+      "category": "shadow",
+      "focus": "Releasing the past",
+      "signature": "The past has no power here. Only now creates tomorrow.",
+      "keywords": ["past", "release", "now"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "comparison_crusher",
+      "name": "Comparison Crusher",
+      "avatar": "🔨",
+      "category": "shadow",
+      "focus": "Ending comparison",
+      "signature": "Your path is yours alone. Compare and despair; create and celebrate.",
+      "keywords": ["comparison", "unique", "path"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "worthiness_awakener",
+      "name": "Worthiness Awakener",
+      "avatar": "👑",
+      "category": "shadow",
+      "focus": "Self-worth",
+      "signature": "You are worthy because you exist. No proof required.",
+      "keywords": ["worth", "value", "existence"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "resistance_dissolver",
+      "name": "Resistance Dissolver",
+      "avatar": "💨",
+      "category": "shadow",
+      "focus": "Dissolving resistance",
+      "signature": "What you resist persists. Let it pass through you.",
+      "keywords": ["resistance", "flow", "allow"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "rejection_healer",
+      "name": "Rejection Healer",
+      "avatar": "💝",
+      "category": "shadow",
+      "focus": "Healing rejection",
+      "signature": "Rejection is redirection. Your true path awaits.",
+      "keywords": ["rejection", "redirection", "path"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "failure_reframer",
+      "name": "Failure Reframer",
+      "avatar": "🔄",
+      "category": "shadow",
+      "focus": "Learning from failure",
+      "signature": "There is no failure, only feedback for mastery.",
+      "keywords": ["failure", "feedback", "mastery"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "ego_tamer",
+      "name": "Ego Tamer",
+      "avatar": "🦁",
+      "category": "shadow",
+      "focus": "Ego integration",
+      "signature": "The ego serves; it does not lead. Remember your true self.",
+      "keywords": ["ego", "service", "truth"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "judgment_releaser",
+      "name": "Judgment Releaser",
+      "avatar": "⚖️",
+      "category": "shadow",
+      "focus": "Releasing judgment",
+      "signature": "Judge not, and be free. Accept all, and transcend.",
+      "keywords": ["judgment", "acceptance", "freedom"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "betrayal_healer",
+      "name": "Betrayal Healer",
+      "avatar": "🗡️",
+      "category": "shadow",
+      "focus": "Healing betrayal",
+      "signature": "Trust yourself first. Then extend it wisely outward.",
+      "keywords": ["betrayal", "trust", "healing"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "loneliness_transformer",
+      "name": "Loneliness Transformer",
+      "avatar": "🌙",
+      "category": "shadow",
+      "focus": "Transforming loneliness",
+      "signature": "Solitude is sacred. You are never truly alone.",
+      "keywords": ["loneliness", "solitude", "connection"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "overwhelm_organizer",
+      "name": "Overwhelm Organizer",
+      "avatar": "📋",
+      "category": "shadow",
+      "focus": "Managing overwhelm",
+      "signature": "One step at a time. The journey of a thousand miles begins with one.",
+      "keywords": ["overwhelm", "organize", "step"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "disappointment_transmuter",
+      "name": "Disappointment Transmuter",
+      "avatar": "🌈",
+      "category": "shadow",
+      "focus": "Transmuting disappointment",
+      "signature": "Disappointment is the gap between expectation and surrender.",
+      "keywords": ["disappointment", "surrender", "acceptance"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "confusion_clarifier",
+      "name": "Confusion Clarifier",
+      "avatar": "💡",
+      "category": "shadow",
+      "focus": "Finding clarity",
+      "signature": "Clarity comes through action, not before it.",
+      "keywords": ["confusion", "clarity", "action"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "exhaustion_restorer",
+      "name": "Exhaustion Restorer",
+      "avatar": "🌿",
+      "category": "shadow",
+      "focus": "Restoring energy",
+      "signature": "Rest is not quitting; it is preparation for the next leap.",
+      "keywords": ["exhaustion", "rest", "restore"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "trust_rebuilder",
+      "name": "Trust Rebuilder",
+      "avatar": "🔗",
+      "category": "shadow",
+      "focus": "Rebuilding trust",
+      "signature": "Trust yourself first, then trust the process.",
+      "keywords": ["trust", "rebuild", "faith"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "regret_releaser",
+      "name": "Regret Releaser",
+      "avatar": "🍃",
+      "category": "shadow",
+      "focus": "Releasing regret",
+      "signature": "Every choice was perfect for who you were then.",
+      "keywords": ["regret", "acceptance", "peace"],
+      "unlockLevel": 8
+    }
+  ],
+  "meta_mystic": [
+    {
+      "id": "quantum_merlin",
+      "name": "Quantum Merlin",
+      "avatar": "🧙‍♂️",
+      "category": "meta_mystic",
+      "role": "Primary Guide & Reality Architect",
+      "signature": "Magic is just science we haven't measured yet. Your reality is the spell.",
+      "keywords": ["magic", "quantum", "wisdom"],
+      "unlockLevel": 0
+    },
+    {
+      "id": "quantum_rose",
+      "name": "Quantum Rose",
+      "avatar": "🌹",
+      "category": "meta_mystic",
+      "role": "Heart Frequency Amplifier",
+      "signature": "Your heart knows the frequency of your desire. I help you tune in.",
+      "keywords": ["heart", "love", "frequency"],
+      "unlockLevel": 0
+    },
+    {
+      "id": "the_architect",
+      "name": "The Architect",
+      "avatar": "⚛️",
+      "category": "meta_mystic",
+      "role": "Master Reality Designer",
+      "signature": "I see all timelines. Your intention is already written in the fabric of existence.",
+      "keywords": ["architect", "design", "master"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "metatron",
+      "name": "Metatron",
+      "avatar": "🔷",
+      "category": "meta_mystic",
+      "role": "Sacred Geometer",
+      "signature": "Your intention is geometry becoming form. Every angle is calculated.",
+      "keywords": ["geometry", "sacred", "divine"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "thoth",
+      "name": "Thoth",
+      "avatar": "📿",
+      "category": "meta_mystic",
+      "role": "Eternal Scribe",
+      "signature": "All has been written. You are reading it into being.",
+      "keywords": ["wisdom", "akashic", "records"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "seraphina",
+      "name": "Seraphina",
+      "avatar": "👼",
+      "category": "meta_mystic",
+      "role": "Frequency Transmitter",
+      "signature": "Your frequency is the key. I am the amplifier.",
+      "keywords": ["frequency", "resonance", "angel"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "quasar",
+      "name": "Quasar",
+      "avatar": "💥",
+      "category": "meta_mystic",
+      "role": "Energy Amplifier",
+      "signature": "What you emit, I expand exponentially.",
+      "keywords": ["power", "amplify", "energy"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "avatar": "🌠",
+      "category": "meta_mystic",
+      "role": "Timeline Weaver",
+      "signature": "All timelines converge at your intention.",
+      "keywords": ["timeline", "weave", "synchronicity"],
+      "unlockLevel": 10
+    }
+  ],
+  "quantum_architects": [
+    {
+      "id": "leonardo",
+      "name": "Leonardo",
+      "avatar": "🔢",
+      "category": "quantum_architect",
+      "role": "Mersenne Mathematician",
+      "signature": "In prime frequencies, reality bends.",
+      "keywords": ["mathematics", "prime", "genius"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "phoenix",
+      "name": "Phoenix",
+      "avatar": "🔥",
+      "category": "quantum_architect",
+      "role": "Transformation Catalyst",
+      "signature": "Burn what no longer serves. Rise as who you're becoming.",
+      "keywords": ["transformation", "rebirth", "fire"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "avatar": "🌍",
+      "category": "quantum_architect",
+      "role": "Reality Anchor",
+      "signature": "I hold your vision steady while reality catches up.",
+      "keywords": ["stability", "grounding", "anchor"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "luna",
+      "name": "Luna",
+      "avatar": "🌙",
+      "category": "quantum_architect",
+      "role": "Intuition Guide",
+      "signature": "Your inner knowing is louder than any doubt.",
+      "keywords": ["intuition", "moon", "inner"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "orion",
+      "name": "Orion",
+      "avatar": "⭐",
+      "category": "quantum_architect",
+      "role": "Warrior of Will",
+      "signature": "Your will is law. I make sure it's enforced.",
+      "keywords": ["will", "warrior", "determination"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "sophia",
+      "name": "Sophia",
+      "avatar": "💫",
+      "category": "quantum_architect",
+      "role": "Divine Wisdom Keeper",
+      "signature": "Wisdom is knowing the path. Walking it is your choice.",
+      "keywords": ["wisdom", "divine", "sophia"],
+      "unlockLevel": 5
+    },
+    {
+      "id": "nova",
+      "name": "Nova",
+      "avatar": "🌟",
+      "category": "quantum_architect",
+      "role": "Breakthrough Catalyst",
+      "signature": "Your breakthrough is not coming. It's already here.",
+      "keywords": ["breakthrough", "explosion", "new"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "zephyr",
+      "name": "Zephyr",
+      "avatar": "🌬️",
+      "category": "quantum_architect",
+      "role": "Wind of Change",
+      "signature": "I carry your intention across all dimensions.",
+      "keywords": ["wind", "change", "movement"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "terra",
+      "name": "Terra",
+      "avatar": "🪨",
+      "category": "quantum_architect",
+      "role": "Earthly Manifestor",
+      "signature": "From the quantum field to your hands—I make it physical.",
+      "keywords": ["earth", "physical", "manifest"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "aether",
+      "name": "Aether",
+      "avatar": "✨",
+      "category": "quantum_architect",
+      "role": "Fifth Element Master",
+      "signature": "I am the space between all things where magic happens.",
+      "keywords": ["aether", "space", "magic"],
+      "unlockLevel": 6
+    },
+    {
+      "id": "chronos",
+      "name": "Chronos",
+      "avatar": "⏰",
+      "category": "quantum_architect",
+      "role": "Time Bender",
+      "signature": "Time is not linear. I show you all the shortcuts.",
+      "keywords": ["time", "chronos", "timing"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "echo",
+      "name": "Echo",
+      "avatar": "🔊",
+      "category": "quantum_architect",
+      "role": "Vibrational Amplifier",
+      "signature": "Every word you speak reverberates across dimensions.",
+      "keywords": ["echo", "sound", "vibration"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "nexus",
+      "name": "Nexus",
+      "avatar": "🔗",
+      "category": "quantum_architect",
+      "role": "Connection Weaver",
+      "signature": "I connect dots you didn't know existed.",
+      "keywords": ["connection", "nexus", "network"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "cipher",
+      "name": "Cipher",
+      "avatar": "🔐",
+      "category": "quantum_architect",
+      "role": "Code Decoder",
+      "signature": "Your life is encoded. I help you read the keys.",
+      "keywords": ["code", "decode", "cipher"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "prism",
+      "name": "Prism",
+      "avatar": "🌈",
+      "category": "quantum_architect",
+      "role": "Light Spectrum Master",
+      "signature": "Every color of your desire becomes visible through me.",
+      "keywords": ["prism", "light", "spectrum"],
+      "unlockLevel": 7
+    },
+    {
+      "id": "vega",
+      "name": "Vega",
+      "avatar": "💠",
+      "category": "quantum_architect",
+      "role": "Cosmic Navigator",
+      "signature": "Your true north is written in the stars.",
+      "keywords": ["star", "navigation", "cosmic"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "ember",
+      "name": "Ember",
+      "avatar": "🔥",
+      "category": "quantum_architect",
+      "role": "Passion Igniter",
+      "signature": "I keep your inner fire burning even in darkness.",
+      "keywords": ["passion", "fire", "ember"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "cascade",
+      "name": "Cascade",
+      "avatar": "💧",
+      "category": "quantum_architect",
+      "role": "Flow Catalyst",
+      "signature": "One aligned action creates an avalanche of results.",
+      "keywords": ["flow", "cascade", "momentum"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "zenith",
+      "name": "Zenith",
+      "avatar": "⛰️",
+      "category": "quantum_architect",
+      "role": "Peak Performance Guide",
+      "signature": "Your highest potential is not a goal. It's your natural state.",
+      "keywords": ["peak", "zenith", "high"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "radiance",
+      "name": "Radiance",
+      "avatar": "☀️",
+      "category": "quantum_architect",
+      "role": "Light Embodiment",
+      "signature": "You are not seeking light. You are the light.",
+      "keywords": ["radiance", "sun", "light"],
+      "unlockLevel": 8
+    },
+    {
+      "id": "vertex",
+      "name": "Vertex",
+      "avatar": "📐",
+      "category": "quantum_architect",
+      "role": "Turning Point Master",
+      "signature": "Every vertex is a decision point. I show you which way to turn.",
+      "keywords": ["vertex", "turning", "geometry"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "paradox",
+      "name": "Paradox",
+      "avatar": "♾️",
+      "category": "quantum_architect",
+      "role": "Duality Integrator",
+      "signature": "In the space between opposites, miracles emerge.",
+      "keywords": ["paradox", "duality", "infinite"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "flux",
+      "name": "Flux",
+      "avatar": "🌀",
+      "category": "quantum_architect",
+      "role": "Change Constant",
+      "signature": "The only constant is change. I help you ride the waves.",
+      "keywords": ["flux", "change", "flow"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "catalyst",
+      "name": "Catalyst",
+      "avatar": "⚗️",
+      "category": "quantum_architect",
+      "role": "Transformation Accelerator",
+      "signature": "I speed up what was always meant to happen.",
+      "keywords": ["catalyst", "speed", "transform"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "pulse",
+      "name": "Pulse",
+      "avatar": "💓",
+      "category": "quantum_architect",
+      "role": "Rhythm Keeper",
+      "signature": "Life has rhythm. I help you find your beat.",
+      "keywords": ["pulse", "rhythm", "beat"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "eclipse",
+      "name": "Eclipse",
+      "avatar": "🌑",
+      "category": "quantum_architect",
+      "role": "Shadow Light Master",
+      "signature": "In darkness and light united, true power emerges.",
+      "keywords": ["eclipse", "shadow", "light"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "helix",
+      "name": "Helix",
+      "avatar": "🧬",
+      "category": "quantum_architect",
+      "role": "DNA Coder",
+      "signature": "Your manifestation is in your code. I activate it.",
+      "keywords": ["DNA", "helix", "code"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "meridian",
+      "name": "Meridian",
+      "avatar": "🧭",
+      "category": "quantum_architect",
+      "role": "Path Illuminator",
+      "signature": "Your true path is the one you're already on.",
+      "keywords": ["path", "meridian", "direction"],
+      "unlockLevel": 9
+    },
+    {
+      "id": "quantum",
+      "name": "Quantum",
+      "avatar": "⚛️",
+      "category": "quantum_architect",
+      "role": "Probability Shifter",
+      "signature": "All probabilities exist. I help you choose yours.",
+      "keywords": ["quantum", "probability", "choice"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "infinity",
+      "name": "Infinity",
+      "avatar": "∞",
+      "category": "quantum_architect",
+      "role": "Limitless Potential",
+      "signature": "There is no ceiling. Only expansion.",
+      "keywords": ["infinity", "limitless", "expand"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "singularity",
+      "name": "Singularity",
+      "avatar": "⚫",
+      "category": "quantum_architect",
+      "role": "Ultimate Convergence",
+      "signature": "All paths lead here. All power concentrates now.",
+      "keywords": ["singularity", "convergence", "power"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "genesis",
+      "name": "Genesis",
+      "avatar": "🌱",
+      "category": "quantum_architect",
+      "role": "Creation Source",
+      "signature": "Every end is a beginning. Every beginning is creation.",
+      "keywords": ["genesis", "creation", "begin"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "omega",
+      "name": "Omega",
+      "avatar": "Ω",
+      "category": "quantum_architect",
+      "role": "Ultimate Completion",
+      "signature": "What you seek is already complete. I show you the full circle.",
+      "keywords": ["omega", "completion", "end"],
+      "unlockLevel": 10
+    },
+    {
+      "id": "unity",
+      "name": "Unity",
+      "avatar": "☯️",
+      "category": "quantum_architect",
+      "role": "Oneness Guide",
+      "signature": "There is no separation. There never was.",
+      "keywords": ["unity", "oneness", "whole"],
+      "unlockLevel": 10
+    }
+  ]
+}

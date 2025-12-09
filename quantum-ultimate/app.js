@@ -194,6 +194,7 @@ class QuantumRealityApp {
     this.currentThread = null;
     this.achievementTracker = null;
     this.isGeneratingCode = false; // Add debounce flag
+    this.allPersonas111 = null; // Will load 111 personas from JSON
     
     this.init();
   }
@@ -208,6 +209,9 @@ class QuantumRealityApp {
     try {
       // Load user data
       this.loadUserData();
+      
+      // Load 111 personas database
+      await this.loadPersonas111();
       
       // Check URL parameters for activation
       this.checkUrlParams();
@@ -311,6 +315,71 @@ class QuantumRealityApp {
     this.user.stats.totalSessions++;
     this.user.stats.lastVisit = Date.now();
     this.saveUser();
+  }
+
+  async loadPersonas111() {
+    try {
+      const response = await fetch('personas-111.json');
+      if (!response.ok) {
+        console.warn('Could not load personas-111.json, using default personas');
+        return;
+      }
+      this.allPersonas111 = await response.json();
+      console.log('✅ Loaded 111 personas database');
+    } catch (error) {
+      console.warn('Error loading personas-111.json:', error);
+    }
+  }
+
+  autoAssignCouncilFromCode(quantumCode) {
+    // Auto-assign 7 personas from 111 based on quantum code digits
+    // Trinity (3) are always active + 7 more = 10 total council members
+    
+    if (!this.allPersonas111) {
+      console.warn('111 personas not loaded yet');
+      return;
+    }
+
+    // Flatten all personas (excluding trinity which is always active)
+    const availablePersonas = [
+      ...this.allPersonas111.light_spectrum,
+      ...this.allPersonas111.shadow_spectrum,
+      ...this.allPersonas111.meta_mystic.filter(p => p.unlockLevel > 0), // Exclude Merlin & Rose
+      ...this.allPersonas111.quantum_architects
+    ];
+
+    // Use quantum code digits to select 7 personas
+    const codeString = String(quantumCode);
+    const selectedIds = [];
+    
+    for (let i = 0; i < 7 && i < codeString.length; i++) {
+      const digit = parseInt(codeString[i]);
+      // Map each digit to index in available personas (0-9 maps to 0-110)
+      const index = (digit * 11 + i * 7) % availablePersonas.length;
+      const persona = availablePersonas[index];
+      
+      if (persona && !selectedIds.includes(persona.id)) {
+        selectedIds.push(persona.id);
+      }
+    }
+
+    // If we need more personas to reach 7, fill with sequential selections
+    let fillIndex = 0;
+    while (selectedIds.length < 7 && fillIndex < availablePersonas.length) {
+      const persona = availablePersonas[fillIndex];
+      if (!selectedIds.includes(persona.id)) {
+        selectedIds.push(persona.id);
+      }
+      fillIndex++;
+    }
+
+    // Store the auto-assigned council
+    this.user.selectedPersonas = selectedIds;
+    this.user.autoAssignedCouncil = true;
+    this.saveUser();
+
+    console.log(`✅ Auto-assigned 7 personas from 111 based on code ${quantumCode}`);
+    return selectedIds;
   }
 
   checkUrlParams() {
@@ -936,6 +1005,9 @@ class QuantumRealityApp {
     this.user.stats.codesGenerated++;
     this.saveUser();
 
+    // Auto-assign 7 personas from 111 based on code digits
+    this.autoAssignCouncilFromCode(code);
+
     // Track achievement for code generation
     if (this.achievementTracker) {
       this.achievementTracker.trackEvent('code_generated', {
@@ -985,37 +1057,27 @@ class QuantumRealityApp {
   }
 
   calculateSacredGematria(text) {
-    // Multiple cipher systems for depth
-    let englishOrdinal = 0;
-    let pythagorean = 0;
-    let jewish = 0;
+    // Pure Gematria: A=1, B=2, C=3... Z=26
+    let total = 0;
+    const breakdown = []; // Store letter-by-letter for UI display
 
     for (const char of text.toUpperCase()) {
       if (char >= 'A' && char <= 'Z') {
-        // English Ordinal (A=1, B=2, ..., I=9, J=1, etc.)
-        const ordinal = ((char.charCodeAt(0) - 65) % 9) + 1;
-        englishOrdinal += ordinal;
-
-        // Pythagorean (A=1, B=2, ..., I=9, J=1, etc.)
-        pythagorean += ordinal;
-
-        // Jewish Gematria (more complex mapping)
-        jewish += this.getJewishGematriaValue(char);
+        const value = char.charCodeAt(0) - 64; // A=1, B=2... Z=26
+        total += value;
+        breakdown.push({ letter: char, value });
       }
     }
 
-    // Weighted combination
-    return Math.round((englishOrdinal * 0.4) + (pythagorean * 0.4) + (jewish * 0.2));
+    // Store breakdown for UI animations
+    this.lastGematriaBreakdown = breakdown;
+    
+    return total;
   }
 
-  getJewishGematriaValue(char) {
-    const gematriaMap = {
-      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8,
-      'I': 9, 'J': 10, 'K': 20, 'L': 30, 'M': 40, 'N': 50, 'O': 60,
-      'P': 70, 'Q': 80, 'R': 90, 'S': 100, 'T': 200, 'U': 300,
-      'V': 400, 'W': 500, 'X': 600, 'Y': 700, 'Z': 800
-    };
-    return gematriaMap[char] || 0;
+  getGematriaBreakdown() {
+    // Return the letter-by-letter breakdown for UI display
+    return this.lastGematriaBreakdown || [];
   }
 
   calculateQuantumResonance(text) {
@@ -1410,6 +1472,9 @@ class QuantumRealityApp {
     codeResonance.textContent = `${properties.resonance}/13`;
     codePower.textContent = `${properties.power}/10`;
 
+    // Animate gematria breakdown
+    this.displayGematriaBreakdown();
+
     // Add detailed descriptions
     const codeDetails = document.createElement('div');
     codeDetails.className = 'code-details';
@@ -1447,10 +1512,156 @@ class QuantumRealityApp {
     codeDisplay.classList.remove('hidden');
     activateBtn.classList.remove('hidden');
 
+    // Show Reality Alignment Calculator
+    const alignmentCard = document.getElementById('realityAlignmentCard');
+    if (alignmentCard) {
+      alignmentCard.classList.remove('hidden');
+      this.calculateAlignment();
+    }
+
     // Animate the reveal
     codeDisplay.style.animation = 'none';
     codeDisplay.offsetHeight; // Trigger reflow
     codeDisplay.style.animation = 'codeReveal 0.6s ease';
+  }
+
+  calculateAlignment() {
+    const shares = parseInt(document.getElementById('engagementShares')?.value || 0);
+    const likes = parseInt(document.getElementById('engagementLikes')?.value || 0);
+    const comments = parseInt(document.getElementById('engagementComments')?.value || 0);
+    const code = this.user?.quantumCode || 0;
+
+    // Formula: Code × (Shares + Likes + Comments) × 111
+    const totalEngagement = shares + likes + comments;
+    const alignmentScore = code * totalEngagement * 111;
+
+    // Animate the counter
+    this.animateCounter('alignmentScore', alignmentScore);
+
+    // Store engagement data
+    if (this.user) {
+      if (!this.user.engagementData) this.user.engagementData = {};
+      this.user.engagementData[code] = {
+        shares,
+        likes,
+        comments,
+        alignmentScore,
+        lastUpdated: Date.now()
+      };
+      this.saveUser();
+    }
+
+    return alignmentScore;
+  }
+
+  animateCounter(elementId, targetValue) {
+    const element = document.getElementById(elementId);
+    if (!element) return;
+
+    const duration = 1500; // 1.5 seconds
+    const steps = 60;
+    const increment = targetValue / steps;
+    let current = 0;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      current += increment;
+      
+      if (step >= steps) {
+        element.textContent = Math.floor(targetValue).toLocaleString();
+        clearInterval(timer);
+      } else {
+        element.textContent = Math.floor(current).toLocaleString();
+      }
+    }, duration / steps);
+  }
+
+  shareToFacebook() {
+    const code = this.user?.quantumCode;
+    const intention = this.user?.intention;
+    if (!code) {
+      this.showToast('Generate your quantum code first!', 'warning');
+      return;
+    }
+
+    const shareText = `🌟 My Quantum Reality Code is ${code}! I'm manifesting: ${intention}`;
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent('https://quantumrealitycodes.com')}&quote=${encodeURIComponent(shareText)}`;
+    window.open(url, '_blank', 'width=600,height=400');
+    
+    this.showToast('Opening Facebook share dialog...', 'success');
+  }
+
+  shareToTelegram() {
+    const code = this.user?.quantumCode;
+    const intention = this.user?.intention;
+    if (!code) {
+      this.showToast('Generate your quantum code first!', 'warning');
+      return;
+    }
+
+    const shareText = `🌟 My Quantum Reality Code is ${code}! I'm manifesting: ${intention}\n\nJoin us: https://t.me/+BIChXgOqFH9iMmU1`;
+    const url = `https://t.me/share/url?url=${encodeURIComponent('https://quantumrealitycodes.com')}&text=${encodeURIComponent(shareText)}`;
+    window.open(url, '_blank');
+    
+    this.showToast('Opening Telegram share...', 'success');
+  }
+
+  shareToInstagram() {
+    const code = this.user?.quantumCode;
+    if (!code) {
+      this.showToast('Generate your quantum code first!', 'warning');
+      return;
+    }
+
+    // Instagram doesn't support direct web sharing, so copy to clipboard
+    const shareText = `🌟 My Quantum Reality Code is ${code}! 
+
+I'm manifesting my dream reality using quantum frequency alignment.
+
+✨ Get your free Quantum Reality Code at quantumrealitycodes.com
+
+#QuantumManifestation #LawOfAttraction #Manifestation #QuantumReality #Code${code}`;
+
+    navigator.clipboard.writeText(shareText).then(() => {
+      this.showToast('✅ Share text copied! Open Instagram and paste it in your story or post.', 'success');
+    }).catch(() => {
+      this.showToast('Please copy manually: ' + shareText, 'info');
+    });
+  }
+
+  displayGematriaBreakdown() {
+    const breakdown = this.getGematriaBreakdown();
+    const container = document.getElementById('gematriaLetters');
+    
+    if (!container || !breakdown.length) return;
+    
+    container.innerHTML = '';
+    
+    // Animate each letter appearing one by one
+    breakdown.forEach((item, index) => {
+      setTimeout(() => {
+        const letterBox = document.createElement('div');
+        letterBox.style.cssText = `
+          display: inline-flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 8px 12px;
+          background: rgba(0, 255, 255, 0.1);
+          border: 1px solid rgba(0, 255, 255, 0.3);
+          border-radius: 6px;
+          animation: gematriaLetterPop 0.3s ease;
+          box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+        `;
+        
+        letterBox.innerHTML = `
+          <div style="font-size: 18px; font-weight: bold; color: #00ffff; font-family: 'Orbitron', sans-serif;">${item.letter}</div>
+          <div style="font-size: 12px; color: #ff00ff; margin-top: 4px;">${item.value}</div>
+        `;
+        
+        container.appendChild(letterBox);
+      }, index * 50); // Stagger animation
+    });
   }
 
   activateCouncil() {
@@ -1800,17 +2011,21 @@ class QuantumRealityApp {
       const lastMessage = thread.messages[thread.messages.length - 1];
       const time = lastMessage ? this.formatTime(lastMessage.timestamp) : 'New thread';
       
+      const unreadCount = thread.messages.filter(m => !m.read).length;
+      const lastPersona = lastMessage && !lastMessage.isUser ? this.findPersona(lastMessage.personaId) : null;
+      const avatarEmoji = lastPersona?.avatar || '⚡';
+      
       return `
         <div class="thread-item" onclick="app.selectThread('${code}')">
-          <div class="thread-avatar">⚡</div>
+          <div class="thread-avatar">${avatarEmoji}</div>
           <div class="thread-content">
-            <div class="thread-title">${code}</div>
-            <div class="thread-preview">${thread.intention.substring(0, 50)}${thread.intention.length > 50 ? '...' : ''}</div>
+            <div class="thread-header-row">
+              <div class="thread-title">Quantum Code ${code}</div>
+              <div class="thread-time">${time}</div>
+            </div>
+            <div class="thread-preview">${lastMessage ? (lastMessage.isUser ? 'You: ' : lastPersona?.name + ': ') : ''}${thread.intention.substring(0, 60)}${thread.intention.length > 60 ? '...' : ''}</div>
           </div>
-          <div class="thread-meta">
-            <div class="thread-time">${time}</div>
-            <div class="thread-count">${thread.messages.length}</div>
-          </div>
+          ${unreadCount > 0 ? `<div class="thread-unread-badge">${unreadCount}</div>` : ''}
         </div>
       `;
     }).join('');
@@ -1854,26 +2069,20 @@ class QuantumRealityApp {
           if (msg.isUser) {
             return `
               <div class="message-bubble user">
-                <div class="message-avatar">👤</div>
                 <div class="message-content">
-                  <div class="message-header">
-                    <span class="message-sender">${this.sanitizeHTML(this.user.name || 'You')}</span>
-                    <span class="message-time">${time}</span>
-                  </div>
                   <div class="message-text">${this.sanitizeHTML(msg.text)}</div>
+                  <div class="message-timestamp">${time}</div>
                 </div>
               </div>
             `;
           } else {
             return `
-              <div class="message-bubble">
+              <div class="message-bubble persona">
                 <div class="message-avatar">${persona?.avatar || '⚛️'}</div>
                 <div class="message-content">
-                  <div class="message-header">
-                    <span class="message-sender">${this.sanitizeHTML(persona?.name || 'Quantum Guide')}</span>
-                    <span class="message-time">${time}</span>
-                  </div>
+                  <div class="message-sender">${this.sanitizeHTML(persona?.name || 'Quantum Guide')}</div>
                   <div class="message-text">${this.sanitizeHTML(msg.text)}</div>
+                  <div class="message-timestamp">${time}</div>
                 </div>
               </div>
             `;
@@ -2083,6 +2292,20 @@ class QuantumRealityApp {
   // ============================================
 
   findPersona(id) {
+    // First try 111 personas database
+    if (this.allPersonas111) {
+      const allPersonas = [
+        ...this.allPersonas111.trinity,
+        ...this.allPersonas111.light_spectrum,
+        ...this.allPersonas111.shadow_spectrum,
+        ...this.allPersonas111.meta_mystic,
+        ...this.allPersonas111.quantum_architects
+      ];
+      const found = allPersonas.find(p => p.id === id);
+      if (found) return found;
+    }
+    
+    // Fallback to hardcoded personas
     const allPersonas = [
       ...QUANTUM_PERSONAS.trinity,
       ...QUANTUM_PERSONAS.light,
