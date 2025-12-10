@@ -952,7 +952,7 @@ class QuantumRealityApp {
     this.saveUser();
 
     // Add welcome message
-    this.addCouncilMessage('divine_witness', `Welcome, ${name}. The quantum field acknowledges your presence. You are now connected to the Council of 77 archetypal guides. Your journey to manifestation mastery begins now.`);
+    this.addCouncilMessage('divine_witness', `Welcome, ${name}. The quantum field acknowledges your presence. You are now connected to the Council of 111 archetypal personas. Your journey to manifestation mastery begins now.`);
 
     this.showToast(`Welcome, ${name}! Let's generate your Quantum Code.`, 'success');
     this.navigate('generator');
@@ -2242,13 +2242,21 @@ I'm manifesting my dream reality using quantum frequency alignment.
 
     grid.innerHTML = '';
 
-    // Combine all personas
-    const allPersonas = [
-      ...QUANTUM_PERSONAS.trinity,
-      ...QUANTUM_PERSONAS.light.slice(0, 20), // Show first 20 light personas
-      ...QUANTUM_PERSONAS.shadow.slice(0, 10), // Show first 10 shadow personas
-      ...QUANTUM_PERSONAS.metaMystic
-    ];
+    // Use the 111 personas from loaded JSON, or fall back to built-in personas
+    let allPersonas = [];
+    
+    if (this.allPersonas111 && this.allPersonas111.length > 0) {
+      // Use all 111 personas from JSON
+      allPersonas = this.allPersonas111;
+    } else {
+      // Fallback to built-in personas (show more of them)
+      allPersonas = [
+        ...QUANTUM_PERSONAS.trinity,
+        ...QUANTUM_PERSONAS.light,      // Show all light personas
+        ...QUANTUM_PERSONAS.shadow,     // Show all shadow personas
+        ...QUANTUM_PERSONAS.metaMystic  // Show all meta-mystic personas
+      ];
+    }
 
     allPersonas.forEach(persona => {
       const isSelected = this.user.selectedPersonas.includes(persona.id);
@@ -2258,7 +2266,7 @@ I'm manifesting my dream reality using quantum frequency alignment.
       card.innerHTML = `
         <div class="persona-avatar">${persona.avatar}</div>
         <div class="persona-name">${persona.name}</div>
-        <div class="persona-role">${persona.title || persona.focus || persona.role}</div>
+        <div class="persona-role">${persona.title || persona.focus || persona.role || persona.signature}</div>
       `;
       card.onclick = () => this.togglePersona(persona.id);
       grid.appendChild(card);
