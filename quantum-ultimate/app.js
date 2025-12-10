@@ -421,12 +421,25 @@ class QuantumRealityApp {
       const response = await fetch('personas-111.json');
       if (!response.ok) {
         console.warn('Could not load personas-111.json, using default personas');
+        this.flatPersonas111 = null;
         return;
       }
-      this.allPersonas111 = await response.json();
-      console.log('✅ Loaded 111 personas database');
+      const data = await response.json();
+      this.allPersonas111 = data;
+      
+      // Create a FLAT array of all 111 personas for easy lookup
+      this.flatPersonas111 = [
+        ...(data.trinity || []),
+        ...(data.light_spectrum || []),
+        ...(data.shadow_spectrum || []),
+        ...(data.meta_mystic || []),
+        ...(data.quantum_architects || [])
+      ];
+      
+      console.log(`✅ Loaded ${this.flatPersonas111.length} personas from database`);
     } catch (error) {
       console.warn('Error loading personas-111.json:', error);
+      this.flatPersonas111 = null;
     }
   }
 
@@ -434,18 +447,13 @@ class QuantumRealityApp {
     // Auto-assign 7 personas from 111 based on quantum code digits
     // Trinity (3) are always active + 7 more = 10 total council members
     
-    if (!this.allPersonas111) {
+    if (!this.flatPersonas111 || this.flatPersonas111.length === 0) {
       console.warn('111 personas not loaded yet');
       return;
     }
 
-    // Flatten all personas (excluding trinity which is always active)
-    const availablePersonas = [
-      ...this.allPersonas111.light_spectrum,
-      ...this.allPersonas111.shadow_spectrum,
-      ...this.allPersonas111.meta_mystic.filter(p => p.unlockLevel > 0), // Exclude Merlin & Rose
-      ...this.allPersonas111.quantum_architects
-    ];
+    // Filter out trinity (always active) for selection
+    const availablePersonas = this.flatPersonas111.filter(p => p.category !== 'trinity');
 
     // Use quantum code digits to select 7 personas
     const codeString = String(quantumCode);
@@ -453,7 +461,7 @@ class QuantumRealityApp {
     
     for (let i = 0; i < 7 && i < codeString.length; i++) {
       const digit = parseInt(codeString[i]);
-      // Map each digit to index in available personas (0-9 maps to 0-110)
+      // Map each digit to index in available personas (0-9 maps to 0-108)
       const index = (digit * 11 + i * 7) % availablePersonas.length;
       const persona = availablePersonas[index];
       
@@ -2242,19 +2250,19 @@ I'm manifesting my dream reality using quantum frequency alignment.
 
     grid.innerHTML = '';
 
-    // Use the 111 personas from loaded JSON, or fall back to built-in personas
+    // Use the flat 111 personas array, or fall back to built-in personas
     let allPersonas = [];
     
-    if (this.allPersonas111 && this.allPersonas111.length > 0) {
-      // Use all 111 personas from JSON
-      allPersonas = this.allPersonas111;
+    if (this.flatPersonas111 && this.flatPersonas111.length > 0) {
+      // Use all 111 personas from JSON (flattened)
+      allPersonas = this.flatPersonas111;
     } else {
-      // Fallback to built-in personas (show more of them)
+      // Fallback to built-in personas
       allPersonas = [
         ...QUANTUM_PERSONAS.trinity,
-        ...QUANTUM_PERSONAS.light,      // Show all light personas
-        ...QUANTUM_PERSONAS.shadow,     // Show all shadow personas
-        ...QUANTUM_PERSONAS.metaMystic  // Show all meta-mystic personas
+        ...QUANTUM_PERSONAS.light,
+        ...QUANTUM_PERSONAS.shadow,
+        ...QUANTUM_PERSONAS.metaMystic
       ];
     }
 
@@ -2266,7 +2274,7 @@ I'm manifesting my dream reality using quantum frequency alignment.
       card.innerHTML = `
         <div class="persona-avatar">${persona.avatar}</div>
         <div class="persona-name">${persona.name}</div>
-        <div class="persona-role">${persona.title || persona.focus || persona.role || persona.signature}</div>
+        <div class="persona-role">${persona.title || persona.focus || persona.role || ''}</div>
       `;
       card.onclick = () => this.togglePersona(persona.id);
       grid.appendChild(card);
@@ -2470,41 +2478,13 @@ I'm manifesting my dream reality using quantum frequency alignment.
     return names[type] || type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
   }
 
-  confirmCouncil() {
-    if (this.user.selectedPersonas.length < 5) {
-      this.showToast('Please select at least 5 personas', 'warning');
-      return;
-    }
-
-    this.user.journeyStep = Math.max(this.user.journeyStep, 6);
-    this.user.journeyCompleted.push(6);
-    this.saveUser();
-
-    // Track achievement for council activation
-    if (this.achievementTracker) {
-      this.achievementTracker.trackEvent('council_activated', {
-        personaCount: this.user.selectedPersonas.length
-      });
-    }
-
-    // Add activation messages
-    this.addCouncilMessage('resonance_keeper', `Field coherence established. ${this.user.selectedPersonas.length} personas are now synchronized with your Quantum Code ${this.user.quantumCode}. The Council is fully activated.`);
-    
-    setTimeout(() => {
-      this.addCouncilMessage('quantum_rose', `${this.user.name}, I feel the resonance of your desire. Your frequency is now calibrated to ${this.user.codeProperties.frequency}Hz. The cosmic frequencies are attuned to your heart's true vibration.`);
-    }, 2000);
-
-    this.showToast('Council Activated! Check your messages.', 'success');
-    this.navigate('messages');
-  }
-
   // ============================================
   // MESSAGING SYSTEM
   // ============================================
 
   addCouncilMessage(personaId, text, isUser = false) {
     const message = {
-      id: Date.now(),
+      id: Date.now() + Math.random(), // Ensure unique ID
       personaId: personaId,
       text: text.replace('{name}', this.user.name || 'Seeker').replace('{code}', this.user.quantumCode || '---'),
       timestamp: Date.now(),
@@ -2512,20 +2492,43 @@ I'm manifesting my dream reality using quantum frequency alignment.
       read: false
     };
 
-    // Add to the current quantum code's thread
+    // Ensure threads object exists
+    if (!this.user.threads) {
+      this.user.threads = {};
+    }
+
+    // Get the current quantum code to determine which thread to add to
     const code = this.user.quantumCode;
-    if (code && this.user.threads[code]) {
+    
+    if (code) {
+      // Ensure thread exists for this code
+      if (!this.user.threads[code]) {
+        this.user.threads[code] = {
+          intention: this.user.intention || 'Manifesting my highest potential',
+          messages: [],
+          createdAt: Date.now()
+        };
+      }
       this.user.threads[code].messages.push(message);
     } else {
-      // Fallback to old messages array for compatibility
-      if (!this.user.messages) this.user.messages = [];
-      this.user.messages.push(message);
+      // No quantum code yet - create a "general" thread
+      if (!this.user.threads['general']) {
+        this.user.threads['general'] = {
+          intention: 'General Council Messages',
+          messages: [],
+          createdAt: Date.now()
+        };
+      }
+      this.user.threads['general'].messages.push(message);
     }
 
     this.user.stats.messagesReceived++;
     this.saveUser();
 
-    this.renderMessages();
+    // Only re-render if we're on the messages page
+    if (this.currentSection === 'messages') {
+      this.renderMessages();
+    }
     this.updateNotificationBadge();
   }
 
@@ -2869,16 +2872,11 @@ I'm manifesting my dream reality using quantum frequency alignment.
   // ============================================
 
   findPersona(id) {
-    // First try 111 personas database
-    if (this.allPersonas111) {
-      const allPersonas = [
-        ...this.allPersonas111.trinity,
-        ...this.allPersonas111.light_spectrum,
-        ...this.allPersonas111.shadow_spectrum,
-        ...this.allPersonas111.meta_mystic,
-        ...this.allPersonas111.quantum_architects
-      ];
-      const found = allPersonas.find(p => p.id === id);
+    if (!id) return null;
+    
+    // First try flat 111 personas array (most comprehensive)
+    if (this.flatPersonas111 && this.flatPersonas111.length > 0) {
+      const found = this.flatPersonas111.find(p => p.id === id);
       if (found) return found;
     }
     
@@ -2889,7 +2887,7 @@ I'm manifesting my dream reality using quantum frequency alignment.
       ...QUANTUM_PERSONAS.shadow,
       ...QUANTUM_PERSONAS.metaMystic
     ];
-    return allPersonas.find(p => p.id === id);
+    return allPersonas.find(p => p.id === id) || null;
   }
 
   getRandomMessage(templates) {
@@ -2995,7 +2993,17 @@ I'm manifesting my dream reality using quantum frequency alignment.
   }
 
   updateNotificationBadge() {
-    const unreadCount = this.user.messages.filter(m => !m.read && !m.isUser).length;
+    // Count unread messages across ALL threads
+    let unreadCount = 0;
+    
+    if (this.user && this.user.threads) {
+      Object.values(this.user.threads).forEach(thread => {
+        if (thread && thread.messages) {
+          unreadCount += thread.messages.filter(m => !m.read && !m.isUser).length;
+        }
+      });
+    }
+    
     const badge = document.getElementById('notificationBadge');
     
     if (badge) {
