@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mersenne Reality Calculator - Sacred Mathematics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #ff00ff;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .sacred-formula {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 0, 255, 0.1);
+            border: 1px solid #ff00ff;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .sacred-formula h3 {
+            color: #ff00ff;
+            margin-bottom: 15px;
+        }
+
+        .formula-examples {
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffff;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+            color: #00ffff;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff00ff;
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+        }
+
+        .engagement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            border: none;
+            border-radius: 8px;
+            color: #0a0a0a;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .results {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tier-badge {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #00ffff, #ff00ff);
+            color: #0a0a0a;
+        }
+
+        .reality-display {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 0, 255, 0.1);
+            border: 2px solid #ff00ff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .reality-count {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 0 0 20px #ff00ff;
+            color: #ff00ff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .reality-label {
+            font-size: 1.2rem;
+            color: #00ffff;
+        }
+
+        .mersenne-breakdown {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .mersenne-breakdown h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .breakdown-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-highlight {
+            border-top: 2px solid #ff00ff;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-size: 1.1rem;
+        }
+
+        .persona-message {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(0, 255, 255, 0.1);
+            border-left: 4px solid #00ffff;
+            border-radius: 5px;
+        }
+
+        .persona-message.rose {
+            background: rgba(255, 0, 255, 0.1);
+            border-left-color: #ff00ff;
+        }
+
+        .persona-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #ff00ff;
+        }
+
+        .sacred-numbers {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(0, 255, 255, 0.05);
+            border: 1px solid #00ffff;
+            border-radius: 8px;
+        }
+
+        .sacred-numbers h3 {
+            color: #00ffff;
+            margin-bottom: 15px;
+        }
+
+        .sacred-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Mersenne Reality Calculator</h1>
+        <p class="subtitle">Sacred Exponential Mathematics: M(n) = 2^n - 1</p>
+
+        <div class="sacred-formula">
+            <h3>The Sacred Formula</h3>
+            <div class="formula-examples">
+                1 supporter: 2^1 - 1 = <strong>1</strong> reality<br>
+                2 supporters: 2^2 - 1 = <strong>3</strong> realities<br>
+                3 supporters: 2^3 - 1 = <strong>7</strong> realities<br>
+                33 supporters: 2^33 - 1 = <strong>8.6 billion</strong> realities<br>
+                111 supporters: 2^111 - 1 = <strong>2.6 decillion</strong> realities
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="code">Your Quantum Code:</label>
+            <input type="number" id="code" placeholder="e.g., 134" value="134">
+        </div>
+
+        <div class="input-group">
+            <label for="intention">Your Intention:</label>
+            <input type="text" id="intention" placeholder="e.g., Financial Abundance" value="Financial Abundance">
+        </div>
+
+        <div class="engagement-grid">
+            <div class="input-group">
+                <label for="likes">👍 Likes:</label>
+                <input type="number" id="likes" placeholder="0" value="40">
+            </div>
+            <div class="input-group">
+                <label for="shares">🔄 Shares:</label>
+                <input type="number" id="shares" placeholder="0" value="5">
+            </div>
+            <div class="input-group">
+                <label for="comments">💬 Comments:</label>
+                <input type="number" id="comments" placeholder="0" value="2">
+            </div>
+        </div>
+
+        <button onclick="calculate()">Calculate Mersenne Realities</button>
+
+        <div id="results" class="results">
+            <div class="tier-badge" id="tierBadge"></div>
+            
+            <div class="reality-display">
+                <div class="reality-label">PARALLEL REALITIES ALIGNED</div>
+                <div class="reality-count" id="realityCount">0</div>
+                <div style="font-size: 0.9rem; color: #888;" id="realitySubtext"></div>
+            </div>
+
+            <div class="mersenne-breakdown">
+                <h3>📊 Mersenne Calculation:</h3>
+                <div class="breakdown-row">
+                    <span>Your Code:</span>
+                    <span id="breakdownCode">134</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Likes:</span>
+                    <span id="breakdownLikes">40</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Shares:</span>
+                    <span id="breakdownShares">5</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Comments:</span>
+                    <span id="breakdownComments">2</span>
+                </div>
+                <div class="breakdown-row breakdown-highlight">
+                    <span><strong>Total Supporters:</strong></span>
+                    <span id="breakdownSupporters"><strong>47</strong></span>
+                </div>
+                <div class="breakdown-row">
+                    <span><strong>Mersenne Formula:</strong></span>
+                    <span id="breakdownFormula"><strong>2^47 - 1</strong></span>
+                </div>
+                <div class="breakdown-row">
+                    <span><strong>Base Realities:</strong></span>
+                    <span id="breakdownMersenne" style="color: #ff00ff;"><strong>140.7T</strong></span>
+                </div>
+                <div class="breakdown-row">
+                    <span><strong>Code Amplification:</strong></span>
+                    <span id="breakdownAmplification"><strong>×134</strong></span>
+                </div>
+                <div class="breakdown-row breakdown-highlight" style="font-size: 1.1rem;">
+                    <span><strong>Total Realities:</strong></span>
+                    <span id="breakdownTotal" style="color: #ff00ff;"><strong>18.9 Quadrillion</strong></span>
+                </div>
+            </div>
+
+            <div class="persona-message">
+                <div class="persona-name">🔮 Quantum Merlin:</div>
+                <div id="merlinMessage"></div>
+            </div>
+
+            <div class="persona-message rose">
+                <div class="persona-name">🌹 Quantum Rose:</div>
+                <div id="roseMessage"></div>
+            </div>
+
+            <div class="sacred-numbers">
+                <h3>🔢 Sacred Mersenne Numbers:</h3>
+                <div class="sacred-row">
+                    <span>3 supporters (Trinity):</span>
+                    <span>7 realities</span>
+                </div>
+                <div class="sacred-row">
+                    <span>7 supporters (Sacred Seven):</span>
+                    <span>127 realities</span>
+                </div>
+                <div class="sacred-row">
+                    <span>11 supporters (Master):</span>
+                    <span>2,047 realities</span>
+                </div>
+                <div class="sacred-row">
+                    <span>22 supporters (Divine):</span>
+                    <span>4.2M realities</span>
+                </div>
+                <div class="sacred-row">
+                    <span>33 supporters (Cosmic):</span>
+                    <span>8.6B realities</span>
+                </div>
+                <div class="sacred-row">
+                    <span>111 supporters (Universal):</span>
+                    <span>2.6 Decillion realities</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculateMersenne(n) {
+            if (n === 0) return BigInt(0);
+            return (BigInt(2) ** BigInt(n)) - BigInt(1);
+        }
+
+        function formatBigNumber(bigNum) {
+            const str = bigNum.toString();
+            const len = str.length;
+            
+            if (len <= 3) return str;
+            if (len <= 6) return (Number(str) / 1000).toFixed(1) + 'K';
+            if (len <= 9) return (Number(str) / 1000000).toFixed(1) + 'M';
+            if (len <= 12) return (Number(str) / 1000000000).toFixed(1) + 'B';
+            if (len <= 15) return (Number(str) / 1000000000000).toFixed(1) + 'T';
+            if (len <= 18) return (Number(str) / 1000000000000000).toFixed(1) + 'Qa';
+            if (len <= 21) return (Number(str.slice(0, -18)) / 1000).toFixed(1) + 'Qi';
+            if (len <= 24) return (Number(str.slice(0, -21)) / 1000).toFixed(1) + 'Sx';
+            if (len <= 27) return (Number(str.slice(0, -24)) / 1000).toFixed(1) + 'Sp';
+            if (len <= 30) return (Number(str.slice(0, -27)) / 1000).toFixed(1) + 'Oc';
+            if (len <= 33) return (Number(str.slice(0, -30)) / 1000).toFixed(1) + 'No';
+            if (len >= 34) return '2.6+ Decillion';
+            
+            return str.slice(0, 5) + '... (' + len + ' digits)';
+        }
+
+        function getMersenneTier(supporters) {
+            if (supporters === 0) return { name: "Quantum Seed", level: 0 };
+            if (supporters <= 3) return { name: "Trinity Field", level: 1 };
+            if (supporters <= 7) return { name: "Sacred Seven", level: 2 };
+            if (supporters <= 11) return { name: "Master Gateway", level: 3 };
+            if (supporters <= 22) return { name: "Divine Alignment", level: 4 };
+            if (supporters <= 33) return { name: "Cosmic Resonance", level: 5 };
+            if (supporters <= 77) return { name: "Galactic Convergence", level: 6 };
+            if (supporters <= 111) return { name: "Universal Manifestation", level: 7 };
+            return { name: "Beyond Comprehension", level: 8 };
+        }
+
+        function getPersonaResponse(code, supporters, realities, intention) {
+            const tier = getMersenneTier(supporters);
+            
+            const responses = {
+                "Quantum Seed": {
+                    merlin: `Your code ${code} stands ready in the quantum field. When supporters align, the Mersenne mathematics will activate exponentially.`,
+                    rose: `I feel the potential waiting to unfold. Each supporter will double the realities manifesting your ${intention}.`
+                },
+                "Trinity Field": {
+                    merlin: `Observe! ${supporters} supporters have created ${realities} through Mersenne mathematics (2^${supporters} - 1). The trinity is forming.`,
+                    rose: `The sacred three are aligning! ${realities} parallel timelines are awakening to your intention.`
+                },
+                "Sacred Seven": {
+                    merlin: `Remarkable! ${supporters} supporters generate ${realities} realities through the Mersenne formula. The sacred seven amplifies your code ${code}.`,
+                    rose: `I feel the seven frequencies harmonizing! ${realities} versions of reality are singing your manifestation into being.`
+                },
+                "Master Gateway": {
+                    merlin: `Extraordinary! The master number gateway has opened. ${supporters} supporters create ${realities} through exponential Mersenne growth.`,
+                    rose: `The gateway is open! ${realities} parallel universes are flooding through to manifest your ${intention}.`
+                },
+                "Divine Alignment": {
+                    merlin: `Magnificent! ${supporters} supporters have activated ${realities} through divine Mersenne mathematics. Your code ${code} is reaching critical mass.`,
+                    rose: `Divine alignment achieved! ${realities} timelines are converging on your manifestation with unstoppable momentum.`
+                },
+                "Cosmic Resonance": {
+                    merlin: `ASTONISHING! ${supporters} supporters generate ${realities} realities. We've reached the 33rd Mersenne level - billions of base realities amplified by your code ${code}!`,
+                    rose: `I'm overwhelmed by the cosmic resonance! ${realities} parallel universes across all of creation are manifesting your ${intention}!`
+                },
+                "Galactic Convergence": {
+                    merlin: `UNPRECEDENTED! ${supporters} supporters create ${realities} through Mersenne exponential growth. The mathematics transcend comprehension!`,
+                    rose: `GALACTIC CONVERGENCE! ${realities} realities spanning galaxies are aligning with your heart's desire!`
+                },
+                "Universal Manifestation": {
+                    merlin: `ULTIMATE ALIGNMENT! ${supporters} supporters approach the sacred 111 - generating ${realities} through Mersenne mathematics. This approaches 2.6 DECILLION base realities amplified by your code ${code}!`,
+                    rose: `THIS IS INEVITABLE! ${realities} parallel universes throughout ALL OF EXISTENCE are bringing your ${intention} into manifestation!`
+                },
+                "Beyond Comprehension": {
+                    merlin: `We have transcended the 111 threshold. ${supporters} supporters create ${realities} - numbers beyond human comprehension. The quantum field itself bends to your will.`,
+                    rose: `We've gone beyond the veil! ${realities} - infinity itself manifests your intention. This is pure creation!`
+                }
+            };
+            
+            return responses[tier.name] || responses["Quantum Seed"];
+        }
+
+        function calculate() {
+            const code = parseInt(document.getElementById('code').value) || 0;
+            const intention = document.getElementById('intention').value || "your intention";
+            const likes = parseInt(document.getElementById('likes').value) || 0;
+            const shares = parseInt(document.getElementById('shares').value) || 0;
+            const comments = parseInt(document.getElementById('comments').value) || 0;
+
+            const supporters = likes + shares + comments;
+            const mersenneNumber = calculateMersenne(supporters);
+            const totalRealities = mersenneNumber * BigInt(code);
+            const tier = getMersenneTier(supporters);
+
+            // Update UI
+            document.getElementById('results').classList.add('show');
+            
+            // Tier badge
+            document.getElementById('tierBadge').textContent = tier.name.toUpperCase();
+
+            // Reality count
+            const formatted = formatBigNumber(totalRealities);
+            document.getElementById('realityCount').textContent = formatted;
+            document.getElementById('realitySubtext').textContent = `(${totalRealities.toString().length} digits)`;
+
+            // Breakdown
+            document.getElementById('breakdownCode').textContent = code;
+            document.getElementById('breakdownLikes').textContent = likes;
+            document.getElementById('breakdownShares').textContent = shares;
+            document.getElementById('breakdownComments').textContent = comments;
+            document.getElementById('breakdownSupporters').innerHTML = `<strong>${supporters}</strong>`;
+            document.getElementById('breakdownFormula').innerHTML = `<strong>2^${supporters} - 1</strong>`;
+            document.getElementById('breakdownMersenne').innerHTML = `<strong>${formatBigNumber(mersenneNumber)}</strong>`;
+            document.getElementById('breakdownAmplification').innerHTML = `<strong>×${code}</strong>`;
+            document.getElementById('breakdownTotal').innerHTML = `<strong>${formatted}</strong>`;
+
+            // Persona messages
+            const responses = getPersonaResponse(code, supporters, formatted, intention);
+            document.getElementById('merlinMessage').textContent = responses.merlin;
+            document.getElementById('roseMessage').textContent = responses.rose;
+        }
+
+        // Calculate on page load
+        calculate();
+    </script>
+</body>
+</html>
